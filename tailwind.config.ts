@@ -25,6 +25,9 @@ export default {
     },
     typography: typographyStyles,
     extend: {
+      colors: {
+        erxesColor: '#5629b6',
+      },
       boxShadow: {
         glow: '0 0 4px rgb(0 0 0 / 0.1)',
       },

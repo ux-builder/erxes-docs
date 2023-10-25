@@ -107,7 +107,7 @@ function SocialLink({
   children: React.ReactNode
 }) {
   return (
-    <Link href={href} className="group">
+    <Link href={href} target="_blank" className="group">
       <span className="sr-only">{children}</span>
       <Icon className="h-5 w-5 fill-zinc-700 transition group-hover:fill-zinc-900 dark:group-hover:fill-zinc-500" />
     </Link>
@@ -121,13 +121,13 @@ function SmallPrint() {
         &copy; Copyright {new Date().getFullYear()}. All rights reserved.
       </p>
       <div className="flex gap-4">
-        <SocialLink href="#" icon={TwitterIcon}>
+        <SocialLink href="https://x.com/erxesHQ?s=20" icon={TwitterIcon}>
           Follow us on Twitter
         </SocialLink>
-        <SocialLink href="#" icon={GitHubIcon}>
+        <SocialLink href="https://github.com/erxes/erxes" icon={GitHubIcon}>
           Follow us on GitHub
         </SocialLink>
-        <SocialLink href="#" icon={DiscordIcon}>
+        <SocialLink href="https://discord.gg/jrhEC3Cq" icon={DiscordIcon}>
           Join our Discord server
         </SocialLink>
       </div>

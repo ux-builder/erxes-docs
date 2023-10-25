@@ -152,9 +152,6 @@ function NavigationGroup({
   group: NavGroup
   className?: string
 }) {
-  // If this is the mobile navigation then we always render the initial
-  // state, so that the state does not change during the close animation.
-  // The state will still update when we re-open (re-render) the navigation.
   let isInsideMobileNavigation = useIsInsideMobileNavigation()
   let [pathname, sections] = useInitialValue(
     [usePathname(), useSectionStore((s) => s.sections)],
@@ -233,13 +230,12 @@ export const navigation: Array<NavGroup> = [
   {
     title: 'Guides',
     links: [
-      { title: 'Introduction', href: '/' },
-      { title: 'Quickstart', href: '/quickstart' },
-      { title: 'SDKs', href: '/sdks' },
-      { title: 'Authentication', href: '/authentication' },
-      { title: 'Pagination', href: '/pagination' },
-      { title: 'Errors', href: '/errors' },
-      { title: 'Webhooks', href: '/webhooks' },
+      { title: 'Getting started', href: '/' },
+      { title: 'Setup & Deployment', href: '/quickstart' },
+      { title: 'Development', href: '/sdks' },
+      { title: 'Developer Resources', href: '/authentication' },
+      { title: 'Contributing to open source', href: '/pagination' },
+      { title: 'Erxes XOS user guide', href: '/errors' },
     ],
   },
   {
@@ -258,9 +254,9 @@ export function Navigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   return (
     <nav {...props}>
       <ul role="list">
-        <TopLevelNavItem href="/">API</TopLevelNavItem>
+        <TopLevelNavItem href="/">Resource center</TopLevelNavItem>
         <TopLevelNavItem href="#">Documentation</TopLevelNavItem>
-        <TopLevelNavItem href="#">Support</TopLevelNavItem>
+        <TopLevelNavItem href="#">Eco system</TopLevelNavItem>
         {navigation.map((group, groupIndex) => (
           <NavigationGroup
             key={group.title}

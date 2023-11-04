@@ -15,7 +15,7 @@ import { EnvelopeIcon } from '@/components/icons/EnvelopeIcon'
 import { UserIcon } from '@/components/icons/UserIcon'
 import { UsersIcon } from '@/components/icons/UsersIcon'
 
-interface Resource {
+interface Resour {
   href: string
   name: string
   description: string
@@ -26,10 +26,10 @@ interface Resource {
   >
 }
 
-const resources: Array<Resource> = [
+const resources: Array<Resour> = [
   {
-    href: '/groups',
-    name: 'Local installation',
+    href: '/webhooks',
+    name: 'Ubuntu',
     description:
       '2 items',
     icon: ChatBubbleIcon,
@@ -43,7 +43,7 @@ const resources: Array<Resource> = [
   },
   {
     href: '/deployment',
-    name: 'Deployment',
+    name: 'Mac',
     description:
       '2 items',
     icon: ChatBubbleIcon,
@@ -54,7 +54,7 @@ const resources: Array<Resource> = [
   },
 ]
 
-function ResourceIcon({ icon: Icon }: { icon: Resource['icon'] }) {
+function ResourceIcon({ icon: Icon }: { icon: Resour['icon'] }) {
   return (
     <div className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900/5 ring-1 ring-zinc-900/25 backdrop-blur-[2px] transition duration-300 group-hover:bg-white/50 group-hover:ring-zinc-900/25 dark:bg-white/7.5 dark:ring-white/15 dark:group-hover:bg-emerald-300/10 dark:group-hover:ring-emerald-400">
       <Icon className="h-5 w-5 fill-zinc-700/10 stroke-zinc-700 transition-colors duration-300 group-hover:stroke-zinc-900 dark:fill-white/10 dark:stroke-zinc-400 dark:group-hover:fill-emerald-300/10 dark:group-hover:stroke-emerald-400" />
@@ -66,7 +66,7 @@ function ResourcePattern({
   mouseX,
   mouseY,
   ...gridProps
-}: Resource['pattern'] & {
+}: Resour['pattern'] & {
   mouseX: MotionValue<number>
   mouseY: MotionValue<number>
 }) {
@@ -104,7 +104,7 @@ function ResourcePattern({
   )
 }
 
-function Resource({ resource }: { resource: Resource }) {
+function Resource({ resource }: { resource: Resour }) {
   let mouseX = useMotionValue(0)
   let mouseY = useMotionValue(0)
 

@@ -1,0 +1,73 @@
+export const metadata = {
+  title: 'Create General Plugin',
+  description:
+    'This guide will get you all set up and ready to use the Protocol API. We’ll cover how to get started an API client and how to make your first API request.',
+}
+
+# Create General Plugin
+
+With erxes, you can create your own plugins or extend the existing ones, which would help you to enhance your experience and increase your revenue by adding the value on your products/services or selling it on our [our marketplace](#). This guideline will help you to develop your own plugins.
+
+# Installing erxes
+
+Please go to [the installation](#) guideline to install erxes XOS, but no need to run the erxes with the same direction.
+
+# Plugin API
+
+Plugin development in API part requires the following software prerequisites to be already installed on your computer.
+
+- [Typescript](#)
+- [GraphQL](#)
+- [Express.js](#)
+- [MongoDB](#)
+- [Redis](#)
+- [RabbitMQ](#)
+
+# Plugin UI
+Plugin development in UI part requires the following software prerequisites to be already installed on your computer.
+
+- Typescript
+- Webpack
+- ReactJS
+
+# Creating New Plugin
+
+Each plugin is composed of two parts, `API` and `UI`
+
+- Create new folders for both using the following command.
+
+```bash {{ title: '' }}
+    cd erxes
+    yarn create-plugin 
+```
+
+The command above starts CLI, prompting for few questions to create a new plugin as shown below. In this example we create plugin named document.
+
+
+
+The example below is a new plugin, created from an example template, placed at the main navigation.
+
+
+
+Creating from an empty template will result in as shown below, as we give you the freedom and space to develop your own plugin on erxes.
+
+# API file structure
+
+After creating a plugin, the following files are generated automatically in your new plugin API.
+```bash {{ title: '' }}
+📦plugin-document-api
+ ┣ 📂src
+ ┃ ┣ 📂graphql
+ ┃ ┃ ┣ 📂resolvers 
+ ┃ ┃ ┃ ┣ index.ts
+ ┃ ┃ ┃ ┣ mutations.ts
+ ┃ ┃ ┃ ┗ queries.ts
+ ┃ ┃ ┣ index.ts
+ ┃ ┃ ┗ typeDefs.ts
+ ┃ ┣ configs.ts
+ ┃ ┣ messageBroker.ts
+ ┃ ┗ models.ts
+ ┣ .env.sample
+ ┣ package.json
+ ┗ tsconfig.json
+```

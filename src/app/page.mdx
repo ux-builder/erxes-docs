@@ -9,28 +9,81 @@ export const metadata = {
 }
 
 export const sections = [
-  { title: 'Architecture', id: 'Architecture' },
-  { title: 'Frequently Asked Questions', id: 'Faq' },
+  { title: 'Architecture', id: 'architecture' },
+  { title: 'Frequently Asked Questions', id: 'faq' },
 ]
 
 <HeroPattern />
 
 # Introduction
 
-Welcome to the erxes developer documentation, the open source of the Hubspot/Qualtrics alternative with many more!<br/><br/>
-erxes is an open-source experience operating system (XOS) that enables SaaS providers
-and digital marketing agencies/developers to create unique experiences that work
-for all types of business.{{ className: 'lead' }}
+# What is erxes?
+
+Hello 👋
+
+Welcome to the erxes developer documentation, the open source of the Hubspot/Qualtrics alternative with many more!
+
+erxes is an open-source experience operating system (XOS) that enables SaaS providers and digital marketing agencies/developers to create unique experiences that work for all types of business.
 
 <Note>
-  Can't wait to start using erxes? Get started with erxes with our Installation
-  guide ! Try out a live demo!
+  Can't wait to start using erxes? Get started with erxes with our [Installation guide](#) ! Try out a [live demo!](#)
 </Note>
 
-## Getting started {{ anchor: false }}
+## With erxes, you can... {{ anchor: false }}
 
-To get started, pls create a new application in your [developer settings](#), then read about how to make requests for the resources you need to access using our HTTP APIs or dedicated client SDKs. When your integration is ready to go live, publish it to our [integrations directory](#) to reach the Protocol community. {{ className: 'lead' }}
+Achieving growth and unity within your company is possible. Find more about what you can do with erxes as follows:
 
-<Guides />
+- erxes is an open-source project (see [LICENSE](#) for more information); everyone (individuals and companies, especially SaaS providers) can use it for free privately to create better experiences for everything they do, such as customer, employee, production, service, and many more experiences.
+- We love open-source and the idea everybody can freely use and extend what we wrote. Digital marketing technology agencies are welcome to add value to their product and services by selling erxes to their clients to use erxes privately.
+- [erxes Marketplace](#) erxes is an open-source project (see LICENSE for more information); everyone (individuals and companies, especially SaaS providers) can use it for free privately to create better experiences for everything they do, such as customer, employee, production, service, and many more experiences.
+We love open-source and the idea everybody can freely use and extend what we wrote. Digital marketing technology agencies are welcome to add value to their product and services by selling erxes to their clients to use erxes privately.
+erxes Marketplace is a great place to add the source of revenue for independent developers and digital marketing technology agencies to earn and distribute your plugins they created on erxes XOS. is a great place to add the source of revenue for independent developers and digital marketing technology agencies to earn and distribute your plugins they created on erxes XOS.
 
-<Resources />
+# Open-source & Contribution
+
+Our community is at the heart of everything we do. We understand that people who contribute to a project are the main drivers who push a project forward. erxes core project, the documentation, and any related tool can be found in the erxes on GitHub.
+
+- [erxes](#) - erxes codebase
+- [erxes Docker](#) - erxes containerized
+- [erxes Demo](#) - erxes official demo
+- [contributing guide](#) - to contribute
+
+# Community
+
+[erxes documentation](#) contains instructions for everything you need to know about erxes. For additional information, you can use any of these channels to get the answer you want:
+
+<Note>
+  Want to join the community?
+
+You can join [GitHub](#), [Community forum](#), and [Discord](#) to share your ideas and opinions with other community members and members of the erxes team. If you're looking for news and updates about erxes, [Twitter](#) and the [blog](#) are the places to start!
+</Note>
+
+# Support
+
+If you need any support during your development with erxes, you can join our [Discord](#). You will get help directly from our core team and our community.
+
+By joining our Discord Server, you’ll also have the chance to participate in many events and showcase your work with erxes.
+
+```bash {{ title: '' }}
+📦plugin-document-api
+ ┣ 📂src
+ ┃ ┣ 📂graphql
+ ┃ ┃ ┣ 📂resolvers 
+ ┃ ┃ ┃ ┣ index.ts
+ ┃ ┃ ┃ ┣ mutations.ts
+ ┃ ┃ ┃ ┗ queries.ts
+ ┃ ┃ ┣ index.ts
+ ┃ ┃ ┗ typeDefs.ts
+ ┃ ┣ configs.ts
+ ┃ ┣ messageBroker.ts
+ ┃ ┗ models.ts
+ ┣ .env.sample
+ ┣ package.json
+ ┗ tsconfig.json
+```
+
+# Main files
+Following files are generated automatically in plugin-[pluginName]-api/src.
+
+#configs.ts
+This file contains main configuration of a plugin.

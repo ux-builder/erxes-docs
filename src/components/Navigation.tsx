@@ -205,7 +205,7 @@ function NavigationGroup({
                     {sections.map((section) => (
                       <li key={section.id}>
                         <NavLink
-                          href={`${link.href}#${section.id}`}
+                          href={`${link.href}${section.id}`}
                           tag={section.tag}
                           isAnchorLink
                         >
@@ -234,6 +234,17 @@ export const navigation: Array<NavGroup> = [
       { title: 'Developer Resources', href: '/authentication' },
       { title: 'Contributing to open source', href: '/pagination' },
       { title: 'Erxes XOS user guide', href: '/errors' },
+    ],
+  },
+  {
+    title: 'Resour',
+    links: [
+      { title: 'Getting start', href: '/' },
+      { title: 'Setup & Deplo', href: '/quickstart' },
+      { title: 'Developt', href: '/sdks' },
+      { title: 'Developeources', href: '/authentication' },
+      { title: 'Contributing en source', href: '/pagination' },
+      { title: 'Erxes XOS usere', href: '/errors' },
     ],
   },
 ]

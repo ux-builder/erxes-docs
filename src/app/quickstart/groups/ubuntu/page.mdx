@@ -1,0 +1,50 @@
+# Installation on Ubuntu
+
+The following documentation will guide you through the installation of an erxes project using Docker on Ubuntu.
+
+Docker is an open platform that allows to develop, ship and run applications by using containers (i.e. packages containing all the parts an application needs to function, such as libraries and dependencies).
+
+# Preparing the installation
+
+erxes installation requires at least four software prerequisites to be already installed on your computer:
+
+<Note>
+    Erxes code takes approximately 12GB storage space, make sure you have enough space in your device before going forward.
+</Note>
+
+# Prerequisites
+
+-Git
+-Node.js: only LTS versions are supported (v14 and v16). Other versions of Node.js may not be compatible with the latest release of erxes. The 14.x version is most recommended by erxes. The easier way to install nvm is here.
+-npm and yarn (latest version) to run the erxes.
+-Docker (v20.10.14 and higher) The 20.10.14 version is most recommended by erxes. Docker compose (v2.5.0 and higher)
+
+# Installing erxes
+
+1. Create an empty folder.
+2. In your empty folder, where the new erxes project will be created, and it defines the database and erxes plugins to use.
+3. Run following command in the folder.
+4. In the folder, create dock directory using following command.
+5. Go to the dock folder using following command.
+6. Create a docker-compose.yml file, then copy the following script in the newly created file.
+7. Run the following command in the folder where above file exists.
+8. Go back to erxes folder using following command.
+9. Switch a dev branch by using following command.
+10. In erxes folder, Install node modules by using following command.
+11. Install pm2 by using following command.
+
+# Running erxes
+1. Run following command to change the folder.
+2. Install node modules in the erxes/cli directory.
+3. Copy configs.json.sample, then convert it to configs.json.
+4. Run following command to start your erxes project.
+
+ ## If your browser don't automatically jump to localhost:3000, you should check logs by using these commands.
+
+ <Note>
+    Frequently used pm2 commands on erxes:
+- pm2 list - Display all processes status
+- pm2 kill - Will remove all processes from pm2 list
+- pm2 logs -f - Display all processes logs in streaming (gateway, plugin-name etc.)
+- pm2 restart all - Restart all processes
+ </Note>

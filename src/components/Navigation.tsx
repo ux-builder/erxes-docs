@@ -236,17 +236,17 @@ export const navigation: Array<NavGroup> = [
       { title: 'Erxes XOS user guide', href: '/errors' },
     ],
   },
-  {
-    title: 'Resour',
-    links: [
-      { title: 'Getting start', href: '/' },
-      { title: 'Setup & Deplo', href: '/quickstart' },
-      { title: 'Developt', href: '/sdks' },
-      { title: 'Developeources', href: '/authentication' },
-      { title: 'Contributing en source', href: '/pagination' },
-      { title: 'Erxes XOS usere', href: '/errors' },
-    ],
-  },
+  // {
+  //   title: 'Resour',
+  //   links: [
+  //     { title: 'Getting start', href: '/' },
+  //     { title: 'Setup & Deplo', href: '/quickstart' },
+  //     { title: 'Developt', href: '/sdks' },
+  //     { title: 'Developeources', href: '/authentication' },
+  //     { title: 'Contributing en source', href: '/pagination' },
+  //     { title: 'Erxes XOS usere', href: '/errors' },
+  //   ],
+  // },
 ]
 
 export function Navigation(props: React.ComponentPropsWithoutRef<'nav'>) {

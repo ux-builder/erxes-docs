@@ -71,7 +71,7 @@ function ResourceIcon({ icon: Icon }: { icon: Develo['icon'] }) {
       <Icon className="h-5 w-5 fill-zinc-700/10 stroke-zinc-700 transition-colors duration-300 group-hover:stroke-zinc-900 dark:fill-white/10 dark:stroke-zinc-400 dark:group-hover:fill-emerald-300/10 dark:group-hover:stroke-emerald-400" />
     </div>
   )
-}
+} 
 
 function ResourcePattern({
   mouseX,

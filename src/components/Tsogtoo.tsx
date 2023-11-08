@@ -31,7 +31,7 @@ const resources: Array<Tsogtoo> = [
     href: '/quickstart/groups/ubuntu',
     name: 'Ubuntu',
     description:
-      '2 items',
+      'The following documentation will guide you through the installation of an erxes project using Docker on Ubuntu.',
     icon: ChatBubbleIcon,
     pattern: {
       y: 16,
@@ -45,7 +45,7 @@ const resources: Array<Tsogtoo> = [
     href: '/quickstart/groups/mac',
     name: 'Mac',
     description:
-      '2 items',
+      'The following documentation will guide you through the installation of an erxes project using Docker on MacOs.',
     icon: ChatBubbleIcon,
     pattern: {
       y: 22,

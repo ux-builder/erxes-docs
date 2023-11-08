@@ -1,3 +1,4 @@
+import { Libraries } from '@/components/Libraries'
 export const metadata = {
   title: 'Create General Plugin',
   description:
@@ -8,10 +9,21 @@ export const metadata = {
 
 With erxes, you can create your own plugins or extend the existing ones, which would help you to enhance your experience and increase your revenue by adding the value on your products/services or selling it on our [our marketplace](#). This guideline will help you to develop your own plugins.
 
+<Note>
+- Before you start developing your own plugins, ensure there is no plugins with the same name or similar name in our marketplace that would bring any confusion as the name would be used many places starting from your `API`, `GraphQL`,`query`, `mutation`, etc.
+- Name must be in small letters with no symbols and space in between.
+- Name of All your `GraphQL` type, `query`, `mutation` must start with your plugin name.
+- Names of your database collection also must start with your plugin name.
+- Name of your **UIroutes** or `url`-s also must be start with you pluging name.
+</Note>
+
 # Installing erxes
 
 Please go to [the installation](#) guideline to install erxes XOS, but no need to run the erxes with the same direction.
 
+<Note>
+We assume you've already installed erxes XOS on your device. Otherwise the guideline below would not work out properly. Please make sure you should be back after you install erxes XOS using [the installation guideline.](#)
+</Note>
 # Plugin API
 
 Plugin development in API part requires the following software prerequisites to be already installed on your computer.
@@ -22,6 +34,8 @@ Plugin development in API part requires the following software prerequisites to 
 - [MongoDB](#)
 - [Redis](#)
 - [RabbitMQ](#)
+
+<Libraries />
 
 # Plugin UI
 Plugin development in UI part requires the following software prerequisites to be already installed on your computer.

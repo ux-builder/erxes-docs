@@ -7,21 +7,24 @@ import logoNode from '@/images/logos/node.svg'
 import logoPhp from '@/images/logos/php.svg'
 import logoPython from '@/images/logos/python.svg'
 import logoRuby from '@/images/logos/ruby.svg'
+import logoMongodb from '@/images/logos/mongodb.svg'
+import logoTypescript from '@/images/logos/typescript.svg'
+
 
 const libraries = [
   {
     href: '#',
-    name: 'PHP',
+    name: 'Mongodb',
     description:
       'A popular general-purpose scripting language that is especially suited to web development.',
-    logo: logoPhp,
+    logo: logoMongodb,
   },
   {
     href: '#',
-    name: 'Ruby',
+    name: 'Typescript',
     description:
       'A dynamic, open source programming language with a focus on simplicity and productivity.',
-    logo: logoRuby,
+    logo: logoTypescript,
   },
   {
     href: '#',

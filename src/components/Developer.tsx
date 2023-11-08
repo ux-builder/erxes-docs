@@ -15,7 +15,7 @@ import { EnvelopeIcon } from '@/components/icons/EnvelopeIcon'
 import { UserIcon } from '@/components/icons/UserIcon'
 import { UsersIcon } from '@/components/icons/UsersIcon'
 
-interface Resource {
+interface Developer {
   href: string
   name: string
   description: string
@@ -26,12 +26,12 @@ interface Resource {
   >
 }
 
-const resources: Array<Resource> = [
+const resources: Array<Developer > = [
   {
-    href: '/quickstart/groups',
-    name: 'Local installation',
+    href: '/sdks/creategen',
+    name: 'Create General Plugin',
     description:
-      '2 items',
+      'With erxes, you can create your own plugins or extend the existing ones, which would help you to enhance your experience...',
     icon: ChatBubbleIcon,
     pattern: {
       y: 16,
@@ -42,10 +42,10 @@ const resources: Array<Resource> = [
     },
   },
   {
-    href: '/quickstart/deployment',
-    name: 'Deployment',
+    href: '/sdks/createinte',
+    name: 'Create Integration plugin',
     description:
-      '2 items',
+      'Integration is the extent of the Inbox plugin, which allows third party softwares to be integrated to your shared Inbox.',
     icon: ChatBubbleIcon,
     pattern: {
       y: 22,
@@ -54,7 +54,7 @@ const resources: Array<Resource> = [
   },
 ]
 
-function ResourceIcon({ icon: Icon }: { icon: Resource['icon'] }) {
+function ResourceIcon({ icon: Icon }: { icon: Developer ['icon'] }) {
   return (
     <div className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900/5 ring-1 ring-zinc-900/25 backdrop-blur-[2px] transition duration-300 group-hover:bg-white/50 group-hover:ring-zinc-900/25 dark:bg-white/7.5 dark:ring-white/15 dark:group-hover:bg-emerald-300/10 dark:group-hover:ring-emerald-400">
       <Icon className="h-5 w-5 fill-zinc-700/10 stroke-zinc-700 transition-colors duration-300 group-hover:stroke-zinc-900 dark:fill-white/10 dark:stroke-zinc-400 dark:group-hover:fill-emerald-300/10 dark:group-hover:stroke-emerald-400" />
@@ -66,7 +66,7 @@ function ResourcePattern({
   mouseX,
   mouseY,
   ...gridProps
-}: Resource['pattern'] & {
+}: Developer ['pattern'] & {
   mouseX: MotionValue<number>
   mouseY: MotionValue<number>
 }) {
@@ -104,7 +104,7 @@ function ResourcePattern({
   )
 }
 
-function Resource({ resource }: { resource: Resource }) {
+function Resource({ resource }: { resource: Developer  }) {
   let mouseX = useMotionValue(0)
   let mouseY = useMotionValue(0)
 
@@ -142,7 +142,7 @@ function Resource({ resource }: { resource: Resource }) {
   )
 }
 
-export function Resources() {
+export function Developer () {
   return (
     <div className="my-16 xl:max-w-none">
       <Heading level={2} id="resources">

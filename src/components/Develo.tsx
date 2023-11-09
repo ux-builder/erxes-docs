@@ -15,7 +15,7 @@ import { EnvelopeIcon } from '@/components/icons/EnvelopeIcon'
 import { UserIcon } from '@/components/icons/UserIcon'
 import { UsersIcon } from '@/components/icons/UsersIcon'
 
-interface Develo {
+interface Develo {  
   href: string
   name: string
   description: string

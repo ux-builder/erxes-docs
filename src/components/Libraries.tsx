@@ -7,7 +7,7 @@ import logoTypescript from '@/images/logos/typescript.svg'
 import logoGraphql from '@/images/logos/graphql.svg'
 import logoExpress from '@/images/logos/expressjs.svg'
 import logoRedis from '@/images/logos/redis.svg'
-import logoRabbit from '@/images/logos/RabbitMQ.svg'
+import logoRabbitMQ from '@/images/logos/rabbitmq.svg'
 
 
 const libraries = [
@@ -51,7 +51,7 @@ const libraries = [
     name: 'RabbitMQ',
     description:
       'RabbitMQ is a message-queueing software also known as a message broker or queue manager. ',
-    logo: logoRabbit,
+    logo: logoRabbitMQ,
   },
 ]
 

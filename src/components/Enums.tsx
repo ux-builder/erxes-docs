@@ -15,7 +15,7 @@ import { EnvelopeIcon } from '@/components/icons/EnvelopeIcon'
 import { UserIcon } from '@/components/icons/UserIcon'
 import { UsersIcon } from '@/components/icons/UsersIcon'
 
-interface Develo {  
+interface Enums {
   href: string
   name: string
   description: string
@@ -26,12 +26,12 @@ interface Develo {
   >
 }
 
-const resources: Array<Develo> = [
+const resources: Array<Enums> = [
   {
-    href: '/authentication/graphql',
-    name: 'GraphQL API',
+    href: '/authentication/graphql/intro',
+    name: 'Introduction',
     description:
-      '7 items',
+      '',
     icon: ChatBubbleIcon,
     pattern: {
       y: 16,
@@ -42,10 +42,10 @@ const resources: Array<Develo> = [
     },
   },
   {
-    href: '/authentication/graphql',
-    name: 'Postman Collection',
+    href: '/authentication/graphql/object',
+    name: 'Objects',
     description:
-      'Download',
+      '',
     icon: ChatBubbleIcon,
     pattern: {
       y: 22,
@@ -53,10 +53,54 @@ const resources: Array<Develo> = [
     },
   },
   {
-    href: '/authentication/graphql',
-    name: 'Code reference',
+    href: '/authentication/graphql/input',
+    name: 'Input objects',
     description:
-      '2 items',
+      '',
+    icon: ChatBubbleIcon,
+    pattern: {
+      y: 22,
+      squares: [[0, 1]],
+    },
+  },
+  {
+    href: '/authentication/graphql/enu',
+    name: 'Enums',
+    description:
+      '',
+    icon: ChatBubbleIcon,
+    pattern: {
+      y: 22,
+      squares: [[0, 1]],
+    },
+  },
+  {
+    href: '/authentication/graphql/scalars',
+    name: 'Scalars',
+    description:
+      '',
+    icon: ChatBubbleIcon,
+    pattern: {
+      y: 22,
+      squares: [[0, 1]],
+    },
+  },
+  {
+    href: '/authentication/graphql/queries',
+    name: 'Queries',
+    description:
+      '',
+    icon: ChatBubbleIcon,
+    pattern: {
+      y: 22,
+      squares: [[0, 1]],
+    },
+  },
+  {
+    href: '/authentication/graphql/mutations',
+    name: 'Mutations',
+    description:
+      '',
     icon: ChatBubbleIcon,
     pattern: {
       y: 22,
@@ -65,19 +109,19 @@ const resources: Array<Develo> = [
   },
 ]
 
-function ResourceIcon({ icon: Icon }: { icon: Develo['icon'] }) {
+function ResourceIcon({ icon: Icon }: { icon: Enums['icon'] }) {
   return (
     <div className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900/5 ring-1 ring-zinc-900/25 backdrop-blur-[2px] transition duration-300 group-hover:bg-white/50 group-hover:ring-zinc-900/25 dark:bg-white/7.5 dark:ring-white/15 dark:group-hover:bg-emerald-300/10 dark:group-hover:ring-emerald-400">
       <Icon className="h-5 w-5 fill-zinc-700/10 stroke-zinc-700 transition-colors duration-300 group-hover:stroke-zinc-900 dark:fill-white/10 dark:stroke-zinc-400 dark:group-hover:fill-emerald-300/10 dark:group-hover:stroke-emerald-400" />
     </div>
   )
-} 
+}
 
 function ResourcePattern({
   mouseX,
   mouseY,
   ...gridProps
-}: Develo['pattern'] & {
+}: Enums['pattern'] & {
   mouseX: MotionValue<number>
   mouseY: MotionValue<number>
 }) {
@@ -115,7 +159,7 @@ function ResourcePattern({
   )
 }
 
-function Resource({ resource }: { resource: Develo }) {
+function Resource({ resource }: { resource: Enums }) {
   let mouseX = useMotionValue(0)
   let mouseY = useMotionValue(0)
 
@@ -153,11 +197,11 @@ function Resource({ resource }: { resource: Develo }) {
   )
 }
 
-export function Develo() {
+export function Enums() {
   return (
     <div className="my-16 xl:max-w-none">
       <Heading level={2} id="resources">
-        
+        Resources
       </Heading>
       <div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
         {resources.map((resource) => (

@@ -1,12 +1,13 @@
 # Deployment
 
-The following documentation will guide you through the installation of an erxes project using Docker on Ubuntu in order to use erxes. This the guideline will be dedicated to developers who is about to use erxes for their businesses only. If you want to customize or develop additional plugins on erxes, please go to the developer installation guideline.
+The following documentation will guide you through the installation of an erxes project using [Docker](https://www.docker.com/) on [Ubuntu](https://ubuntu.com/) in order to use erxes. This the guideline will be dedicated to developers who is about to use erxes for their businesses only. If you want to customize or develop additional plugins on erxes, please go to [the developer installation guideline.](/intro)
 
 Docker is an open platform that allows to develop, ship and run applications by using containers (i.e. packages containing all the parts an application needs to function, such as libraries and dependencies).
 
 # Installation video
 
-
+ 
+ ---
 # First steps: Setting up a server with Ubuntu 22.10
 You must have an account with your hosting provider prior to doing these steps.
 
@@ -16,6 +17,8 @@ You must have an account with your hosting provider prior to doing these steps.
 - **minimum 8GB RAM**
 - ability to to SSH into the server
 - If you're using a **subdomain**, then the **subdomain** must be created with your hosting provider hosting your main domain's website or app. The DNS needs to be pointed to your server. (See below)
+
+---
 
 # Configure your DNS Records to point at your server
 Your server will have an **IP address.** You will need to point your domain name to your new server.
@@ -114,6 +117,8 @@ Log back into the server as the **erxes** user. You will need your IP address. (
 # example ssh erxes@44.123.32.12 <--- This is an example. Use your ip address
 ssh erxes@your-ip-address
 ```
+
+---
 # Installing prerequisites
 
 1. Create `install.sh` file using text editors such as nano or vim. Then copy the following script into it. Following content will install nginx, certbot, docker, docker-compose and nodejs into your server.
@@ -168,18 +173,21 @@ ssh erxes@your-ip-address
         sudo chmod +x /usr/local/bin/docker-compose
         sudo ./setup_14.sh
 ```
-2. Before execute script the use below command to make install.sh file executable.
+2. Before execute script the use below command to make `install.sh` file executable.
 ```tsx 
 sudo chmod +x install.sh
 ```
+
 3. Execute `install.sh` file.
 ```tsx 
 ./install.sh
 ```
+
 4. After above steps logout and relogin to your server using `erxes` user. In order to logout from server give following command
 ```tsx
 exit
 ```
+
 **Note** (you might want to enter command few times if you logged in as root user before.)
 
 There are many ways to connect to your server but in this example we will use `ssh` to log back in use below command.
@@ -187,6 +195,8 @@ There are many ways to connect to your server but in this example we will use `s
 ```tsx
 ssh erxes@your-ipv4-address
 ```
+---
+
 # Starting erxes project
 1. Below command will trigger erxes installation process.
 ```tsx 
@@ -208,7 +218,7 @@ In there we need to change erxes package version in `/home/erxes/erxes/package.j
 
 3. Now you need to initiate docker swarm mode in order to do that use following command.
 
-**Note** In erxes directory we have `docker-compose.yml file even with that we do not use docker-compose up, docker-compose down, docker-compose restart` commands further.
+**Note** In erxes directory we have docker-compose.yml file even with that we do not use `docker-compose up, docker-compose down, docker-compose restart` commands further.
 ```tsx
 docker swarm init
 ```
@@ -216,6 +226,7 @@ docker swarm init
 ```tsx
 docker network create --driver=overlay --attachable erxes
 ```
+
 4. Before start application services we need to start `databases`. Following command will start database services.
 
 ```tsx 
@@ -246,6 +257,7 @@ To quit mongo instance and container `run exit command` twice.
 ```tsx
 mkdir locales
 ```
+
 8. Start application services like erxes core uis and gateway services we run following command.
 ```tsx
 npm run erxes up -- --uis
@@ -388,11 +400,11 @@ server {
         }
     }
     ```
-    11. If nginx test shows successful message we need to restart Nginx. To do that use following command.
+11. If nginx test shows successful message we need to restart Nginx. To do that use following command.
     ```tsx
     sudo service nginx restart
     ```
-   12. Erxes only works in secure connection to generate free ssl certificate we use `Certbot`. To configure that use following command.
+12. Erxes only works in secure connection to generate free ssl certificate we use `Certbot`. To configure that use following command.
 
 **Note** you have to point domain A record to your erxes installing machine in order to get certificate without that certbot will not generate certificate.
 ```tsx
@@ -518,6 +530,8 @@ Adding new plugins to erxes is easy task all you need to is add plugin name unde
     ]
 }
 ```
+---
+
 # Adding dashboard plugin
 As we mentioned earlier dashboard plugin requires some extra step to install. First we need to generate `certificate for mongobi` to do that use following commands.
 
@@ -540,6 +554,7 @@ It will generate mongobi certificate. After we need to add `mongobi` to configs.
 At last run `npm run erxes up -- --uis.`
 
 **Note** Everytime we change configs.json we do `npm run erxes up -- --uis` command to apply change.
+---
 
 # Running elasticsearch
 If your server is bigger than our required size you can use erxes with elasticsearch. To do that following steps need to be taken.
@@ -560,6 +575,8 @@ npm run erxes deploy-dbs
 ```tsx
 npm run erxes up -- --uis
 ```
+---
+
 # Removing erxes
 1. First this is sad but every server need to be tidy following few commands will remove docker stack and dangling containers of swarm.
  ```tsx
@@ -591,5 +608,7 @@ List and remove all dangling volumes
 docker volume ls -f dangling=true
 docker volume rm $(docker volume ls -q -f dangling=true)
 ```
+---
 # Joining erxes community
-If you have any trouble with installation please create issues in our [github](#) or seek help from our community in [discord](#)
+If you have any trouble with installation please create issues in our [github](https://github.com/erxes/erxes) or seek help from our community in [discord](https://discord.com/invite/rPf9FYaA3F)
+

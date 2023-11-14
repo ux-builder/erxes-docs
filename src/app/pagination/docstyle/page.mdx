@@ -6,11 +6,10 @@ export const metadata = {
 
 # Documentation style guide
 
-You can write content using GitHub-flavored Markdown syntax.
+You can write content using [GitHub-flavored Markdown syntax.](https://github.github.com/gfm/)
 
 ## Markdown Syntax
 To serve as an example page when styling markdown based Docusaurus sites.
-
 ## Headers
 H1 - Create the best documentation
 ===============
@@ -21,6 +20,7 @@ H2 - Create the best documentation
 #### H5 - Create the best documentation
 ##### H6 - Create the best documentation
 
+---
 # Emphasis
 
 Emphasis, aka italics, with asterisks or underscores.
@@ -30,7 +30,7 @@ Strong emphasis, aka bold, with **asterisks** or **underscores.**
 Combined emphasis with asterisks and underscores.
 
 Strikethrough uses two tildes. Scratch this.
-
+---
 # Lists
 1. First ordered list item
 2. Another item ⋅⋅* Unordered sub-list.
@@ -44,7 +44,7 @@ Strikethrough uses two tildes. Scratch this.
 - Unordered list can use asterisks
 - Or minuses
 - Or pluses
-
+---
 # Links
 [I'm an inline-style link](#)
 
@@ -54,14 +54,14 @@ Strikethrough uses two tildes. Scratch this.
 
 [I'm a relative reference to a repository file](#)
 
-[You can use numbers for reference-style link definitions](#)
+[You can use numbers for reference-style link definitions](https://slashdot.org/)
 
 Or leave it empty and use the [link text itself.](#)
 
 URLs and URLs in angle brackets will automatically get turned into links. [http://www.example.com](#) or [http://www.example.com](#) and sometimes example.com (but not on Github, for example).
 
 Some text to show that the reference links can follow later.
-
+---
 # Images
 
 Here's our logo (hover to see the title text):
@@ -69,7 +69,7 @@ Here's our logo (hover to see the title text):
 Inline-style: ![Alt text](/icon48.png "title")
 
 Reference-style: ![Alt text](/icon48.png "title")
-
+---
 # Code
 
 ```tsx
@@ -89,6 +89,7 @@ function highlightMe() {
   console.log('This line can be highlighted!');
 }
 ```
+---
 # Tables
 
 Colons can be used to align columns.
@@ -106,25 +107,42 @@ There must be at least 3 dashes separating each header cell. The outer pipes (|)
 | *Still* | `renders` | nicely |
 | 1 | 2 | 3 |
 
+---
 # Blockquotes
 Blockquotes are very handy in email to emulate reply text. This line is part of the same quote.
 
 ## Quote break.
 
 This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can put **Markdown** into a blockquote.
-
+---
 # Inline HTML
 Definition list
         Is something people use sometimes.
 Markdown in HTML
         Does * not * work ** very ** well.Use HTML tags.
-
+---
 # Line Breaks
 Here's a line for us to start with.
 
 This line is separated from the one above by two newlines, so it will be a separate paragraph.
 
 This line is also a separate paragraph, but... This line is only separated by a single newline, so it's a separate line in the same paragraph.
-
+---
 # Admonitions
+
+<Note>
+This is a note
+</Note>
+<Note>
+This is a tip
+</Note>
+<Note>
+This is important
+</Note>
+<Note>
+This is a caution
+</Note>
+<Note>
+This is a warning
+</Note>
 

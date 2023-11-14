@@ -10,16 +10,16 @@ Thank you for your interest in contributing to the documentation! You will be he
 
 <Note>
     This guide is specific to contributing to the documentation. If you’re interested in contributing to erxes 
-    codebase, check out [the guideline to contribute codebase.](#)
+    codebase, check out [the guideline to contribute codebase.](/pagination/codebase)
 </Note>
 
 # Site Setup
 
-The documentation website is built with [Docusaurus](#), a framework that optimizes documentation creation. If you’re not familiar with Docusaurus, it’s recommended to check out the [Installation documentation](#) on their website to understand Docusaurus better, how it works, its structure, and more details. The documentation codebase is hosted as part of the [erxes repository](#) on GitHub. You’ll find the code that runs the docusaurus website under the www/docs directory.
+The documentation website is built with [Docusaurus](https://docusaurus.io/), a framework that optimizes documentation creation. If you’re not familiar with Docusaurus, it’s recommended to check out the [Installation documentation](https://docusaurus.io/docs/installation) on their website to understand Docusaurus better, how it works, its structure, and more details. The documentation codebase is hosted as part of the [erxes repository](https://github.com/erxes/erxes) on GitHub. You’ll find the code that runs the docusaurus website under the www/docs directory.
 
 # Documentation Content
 
-The documentation content is written in Markdown format. If you’re not familiar with Markdown, check out this [cheat sheet](#) for a quick start. You’ll also find MDX files. MDX files combine the power of Markdown with React. So, the content of the file can contain JSX components and import statements, among other features. You can learn more about [MDX in docusaurus’s guide.](#)
+The documentation content is written in Markdown format. If you’re not familiar with Markdown, check out this [cheat sheet](https://www.markdownguide.org/cheat-sheet/) for a quick start. You’ll also find MDX files. MDX files combine the power of Markdown with React. So, the content of the file can contain JSX components and import statements, among other features. You can learn more about [MDX in docusaurus’s guide.](https://docusaurus.io/docs/markdown-features/react)
 
 # What You Can Contribute To
 
@@ -28,7 +28,7 @@ The documentation content is written in Markdown format. If you’re not familia
 
 # Style guide
 
-When you contribute to the documentation content, make sure to follow [the documentation style guide.](#)
+When you contribute to the documentation content, make sure to follow [the documentation style guide.](/pagination/docstyle)
 
 # How to Contribute
 
@@ -40,7 +40,7 @@ If you’re fixing errors in an existing documentation page, you can scroll down
 
 # Sidebar
 
-When you add a new page to the documentation, you must add the new page in www/docs/sidebars.js under the tutorialSidebar. You can learn more about the syntax used [here.](#)
+When you add a new page to the documentation, you must add the new page in www/docs/sidebars.js under the tutorialSidebar. You can learn more about the syntax used [here.](https://docusaurus.io/docs/sidebar/items)
 
 -Terminology When the documentation page is a conceptual or overview documentation, the label in the sidebar should start with a noun. When the documentation page is a tutorial documentation, the label in the sidebar should start with a verb. An exception of this rule are integration documentations and upgrade guides.
 
@@ -48,4 +48,25 @@ When you add a new page to the documentation, you must add the new page in www/d
 
 When displaying notes and additional information in a documentation page, use Admonitions. Make sure the type of admonition used matches the note’s importance to the current document.
 
+<Note>
+If the note is something developers have to be careful of doing or not doing, use the caution or danger admonitions based on how critical it is.
+</Note>
+
+<Note>
+If the note is defining something to the developer in case they’re not familiar with it, use the info admonition.
+</Note>
+
+<Note>
+If the note displays helpful information and tips use the tip admonition.
+</Note>
+<Note>
+If the note is warning something to the developers before going foward, use the warning admonition.
+</Note>
+<Note>
+If the admonition does not match any of the mentioned criteria, always default to the note admonition.
+</Note>
+
+# Need Additional Help
+
+If you need any additional help while contributing, you can join our [Discord](https://discord.com/invite/aaGzy3gQK5) and ask erxes core team as well as the community any questions.
 

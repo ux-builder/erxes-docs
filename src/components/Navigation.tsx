@@ -233,11 +233,10 @@ export const navigation: Array<NavGroup> = [
       { title: 'Development', href: '/sdks' },
       { title: 'Developer Resources', href: '/authentication' },
       { title: 'Contributing to open source', href: '/pagination' },
-      { title: 'Erxes XOS user guide', href: '/errors' },
     ],
   },
   {
-    title: 'Guides',
+    title: 'Erxes XOS user guide',
     links: [
       { title: 'Get Started with User Guide!', href: '/contacts' },
       { title: 'XOS', href: '/conversations' },

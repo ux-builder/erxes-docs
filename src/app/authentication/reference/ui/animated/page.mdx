@@ -1,0 +1,63 @@
+# Animated Loader
+Custom styled loaders for many kind of use.
+
+## **Height and width**
+Set the custom sizing by `height` and `width` props. `height` is required to show the loader.
+
+```tsx
+<>
+	<AnimatedLoader loaderStyle={{width:"100%", height:"20px"}} />
+</>
+```
+
+## **Color**
+Set the custom color by `color` prop.
+
+```tsx
+<>
+	<AnimatedLoader loaderStyle={{color:"#673FBD", height:"20px", width:"100%"}} />
+</>
+```
+
+## **Round**
+Use `round` prop to set "border-radius: 50%".
+```tsx
+<>
+	<AnimatedLoader loaderStyle={{round:true, height:"100px", width:"100px"}} />
+</>
+```
+
+## **Box**
+Make the loader to show as box by `isBox` prop.
+
+```tsx
+<>
+	<AnimatedLoader loaderStyle={{isBox:true, height:"20px", width:"100%"}} />
+</>
+```
+## **With image**
+Make the loader to show with image by `withImage` prop.
+
+```tsx
+<>
+	<AnimatedLoader loaderStyle={{withImage:true, height:"20px", width:"100%"}} />
+</>
+```
+
+## **API**
+```tsx
+import AnimatedLoader from "erxes-ui/lib/components/AnimatedLoader";
+```
+
+* required prop
+
+| NAME | TYPE | DESCRIPTION |
+| ---| --- | ---|
+|  | height | string | Set the custom height |
+|  | width | string | Set the custom width |
+|  | color | string | Set the custom color |
+| loaderStyle | round | boolean | Set border-radius: 50% |
+|  | margin | string | Give margin (from top and left) |
+|  | marginRight | string | Give margin (from right) |
+|  | isBox | boolean | Show the loader as box |
+|  | withImage | boolean | Show the loader with image |

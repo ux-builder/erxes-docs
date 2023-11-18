@@ -34,7 +34,7 @@ const colorStyles = {
 }
 
 const valueColorMap = {
-  GET: 'emerald',
+  TIP: 'emerald',
   POST: 'sky',
   PUT: 'amber',
   DELETE: 'rose',

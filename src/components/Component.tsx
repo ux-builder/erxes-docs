@@ -3,209 +3,209 @@ import { Heading } from '@/components/Heading'
 
 const guides = [
   {
-    href: '/authentication/graphql/intro',
+    href: '/authentication/reference/ui/animated',
     name: 'Animated Loader',
     description: 'Custom styled loaders for many kind of use.',
   },
   {
-    href: '/authentication/graphql/object',
+    href: '/authentication/reference/ui/attachment',
     name: 'Attachment',
     description: 'Add any type of attachment or attachments with preview.',
   },
   {
-    href: '/authentication/graphql/input',
+    href: '/authentication/reference/ui/avatar',
     name: 'Avatar Upload',
     description:
       'Upload an avatar by clicking on them.',
   },
   {
-    href: '/authentication/graphql/enu',
+    href: '/authentication/reference/ui/box',
     name: 'Box',
     description:
       'Build vertically collapsing boxes.',
   },
   {
-    href: '/authentication/graphql/scalars',
+    href: '/authentication/reference/ui/breadcrumb',
     name: 'Breadcrumb',
     description:
       'Indicate the current page’s location within a navigational hierarchy that automatically adds separators via CSS.',
   },
   {
-    href: '/authentication/graphql/queries',
+    href: '/authentication/reference/ui/buttons',
     name: 'Buttons',
     description:
       'Custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.',
   },
   {
-    href: '/authentication/graphql/mutations',
+    href: '/authentication/reference/ui/chip',
     name: 'Chip',
     description:
       'Examples',
   },
   {
-    href: '/authentication/graphql/intro',
+    href: '/authentication/reference/ui/collapse',
     name: 'Collapse Content',
     description: 'Simple',
   },
   {
-    href: '/authentication/graphql/object',
+    href: '/authentication/reference/ui/data',
     name: 'Data with loader',
     description: 'Loading',
   },
   {
-    href: '/authentication/graphql/input',
+    href: '/authentication/reference/ui/econtent',
     name: 'Empty content',
     description:
       'Give different contents with empty content component.',
   },
   {
-    href: '/authentication/graphql/enu',
+    href: '/authentication/reference/ui/estate',
     name: 'Empty State',
     description:
       'Empty state with icon and text props.',
   },
   {
-    href: '/authentication/graphql/scalars',
+    href: '/authentication/reference/ui/error',
     name: 'Error message',
     description:
       'Provide error message to indicate an error that occurred.',
   },
   {
-    href: '/authentication/graphql/queries',
+    href: '/authentication/reference/ui/file',
     name: 'File Preview',
     description:
       'Preview different type of files.',
   },
   {
-    href: '/authentication/graphql/mutations',
+    href: '/authentication/reference/ui/filterable',
     name: 'Filterable List',
     description:
       'Example',
   },
   {
-    href: '/authentication/graphql/intro',
+    href: '/authentication/reference/ui/filter',
     name: 'Filter by Params',
     description: 'Example',
   },
   {
-    href: '/authentication/graphql/object',
+    href: '/authentication/reference/ui/header',
     name: 'Header Description',
     description: 'Expandable description, shows image and description when expanded but just title when its not.',
   },
   {
-    href: '/authentication/graphql/input',
+    href: '/authentication/reference/ui/help',
     name: 'Help Popover',
     description:
       'See pop over by hovering over it, click on it, and focus on it.',
   },
   {
-    href: '/authentication/graphql/enu',
+    href: '/authentication/reference/ui/icon',
     name: 'Icon',
     description:
       'To display desired icon write its name to icon prop.',
   },
   {
-    href: '/authentication/graphql/scalars',
+    href: '/authentication/reference/ui/info',
     name: 'Info',
     description:
       'Provide contextual messages for typical user actions with info messages.',
   },
   {
-    href: '/authentication/graphql/queries',
+    href: '/authentication/reference/ui/label',
     name: 'Label',
     description:
       'Style',
   },
   {
-    href: '/authentication/graphql/mutations',
+    href: '/authentication/reference/ui/modifiable',
     name: 'Modifiable List',
     description:
       'Options',
   },
   {
-    href: '/authentication/graphql/intro',
+    href: '/authentication/reference/ui/namecard',
     name: 'Name card',
     description: 'Username',
   },
   {
-    href: '/authentication/graphql/object',
+    href: '/authentication/reference/ui/progress',
     name: 'Progress Bar',
     description: 'Provide progress bar to check work progress.',
   },
   {
-    href: '/authentication/graphql/input',
+    href: '/authentication/reference/ui/sort',
     name: 'Sort Handler',
     description:
       'Simple sort handler.',
   },
   {
-    href: '/authentication/graphql/enu',
+    href: '/authentication/reference/ui/spinner',
     name: 'Spinners',
     description:
       'Spinners can be used to show the loading state in your projects.',
   },
   {
-    href: '/authentication/graphql/scalars',
+    href: '/authentication/reference/ui/steps',
     name: 'Steps',
     description:
       'Example',
   },
   {
-    href: '/authentication/graphql/queries',
+    href: '/authentication/reference/ui/sub',
     name: 'SubMenu',
     description:
       'Example',
   },
   {
-    href: '/authentication/graphql/mutations',
+    href: '/authentication/reference/ui/table',
     name: 'Table',
     description:
       'Bordered',
   },
   {
-    href: '/authentication/graphql/enu',
+    href: '/authentication/reference/ui/tabs',
     name: 'Tabs',
     description:
       'Dynamic tabbed interfaces.',
   },
   {
-    href: '/authentication/graphql/scalars',
+    href: '/authentication/reference/ui/tags',
     name: 'Tags',
     description:
       'Use _id and name props for connecting with other function.',
   },
   {
-    href: '/authentication/graphql/queries',
+    href: '/authentication/reference/ui/divider',
     name: 'Text Divider',
     description:
       'Add text divider with text and date to divide contents.',
   },
   {
-    href: '/authentication/graphql/mutations',
+    href: '/authentication/reference/ui/text',
     name: 'Text info',
     description:
       'Types',
   },
   {
-    href: '/authentication/graphql/enu',
+    href: '/authentication/reference/ui/timer',
     name: 'Timer',
     description:
       'Click any button to check actions.',
   },
   {
-    href: '/authentication/graphql/scalars',
+    href: '/authentication/reference/ui/tip',
     name: 'Tip',
     description:
       'Tip text',
   },
   {
-    href: '/authentication/graphql/queries',
+    href: '/authentication/reference/ui/toggle',
     name: 'Toggle',
     description:
       'Example',
   },
   {
-    href: '/authentication/graphql/mutations',
+    href: '/authentication/reference/ui/uploader',
     name: 'Uploader',
     description:
       'Multiple',

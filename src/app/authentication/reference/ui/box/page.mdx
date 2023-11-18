@@ -1,0 +1,85 @@
+# Box
+Build vertically collapsing boxes.
+
+## **Title**
+Write your own title by using `title` prop.
+
+```tsx
+<>
+	<Box title="Title" name="name" >
+		<p>Larry the Bird. Larry Joe Bird (born December 7, 1956) is an
+                American former professional basketball player, coach and
+                executive in the National Basketball Association (NBA).</p>
+	</Box>
+</>
+```
+## **State**
+Make the box expanded on start by adding `isOpen` prop.
+
+```tsx
+<>
+	<Box isOpen title="Title" name="name" >
+		<p>Larry the Bird. Larry Joe Bird (born December 7, 1956) is an
+                American former professional basketball player, coach and
+                executive in the National Basketball Association (NBA).</p>
+	</Box>
+</>
+```
+
+## **Collapsible**
+Make the box collapsible when the content is way too long by adding `collapsible` prop.
+
+```tsx
+<>
+	<Box collapsible title="Title" name="name" >
+		<p>Larry the Bird. Larry Joe Bird (born December 7, 1956) is an
+                American former professional basketball player, coach and
+                executive in the National Basketball Association (NBA).
+                Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird
+                is widely regarded as one of the greatest basketball players of
+                all time.Larry the Bird. Larry Joe Bird (born December 7, 1956)
+                is an American former professional basketball player, coach and
+                executive in the National Basketball Association (NBA).
+                Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird
+                is widely regarded as one of the greatest basketball players of
+                all time.Larry the Bird. Larry Joe Bird (born December 7, 1956)
+                is an American former professional basketball player, coach and
+                executive in the National Basketball Association (NBA).
+                Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird
+                is widely regarded as one of the greatest basketball players of
+                all time.</p>
+	</Box>
+</>
+```
+## **Extra buttons**
+Add an extra button that shows when the box is expanded by `extraButtons` prop.
+
+```tsx
+<>
+	<Box extraButtons={<Button btnStyle='simple'>Extra button</Button>} title="Title" name="name" >
+		<p>Larry the Bird. Larry Joe Bird (born December 7, 1956) is an
+                American former professional basketball player, coach and
+                executive in the National Basketball Association (NBA).</p>
+	</Box>
+</>
+```
+
+## **API**
+
+```tsx
+import Box from "erxes-ui/lib/components/Box";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| title* | string | string | Shows title of the box |
+| name | string | string | Define name |
+| children* | React.ReactNode | | Gives content to box |
+| extraButtons | React.ReactNode |  | Display an extra button on the box |
+| callback | function |  | Define additional fuction when title is clicked |
+| collapsible | boolean | false | Make the box collapsible |
+| isOpen | boolean | false | Make the box expanded on start |
+
+
+

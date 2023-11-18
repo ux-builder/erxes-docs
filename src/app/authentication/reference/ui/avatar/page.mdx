@@ -1,0 +1,33 @@
+# Avatar Upload
+Upload an avatar by clicking on them.
+
+## **Default avatar**
+Set default avatar with `defaultAvatar` prop.
+
+```tsx
+<>
+	<AvatarUpload defaultAvatar="https://erxes.io/static/images/logo/logo_dark_3x.png" />
+</>
+```
+## **Avatar**
+When you upload an avatar, it shows the avatar instead of default avatar
+
+```tsx
+<>
+	<AvatarUpload defaultAvatar="https://erxes.io/static/images/logo/logo_dark_3x.png" avatar="https://erxes.io/static/images/logo/glyph_dark.png" />
+</>
+```
+
+## **API**
+
+```tsx
+import AvatarUpload from "erxes-ui/lib/components/AvatarUpload";
+```
+
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| defaultAvatar  | string | button | Set default avatar |
+| avatar | string | | Set an avatar |
+| onAvatarUpload | function |  | Define function that changes the avatar when the image uploaded |

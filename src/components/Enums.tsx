@@ -5,42 +5,37 @@ const guides = [
   {
     href: '/authentication/graphql/intro',
     name: 'Introduction',
-    description: 'Learn how to authenticate your API requests.',
+    description: '',
   },
   {
     href: '/authentication/graphql/object',
     name: 'Objects',
-    description: 'Understand how to work with paginated responses.',
+    description: '',
   },
   {
     href: '/authentication/graphql/input',
     name: 'Input objects',
-    description:
-      'Read about the different types of errors returned by the API.',
+    description: '',
   },
   {
     href: '/authentication/graphql/enu',
     name: 'Enums',
-    description:
-      'Learn how to programmatically configure webhooks for your app.',
+    description: '',
   },
   {
     href: '/authentication/graphql/scalars',
     name: 'Scalars',
-    description:
-      'Learn how to programmatically configure webhooks for your app.',
+    description: '',
   },
   {
     href: '/authentication/graphql/queries',
     name: 'Queries',
-    description:
-      'Learn how to programmatically configure webhooks for your app.',
+    description: '',
   },
   {
     href: '/authentication/graphql/mutations',
     name: 'Mutations',
-    description:
-      'Learn how to programmatically configure webhooks for your app.',
+    description: '',
   },
 ]
 

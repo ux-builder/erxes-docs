@@ -1,0 +1,23 @@
+# Breadcrumb
+Indicate the current page’s location within a navigational hierarchy that automatically adds separators via CSS. When `link` is not set, the breadcrumb item is active. Active item overrides href and span element is rendered instead of hyperlink tag.
+
+## **Example**
+
+```tsx
+<BreadCrumb breadcrumbs={[
+	{title:"title1", link:"../.."},
+	{title:"title2", link:"../.."},
+	{title:"title3"}
+]}/>
+```
+## **API**
+
+```tsx
+import BreadCrumb from "erxes-ui/lib/components/breadcrumb/BreadCrumb";
+```
+* required prop
+
+| NAME | TYPE | DESCRIPTION |
+| ---| --- | ---|
+|  title* | string | Shows title of the breadcrumb item |
+| link | string | Define a hyperlink |

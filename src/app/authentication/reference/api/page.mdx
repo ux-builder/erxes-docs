@@ -1,0 +1,50 @@
+# Common functions
+
+## Common functions
+
+The following `sendMessage` function used when work with the associated plugin.
+
+`SendCommonMessage` function will send message to the other service with the following parameters:
+
+| Parameter	| Description | Type |
+| ---- | ---- | ----------- |
+| `serviceName` | Message receiving service name. `i.e. plugin name.` | `String` |
+| `action` | Action of the message. | `String` |
+| `data` | Passing data. | `Object` |
+| `isRPC` | Message type, if it's true message will return value. | `Boolean` |
+| `timeout` | The time limit for waiting for a response from a message. | `Number` |
+| `defaultValue` | Default return value if an error occurs while sending the message. | `any` |
+| `serviceDiscovery` | Service discovery contains services information such as service isEnabled | `String` |
+| `subdomain` | subdomain uses for Erxes saas version. When you developing open source plugin you can pass 'os' as a parameter. | `String` |
+
+
+```tsx
+export const sendCommonMessage = async (
+  args: ISendMessageArgs & { serviceName: string }
+) => {
+  return sendMessage({
+    serviceDiscovery,
+    client,
+    ...args
+  });
+};
+
+// We can pass default serviceName parameter and can be used by giving the name of the server.
+export const sendCoreMessage = (args: ISendMessageArgs): Promise<any> => {
+  return sendMessage({
+    client,
+    serviceDiscovery,
+    serviceName: 'core',
+    ...args
+  });
+};
+```
+
+Messagebroker contains two consumer functions `consumeQueue` & `consumeRPCQueue.` Difference between them is `consumeRPCQueue` returns a value, while `consumeQueue` doesn't.
+
+`consumeQueue, consumeRPCQueue` function will receive message from the other service with the following parameters:
+
+| Parameter	| Description | Type |
+| ---- | ---- | ----------- |
+| `name` | The name of the message receiving queue. Name has the following format `serviceName:actionName` | `String` |
+| `data` | The data of the message being sent by the service. | `String` |

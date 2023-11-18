@@ -5,12 +5,13 @@ The following documentation will guide you through the installation of an erxes 
 Docker is an open platform that allows to develop, ship and run applications by using containers (i.e. packages containing all the parts an application needs to function, such as libraries and dependencies).
 
 # Preparing the installation
+---
 
 erxes installation requires at least four software prerequisites to be already installed on your computer:
 
-<Note>
+<Caution>
     Erxes code takes approximately 12GB storage space, make sure you have enough space in your device before going forward.
-</Note>
+</Caution>
 
 # Prerequisites
 
@@ -22,6 +23,7 @@ erxes installation requires at least four software prerequisites to be already i
 ---
 
 # Installing erxes
+---
 
 1. Create an empty folder.
 ```tsx
@@ -35,6 +37,7 @@ cd example
 ```tsx
 git clone https://github.com/erxes/erxes.git
 ```
+## **Installing dependencies using docker**
 4. In the folder, create dock directory using following command.
 ```tsx
 mkdir dock
@@ -43,6 +46,10 @@ mkdir dock
 ```tsx
 cd dock
 ```
+<Note>
+Run sudo nano or sudo vim command to create .yml file.
+</Note>
+
 6. Create a `docker-compose.yml` file, then copy the following script in the newly created file.
 ```tsx
 version: '3.6'
@@ -93,9 +100,10 @@ networks:
   erxes-net:
     driver: bridge
 ```
-<Note>
+<Tip>
 Please find the useful [commands](https://docs.docker.com/engine/reference/commandline/compose_images/#related-commands) when you're working on Docker
-</Note>
+</Tip>
+
 7. Run the following command in the folder where above file exists.
 ```tsx
 sudo docker-compose up -d
@@ -112,12 +120,18 @@ git checkout dev
 ```tsx
 yarn install
 ```
-11. Install pm2 by using following command.
+11. Install `pm2` by using following command.
 ```tsx
 sudo npm install -g pm2
 ```
 
 # Running erxes
+---
+
+<Caution>
+Run erxes in erxes/cli directory
+</Caution>
+
 1. Run following command to change the folder.
 ```tsx
 cd cli
@@ -137,12 +151,13 @@ cp configs.json.sample configs.json
 
  ## If your browser don't automatically jump to localhost:3000, you should check logs by using these commands.
 
- <Note>
+ <Tip>
     Frequently used `pm2` commands on erxes:
 - pm2 list - Display all processes status
 - pm2 kill - Will remove all processes from pm2 list
 - pm2 logs -f - Display all processes logs in streaming (gateway, plugin-name etc.)
 - pm2 restart all - Restart all processes
- </Note>
+ </Tip>
 
  ## If you see this screen, you have successfully install erxes XOS. Congratulations 🎉🎉🎉
+ ![](https://erxes-docs.s3.us-west-2.amazonaws.com/login+screen.png)

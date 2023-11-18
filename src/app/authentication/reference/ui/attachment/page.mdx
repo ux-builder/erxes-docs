@@ -1,0 +1,157 @@
+# Attachment
+Add any type of attachment or attachments with preview. Click logo or picture to preview.
+
+## **Example**
+Add attachment with preview.
+
+```tsx
+<>
+	<Attachment attachment={{
+		name:"text.docx", 
+		type:"text", 
+		url:"/Documents/test.docx"}}
+	 />
+</>
+```
+
+## **Size**
+Add file `size` by adding size prop to attachment information array.
+
+```tsx
+<>
+	<Attachment attachment={{
+		name:"text.docx", 
+		type:"text", 
+		url:"/Documents/test.docx", 
+		size:4179}}
+	 />
+</>
+```
+
+## **Additional item**
+Add additional content under the title by `additionalItem` prop.
+
+```tsx
+<>
+	<Attachment attachment={{
+		name:"text.docx", 
+		type:"text", 
+		url:"/Documents/test.docx"}}
+	 additionalItem="Additional text" />
+</>
+```
+
+## **Image**
+Click on picture to see preview.
+
+```tsx
+<>
+	<Attachment attachment={{
+		name:"logo_dark.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/logo_dark.svg"}}
+	 />
+</>
+```
+
+Use `simple` to show only image preview.
+
+![](https://erxes.io/static/images/logo/logo_dark.svg)
+```tsx
+<>
+	<Attachment attachment={{
+		name:"logo_dark.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/logo_dark.svg"}}
+	 simple={true} />
+</>
+```
+
+## **Video**
+Click on video to preview.
+
+```tsx
+<>
+	<Attachment attachment={{
+		name:"video.mp4", 
+		type:"video", 
+		url:"/Documents/video.mp4"}}
+	 />
+</>
+```
+
+## **Audio**
+Click on Audio to preview.
+
+```tsx
+<>
+	<Attachment attachment={{
+		name:"audio.mp3", 
+		type:"mp3", 
+		url:"/Documents/audio.mp3"}}
+	 />
+</>
+```
+
+## **Multiple attachments**
+Add multiple attachments by `attachments` prop.
+
+```tsx
+<>
+	<Attachment attachment={{
+		name:"logo_dark.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/logo_dark.svg"}}
+	 attachments={[{
+		name:"glyph_dark.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/glyph_dark.svg"},
+		{
+		name:"flag_right.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/flag_right.svg"}]} />
+</>
+```
+
+## **Index**
+Set the file to start from attachments by `index`. (Index number starts with 0)
+
+```tsx
+<>
+	<Attachment attachment={{
+		name:"logo_dark.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/logo_dark.svg"}}
+	 attachments={[{
+		name:"glyph_dark.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/glyph_dark.svg"},
+		{
+		name:"flag_right.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/flag_right.svg"}}
+	 index={1} />
+</>
+```
+
+## **API**
+
+```tsx
+import Attachment from "erxes-ui/lib/components/Attachment";
+```
+* required prop
+
+| NAME | TYPE | DESCRIPTION |
+| ---| --- | ---|
+|  | name* | string | Define file name |
+| attachment | type* | string | Define file type |
+|  | url*  | string | Declare file path |
+|  | size | number | Shows file size |
+| scrollBottom  | function | Define function that runs after the image finished loading |
+| additionalItem | React.ReactNode | Add additional item |
+| simple | boolean | Shows only image |
+| index | number | When previewing attachments, define which file to start from |
+| | name* | string | Define file name |
+| attachments (array) | type* | string | Define file type |
+| | url*	| string | Declare file path |
+| | size | number | Shows file size |

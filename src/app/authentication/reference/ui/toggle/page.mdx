@@ -1,0 +1,74 @@
+# Toggle
+## **Example**
+
+```tsx
+<>
+	<Toggle />
+</>
+```
+
+## **Icons**
+Define checked or unchecked icons by any type of `icons` prop.
+```tsx
+<>
+	<Toggle icons={{checked:"Y", unchecked:"N"}}/>
+</>
+```
+
+## **Checked**
+Make the toggle switch checked on start by adding `defaultChecked` prop.
+
+```tsx
+<>
+	<Toggle defaultChecked/>
+</>
+```
+
+## **Always checked**
+Make the toggle switch checked but not switchable by adding `checked` prop.
+
+```tsx
+<>
+	<Toggle checked/>
+</>
+```
+
+## **Disabled toggle switch**
+Make the toggle disabled by `disabled` prop.
+
+```tsx
+<>
+	<Toggle disabled/>
+</>
+```
+
+Make the toggle disabled by `disabled` prop when it's checked.
+
+```tsx
+<>
+	<Toggle disabled checked/>
+</>
+```
+
+## **API**
+
+```tsx
+import Toggle from "erxes-ui/lib/components/Toggle";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| value | string |  | Define the value |
+| name | string |  | Define the name |
+| id | string| | Define toggle id |
+| checked | boolean | false | Set the toggle always checked |
+| defaultChecked | boolean | false | Set the toggle checked on start |
+| 'aria-labelledby'	 | string |  | The value of the aria-labelledby attribute of the wrapped input element |
+| 'aria-label'	 | string |  | The value of the aria-label attribute of the wrapped input element |
+| onFocus | function	 |  | Callback function to invoke when field has focus |
+| onBlur | function |  | Callback function to invoke when field loses focus |
+| disabled | boolean |  | Make the toggle disabled |
+| onChange | function |  | Callback function to invoke when the user clicks on the toggle |
+| icons	 | boolean |  | Add an icon |
+

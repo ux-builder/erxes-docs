@@ -1,0 +1,161 @@
+# Table
+## **Bordered**
+Add border color with `bordered` prop.
+
+```tsx
+<Table bordered>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    <tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td> 
+      <td>James</td> 
+      <td>Smith</td> 
+      <td>@james</td>
+    <tr> 
+    <tr>
+      <td>2</td> 
+      <td>Robert</td> 
+      <td>Rodriguez</td> 
+      <td>@robert</td>
+    <tr> 
+    <tr>
+      <td>3</td> 
+      <td>Larry</td> 
+      <td>Bird</td> 
+      <td>@twitter</td>
+    <tr>
+  </tbody>
+</Table>
+```
+
+## **Striped**
+Add striped color with `striped` prop.
+
+```tsx
+<Table striped>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    <tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td> 
+      <td>James</td> 
+      <td>Smith</td> 
+      <td>@james</td>
+    <tr> 
+    <tr>
+      <td>2</td> 
+      <td>Robert</td> 
+      <td>Rodriguez</td> 
+      <td>@robert</td>
+    <tr> 
+    <tr>
+      <td>3</td> 
+      <td>Larry</td> 
+      <td>Bird</td> 
+      <td>@larry</td>
+    <tr>
+  </tbody>
+</Table>
+```
+
+## **Table hover**
+Activate hover of table row by `hover` prop.
+
+```tsx
+<Table hover>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    <tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td> 
+      <td>James</td> 
+      <td>Smith</td> 
+      <td>@james</td>
+    <tr> 
+    <tr>
+      <td>2</td> 
+      <td>Robert</td> 
+      <td>Rodriguez</td> 
+      <td>@robert</td>
+    <tr> 
+    <tr>
+      <td>3</td> 
+      <td>Larry</td> 
+      <td>Bird</td> 
+      <td>@larry</td>
+    <tr>
+  </tbody>
+</Table>
+```
+
+## **White-space**
+Customize cell type with `white-space` prop.
+
+```tsx
+<Table whiteSpace="normal">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    <tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td> 
+      <td>James</td> 
+      <td>Smith</td> 
+      <td>@james</td>
+    <tr> 
+    <tr>
+      <td>2</td> 
+      <td>Robert</td> 
+      <td>Rodriguez</td> 
+      <td>@robert</td>
+    <tr> 
+    <tr>
+      <td>3</td> 
+      <td>Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed the Hick from French Lick and Larry Legend,Bird is widely regarded as one of the greatest basketball players of all time.</td> 
+      <td>Bird</td> 
+      <td>@larry</td>
+    <tr>
+  </tbody>
+</Table>
+```
+
+## **API**
+
+```tsx
+import Table from "erxes-ui/lib/components/table/index";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| children*	 | React.ReactNode	 |  | Shows table content |
+| striped | boolean | false | Gives table strip color |
+| bordered | boolean| false| Add border color |
+| hover | boolean | false | Activates table hover |
+| responsive | boolean | false | Add horizontal scroll bar when needed |
+| whiteSpace | any |  | Costumizes the cells |
+| alignTop | boolean | false | Writes content vertically top |

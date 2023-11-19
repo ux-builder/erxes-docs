@@ -1,0 +1,108 @@
+# Collapse Content
+## **Simple**
+Simplest collapse content have title and children.
+
+```tsx
+<>
+	<CollapseContent title="This is title" >
+          <div>This is children.</div>
+        </CollapseContent>
+</>
+```
+
+## **Description**
+Add description by `description` prop.
+
+```tsx
+<>
+	<CollapseContent title="This is title" description="Description" >
+          <div>This is children.</div>
+        </CollapseContent>
+</>
+```
+
+## **Image**
+Add image by `image` prop.
+
+```tsx
+<>
+	<CollapseContent title="This is title" image="https://erxes.io/static/images/logo/logo_dark.svg" >
+          <div>This is children.</div>
+        </CollapseContent>
+</>
+```
+
+## **Image background color**
+Add image background color by `imageBackground` pr
+```tsx
+<>
+	<CollapseContent title="This is title" image="https://erxes.io/static/images/logo/logo_dark.svg" imageBackground="yellow" >
+          <div>This is children.</div>
+        </CollapseContent>
+</>
+```
+
+## **Before title**
+Add something before title by `beforeTitle` prop.
+
+```tsx
+<>
+	<CollapseContent title="This is title" beforeTitle={<img src='https://erxes.io/static/images/logo/glyph_dark.png' height='40px' />} >
+          <div>This is children.</div>
+        </CollapseContent>
+</>
+```
+
+## **ContendId**
+Use `contentId` for jump to content.
+
+```tsx
+<>
+	<CollapseContent title="This is title" contendId="contendId" >
+          <div>This is children.</div>
+        </CollapseContent>
+</>
+```
+
+## **Compact**
+Set the padding of the title conteiner to '10px 20px' by adding `compact` prop. Default padding: 20px
+
+```tsx
+<>
+	<CollapseContent compact title="This is title" >
+          <div>This is children.</div>
+        </CollapseContent>
+</>
+```
+
+## **Open**
+Activates open function of container and collapse tag by `open` prop.
+```tsx
+<>
+	<CollapseContent title="This is title" open >
+          <div>This is children.</div>
+        </CollapseContent>
+</>
+```
+
+## ** API**
+```tsx
+import CollapseContent from "erxes-ui/lib/components/CollapseContent";
+```
+
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| contendId | string |  | Jump to content |
+| title*		 | string |  | Define title |
+| children*	 | React.ReactNode	| | Declare content |
+| description | React.ReactNode	 |  | Description that will be displayed under title |
+| open	 | boolean |  | Activates open function of container and collapse tag |
+| compact | boolean | 20px | Define height of title container |
+| image | string |  | Image that will be placed instead of arrows |
+| beforeTitle | React.ReactNode	 |  | React node that will be placed left side of title |
+| onClick | function |  | Define click handler function |
+| imageBackground | string |  | Background color of image |
+| id | string |  | Gives id to collapse content |
+

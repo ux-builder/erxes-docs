@@ -1,0 +1,52 @@
+# Icon
+To display desired icon write it's name to `icon` prop.
+
+```tsx
+<>
+	<Icon icon="envelope-alt" />
+</>
+```
+
+## **Color**
+Give color to icon by `color` prop.
+
+```tsx
+<>
+	<Icon icon="envelope-alt" color="red" />
+</>
+```
+
+## **Size**
+Change icon size by `size` prop.
+
+```tsx
+<>
+	<Icon icon="envelope-alt" size={30} />
+</>
+```
+
+## **Active**
+When there's `active` prop, it displays black icon.
+
+```tsx
+<>
+	<Icon icon="envelope-alt" color="red" isActive />
+</>
+```
+
+
+## **API**
+
+```tsx
+import FilterByParams from "erxes-ui/lib/components/FilterByParams";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| icon*	 | string |  | Define icon |
+| size	 | number |  | Changes icon size |
+| style | any| | Gives custom style to icon |
+| color | string | black | Changes icon color |
+| isActive	 | boolean | false | Make the icon color black |
+| onClick | function |  | Define click handler function |

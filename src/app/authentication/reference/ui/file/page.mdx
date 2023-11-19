@@ -1,0 +1,65 @@
+# File Preview
+Preview different type of files.
+
+## **Default file preview**
+When there is no extension or not supported extension file then it'll go as default.
+```tsx
+<>
+	<FilePreview fileUrl="/fileUrl" />
+</>
+```
+
+## **File preview**
+Declare file url by `fileUrl` prop.
+
+```tsx
+<>
+	<FilePreview fileUrl="docxFile.docx" />
+</>
+```
+
+Add name instead of file url by `fileName` prop.
+
+```tsx
+<>
+	<FilePreview fileUrl="xlsxFile.xlsx" fileName="xlsxFile" />
+</>
+```
+
+File extention name is displayed in front of blank page icon.
+
+```tsx
+<>
+	<FilePreview fileUrl="zipFile.zip" />
+</>
+```
+
+## **Picture and Video preview**
+Preview jpeg, jpg, gif, png of extension picures and mp4 video.
+
+![](https://erxes.io/static/images/logo/logo_dark_3x.png)
+```tsx
+<>
+	<FilePreview fileUrl="https://erxes.io/static/images/logo/logo_dark_3x.png" />
+</>
+```
+
+```tsx
+<>
+	<FilePreview fileUrl="video.mp4" />
+</>
+```
+
+## **API**
+
+```tsx
+import FilePreview from "erxes-ui/lib/components/FilePreview";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| fileUrl*	 | string |  | Define url of file. Supported types: docx, pptx, xlsx, mp4, jpeg, jpg, gif, png, zip, csv, doc, ppt, psd, avi, txt, rar, mp3, pdf, xls |
+| fileName | string |  | Show file name instead of the url |
+
+

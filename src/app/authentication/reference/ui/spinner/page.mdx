@@ -1,0 +1,53 @@
+# Spinners
+Spinners can be used to show the loading state in your projects.
+
+## **Examples**
+### **Sizing**
+Change the sizing using size prop.
+
+
+```tsx
+<>
+	<Spinner size={40} objective /> 
+	<Spinner size={15} objective />
+</>
+```
+
+## **Position**
+Change the position with `left`, `right`, `top`, `bottom` props depending on your purpose.
+
+```tsx
+<>
+	<Spinner left="10%" right="auto" objective /> 
+	<Spinner left="50%" right="auto" objective /> 
+	<Spinner left="auto" right="10%" objective />
+</>
+```
+
+## **Objective**
+Make your spinner objective by `objective` prop.
+
+```tsx
+<>
+	<Spinner left="10%" objective />
+</>
+
+```
+
+## **API**
+
+```tsx
+import Spinner from "erxes-ui/lib/components/Spinner";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| objective	 | boolean	 | false | Make your spinner objective |
+| size	 | number | 26 | Change the spinning size |
+| left | string | 50% | Determine space from left side |
+| right | string | auto | Determine space from right side |
+| top | string | 50%	 | Determine space from top side |
+| bottom | string | auto | Determine space from bottom side |
+
+

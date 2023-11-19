@@ -1,0 +1,34 @@
+# Modifiable List
+## **Options**
+Insert the list by `options` prop.
+
+```tsx
+<>
+	<ModifiableList options={["Name","Age"]} />
+</>
+```
+
+## **Add button label**
+
+Click on the "cancel" button to see 3rd button. Change label of 3rd button by `addButtonLabel` prop.
+
+```tsx
+
+<>
+	<ModifiableList options={["Name","Age"]} addButtonLabel="Custom button label" />
+</>
+
+```
+
+## **API**
+
+```tsx
+import ModifiableList from "erxes-ui/lib/components/ModifiableList";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| options* | string[] |  | Display options on start |
+| addButtonLabel | string | "Add an option"	 | Change 3rd button label |
+| onChangeOption | function| | Define function that runs when delete icon clicked |

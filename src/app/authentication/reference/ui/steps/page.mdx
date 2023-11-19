@@ -1,0 +1,96 @@
+# Steps
+## **Example**
+Simple step component with image and content.
+
+```tsx
+<>
+	<Steps >
+		<Step img="https://erxes.io/static/images/logo/logo_dark.svg">children1</Step>
+		<Step img="https://erxes.io/static/images/logo/logo_dark.svg">children2</Step>
+		<Step img="https://erxes.io/static/images/logo/logo_dark.svg">children3</Step>
+	</Steps>
+</>
+```
+
+## **Active**
+Change the step that expands on start with `active` prop.
+
+```tsx
+<>
+	<Steps active={2}>
+		<Step img="https://erxes.io/static/images/logo/logo_dark.svg">children1</Step>
+		<Step img="https://erxes.io/static/images/logo/logo_dark.svg">children2</Step>
+		<Step img="https://erxes.io/static/images/logo/logo_dark.svg">children3</Step>
+	</Steps>
+</>
+```
+
+## **Step**
+**Image**
+Add image by `img` prop.
+
+```tsx
+<>
+	<Step img="https://erxes.io/static/images/logo/logo_dark.svg">children</Step>
+</>
+```
+
+## **Title**
+Add title by `title` prop.
+
+```tsx
+
+<>
+	<Step title="Title" img="https://erxes.io/static/images/logo/logo_dark.svg">children</Step>
+</>
+
+```
+
+## **No button**
+Hide the "next" button by noButton prop.
+
+```tsx
+
+<>
+	<Steps>
+		<Step noButton img="https://erxes.io/static/images/logo/logo_dark.svg">children1</Step>
+		<Step noButton img="https://erxes.io/static/images/logo/logo_dark.svg">children2</Step>
+		<Step noButton img="https://erxes.io/static/images/logo/logo_dark.svg">children3</Step>
+	</Steps>
+</>
+
+```
+
+## **API**
+
+**Steps**
+```tsx
+import Steps from "erxes-ui/lib/components/Steps";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| children*	 | any |  | Contain step components |
+| active | number |  | Change the step that expands on start |
+| maxStep | number| 6 | Limit the number of steps (always 6) |
+
+
+## **Step**
+
+```tsx
+import Step from "erxes-ui/lib/components/Step";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| stepNumber | number |  | Define step number |
+| active | number |  | Define which step that expands on start |
+| img | string | | Shows image |
+| title | string |  | Shows title |
+| children | React.ReactNode |  | Shows content of step |
+| next | function |  | Define click function of next button |
+| noButton | boolen |  | Hide the "Next" button |
+| noButton | function |  | Define click handler function |
+

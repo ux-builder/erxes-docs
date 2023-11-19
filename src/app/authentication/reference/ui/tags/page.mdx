@@ -1,0 +1,46 @@
+# Tags
+Use `_id` and `name` props for connecting with other function.
+
+## **Color**
+Give any color to tag by `colorCode` prop.
+
+```tsx
+<>
+	<Tags tags={[
+		{_id:0, type:"", name:"red", colorCode:"red"},
+		{_id:1, type:"", name:"yellow", colorCode:"yellow"},
+		{_id:2, type:"", name:"blue", colorCode:"blue"},
+		{_id:3, type:"", name:"purple", colorCode:"purple"},
+		{_id:4, type:"", name:"green", colorCode:"green"}
+	]} />
+</>
+```
+
+## **Limit**
+Limit number of tags to show by `limit` prop.
+```tsx
+<>
+	<Tags tags={[
+		{_id:0, type:"", name:"red", colorCode:"red"},
+		{_id:1, type:"", name:"yellow", colorCode:"yellow"},
+		{_id:2, type:"", name:"blue", colorCode:"blue"},
+		{_id:3, type:"", name:"purple", colorCode:"purple"},
+		{_id:4, type:"", name:"green", colorCode:"green"}
+	]} limit={3} />
+</>
+```
+
+## **API**
+
+```tsx
+import Tags from "erxes-ui/lib/components/Tags";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| _id*	 | string |  | Define tag id |
+| type*	 | string |  | Define tag type |
+| name*	 | string| | Define tag name |
+| colorCode* | string |  | Set the tag color |
+| limit | number |  | Limits number of tags to show |

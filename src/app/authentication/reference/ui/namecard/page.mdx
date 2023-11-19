@@ -1,0 +1,70 @@
+# Name card
+## **Username**
+Show username using `username` prop.
+
+```tsx
+<>
+	<NameCard  user={{username:"james"}} />
+</>
+```
+
+## **Full name**
+Show full name using `fullName` prop.
+
+```tsx
+<>
+	<NameCard  user={{details:{fullName:"James Smith"}}} />
+</>
+```
+
+## **Avatar size**
+You can change avatar size with `avatarSize` prop.
+
+```tsx
+<>
+	<NameCard  avatarSize={50} user={{details:{fullName:"James Smith"}}} />
+</>
+```
+
+## **User E-mail**
+Show user e-mail using `email` prop.
+
+```tsx
+<>
+	<NameCard  user={{details:{fullName:"James Smith"},email:"jamessmith@gmail.com"}} />
+</>
+```
+
+## **Single Line**
+Make the secondLine invisible with `singleLine` prop.
+
+```tsx
+<>
+	<NameCard  singleLine={true} user={{details:{fullName:"James Smith"},email:"jamessmith@gmail.com"}} />
+</>
+```
+
+## **Second line**
+Show second line using `secondLine` prop.
+
+```tsx
+<>
+	<NameCard  secondLine="Intern" user={{details:{fullName:"James Smith"}}} />
+</>
+```
+
+## **API**
+
+```tsx
+import Namecard from "erxes-ui/lib/components/namecard/Namecard";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| username*	 | string |  | Defines the username |
+| fullName | string |  | Define fullname object of user. If you have both "details" and "username", it will only show "details" |
+| email | string| | Define email object of user |
+| singleLine | string |  | Make the second line invisible |
+| secondLine | string |  | Define line below the username or full name. You can write anything in the second line |
+| avatarSize | number | 40  | Set avatar size to your name card |

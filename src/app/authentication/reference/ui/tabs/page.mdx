@@ -1,0 +1,83 @@
+# Tabs
+## **Dynamic tabbed interfaces.**
+
+`handleSelect` is triggered when tab is clicked.
+
+```tsx
+import React, {useState} from "react";
+```
+
+```tsx
+const [content, setContent] = useState();
+const handleSelect = (index) => {
+      setContent("Content of tab" + (index + 1));
+    };
+```
+
+## **Example**
+Simple example of tabs.
+
+```tsx
+<>
+	<Tabs >
+          <TabTitle onClick={() => handleSelect(0)}>Tab 1</TabTitle>
+	 <TabTitle onClick={() => handleSelect(1)}>Tab 2</TabTitle>
+	 <TabTitle onClick={() => handleSelect(2)}>Tab 3</TabTitle>
+	</Tabs>
+	<div>{content}</div>
+</>
+```
+
+## **Full**
+Display tab title full length.
+
+```tsx
+<>
+	<Tabs full>
+          <TabTitle onClick={() => handleSelect(0)}>Tab 1</TabTitle>
+	 <TabTitle onClick={() => handleSelect(1)}>Tab 2</TabTitle>
+	 <TabTitle onClick={() => handleSelect(2)}>Tab 3</TabTitle>
+	</Tabs>
+	<div>{content}</div>
+</>
+```
+
+## **Border**
+Make border darker.
+```tsx
+<>
+	<Tabs grayBorder>
+          <TabTitle onClick={() => handleSelect(0)}>Tab 1</TabTitle>
+	 <TabTitle onClick={() => handleSelect(1)}>Tab 2</TabTitle>
+	 <TabTitle onClick={() => handleSelect(2)}>Tab 3</TabTitle>
+	</Tabs>
+	<div>{content}</div>
+</>
+```
+
+## **API**
+
+```tsx
+import Tabs from "erxes-ui/lib/components/tabs/index";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| children*	 | React.ReactNode	 |  | Contain TabTitle components |
+| grayborder	 | boolean |  | Make border darker |
+| full | boolean| | Display context full screen |
+
+
+## **TabTitle**
+
+```tsx
+import TabTitle from "erxes-ui/lib/components/tabs/index";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| children*	 | React.ReactNode	 |  | Shows tab content |
+| onClick | function	 |  | Define click handler function |
+| className	 | string| | Define className |

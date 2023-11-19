@@ -1,0 +1,142 @@
+# Filterable List
+## **Example**
+Simple filterable list. It can be checked.
+
+```tsx
+<>
+	<FilterableList items={[
+		{_id:"0", title:"First test"},
+		{_id:"1", title:"Second test"},
+		{_id:"2", title:"Third test"}]}
+	 />
+</>
+```
+
+## **Blank filterable list**
+When items have no list it shows emptyState.
+
+```tsx
+<>
+	<FilterableList items={""} />
+</>
+```
+
+## **Loading**
+Show loading spinner instead of the list by `loading` prop.
+
+```tsx
+<>
+	<FilterableList items={[
+		{_id:"0", title:"First test"},
+		{_id:"1", title:"Second test"},
+		{_id:"2", title:"Third test"}]}
+	 loading={true} />
+</>
+```
+## **Custom style**
+Add custom style to list item by `style` prop.
+
+```tsx
+<>
+	<FilterableList items={[
+		{_id:0, title:"First test", style:{color:"purple"}},
+		{_id:1, title:"Second test", style:{color:"red"}},
+		{_id:2, title:"Third test", style:{color:"green"}}]}
+	 />
+</>
+```
+
+## **Avatar**
+Add avatar by `avatar`prop to items array.
+```tsx
+<>
+	<FilterableList items={[
+		{_id:"0", title:"First test", avatar:"https://erxes.io/static/images/logo/logo_dark.svg"},
+		{_id:"1", title:"Second test", avatar:"https://erxes.io/static/images/logo/logo_dark.svg"},
+		{_id:"2", title:"Third test", avatar:"https://erxes.io/static/images/logo/logo_dark.svg"}]}
+	 />
+</>
+```
+
+## **Additional icon**
+Add additional icon to list item by `additionalIconClass` prop.
+
+```tsx
+<>
+	<FilterableList items={[
+		{_id:"0", title:"First test", avatar:"https://erxes.io/static/images/logo/logo_dark.svg", additionalIconClass:"info-circle"},
+		{_id:"1", title:"Second test", avatar:"https://erxes.io/static/images/logo/logo_dark.svg", additionalIconClass:"info-circle"},
+		{_id:"2", title:"Third test", avatar:"https://erxes.io/static/images/logo/logo_dark.svg", additionalIconClass:"info-circle"}]}
+	 />
+</>
+```
+
+## **Links**
+Add links below the `list` by links prop.
+
+```tsx
+<>
+	<FilterableList items={[
+		{_id:"0", title:"First test"},
+		{_id:"1", title:"Second test"},
+		{_id:"2", title:"Third test"}]}
+	 links={[{title:"Google", href:"https://www.google.com"}]}
+	 />
+</>
+```
+
+## **Show Checkmark**
+Hide checkmark by `showCheckmark` prop.
+
+```tsx
+<>
+	<FilterableList items={[
+		{_id:"0", title:"First test"},
+		{_id:"1", title:"Second test"},
+		{_id:"2", title:"Third test"}]}
+	 showCheckmark={false} />
+</>
+```
+
+## **Tree view**
+Show tree view list by `treeView` prop. Items should have `_id` and `parentId.`
+```tsx
+<>
+	<FilterableList items={[
+		{_id:"0", title:"Parent 1", iconClass:"iconClass"},
+		{_id:"1", title:"Parent 2", iconClass:"iconClass"},
+		{_id:"2", parentId:"0", title:"Child of parent 1"},
+		{_id:"3", parentId:"1", title:"Child of parent 2"},
+		{_id:"4", parentId:"1", title:"Child of parent 2"}]}
+	 treeView={true} isIndented={true} />
+</>
+```
+
+## **API**
+
+```tsx
+import FilterableList from "erxes-ui/lib/components/filterableList/FilterableList";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| _id | string |  | Define id of item array |
+| title	 | string |  | Define list item name |
+| avatar | string| | Show image before item title |
+| additionalIconClass | string |  | Show additional icon on the right side of item title |
+| style	 | string |  | Add style to item title |
+| parentId | string |  | Define parent by id |
+| iconClass | string |  | Show icon before item title to hide or show children item |
+| links | any[]	 |  | Define links below list |
+| showCheckmark | boolean | true | Show checkmart when item list is clicked |
+| selectable | boolean | 30px | Takes spacing on the right |
+| loading | boolean |  | Activates loading spinner |
+| className	 | string |  | Define className |
+| treeView | boolean |  | Activates tree view of list |
+| isIndented | boolean |  | Take space between arrow and title |
+| onClick | function |  | Define click handler function when list item is clicked |
+| onSearch | function |  | Define search function |
+
+
+

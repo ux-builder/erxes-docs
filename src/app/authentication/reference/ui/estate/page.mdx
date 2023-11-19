@@ -1,0 +1,59 @@
+# Empty State
+Empty state with `icon` and `text` props.
+
+```tsx
+<>
+	<EmptyState icon="info-circle" text="Text" />
+</>
+```
+
+## **Light**
+Make your text invisible by using `light` prop.
+```tsx
+<>
+	<EmptyState icon="info-circle" light text="Text" />
+</>
+```
+
+## **Icon size**
+You can change the size of icon with `size` prop.
+
+```tsx
+<>
+	<EmptyState icon="info-circle" size="30" text="Text" />
+</>
+```
+
+## **Image**
+Replace the icon with image by `image` prop.
+
+```tsx
+<>
+	<EmptyState image="https://erxes.io/static/images/logo/logo_dark.svg" text="Text" />
+</>
+```
+
+## **Extra**
+You can add extra item (text, number, tags, etc) to your empty state with `extra` prop.
+
+```tsx
+<>
+	<EmptyState icon="info-circle" size="30" text="Text" extra={<Button>Extra button</Button>} />
+</>
+```
+
+## **API**
+
+```tsx
+import EmptyState from "erxes-ui/lib/components/EmptyState";
+```
+* required prop
+
+| NAME | TYPE | DESCRIPTION |
+| ---| --- | ---|
+| text*	 | string | Shows your text. If you want to show only text, use it with light prop |
+| icon	 | string | Shows icon |
+| image | string| Shows image |
+| size | string | Changes the size of icon |
+| extra	 | React.ReactNode | Add other components or text |
+| light | boolean | Shows only first row|

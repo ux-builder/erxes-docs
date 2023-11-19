@@ -1,0 +1,46 @@
+# Info
+Provide contextual messages for typical user actions with info messages.
+
+## **Examples**
+Infos are available for any length of text. Just choose one of the five variants and modify the `type` prop. And write your own title by using `title` prop.
+
+```tsx
+<>	
+	<Info type="primary" title="Primary" >Primary</Info> 
+	<Info type="info" title="Info" >Info</Info> 
+	<Info type="danger" title="Danger" >Danger</Info> 
+	<Info type="warning" title="Warning" >Warning</Info> 
+	<Info type="success" title="Success" >Success</Info>
+</>
+```
+
+## **Icon**
+Add icons using `iconShow` prop.
+
+```tsx
+<>	
+	<Info iconShow type="primary" title="Primary" >Primary</Info> 
+	<Info iconShow type="info" title="Info" >Info</Info> 
+	<Info iconShow type="danger" title="Danger" >Danger</Info> 
+	<Info iconShow type="warning" title="Warning" >Warning</Info> 
+	<Info iconShow type="success" title="Success" >Success</Info>
+</>
+```
+
+## **API**
+
+```tsx
+import Info from "erxes-ui/lib/components/Info";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| children*	 | React.ReactNode	 |  | Shows info content |
+| type | primary, info, danger, warning, success | primary | Set type of info |
+| color | string| | Gives custom color to info |
+| title | string |  | Shows title on top of the info |
+| iconShow | boolean |  | Shows icon depending on the info type |
+
+
+

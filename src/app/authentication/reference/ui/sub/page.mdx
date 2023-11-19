@@ -1,0 +1,31 @@
+# SubMenu
+## **Example**
+Add multiple sub menu by adding arrays to `items` prop.
+
+```tsx
+<>
+	<Submenu items={[{title:"Submenu 1", link:""},{title:"Submenu 2", link:""},{title:"Submenu 3", link:""}]} />
+</>
+```
+
+## **Additional item**
+Add additional item by `additionalMenuItem` prop.
+
+```tsx
+<>
+	<Submenu items={[{title:"Submenu 1", link:""},{title:"Submenu 2", link:""},{title:"Submenu 3", link:""}]} additionalMenuItem="Additional item" />
+</>
+```
+
+## **API**
+
+```tsx
+import Submenu from "erxes-ui/lib/components/subMenu/Submenu";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| title*	 | string |  | Defines submenu title |
+| link	 | string |  | Define the path of where to go when clicked |
+| additionalMenuItem |  React.ReactNode	| | Define additional sub menu item that will be displayed right side of sub menu |

@@ -1,0 +1,145 @@
+# Filter by Params
+## **Example**
+Simple list that can become searchable by parameters.
+
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[]} fields={[
+		{_id:"0", name:"First test"},
+		{_id:"1", name:"Second test"},
+		{_id:"2", name:"Third test"}]} />
+</>
+```
+
+## **Empty**
+When fields have no list it shows emptyState.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[]} fields={[]} />
+</>
+```
+
+## **Loading**
+Show loading spinner by `loading` prop.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[]} loading fields={[
+		{_id:"0", name:"First test"},
+		{_id:"1", name:"Second test"},
+		{_id:"2", name:"Third test"}]} />
+</>
+```
+
+## **Count**
+Show count numbers by giving them to `counts` prop.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[1,2,3]} fields={[
+		{_id:"0", name:"First test"},
+		{_id:"1", name:"Second test"},
+		{_id:"2", name:"Third test"}]} />
+</>
+```
+
+## **Multiple**
+Make it possible to select multiple items by `multiple` prop.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[]} multiple fields={[
+		{_id:"0", name:"First test"},
+		{_id:"1", name:"Second test"},
+		{_id:"2", name:"Third test"}]} />
+</>
+```
+
+## **Searchable**
+Add search bar on top of the list and make it searchable with `searchable` prop.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[]} searchable fields={[
+		{_id:"0", name:"First test"},
+		{_id:"1", name:"Second test"},
+		{_id:"2", name:"Third test"}]} />
+</>
+```
+
+## **Icon**
+Add avatar by `icon` prop.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" icon="tag-alt" counts={[]} fields={[
+		{_id:"0", name:"First test"},
+		{_id:"1", name:"Second test"},
+		{_id:"2", name:"Third test"}]} />
+</>
+```
+
+## **Color**
+Add custom color to icon by `colorCode` prop.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" icon="tag-alt" counts={[]} fields={[
+		{_id:"0", name:"First test", colorCode:"red"},
+		{_id:"1", name:"Second test", colorCode:"blue"},
+		{_id:"2", name:"Third test", colorCode:"green"}]} />
+</>
+```
+
+## **Tree view**
+Show tree view list by `treeView` prop. Fields should have `_id` and `parentId.`
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[]} treeView fields={[
+		{_id:"0", name:"Parent 1"},
+		{_id:"1", name:"Parent 2"},
+		{_id:"2", parentId:"0", name:"Child of parent 1"},
+		{_id:"3", parentId:"1", name:"Child of parent 2"},
+		{_id:"4", parentId:"1", name:"Child of parent 2"}]} />
+</>
+```
+
+## **Related**
+Find sum of all the related items by id with `relatedIds` prop. It shows on the item, defined the `relatedId` prop.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[1,2,3,4,5]} treeView fields={[
+		{_id:"0", name:"Parent 1", relatedIds:[2]},
+		{_id:"1", name:"Parent 2", relatedIds:[3,4]},
+		{_id:"2", parentId:"0", name:"Child of parent 1"},
+		{_id:"3", parentId:"1", name:"Child of parent 2"},
+		{_id:"4", parentId:"1", name:"Child of parent 2"}]} />
+</>
+```
+
+## **API**
+
+```tsx
+import FilterByParams from "erxes-ui/lib/components/FilterByParams";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| _id | string |  | Define id |
+| name	 | string |  | Define name |
+| colorCode | number| | Add custom color |
+| parentId | string |  | Define parent id |
+| relatedIds | array |  | Define related items' ids |
+| counts*	 | any |  | Define count numbers of list items |
+| paramKey*	 | string |  | Key, used when onClick function runs. |
+| icon | string	 |  | Add icon to list items |
+| loading*	 | boolean |  | Activates loading spinner |
+| searchable | boolean |  | Add search bar and make the list searchable |
+| multiple | boolean | false | Make it possible to select multiple items |
+| treeView	 | boolean |  | Activates tree view of list |
+| update	 | boolean |  | Define function to filter items |

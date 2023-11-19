@@ -1,0 +1,39 @@
+# Label
+## **Style**
+Use any of the available label style types to quickly create a styled label. Just modify the `lblStyle` prop.
+
+```tsx
+<>
+	<Label lblStyle="default">default</Label> 
+	<Label lblStyle="primary">primary</Label> 
+	<Label lblStyle="success">success</Label> 
+	<Label lblStyle="danger">danger</Label> 
+	<Label lblStyle="warning">warning</Label> 
+	<Label lblStyle="simple">simple</Label>
+</>
+```
+
+## **Color**
+Want your own color? Just give color to `lblColor` prop.
+
+```tsx
+<>
+	<Label lblColor="red">red</Label>
+</>
+```
+
+## **API**
+
+```tsx
+import Label from "erxes-ui/lib/components/Label";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| lblStyle	 | default, primary, success, danger, warning ,simple	 |default | Set styles of label |
+| lblColor	 | string |  | Gives custom color |
+| children*	 | React.ReactNode | string	| | Declare label text |
+| className | string |  | Defines className |
+| shake | boolean |  | Activate shake animation |
+| ignoreTrans | boolean |  | Ignores translate |

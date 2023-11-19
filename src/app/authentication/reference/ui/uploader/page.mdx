@@ -1,0 +1,67 @@
+# Uploader
+## **Multiple**
+Choose multiple file.
+
+```tsx
+<>
+	<Uploader multiple />
+</>
+```
+
+Choose only one file.
+
+```tsx
+<>
+	<Uploader multiple={false} />
+</>
+```
+
+## **Limit**
+Set limit to files.
+
+```tsx
+<>
+	<Uploader limit={2} />
+</>
+
+```
+
+## **Single**
+Make the uploader inactive to upload files with `single` prop.
+
+```tsx
+<>
+	<Uploader single />
+</>
+```
+
+## **Default files**
+Show default files by giving the files array to `defaultFileList.`
+
+```tsx
+<>
+	<Uploader defaultFileList={[
+		{name:"testFile.docx", type:"text", url:"/home/ariuka/Documents/test.docx"},
+		{name:"testFile2.docx", type:"text", url:"/home/ariuka/Documents/test.docx"}
+	]} />
+</>
+```
+
+## **API**
+
+```tsx
+import Uploader from "erxes-ui/lib/components/Uploader";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| name*	 | string |  | Define file name |
+| type*	 | string |  | Define file type |
+| url*	 | string| | Define file path |
+| size | number |  | Define file size |
+| onChange | function |  | Adding attachments |
+| single | boolean |  | Makes the uploader inactive to upload files |
+| limit | number |  | Sets limit to files |
+| multiple | boolean |  | Define it can upload multiple files or only one file |
+

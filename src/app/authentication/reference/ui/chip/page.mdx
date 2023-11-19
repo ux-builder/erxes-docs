@@ -1,0 +1,33 @@
+# Chip
+## **Examples**
+
+```tsx
+<Chip>chip</Chip> 
+```
+
+## **Capitalized**
+Make the first letter of chip text capital by adding `capitalize`
+
+```tsx
+<Chip capitalize >chip</Chip> 
+```
+
+## **Front Content**
+Add an extra content in front of the chip by `frontContent` prop.
+
+```tsx
+<Chip frontContent={<Icon icon='envelope-alt' />} >chip</Chip> 
+```
+
+## **API**
+```tsx
+import Chip from "erxes-ui/lib/components/Chip";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| capitalize | boolean | false | Make the first letter of chip text capital |
+| onClick* | function |  | Define click handler for cancel icon |
+| children*	 | React.ReactNode	| | Shows chip text |
+| frontContent | string	 |  | Add an extra content in front of the chip |

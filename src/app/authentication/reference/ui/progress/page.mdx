@@ -1,0 +1,53 @@
+# Progress Bar
+Provide progress bar to check work progress.
+
+## **Percentage**
+Add percentage by `percentage` prop. Add text by `children` prop.
+
+```tsx
+<>
+	<ProgressBar percentage={35}>35%</ProgressBar>
+</>
+```
+
+## **Color**
+Set the custom color by `color` prop.
+
+```tsx
+<>
+	<ProgressBar percentage={35} color="pink">35%</ProgressBar>
+</>
+```
+
+## **Height**
+Set the custom height by `height` prop.
+
+```tsx
+<>
+	<ProgressBar percentage={35} height="20px">35%</ProgressBar>
+</>
+```
+
+## **Close
+Add close content by `close` prop.
+
+```tsx
+<>
+	<ProgressBar percentage={35} close={<Button>Close button</Button>} height="20px">35%</ProgressBar>
+</>
+```
+
+## **API**
+
+```tsx
+import ProgressBar from "erxes-ui/lib/components/ProgressBar";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| children | React.ReactNode |  | Shows content on progress bar |
+| close	 | React.ReactNode	 |  | Displays the close element on bottom of the progress bar |
+| percentage* | number| | Sets percentage of the progress bar |
+| color | string | #dddeff	 | Sets color of the progress |
+| height | string | 36px | Sets height of the progress bar |

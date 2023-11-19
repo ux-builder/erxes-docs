@@ -1,0 +1,55 @@
+# Tip
+## **Tip text**
+Define the tip text with `text` prop.
+
+```tsx
+<>
+	<Tip text="Tip text">
+		<Button>Hover on me!</Button>
+	</Tip>
+</>
+```
+
+## **Placement**
+Change tip placement by `placement` prop. Hover over the text paragraphs below to see tips.
+
+Auto placement will place the tip automatically depending on the content placement.
+```tsx
+<>
+	<Tip placement="auto" text="Tip">
+		<Button>Hover on me!</Button>
+	</Tip>
+</>
+```
+
+Top, right, left and bottom placements. You can also add 'start' and 'end' on them. Example: 'top-start', 'top-end', 'right-start', etc.
+
+```tsx
+<>
+	<Tip placement="top" text="Tip">
+		<Button>Hover on me!</Button>
+	</Tip>
+        <Tip placement="right" text="Tip">
+		<Button>Hover on me!</Button>
+	</Tip>
+        <Tip placement="bottom" text="Tip">
+		<Button>Hover on me!</Button>
+	</Tip>
+        <Tip placement="left" text="Tip">
+		<Button>Hover on me!</Button>
+	</Tip>
+</>
+```
+
+## **API**
+
+```tsx
+import Tip from "erxes-ui/lib/components/Tip";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| text	 | string, React.ReactNode	 |  | Define id |
+| children* | React.ReactNode |  | Define name |
+| placement	 | auto, auto-start, auto-end, top, top-start, top-end, right, right-start, right-end, bottom, bottom-start, bottom-end, left, left-start, left-end	| auto | Set the placement of tip |

@@ -1,0 +1,40 @@
+# Sort Handler
+Simple sort handler.
+
+```tsx
+<>
+	<SortHandler  />
+</>
+```
+## **Label**
+Add label by defining `label` prop.
+
+```tsx
+<>
+	<SortHandler label="Label" />
+</>
+```
+
+## **Field**
+Same `sortField` will be handled at the same time.
+
+```tsx
+<>
+	<SortHandler sortField="field1" label="Label1" />
+	<SortHandler sortField="field1" label="Label2" />
+	<SortHandler sortField="field2" label="Label3" />
+</>
+```
+
+## **API**
+
+```tsx
+import SortHandler from "erxes-ui/lib/components/SortHandler";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| sortField	 | string |  | Set the sort field |
+| label	 | string |  | Define the handler name |
+

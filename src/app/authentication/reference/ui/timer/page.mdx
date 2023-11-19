@@ -1,0 +1,57 @@
+# Timer
+Click any button to check actions.
+
+## **Completed time tracking**
+Completed timer will shown as below.
+
+```tsx
+<>
+	<TaskTimer taskId="timerTask" status="completed" timeSpent={180}  />
+</>
+
+```
+## **Started time tracking**
+Started timer will shown as below.
+
+```tsx
+<>
+	<TaskTimer taskId="timerTask" status="started" timeSpent={0} startDate="2023-11-19T10:36:55.986Z" />
+</>
+```
+
+## **Paused time tracking**
+Paused timer will shown as below.
+
+```tsx
+<>
+	<TaskTimer taskId="timerTask" status="paused" timeSpent={180}  />
+</>
+```
+
+## **Stopped time tracking**
+Stopped timer will shown as below.
+
+```tsx
+<>
+	<TaskTimer taskId="timerTask" status="stopped" timeSpent={180}  />
+</>
+```
+
+## **API**
+
+```tsx
+import TaskTimer from "erxes-ui/lib/components/Timer";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| taskId* | string |  | Define task id |
+| status* | started, paused, stopped, completed |  | Define task status |
+| timeSpent* | number| | Define time spent in task |
+| startDate	 | string |  | Define start date of task |
+| _id* | string |  | Define updated id |
+| status* | tarted, paused, stopped, completed |  | Define update status |
+| timeSpent* | number |  | Define updated time spent |
+| startDate | string	 |  | Define update start date |
+| callback	 | function |  | Change task status |

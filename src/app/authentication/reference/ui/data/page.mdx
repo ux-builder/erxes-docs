@@ -1,0 +1,76 @@
+# Data with loader
+## **Loading**
+When loading is "true" it shows spinner or loading content, and when it's "false" it shows data.
+
+```tsx
+<>
+	<DataWithLoader data="This is data" loading objective />
+</>
+```
+Loading...
+
+```tsx
+<>
+	<DataWithLoader data="This is data" loading loadingContent="Loading..." />
+</>
+```
+This is data
+
+```tsx
+<>
+	<DataWithLoader data="This is data" loading={false} />
+</>
+```
+
+## **Count**
+When count is "0" it shows empty content or empty state.
+
+## **Empty content**
+This is empty content
+
+```tsx
+<>
+	<DataWithLoader data="This is data" loading={false} emptyContent="This is empty content"  count={0} />
+</>
+```
+
+## **Empty state**
+**Icon**
+You can costumize the empty state by giving text (with `emptyText`), icon (with `emptyIcon`). And also change the icon `size` with size prop.
+
+```tsx
+<>
+	<DataWithLoader data="This is data" loading={false} emptyText="Empty state" emptyIcon="info-circle" count={0} size="small" />
+</>
+```
+
+## **Image**
+You can costumize the empty state by giving text (with `emptyText`), image (with `emptyImage`).
+
+
+```tsx
+<>
+	<DataWithLoader data="This is data" loading={false} emptyText="Empty state" emptyImage="https://erxes.io/static/images/logo/logo_dark.svg" count={0} />
+</>
+
+```
+
+## **API**
+
+```tsx
+import DataWithLoader from "erxes-ui/lib/components/DataWithLoader";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| data*	 | any |  | Define data |
+| count	 | any |  | Define count |
+| loading*	 | boolean| | Loading state |
+| emptyText | string | There is no data	 | Define text of emptyState |
+| emptyIcon	 | string |  | Define icon of emptyState |
+| emptyImage | string |  | Define image of emptyState |
+| size | string | full | Define size of icon in emptyState |
+| objective | boolean | false | Make the spinner objective |
+| emptyContent | boolean |  | Define content when count is "0" |
+| loadingContent | boolean |  | Define content when loading is "true" |

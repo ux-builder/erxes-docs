@@ -1,0 +1,106 @@
+# Empty content
+Give different contents with empty content component.
+
+## **Steps**
+**Example**
+Simple empty content with title and description. `content` prop cannot be empty.
+
+```tsx
+<>
+	<EmptyContent  content={{steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. "}]}} />
+</>
+```
+
+## **Button**
+Add button with link by adding `url` prop to steps array. Hover the button text to see link.
+
+```tsx
+<>
+	<EmptyContent  content={{steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. ", url:"/"}]}} />
+</>
+```
+
+## **Button text**
+Add button text by adding urlText prop to steps array.
+
+```tsx
+<>
+	<EmptyContent  content={{steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. ", url:"/", urlText:"urlText"}]}} />
+</>
+```
+
+## **isOutside**
+Button without link.
+
+```tsx
+<>
+	<EmptyContent  content={{steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. ", url:"/", urlText:"urlText", isOutside:true}]}} />
+</>
+```
+
+## **Icon**
+Add icon instead of content number by adding `icon` prop to steps array.
+
+```tsx
+<>
+	<EmptyContent  content={{steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. ", icon:"lightbulb-alt"}]}} />
+</>
+```
+
+## **Title**
+Add content title by `title` prop and description by `description` prop to content array.
+
+```tsx
+<>
+	<EmptyContent  content={{title:"Title", description:"Description", steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. "}]}} />
+</>
+```
+
+## **Url**
+Add url by `url` and `urlText` props to content array.
+
+```tsx
+<>
+	<EmptyContent  content={{title:"Title", description:"Description", steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. "}], url:"url", urlText:"url Text"}} />
+</>
+```
+
+## **Vertical**
+Show content boxes vertically by `vertical` prop. In this state maxItemWidth will be "420px".
+
+```tsx
+<>
+	<EmptyContent  content={{title:"Title", description:"Description", steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. "},{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. "}], url:"", urlText:""}} vertical={true} />
+</>
+```
+
+## **Max width**
+Declare `max width` of content box by maxItemWidth prop.
+
+```tsx
+<>
+	<EmptyContent  content={{title:"Title", description:"Description", steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. "}], url:"", urlText:""}} maxItemWidth="300px" />
+</>
+```
+
+## **API**
+
+```tsx
+import Namecard from "erxes-ui/lib/components/namecard/Namecard";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| title | string |  Define title of step|
+| description	 | string |  Define description of step |
+| url | string| Define url of button |
+| urlText | string |  Define url text of button |
+| icon	 | string |  Replace step number with icon |
+| isOutside | boolean | Hides button link |
+| title | string |  Define title of content |
+| description | string | Define description of content |
+| url | string | Define url link of content |
+| urlText | string | Define url text of content |
+| vertical | boolean | Shows content box vertically |
+| maxItemWidth	 | string | Declare max width of content box |

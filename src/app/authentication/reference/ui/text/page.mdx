@@ -1,0 +1,38 @@
+# Text info
+## **Types**
+Change text style by `textStyle` prop.
+
+```tsx
+<>
+	<TextInfo>default</TextInfo>
+	<TextInfo textStyle="primary" >primary</TextInfo>
+	<TextInfo textStyle="success" >success</TextInfo>
+	<TextInfo textStyle="danger" >danger</TextInfo>
+	<TextInfo textStyle="warning" >warning</TextInfo>
+	<TextInfo textStyle="simple" >simple</TextInfo>
+</>
+```
+
+## **Size**
+Add `hugeness` for additional sizes.
+
+```tsx
+<>
+	<TextInfo hugeness="big" >big</TextInfo>
+	<TextInfo hugeness="small" >small</TextInfo>
+</>
+```
+
+## **API**
+
+```tsx
+import TextInfo from "erxes-ui/lib/components/TextInfo";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| children*	 | React.ReactNode, string	 |  | Define the text to show |
+| ignoreTrans | boolean	 |  | Ignores translation |
+| textStyle	 | primary, uccess, danger, warning, simple | default | Style the text |
+| hugeness | string | small | Set the size of the text |

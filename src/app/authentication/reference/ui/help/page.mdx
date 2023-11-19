@@ -1,0 +1,21 @@
+# Help Popover
+See pop over by hovering over it, click on it, and focus on it.
+ ```tsx
+<>
+	<HelpPopover title="Help title" trigger="hover">Help information</HelpPopover> 
+	<HelpPopover title="Help title" trigger="click">Help information</HelpPopover> 
+	<HelpPopover title="Help title" trigger="focus">Help information</HelpPopover>
+</>
+ ```
+
+## **API**
+
+```tsx
+import HelpPopover from "erxes-ui/lib/components/HelpPopover";
+```
+* required prop
+
+| NAME | TYPE | DEFAULT | DESCRIPTION |
+| ---| --- | ---| --- |
+| title	 | string |  | Define title of help |
+| trigger | hover, click, focus | click | Triggers the help information |

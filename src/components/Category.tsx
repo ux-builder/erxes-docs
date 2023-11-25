@@ -1,3 +1,4 @@
+
 'use client'
 
 import Link from 'next/link'
@@ -41,6 +42,7 @@ const resources: Array<Category> = [
       ],
     },
   },
+/*
   {
     href: '/quickstart/deployment/deploymentDockerCompose',
     name: 'By Docker Compose',
@@ -52,6 +54,7 @@ const resources: Array<Category> = [
       squares: [[0, 1]],
     },
   },
+*/
 ]
 
 function ResourceIcon({ icon: Icon }: { icon: Category['icon'] }) {
@@ -156,3 +159,4 @@ export function Category() {
     </div>
   )
 }
+

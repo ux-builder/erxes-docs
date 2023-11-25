@@ -3,13 +3,43 @@ import { Heading } from '@/components/Heading'
 
 const guides = [
   {
+    href: '/groups/products',
+    name: 'Pos',
+    description: '',
+  },
+  {
+    href: '/groups/products',
+    name: 'Health & Safety Software',
+    description: '',
+  },
+  {
+    href: '/groups/products',
+    name: 'Messenger',
+    description: '',
+  },
+  {
+    href: '/groups/products',
+    name: 'Knowledge Base',
+    description: '',
+  },
+  {
+    href: '/groups/products',
+    name: 'Sentimental Analysis',
+    description: '',
+  },
+  {
+    href: '/groups/products',
+    name: 'Web Builder',
+    description: '',
+  },
+  {
     href: '/groups/products/script',
     name: 'Script installation',
     description: 'In the case of web messenger, knowledgebase, popups, you have to install some scripts on your website code.',
   },
   {
     href: '/groups/products/exm',
-    name: 'Employee Experience Management',
+    name: 'EXM',
     description:
       'Employee Experience Management',
   },
@@ -41,3 +71,4 @@ export function Script() {
     </div>
   )
 }
+

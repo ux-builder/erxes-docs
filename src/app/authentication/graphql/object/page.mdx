@@ -2,69 +2,51 @@
 
 <Row>
   <Col>
-  ## Absence
+  ## <font color="#6ee7b7">Absence</font>
   **Fields**
     <Properties>
       <Property name="_id" type="String">
-        The last ID on the 
       </Property>
       <Property name="attachment" type="Attachment">
-        The first ID on the page
       </Property>
       <Property name="endTime" type="Date">
-        Limit the number
       </Property>
       <Property name="explanation" type="String">
-        Limit the number
       </Property>
       <Property name="holidayName" type="String">
-        Limit the number
       </Property>
       <Property name="reason" type="String">
-        Limit the number
       </Property>
       <Property name="solved" type="Boolean">
-        Limit the number
       </Property>
       <Property name="startTime" type="Date">
-        Limit the number
       </Property>
       <Property name="status" type="String">
-        Limit the number
       </Property>
       <Property name="user" type="User">
-        Limit the number
       </Property>
     </Properties>
 
   </Col>
   <Col>
-## AbsenceType
+  ## <font color="#6ee7b7">AbsenceType</font>
   **Fields**
     <Properties>
       <Property name="_id" type="String">
-        The last ID on the 
       </Property>
       <Property name="attachRequired" type="Boolean">
-        The first ID on the page
       </Property>
       <Property name="explRequired" type="Boolean">
-        Limit the number
       </Property>
       <Property name="name" type="String">
-        Limit the number
       </Property>
       <Property name="requestHoursPerDay" type="Float">
-        Limit the number
       </Property>
       <Property name="requestTimeType" type="String">
-        Limit the number
       </Property>
       <Property name="requestType" type="String">
-        Limit the number
       </Property>
       <Property name="shiftRequest" type="Boolean">
-        Limit the number
       </Property>
     </Properties>
   </Col>
@@ -74,70 +56,1297 @@
 
 <Row>
   <Col>
-  ## Action
+  ## <font color="#6ee7b7">Action</font>
   **Fields**
     <Properties>
       <Property name="config" type="JSON">
-        The last ID on the 
       </Property>
       <Property name="description" type="String">
-        The first ID on the page
       </Property>
       <Property name="icon" type="String">
-        Limit the number
       </Property>
       <Property name="id" type="String">
-        Limit the number
       </Property>
       <Property name="label" type="String">
-        Limit the number
       </Property>
       <Property name="nextActionId" type="String">
-        Limit the number
       </Property>
       <Property name="style" type="JSON">
-        Limit the number
       </Property>
       <Property name="type" type="String">
-        Limit the number
       </Property>
     </Properties>
 
   </Col>
   <Col>
-## ActivityLog
+## <font color="#6ee7b7">ActivityLog</font>
   **Fields**
     <Properties>
       <Property name="_id" type="String">
-        The last ID on the 
       </Property>
       <Property name="action" type="String">
-        The first ID on the page
       </Property>
       <Property name="content" type="JSON">
-        Limit the number
       </Property>
       <Property name="contentDetail" type="JSON">
-        Limit the number
       </Property>
       <Property name="contentId" type="String">
-        Limit the number
       </Property>
       <Property name="contentType" type="String">
-        Limit the number
       </Property>
       <Property name="contentTypeDetail" type="JSON">
-        Limit the number
       </Property>
       <Property name="createdAt" type="Date">
-        Limit the number
       </Property>
       <Property name="createdBy" type="String">
-        Limit the number
       </Property>
       <Property name="createdByDetail" type="JSON">
-        Limit the number
       </Property>
     </Properties>
-  </Col>
+
+## <font color="#6ee7b7">ActivityLogByAction</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String">
+      </Property>
+      <Property name="action" type="String">
+      </Property>
+      <Property name="content" type="JSON">
+      </Property>
+      <Property name="contentId" type="String">
+      </Property>
+      <Property name="contentType" type="String">
+      </Property>
+      <Property name="contentTypeDetail" type="JSON">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="createdBy" type="String">
+      </Property>
+      <Property name="createdUser" type="User">
+      </Property>
+    </Properties>
+## <font color="#6ee7b7">ActivityLogByActionResponse</font>
+**Fields**
+    <Properties>
+      <Property name="activityLogs" type="[ActivityLogByAction]">
+      </Property>
+      <Property name="totalCount" type="Int">
+      </Property>
+    </Properties>
+## <font color="#6ee7b7">App</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String">
+      </Property>
+      <Property name="accessToken" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="expireDate" type="Date">
+      </Property>
+      <Property name="isEnabled" type="Boolean">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="refreshToken" type="String">
+      </Property>
+      <Property name="userGroupId" type="String">
+      </Property>
+      <Property name="userGroupName" type="String">
+      </Property>
+    </Properties>
+## <font color="#6ee7b7">Asset</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="assetCount" type="Int">
+      </Property>
+      <Property name="attachment" type="Attachment">
+      </Property>
+      <Property name="attachmentMore" type="[Attachment]">
+      </Property>
+      <Property name="category" type="AssetCategory">
+      </Property>
+      <Property name="categoryId" type="String">
+      </Property>
+      <Property name="childAssetCount" type="Int">
+      </Property>
+      <Property name="code" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="customFieldsData" type="JSON">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="isRoot" type="Boolean">
+      </Property>
+      <Property name="kbArticleIds" type="[String]">
+      </Property>
+      <Property name="knowledgeData" type="JSON">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="order" type="String">
+      </Property>
+      <Property name="parent" type="Asset">
+      </Property>
+      <Property name="parentId" type="String">
+      </Property>
+      <Property name="unitPrice" type="Float">
+      </Property>
+      <Property name="vendor" type="Company">
+      </Property>
+      <Property name="vendorId" type="String">
+      </Property>
+    </Properties>
+## <font color="#6ee7b7">AssetCategory</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="assetCount" type="Int">
+      </Property>
+      <Property name="attachment" type="Attachment">
+      </Property>
+      <Property name="code" type="String!">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="isRoot" type="Boolean">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="order" type="String!">
+      </Property>
+      <Property name="parentId" type="String">
+      </Property>
+      <Property name="status" type="String">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">Assignment</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String">
+      </Property>
+      <Property name="campaign" type="JSON">
+      </Property>
+      <Property name="campaignId" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="owner" type="JSON">
+      </Property>
+      <Property name="ownerId" type="String">
+      </Property>
+      <Property name="ownerType" type="String">
+      </Property>
+      <Property name="segmentIds" type="[String]">
+      </Property>
+      <Property name="status" type="String">
+      </Property>
+      <Property name="usedAt" type="Date">
+      </Property>
+      <Property name="voucherCampaignId" type="String">
+      </Property>
+      <Property name="voucherId" type="String">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">AssignmentCampaign</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String">
+      </Property>
+      <Property name="attachment" type="Attachment">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="createdBy" type="String">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="endDate" type="Date">
+      </Property>
+      <Property name="finishDateOfUse" type="Date">
+      </Property>
+      <Property name="modifiedAt" type="Date">
+      </Property>
+      <Property name="modifiedBy" type="String">
+      </Property>
+      <Property name="segmentIds" type="[String]">
+      </Property>
+      <Property name="startDate" type="Date">
+      </Property>
+      <Property name="status" type="String">
+      </Property>
+      <Property name="title" type="String">
+      </Property>
+      <Property name="voucherCampaignId" type="String">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">AssignmentMain</font>
+**Fields**
+    <Properties>
+      <Property name="list" type="[Assignment]">
+      </Property>
+      <Property name="totalCount" type="Int">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">Attachment</font>
+**Fields**
+    <Properties>
+      <Property name="duration" type="Float">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="size" type="Float">
+      </Property>
+      <Property name="type" type="String">
+      </Property>
+      <Property name="url" type="String!">
+      </Property>
+      </Properties>
+
+## <font color="#6ee7b7">Automation</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="actions" type="[Action]">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="createdBy" type="String">
+      </Property>
+      <Property name="createdUser" type="User">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="status" type="String">
+      </Property>
+      <Property name="triggers" type="[Trigger]">
+      </Property>
+      <Property name="updatedAt" type="Date">
+      </Property>
+      <Property name="updatedBy" type="String">
+      </Property>
+      <Property name="updatedUser" type="User">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">AutomationHistory</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="actions" type="JSON">
+      </Property>
+      <Property name="automationId" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="modifiedAt" type="Date">
+      </Property>
+      <Property name="nextActionId" type="String">
+      </Property>
+      <Property name="startWaitingDate" type="Date">
+      </Property>
+      <Property name="status" type="String">
+      </Property>
+      <Property name="target" type="JSON">
+      </Property>
+      <Property name="targetId" type="String">
+      </Property>
+       <Property name="triggerConfig" type="JSON">
+      </Property>
+      <Property name="triggerId" type="String">
+      </Property>
+      <Property name="triggerType" type="String">
+      </Property>
+      <Property name="waitingActionId" type="String">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">AutomationNote</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="actionId" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="createdUser" type="User">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="triggerId" type="String">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">AutomationsListResponse</font>
+**Fields**
+    <Properties>
+      <Property name="list" type="[Automation]">
+      </Property>
+      <Property name="totalCount" type="Float">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">automationsTotalCountResponse</font>
+**Fields**
+    <Properties>
+      <Property name="byStatus" type="Int">
+      </Property>
+      <Property name="total" type="Int">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">AvgEmailStats</font>
+**Fields**
+    <Properties>
+      <Property name="avgBouncePercent" type="Float">
+      </Property>
+      <Property name="avgClickPercent" type="Float">
+      </Property>
+      <Property name="avgComplaintPercent" type="Float">
+      </Property>
+      <Property name="avgDeliveryPercent" type="Float">
+      </Property>
+      <Property name="avgOpenPercent" type="Float">
+      </Property>
+      <Property name="avgRejectPercent" type="Float">
+      </Property>
+      <Property name="avgRenderingFailurePercent" type="Float">
+      </Property>
+      <Property name="avgSendPercent" type="Float">
+      </Property>
+      <Property name="total" type="Float">
+      </Property>
+    </Properties>
+</Col>
 </Row>
+
+<Row>
+  <Col>
+## <font color="#6ee7b7">Board</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="order" type="Int">
+      </Property>
+      <Property name="pipelines" type="[Pipeline]">
+      </Property>
+      <Property name="type" type="String">
+      </Property>
+    </Properties>
+  
+## <font color="#6ee7b7">BoardCount</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String">
+      </Property>
+      <Property name="count" type="Int">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">BookingData</font>
+**Fields**
+    <Properties>
+      <Property name="bookingFormText" type="String">
+      </Property>
+      <Property name="categoryTree" type="JSON">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="displayBlock" type="JSON">
+      </Property>
+      <Property name="image" type="Attachment">
+      </Property>
+      <Property name="modifiedAt" type="Date">
+      </Property>
+      <Property name="mainProductCategory" type="ProductCategory">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="navigationText" type="String">
+      </Property>
+      <Property name="productCategoryId" type="String">
+      </Property>
+      <Property name="productFieldIds" type="[String]">
+      </Property>
+       <Property name="style" type="JSON">
+      </Property>
+      <Property name="userFilters" type="[String]">
+      </Property>
+      <Property name="viewCount" type="Int">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">BookingProduct</font>
+**Fields**
+    <Properties>
+      <Property name="fields" type="[Field]">
+      </Property>
+      <Property name="product" type="Product">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">Branch</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="address" type="String">
+      </Property>
+      <Property name="children" type="Branch">
+      </Property>
+      <Property name="code" type="String">
+      </Property>
+      <Property name="coordinate" type="Coordinate">
+      </Property>
+      <Property name="email" type="String">
+      </Property>
+      <Property name="image" type="Attachment">
+      </Property>
+      <Property name="links" type="JSON">
+      </Property>
+      <Property name="order" type="String">
+      </Property>
+      <Property name="parent" type="Branch">
+      </Property>
+      <Property name="parentId" type="String">
+      </Property>
+       <Property name="phoneNumber" type="Int">
+      </Property>
+      <Property name="radius" type="Int">
+      </Property>
+      <Property name="supervisor" type="User">
+      </Property>
+       <Property name="supervisorId" type="String">
+      </Property>
+      <Property name="title" type="String">
+      </Property>
+       <Property name="userCount" type="Int">
+      </Property>
+      <Property name="userIds" type="String">
+      </Property>
+      <Property name="users" type="User">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">BranchListQueryResponse</font>
+**Fields**
+    <Properties>
+      <Property name="list" type="Branch">
+      </Property>
+      <Property name="totalCount" type="Int">
+      </Property>
+      <Property name="totalUsersCount" type="Int">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">Brand</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="code" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="emailConfig" type="JSON">
+      </Property>
+      <Property name="memberIds" type="[String]">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="userId" type="String">
+      </Property>
+    </Properties>
+
+</Col>
+</Row>
+
+<Row>
+  <Col>
+## <font color="#6ee7b7">Callout</font>
+**Fields**
+    <Properties>
+      <Property name="body" type="String">
+      </Property>
+      <Property name="buttonText" type="String">
+      </Property>
+      <Property name="featuredImage" type="String">
+      </Property>
+      <Property name="skip" type="Boolean">
+      </Property>
+      <Property name="title" type="String">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">Channel</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="conversationCount" type="Int">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="integrationIds" type="[String]">
+      </Property>
+      <Property name="integrations" type="[Integration]">
+      </Property>
+      <Property name="memberIds" type="[String]">
+      </Property>
+      <Property name="members" type="[User]">
+      </Property>
+       <Property name="name" type="String!">
+      </Property>
+      <Property name="openConversationCount" type="Int">
+      </Property>
+      <Property name="userId" type="String!">
+      </Property>
+    </Properties>
+
+
+## <font color="#6ee7b7">Chat</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="createdUser" type="User">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="isSeen" type="Boolean">
+      </Property>
+      <Property name="lastMessage" type="ChatMessage">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+       <Property name="participantUsers" type="[ChatUser]">
+      </Property>
+      <Property name="type" type="String">
+      </Property>
+      <Property name="visibility" type="String">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">ChatMessage</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="attachments" type="JSON">
+      </Property>
+      <Property name="content" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="createdUser" type="User">
+      </Property>
+      <Property name="isPinned" type="Boolean">
+      </Property>
+      <Property name="mentionedUserIds" type="[String]">
+      </Property>
+       <Property name="relatedMessage" type="ChatMessage">
+      </Property>
+      <Property name="seenList" type="[SeenInfo]">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">ChatMessageResponse</font>
+**Fields**
+    <Properties>
+      <Property name="list" type="[ChatMessage]">
+      </Property>
+      <Property name="totalCount" type="Int">
+      </Property>
+     </Properties>
+
+## <font color="#6ee7b7">ChatResponse</font>
+**Fields**
+    <Properties>
+      <Property name="list" type="[Chat]">
+      </Property>
+      <Property name="totalCount" type="Int">
+      </Property>
+     </Properties>
+
+## <font color="#6ee7b7">ChatTypingStatusChangedResponse</font>
+**Fields**
+    <Properties>
+      <Property name="chatId" type="String!">
+      </Property>
+      <Property name="userId" type="String">
+      </Property>
+     </Properties>
+    
+## <font color="#6ee7b7">ChatUser</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="branches" type="[Branch]">
+      </Property>
+      <Property name="departments" type="[Departments]">
+      </Property>
+      <Property name="details" type="ChatUserDetails">
+      </Property>
+      <Property name="email" type="String">
+      </Property>
+      <Property name="employeeId" type="String">
+      </Property>
+      <Property name="isAdmin" type="Boolean">
+      </Property>
+       <Property name="username" type="String">
+      </Property>
+    </Properties>
+  
+## <font color="#6ee7b7">ChatUserDetails</font>
+**Fields**
+    <Properties>
+      <Property name="avatar" type="String">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="fullName" type="String">
+      </Property>
+      <Property name="operatorPhone" type="String">
+      </Property>
+      <Property name="position" type="String">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">Checklist</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="contentType" type="String">
+      </Property>
+      <Property name="contentTypeId" type="String">
+      </Property>
+      <Property name="createdDate" type="Date">
+      </Property>
+      <Property name="createdUserId" type="String">
+      </Property>
+        <Property name="items" type="[ChecklistItem]">
+      </Property>
+      <Property name="percent" type="Float">
+      </Property>
+      <Property name="title" type="String">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">ChecklistItem</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="checklistId" type="String">
+      </Property>
+      <Property name="content" type="String">
+      </Property>
+      <Property name="isChecked" type="Boolean">
+      </Property>
+      <Property name="order" type="Int">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">CheckReport</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="endDate" type="String">
+      </Property>
+      <Property name="startDate" type="String">
+      </Property>
+      <Property name="userId" type="Boolean">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">ClientPortal</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="dealBoardId" type="String">
+      </Property>
+      <Property name="dealLabel" type="String">
+      </Property>
+      <Property name="dealPipelineId" type="String">
+      </Property>
+      <Property name="dealStageId" type="Boolean">
+      </Property>
+      <Property name="dealToggle" type="Boolean">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+       <Property name="dnsStatus" type="String">
+      </Property>
+      <Property name="domain" type="String">
+      </Property>
+      <Property name="footerHtml" type="String">
+      </Property>
+         <Property name="googleCredentials" type="JSON">
+      </Property>
+      <Property name="headerHtml" type="String">
+      </Property>
+      <Property name="icon" type="String">
+      </Property>
+      <Property name="kbToggle" type="Boolean">
+      </Property>
+       <Property name="knowledgeBaseLabel" type="String">
+      </Property>
+      <Property name="knowledgeBaseTopicId" type="String">
+      </Property>
+      <Property name="logo" type="String">
+      </Property>
+         <Property name="mailConfig" type="[MailConfig]">
+      </Property>
+      <Property name="manualVerificationConfig" type="[manualVerificationConfig]">
+      </Property>
+      <Property name="messengerBrandCode" type="String">
+      </Property>
+      <Property name="mobileResponsive" type="Boolean">
+      </Property>
+       <Property name="name" type="String!">
+      </Property>
+      <Property name="otpConfig" type="[OtpConfig]">
+      </Property>
+      <Property name="publicTaskToggle" type="Boolean">
+      </Property>
+      <Property name="styles" type="String">
+      </Property>
+      <Property name="taskBoardId" type="String">
+      </Property>
+      <Property name="taskLabel" type="String">
+      </Property>
+      <Property name="taskPipelineId" type="String">
+      </Property>
+      <Property name="taskPublicBoardId" type="String">
+      </Property>
+      <Property name="taskPublicPipelineId" type="String">
+      </Property>
+      <Property name="taskStageId" type="String">
+      </Property>
+      <Property name="taskToggle" type="Boolean">
+      </Property>
+      <Property name="ticketBoardId" type="String">
+      </Property>
+      <Property name="ticketLabel" type="String">
+      </Property>
+      <Property name="ticketPipelineId" type="String">
+      </Property>
+      <Property name="ticketStageId" type="String">
+      </Property>
+       <Property name="ticketToggle" type="Boolean">
+      </Property>
+      <Property name="url" type="String">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">ClientPortalComment</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="content" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="createdUser" type="JSON">
+      </Property>
+        <Property name="type" type="String">
+      </Property>
+      <Property name="typeId" type="String">
+      </Property>
+      <Property name="userId" type="String">
+      </Property>
+      <Property name="userType" type="String">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">ClientPortalNotification</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="clientPortalId" type="String">
+      </Property>
+      <Property name="content" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="createdUser" type="User">
+      </Property>
+      <Property name="eventData" type="JSON">
+      </Property>
+      <Property name="isRead" type="Boolean">
+      </Property>
+      <Property name="link" type="String">
+      </Property>
+      <Property name="notifType" type="NotificationType">
+      </Property>
+      <Property name="receiver" type="String">
+      </Property>
+      <Property name="title" type="String">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">ClientPortalUser</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="dealBoardId" type="String">
+      </Property>
+      <Property name="avatar" type="ClientPortal">
+      </Property>
+      <Property name="clientPortal" type="String">
+      </Property>
+      <Property name="clientPortalId" type="Boolean">
+      </Property>
+      <Property name="code" type="Boolean">
+      </Property>
+      <Property name="company" type="Company">
+      </Property>
+       <Property name="companyName" type="String">
+      </Property>
+      <Property name="companyRegistrationNumber" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+         <Property name="customFieldsData" type="JSON">
+      </Property>
+      <Property name="customFieldsDataByFieldCode" type="JSON">
+      </Property>
+      <Property name="customer" type="Customer">
+      </Property>
+      <Property name="email" type="String">
+      </Property>
+       <Property name="erxesCompanyId" type="String">
+      </Property>
+      <Property name="erxesCustomerId" type="String">
+      </Property>
+      <Property name="firstName" type="String">
+      </Property>
+         <Property name="isEmailVerified" type="Boolean">
+      </Property>
+      <Property name="isOnline" type="Boolean">
+      </Property>
+      <Property name="isPhoneVerified" type="Boolean">
+      </Property>
+      <Property name="lastName" type="Boolean">
+      </Property>
+       <Property name="lastSeenAt" type="Date">
+      </Property>
+      <Property name="links" type="JSON">
+      </Property>
+      <Property name="modifiedAt" type="Date">
+      </Property>
+      <Property name="notificationSettings" type="UserNotificationSettings">
+      </Property>
+      <Property name="ownerId" type="String">
+      </Property>
+      <Property name="password" type="String">
+      </Property>
+      <Property name="phone" type="String">
+      </Property>
+      <Property name="sessionCount" type="Int">
+      </Property>
+      <Property name="type" type="String">
+      </Property>
+      <Property name="username" type="String">
+      </Property>
+      <Property name="verificationRequest" type="VerificationRequest">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">clientPortalUsersListResponse</font>
+**Fields**
+    <Properties>
+      <Property name="list" type="[ClientPortalUser]">
+      </Property>
+      <Property name="totalCount" type="Float">
+      </Property>
+      </Properties>
+
+## <font color="#6ee7b7">ColumnConfigItem</font>
+**Fields**
+    <Properties>
+      <Property name="label" type="String">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="order" type="Int">
+      </Property>
+      </Properties>
+      
+## <font color="#6ee7b7">Comment</font>
+
+## <font color="#6ee7b7">CommentResponse</font>
+
+## <font color="#6ee7b7">CompaniesListResponse</font>
+
+## <font color="#6ee7b7">Company</font>
+
+## <font color="#6ee7b7">Config</font>
+
+## <font color="#6ee7b7">ConfigDay</font>
+
+## <font color="#6ee7b7">Conformity</font>
+
+## <font color="#6ee7b7">Conversation</font>
+
+## <font color="#6ee7b7">ConversationAdminMessageInsertedResponse</font>
+
+## <font color="#6ee7b7">ConversationChangedResponse</font>
+
+## <font color="#6ee7b7">ConversationClientTypingStatusChangedResponse</font>
+
+## <font color="#6ee7b7">ConversationDetailResponse</font>
+
+## <font color="#6ee7b7">ConversationMessage</font>
+
+## <font color="#6ee7b7">ConvertTo</font>
+
+## <font color="#6ee7b7">Coordinate</font>
+
+## <font color="#6ee7b7">Customer</font>
+
+## <font color="#6ee7b7">CustomerConnectionChangedResponse</font>
+
+## <font color="#6ee7b7">CustomersListResponse</font>
+
+</Col>
+</Row>
+<Row>
+  <Col>
+## <font color="#6ee7b7">Dashboard</font>
+
+## <font color="#6ee7b7">DashboardItem</font>
+
+## <font color="#6ee7b7">DashboardListResponse</font>
+
+## <font color="#6ee7b7">Deal</font>
+
+## <font color="#6ee7b7">DealListItem</font>
+
+## <font color="#6ee7b7">DealTotalCurrency</font>
+
+## <font color="#6ee7b7">DeliveryList</font>
+
+## <font color="#6ee7b7">DeliveryReport</font>
+
+## <font color="#6ee7b7">Department</font>
+
+## <font color="#6ee7b7">DepartmentListQueryResponse</font>
+
+## <font color="#6ee7b7">DeviceConfig</font>
+
+## <font color="#6ee7b7">DeviceConfigsListResponse</font>
+
+## <font color="#6ee7b7">Document</font>
+
+## <font color="#6ee7b7">DocumentEditorAttribute</font>
+
+## <font color="#6ee7b7">Donate</font>
+
+## <font color="#6ee7b7">DonateCampaign</font>
+
+## <font color="#6ee7b7">DonateMain</font>
+</Col>
+</Row>
+<Row>
+  <Col>
+## <font color="#6ee7b7">Email</font>
+
+## <font color="#6ee7b7">EmailDelivery</font>
+
+## <font color="#6ee7b7">EmailDeliveryList</font>
+
+## <font color="#6ee7b7">EmailTemplate</font>
+
+## <font color="#6ee7b7">EngageData</font>
+
+## <font color="#6ee7b7">EngageDeliveryReport</font>
+
+## <font color="#6ee7b7">EngageLog</font>
+
+## <font color="#6ee7b7">EngageMessage</font>
+
+## <font color="#6ee7b7">EngageMessageSms</font>
+
+## <font color="#6ee7b7">EngageScheduleDate</font>
+
+## <font color="#6ee7b7">ENV</font>
+
+## <font color="#6ee7b7">Error</font>
+
+## <font color="#6ee7b7">Exm</font>
+
+## <font color="#6ee7b7">ExmAppearance</font>
+
+## <font color="#6ee7b7">ExmCeremonyData</font>
+
+## <font color="#6ee7b7">ExmEventData</font>
+
+## <font color="#6ee7b7">ExmFeature</font>
+
+## <font color="#6ee7b7">ExmFeed</font>
+
+## <font color="#6ee7b7">ExmFeedResponse</font>
+
+## <font color="#6ee7b7">ExmList</font>
+
+## <font color="#6ee7b7">ExmThank</font>
+
+## <font color="#6ee7b7">ExmThankResponse</font>
+
+## <font color="#6ee7b7">ExmWelcomeContent</font>
+## <font color="#6ee7b7">ExportHistory</font>
+## <font color="#6ee7b7">ExportHistoryList</font>
+
+</Col>
+</Row>
+<Row>
+  <Col>
+## <font color="#6ee7b7">FacebookComment</font>
+## <font color="#6ee7b7">FacebookConversationMessage</font>
+## <font color="#6ee7b7">FacebookCustomer</font>
+## <font color="#6ee7b7">FacebookPost</font>
+## <font color="#6ee7b7">Field</font>
+## <font color="#6ee7b7">FieldsGroup</font>
+## <font color="#6ee7b7">Form</font>
+## <font color="#6ee7b7">FormCode</font>
+## <font color="#6ee7b7">FormConnectResponse</font>
+## <font color="#6ee7b7">FormSubmission</font>
+</Col>
+</Row>
+<Row>
+  <Col>
+## <font color="#6ee7b7">GrowthHack</font>
+</Col>
+</Row>
+<Row>
+  <Col>
+## <font color="#6ee7b7">IMap</font>
+## <font color="#6ee7b7">IMapIntegration</font>
+## <font color="#6ee7b7">ImportHistory</font>
+## <font color="#6ee7b7">ImportHistoryList</font>
+## <font color="#6ee7b7">InboxField</font>
+## <font color="#6ee7b7">Integration</font>
+## <font color="#6ee7b7">integrationsGetUsedTypes</font>
+## <font color="#6ee7b7">integrationsTotalCount</font>
+## <font color="#6ee7b7">InternalNote</font>
+## <font color="#6ee7b7">InternalNotesByAction</font>
+## <font color="#6ee7b7">Invoice</font>
+## <font color="#6ee7b7">invoicesTotalCount</font>
+## <font color="#6ee7b7">ItemSourceLocation</font>
+## <font color="#6ee7b7">IUserAbsenceInfo</font>
+</Col>
+</Row>
+<Row>
+  <Col>
+## <font color="#6ee7b7">KnowledgebaseApp</font>
+## <font color="#6ee7b7">KnowledgeBaseArticle</font>
+## <font color="#6ee7b7">KnowledgeBaseCategory</font>
+## <font color="#6ee7b7">KnowledgeBaseLoader</font>
+## <font color="#6ee7b7">KnowledgeBaseParentCategory</font>
+## <font color="#6ee7b7">KnowledgeBaseTopic</font>
+</Col>
+</Row>
+<Row>
+  <Col>
+
+## <font color="#6ee7b7">LeadApp</font>
+## <font color="#6ee7b7">List</font>
+## <font color="#6ee7b7">LocationOption</font>
+## <font color="#6ee7b7">Log</font>
+## <font color="#6ee7b7">Logic</font>
+## <font color="#6ee7b7">LogList</font>
+## <font color="#6ee7b7">Lottery</font>
+## <font color="#6ee7b7">LotteryCampaign</font>
+## <font color="#6ee7b7">LotteryMain</font>
+## <font color="#6ee7b7">Loyalty</font>
+## <font color="#6ee7b7">LoyaltyConfig</font>
+</Col>
+</Row>
+<Row>
+  <Col>
+
+## <font color="#6ee7b7">MailAttachment</font>
+## <font color="#6ee7b7">MailConfig</font>
+## <font color="#6ee7b7">MailData</font>
+## <font color="#6ee7b7">ManualVerificationConfig</font>
+## <font color="#6ee7b7">MessengerApp</font>
+## <font color="#6ee7b7">MessengerAppsResponse</font>
+## <font color="#6ee7b7">MessengerConnectResponse</font>
+## <font color="#6ee7b7">MessengerSupportersResponse</font>
+## <font color="#6ee7b7">ModifiedNote</font>
+## <font color="#6ee7b7">Movement</font>
+## <font color="#6ee7b7">MovementItem</font>
+</Col>
+</Row>
+
+<Row>
+  <Col>
+
+## <font color="#6ee7b7">Notification</font>
+## <font color="#6ee7b7">NotificationConfig</font>
+## <font color="#6ee7b7">NotificationConfiguration</font>
+</Col>
+</Row>
+<Row>
+  <Col>
+
+## <font color="#6ee7b7">ObjectListConfig</font>
+## <font color="#6ee7b7">OnboardingGetAvailableFeaturesResponse</font>
+## <font color="#6ee7b7">OnboardingHistory</font>
+## <font color="#6ee7b7">OnboardingNotification</font>
+## <font color="#6ee7b7">OTPConfig</font>
+
+</Col>
+</Row>
+<Row>
+  <Col>
+## <font color="#6ee7b7">PayDate</font>
+## <font color="#6ee7b7">Payment</font>
+## <font color="#6ee7b7">PaymentConfig</font>
+## <font color="#6ee7b7">PaymentConfigList</font>
+## <font color="#6ee7b7">paymentsTotalCount</font>
+## <font color="#6ee7b7">Permission</font>
+## <font color="#6ee7b7">PermissionAction</font>
+## <font color="#6ee7b7">PermissionModule</font>
+## <font color="#6ee7b7">Pipeline</font>
+## <font color="#6ee7b7">PipelineChangeResponse</font>
+## <font color="#6ee7b7">PipelineLabel</font>
+## <font color="#6ee7b7">PipelineTemplate</font>
+## <font color="#6ee7b7">PipelineTemplateStage</font>
+## <font color="#6ee7b7">Product</font>
+## <font color="#6ee7b7">ProductCategory</font>
+## <font color="#6ee7b7">ProductsConfig</font>
+</Col>
+</Row>
+<Row>
+  <Col>
+## <font color="#6ee7b7">Report</font>
+## <font color="#6ee7b7">ReportsListResponse</font>
+## <font color="#6ee7b7">RequestsListResponse</font>
+## <font color="#6ee7b7">ResponseTemplate</font>
+## <font color="#6ee7b7">RobotEntry</font>
+## <font color="#6ee7b7">Rule</font>
+</Col>
+</Row>
+<Row>
+  <Col>
+## <font color="#6ee7b7">SaveFormResponse</font>
+## <font color="#6ee7b7">Schedule</font>
+## <font color="#6ee7b7">ScheduleConfig</font>
+## <font color="#6ee7b7">ScheduleReport</font>
+## <font color="#6ee7b7">SchedulesListResponse</font>
+## <font color="#6ee7b7">SchemaField</font>
+## <font color="#6ee7b7">ScoreLog</font>
+## <font color="#6ee7b7">Script</font>
+## <font color="#6ee7b7">SeenInfo</font>
+## <font color="#6ee7b7">Segment</font>
+## <font color="#6ee7b7">ShiftsRequest</font>
+## <font color="#6ee7b7">Skill</font>
+## <font color="#6ee7b7">SkillType</font>
+## <font color="#6ee7b7">SmsDelivery</font>
+## <font color="#6ee7b7">SmsStatus</font>
+## <font color="#6ee7b7">Spin</font>
+## <font color="#6ee7b7">SpinCampaign</font>
+## <font color="#6ee7b7">SpinMain</font>
+## <font color="#6ee7b7">Stage</font>
+## <font color="#6ee7b7">Structure</font>
+## <font color="#6ee7b7">Styles</font>
+## <font color="#6ee7b7">Submission</font>
+## <font color="#6ee7b7">SuccessResult</font>
+</Col>
+</Row>
+<Row>
+  <Col>
+## <font color="#6ee7b7">Tag</font>
+## <font color="#6ee7b7">Task</font>
+## <font color="#6ee7b7">TaskListItem</font>
+## <font color="#6ee7b7">Ticket</font>
+## <font color="#6ee7b7">TicketListItem</font>
+## <font color="#6ee7b7">Timeclock</font>
+## <font color="#6ee7b7">TimeClocksListResponse</font>
+## <font color="#6ee7b7">Timelog</font>
+## <font color="#6ee7b7">TimelogListResponse</font>
+## <font color="#6ee7b7">TimeTrack</font>
+## <font color="#6ee7b7">TotalForType</font>
+## <font color="#6ee7b7">Trigger</font>
+</Col>
+</Row>
+<Row>
+  <Col>
+## <font color="#6ee7b7">Unit</font>
+## <font color="#6ee7b7">UnitListQueryResponse</font>
+## <font color="#6ee7b7">Uom</font>
+## <font color="#6ee7b7">User</font>
+## <font color="#6ee7b7">UserConversationListResponse</font>
+## <font color="#6ee7b7">UserDetailsType</font>
+## <font color="#6ee7b7">UserMovement</font>
+## <font color="#6ee7b7">UserNotificationSettings</font>
+## <font color="#6ee7b7">UserReport</font>
+## <font color="#6ee7b7">UsersGroup</font>
+## <font color="#6ee7b7">UserStatus</font>
+</Col>
+</Row>
+<Row>
+  <Col>
+## <font color="#6ee7b7">VerificationRequest</font>
+## <font color="#6ee7b7">VideoCallData</font>
+## <font color="#6ee7b7">Voucher</font>
+## <font color="#6ee7b7">VoucherCampaign</font>
+## <font color="#6ee7b7">VoucherMain</font>
+## <font color="#6ee7b7">WebbuilderContentType</font>
+## <font color="#6ee7b7">WebbuilderContentTypesList</font>
+## <font color="#6ee7b7">WebbuilderEntriesList</font>
+## <font color="#6ee7b7">WebbuilderEntry</font>
+## <font color="#6ee7b7">WebbuilderPage</font>
+## <font color="#6ee7b7">WebbuilderPagesList</font>
+## <font color="#6ee7b7">WebbuilderSite</font>
+## <font color="#6ee7b7">WebbuilderTemplate</font>
+## <font color="#6ee7b7">WebSiteApp</font>
+</Col>
+</Row>
+<Row>
+  <Col>
+## <font color="#6ee7b7">Zalo</font>
+## <font color="#6ee7b7">ZaloAccount</font>
+## <font color="#6ee7b7">ZaloAttachmentPayload</font>
+## <font color="#6ee7b7">ZaloAttachments</font>
+## <font color="#6ee7b7">ZaloConversationMessage</font>
+</Col>
+</Row>
+

@@ -8,6 +8,12 @@ const guides = [
     description: '',
   },
   {
+    href: '/groups',
+    name: 'Industries',
+    description:
+      '',
+  },
+  {
     href: '/groups/team',
     name: 'Teams',
     description:
@@ -41,3 +47,4 @@ export function Products() {
     </div>
   )
 }
+

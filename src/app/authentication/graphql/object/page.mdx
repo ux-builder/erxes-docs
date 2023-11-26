@@ -1009,91 +1009,976 @@
       </Properties>
       
 ## <font color="#6ee7b7">Comment</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String">
+      </Property>
+      <Property name="childCount" type="Int">
+      </Property>
+      <Property name="comment" type="String">
+      </Property>
+      <Property name="contentId" type="String">
+      </Property>
+      <Property name="contentType" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="createdUser" type="User">
+      </Property>
+      <Property name="parentId" type="String">
+      </Property>
+      <Property name="updatedAt" type="Date">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">CommentResponse</font>
+**Fields**
+    <Properties>
+      <Property name="list" type="[Comment]">
+      </Property>
+      <Property name="totalCount" type="Int">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">CompaniesListResponse</font>
+**Fields**
+    <Properties>
+      <Property name="list" type="[Company]">
+      </Property>
+      <Property name="totalCount" type="Float">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">Company</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="avatar" type="String">
+      </Property>
+      <Property name="businessType" type="String">
+      </Property>
+      <Property name="code" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="customFieldsData" type="JSON">
+      </Property>
+      <Property name="customFieldsDataByFieldCode" type="JSON">
+      </Property>
+      <Property name="customers" type="[Customer]">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+        <Property name="emails" type="[String]">
+      </Property>
+      <Property name="getTags" type="[Tag]">
+      </Property>
+      <Property name="industry" type="String">
+      </Property>
+      <Property name="isSubscribed" type="String">
+      </Property>
+      <Property name="links" type="JSON">
+      </Property>
+      <Property name="location" type="String">
+      </Property>
+      <Property name="mergedIds" type="[String]">
+      </Property>
+      <Property name="modifiedAt" type="Date">
+      </Property>
+      <Property name="names" type="[String]">
+      </Property>
+      <Property name="owner" type="User">
+      </Property>
+      <Property name="ownerId" type="String">
+      </Property>
+      <Property name="parentCompany" type="Company">
+      </Property>
+      <Property name="parentCompanyId" type="String">
+      </Property>
+      <Property name="phones" type="[String]">
+      </Property>
+      <Property name="plan" type="String">
+      </Property>
+      <Property name="primaryEmail" type="String">
+      </Property>
+      <Property name="primaryName" type="String">
+      </Property>
+      <Property name="primaryPhone" type="String">
+      </Property>
+        <Property name="score" type="Float">
+      </Property>
+      <Property name="size" type="Int">
+      </Property>
+      <Property name="tagIds" type="[String]">
+      </Property>
+      <Property name="trackedData" type="JSON">
+      </Property>
+      <Property name="website" type="String">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">Config</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="code" type="String!">
+      </Property>
+      <Property name="value" type="JSON">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">ConfigDay</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="configName" type="String">
+      </Property>
+      <Property name="configShiftEnd" type="String">
+      </Property>
+       <Property name="configShiftStart" type="String">
+      </Property>
+      <Property name="overnightShift" type="Boolean">
+      </Property>
+      <Property name="scheduleConfigId" type="String">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">Conformity</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="mainType" type="String">
+      </Property>
+      <Property name="mainTypeId" type="String">
+      </Property>
+       <Property name="relType" type="String">
+      </Property>
+      <Property name="relTypeId" type="String">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">Conversation</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="assignedUser" type="User">
+      </Property>
+      <Property name="assignedUserId" type="String">
+      </Property>
+      <Property name="bookingProductId" type="String">
+      </Property>
+      <Property name="callProAudio" type="String">
+      </Property>
+      <Property name="content" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="customFieldsData" type="JSON">
+      </Property>
+      <Property name="customer" type="Customer">
+      </Property>
+        <Property name="customerId" type="String">
+      </Property>
+      <Property name="idleTime" type="Float">
+      </Property>
+      <Property name="integration" type="Integration">
+      </Property>
+      <Property name="integrationId" type="String">
+      </Property>
+      <Property name="messageCount" type="Int">
+      </Property>
+      <Property name="messages" type="[ConversationMessage]">
+      </Property>
+      <Property name="number" type="Int">
+      </Property>
+      <Property name="operatorStatus" type="String">
+      </Property>
+      <Property name="participatedUserIds" type="[String]">
+      </Property>
+      <Property name="participatedUsers" type="[User]">
+      </Property>
+      <Property name="participatorCount" type="Int">
+      </Property>
+      <Property name="readUserIds" type="[String]">
+      </Property>
+      <Property name="status" type="String">
+      </Property>
+      <Property name="tagIds" type="[String]">
+      </Property>
+      <Property name="tags" type="[Tag]">
+      </Property>
+      <Property name="updatedAt" type="Date">
+      </Property>
+      <Property name="user" type="User">
+      </Property>
+      <Property name="userId" type="String">
+      </Property>
+        <Property name="videoCallData" type="VideoCallData">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">ConversationAdminMessageInsertedResponse</font>
+**Fields**
+    <Properties>
+      <Property name="customerId" type="String">
+      </Property>
+      <Property name="unreadCount" type="Int">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">ConversationChangedResponse</font>
+**Fields**
+    <Properties>
+      <Property name="conversationId" type="String!">
+      </Property>
+      <Property name="type" type="String!">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">ConversationClientTypingStatusChangedResponse</font>
+**Fields**
+    <Properties>
+      <Property name="conversationId" type="String!">
+      </Property>
+      <Property name="text" type="String">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">ConversationDetailResponse</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String">
+      </Property>
+      <Property name="isOnline" type="Boolean">
+      </Property>
+      <Property name="messages" type="[ConversationMessage]">
+      </Property>
+      <Property name="operatorStatus" type="String">
+      </Property>
+      <Property name="participatedUsers" type="[User]">
+      </Property>
+      <Property name="supporters" type="[User]">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">ConversationMessage</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="attachments" type="[Attachment]">
+      </Property>
+      <Property name="bookingWidgetData" type="JSON">
+      </Property>
+      <Property name="botData" type="JSON">
+      </Property>
+      <Property name="content" type="String">
+      </Property>
+      <Property name="contentType" type="String">
+      </Property>
+      <Property name="conversationId" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="customer" type="Customer">
+      </Property>
+        <Property name="customerId" type="String">
+      </Property>
+      <Property name="engageData" type="EngageData">
+      </Property>
+      <Property name="formWidgetData" type="JSON">
+      </Property>
+      <Property name="fromBot" type="Boolean">
+      </Property>
+      <Property name="internal" type="Boolean">
+      </Property>
+      <Property name="isCustomerRead" type="Boolean">
+      </Property>
+      <Property name="mailData" type="MailData">
+      </Property>
+      <Property name="mentionedUserIds" type="[String]">
+      </Property>
+      <Property name="messengerAppData" type="JSON">
+      </Property>
+      <Property name="mid" type="String">
+      </Property>
+      <Property name="user" type="[User]">
+      </Property>
+      <Property name="userId" type="String">
+      </Property>
+        <Property name="videoCallData" type="VideoCallData">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">ConvertTo</font>
+**Fields**
+    <Properties>
+      <Property name="dealUrl" type="String">
+      </Property>
+      <Property name="taskUrl" type="String">
+      </Property>
+      <Property name="ticketUrl" type="String">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">Coordinate</font>
+**Fields**
+    <Properties>
+      <Property name="latitude" type="String">
+      </Property>
+      <Property name="longitude" type="String">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">Customer</font>
 
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="avatar" type="String">
+      </Property>
+      <Property name="birthDate" type="Date">
+      </Property>
+      <Property name="code" type="String">
+      </Property>
+      <Property name="companies" type="[Company]">
+      </Property>
+      <Property name="conversations" type="[Conversation]">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="customFieldsData" type="JSON">
+      </Property>
+      <Property name="customFieldsDataByFieldCode" type="JSON">
+      </Property>
+        <Property name="department" type="String">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="email" type="String">
+      </Property>
+      <Property name="emailValidationStatus" type="String">
+      </Property>
+      <Property name="emails" type="[String]">
+      </Property>
+      <Property name="firstName" type="String">
+      </Property>
+      <Property name="getTags" type="[Tag]">
+      </Property>
+      <Property name="hasAuthority" type="String">
+      </Property>
+      <Property name="integration" type="[Integration]">
+      </Property>
+      <Property name="integrationId" type="String">
+      </Property>
+      <Property name="isOnline" type="Boolean">
+      </Property>
+      <Property name="isSubscribed" type="String">
+      </Property>
+        <Property name="lastName" type="String">
+      </Property>
+        <Property name="lastSeenAt" type="Date">
+      </Property>
+      <Property name="leadStatus" type="String">
+      </Property>
+        <Property name="links" type="JSON">
+      </Property>
+      <Property name="location" type="JSON">
+      </Property>
+      <Property name="middleName" type="String">
+      </Property>
+      <Property name="modifiedAt" type="Date">
+      </Property>
+      <Property name="owner" type="User">
+      </Property>
+      <Property name="ownerId" type="String">
+      </Property>
+      <Property name="phone" type="String">
+      </Property>
+      <Property name="phoneValidationStatus" type="String">
+      </Property>
+      <Property name="phones" type="[String]">
+      </Property>
+      <Property name="position" type="String">
+      </Property>
+      <Property name="primaryEmail" type="String">
+      </Property>
+      <Property name="primaryPhone" type="String">
+      </Property>
+      <Property name="remoteAddress" type="String">
+      </Property>
+      <Property name="score" type="Float">
+      </Property>
+      <Property name="sessionCount" type="Int">
+      </Property>
+        <Property name="sex" type="Int">
+      </Property>
+      <Property name="state" type="String">
+      </Property>
+      <Property name="tagIds" type="[String]">
+      </Property>
+      <Property name="trackedData" type="JSON">
+      </Property>
+      <Property name="urlVisits" type="[JSON]">
+      </Property>
+      <Property name="visitorContactInfo" type="JSON">
+      </Property>
+      </Properties>
+
 ## <font color="#6ee7b7">CustomerConnectionChangedResponse</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="status" type="String!">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">CustomersListResponse</font>
+**Fields**
+    <Properties>
+      <Property name="list" type="[Customer]">
+      </Property>
+      <Property name="totalCount" type="Float">
+      </Property>
+      </Properties>
 
 </Col>
 </Row>
+
 <Row>
   <Col>
 ## <font color="#6ee7b7">Dashboard</font>
-
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="childsDashboard" type="[Dashboard]">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="createdBy" type="String">
+      </Property>
+      <Property name="createdUser" type="User">
+      </Property>
+      <Property name="dashboardCount" type="Int">
+      </Property>
+      <Property name="departmentIds" type="[String]">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="getTags" type="[Tag]">
+      </Property>
+        <Property name="itemsCount" type="Int">
+      </Property>
+      <Property name="members" type="[User]">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="order" type="String">
+      </Property>
+      <Property name="parentId" type="String">
+      </Property>
+      <Property name="relatedIds" type="[String]">
+      </Property>
+      <Property name="selectedMemberIds" type="[String]">
+      </Property>
+      <Property name="tagIds" type="[String]">
+      </Property>
+      <Property name="updatedAt" type="Date">
+      </Property>
+      <Property name="updatedBy" type="String">
+      </Property>
+      <Property name="updatedUser" type="User">
+      </Property>
+      <Property name="visibility" type="String">
+      </Property>
+      </Properties>
 ## <font color="#6ee7b7">DashboardItem</font>
-
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="dashboardId" type="String">
+      </Property>
+      <Property name="isDateRange" type="Boolean">
+      </Property>
+      <Property name="layout" type="String">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="type" type="String">
+      </Property>
+      <Property name="vizState" type="String">
+      </Property>
+       </Properties>
 ## <font color="#6ee7b7">DashboardListResponse</font>
+**Fields**
+    <Properties>
+      <Property name="list" type="[Dashboard]">
+      </Property>
+      <Property name="totalCount" type="Float">
+      </Property>
+       </Properties>
 
 ## <font color="#6ee7b7">Deal</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="amount" type="JSON">
+      </Property>
+      <Property name="assignedUserIds" type="[String]">
+      </Property>
+      <Property name="assignedUsers" type="[User]">
+      </Property>
+      <Property name="attachments" type="[Attachment]">
+      </Property>
+      <Property name="boardId" type="String">
+      </Property>
+      <Property name="branchIds" type="[String]">
+      </Property>
+      <Property name="closeDate" type="Date">
+      </Property>
+      <Property name="companies" type="[Company]">
+      </Property>
+        <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="createdUser" type="User">
+      </Property>
+      <Property name="customFieldsData" type="JSON">
+      </Property>
+      <Property name="customProperties" type="JSON">
+      </Property>
+      <Property name="customers" type="[Customer]">
+      </Property>
+      <Property name="departmentIds" type="[String]">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="hasNotified" type="Boolean">
+      </Property>
+      <Property name="isComplete" type="Boolean">
+      </Property>
+      <Property name="isWatched" type="Boolean">
+      </Property>
+      <Property name="labelIds" type="[String]">
+      </Property>
+      <Property name="labels" type="[PipelineLabel]">
+      </Property>
+        <Property name="modifiedAt" type="Date">
+      </Property>
+        <Property name="modifiedBy" type="String">
+      </Property>
+      <Property name="name" type="String!">
+      </Property>
+        <Property name="number" type="String">
+      </Property>
+      <Property name="order" type="Float">
+      </Property>
+      <Property name="paymentsData" type="JSON">
+      </Property>
+      <Property name="pipeline" type="Pipeline">
+      </Property>
+      <Property name="priority" type="String">
+      </Property>
+      <Property name="products" type="JSON">
+      </Property>
+      <Property name="productsData" type="JSON">
+      </Property>
+      <Property name="reminderMinute" type="Int">
+      </Property>
+      <Property name="score" type="Float">
+      </Property>
+      <Property name="stage" type="[Stage]">
+      </Property>
+      <Property name="stageChangedDate" type="Date">
+      </Property>
+      <Property name="stageId" type="String">
+      </Property>
+      <Property name="startDate" type="Date">
+      </Property>
+      <Property name="status" type="String">
+      </Property>
+      <Property name="tagIds" type="[String]">
+      </Property>
+        <Property name="tags" type="[Tag]">
+      </Property>
+      <Property name="timeTrack" type="TimeTrack">
+      </Property>
+      <Property name="userId" type="String">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">DealListItem</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="amount" type="JSON">
+      </Property>
+      <Property name="assignedUsers" type="JSON">
+      </Property>
+      <Property name="branchIds" type="[String]">
+      </Property>
+      <Property name="branches" type="[Branch]">
+      </Property>
+      <Property name="closeDate" type="Date">
+      </Property>
+      <Property name="companies" type="JSON">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="customFieldsData" type="JSON">
+      </Property>
+        <Property name="customProperties" type="JSON">
+      </Property>
+
+      <Property name="customers" type="JSON">
+      </Property>
+      <Property name="departmentIds" type="[String]">
+      </Property>
+      <Property name="departments" type="[Department]">
+      </Property>
+      <Property name="hasNotified" type="Boolean">
+      </Property>
+      <Property name="isComplete" type="Boolean">
+      </Property>
+      <Property name="isWatched" type="Boolean">
+      </Property>
+      <Property name="labels" type="JSON">
+      </Property>
+      <Property name="modifiedAt" type="Date">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="number" type="String">
+      </Property>
+      <Property name="priority" type="JSON">
+      </Property>
+        <Property name="products" type="String">
+      </Property>
+        <Property name="relations" type="JSON">
+      </Property>
+      <Property name="score" type="Float">
+      </Property>
+        <Property name="stage" type="JSON">
+      </Property>
+      <Property name="stageChangedDate" type="Date">
+      </Property>
+      <Property name="startDate" type="Date">
+      </Property>
+      <Property name="status" type="String">
+      </Property>
+      <Property name="tagIds" type="[String]">
+      </Property>
+      </Properties>
 
 ## <font color="#6ee7b7">DealTotalCurrency</font>
+**Fields**
+    <Properties>
+      <Property name="amount" type="Float">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+       </Properties>
 
 ## <font color="#6ee7b7">DeliveryList</font>
+**Fields**
+    <Properties>
+      <Property name="list" type="[SmsDelivery]">
+      </Property>
+      <Property name="totalCount" type="Int">
+      </Property>
+       </Properties>
 
 ## <font color="#6ee7b7">DeliveryReport</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="customerId" type="String">
+      </Property>
+      <Property name="customerName" type="String">
+      </Property>
+      <Property name="email" type="String">
+      </Property>
+      <Property name="engage" type="EngageMessage">
+      </Property>
+      <Property name="mailId" type="String">
+      </Property>
+      <Property name="status" type="String">
+      </Property>
+       </Properties>
 
 ## <font color="#6ee7b7">Department</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="childCount" type="Int">
+      </Property>
+      <Property name="children" type="[Department]">
+      </Property>
+      <Property name="code" type="String">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="order" type="String">
+      </Property>
+      <Property name="parent" type="Department">
+      </Property>
+      <Property name="parentId" type="String">
+      </Property>
+         <Property name="supervisor" type="User">
+      </Property>
+      <Property name="supervisorId" type="String">
+      </Property>
+      <Property name="title" type="String">
+      </Property>
+      <Property name="userCount" type="Int">
+      </Property>
+      <Property name="userIds" type="[String]">
+      </Property>
+      <Property name="users" type="[User]">
+      </Property>
+</Properties>
 
 ## <font color="#6ee7b7">DepartmentListQueryResponse</font>
+**Fields**
+    <Properties>
+      <Property name="list" type="[Department]">
+      </Property>
+      <Property name="totalCount" type="Int">
+      </Property>
+      <Property name="totalUsersCount" type="Int">
+      </Property>
+       </Properties>
 
 ## <font color="#6ee7b7">DeviceConfig</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="deviceName" type="String">
+      </Property>
+      <Property name="extractRequired" type="Boolean">
+      </Property>
+      <Property name="serialNo" type="String">
+      </Property>
+       </Properties>
 
 ## <font color="#6ee7b7">DeviceConfigsListResponse</font>
+**Fields**
+    <Properties>
+      <Property name="list" type="[DeviceConfig]">
+      </Property>
+      <Property name="totalCount" type="Float">
+      </Property>
+  </Properties>
 
 ## <font color="#6ee7b7">Document</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="content" type="String">
+      </Property>
+      <Property name="contentType" type="String!">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="createdUserId" type="String">
+      </Property>
+      <Property name="name" type="String!">
+      </Property>
+      <Property name="replacer" type="String">
+      </Property>
+       </Properties>
 
 ## <font color="#6ee7b7">DocumentEditorAttribute</font>
+**Fields**
+    <Properties>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="value" type="String">
+      </Property>
+  </Properties>
 
 ## <font color="#6ee7b7">Donate</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String">
+      </Property>
+      <Property name="awardId" type="String">
+      </Property>
+      <Property name="campaign" type="JSON">
+      </Property>
+      <Property name="campaignId" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="donateScore" type="Float">
+      </Property>
+      <Property name="owner" type="JSON">
+      </Property>
+      <Property name="ownerId" type="String">
+      </Property>
+      <Property name="ownerType" type="String">
+      </Property>
+      <Property name="usedAt" type="Date">
+      </Property>
+      <Property name="voucherCampaignId" type="String">
+      </Property>
+      <Property name="voucherId" type="String">
+      </Property>
+       </Properties>
 
 ## <font color="#6ee7b7">DonateCampaign</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String">
+      </Property>
+      <Property name="attachment" type="Attachment">
+      </Property>
+      <Property name="awards" type="JSON">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="createdBy" type="String">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="donatesCount" type="Int">
+      </Property>
+      <Property name="endDate" type="Date">
+      </Property>
+      <Property name="finishDateOfUse" type="Date">
+      </Property>
+      <Property name="maxScore" type="Float">
+      </Property>
+      <Property name="modifiedAt" type="Date">
+      </Property>
+      <Property name="modifiedBy" type="String">
+      </Property>
+        <Property name="startDate" type="Date">
+      </Property>
+      <Property name="status" type="String">
+      </Property>
+      <Property name="title" type="String">
+      </Property>
+       </Properties>
 
 ## <font color="#6ee7b7">DonateMain</font>
+**Fields**
+    <Properties>
+      <Property name="list" type="[Donate]">
+      </Property>
+      <Property name="totalCount" type="Int">
+      </Property>
+  </Properties>
 </Col>
 </Row>
+
+
 <Row>
   <Col>
 ## <font color="#6ee7b7">Email</font>
+**Fields**
+    <Properties>
+      <Property name="email" type="String">
+      </Property>
+  </Properties>
 
 ## <font color="#6ee7b7">EmailDelivery</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="attachment" type="JSON">
+      </Property>
+      <Property name="bcc" type="[String]">
+      </Property>
+      <Property name="body" type="String">
+      </Property>
+      <Property name="cc" type="[String]">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="customerId" type="String">
+      </Property>
+      <Property name="from" type="String">
+      </Property>
+      <Property name="fromEmail" type="String">
+      </Property>
+      <Property name="fromUser" type="User">
+      </Property>
+      <Property name="kind" type="String">
+      </Property>
+      <Property name="status" type="String">
+      </Property>
+        <Property name="subject" type="String">
+      </Property>
+      <Property name="to" type="[String]">
+      </Property>
+      <Property name="userId" type="String">
+      </Property>
+       </Properties>
 
 ## <font color="#6ee7b7">EmailDeliveryList</font>
+**Fields**
+    <Properties>
+      <Property name="list" type="[EmailDelivery]">
+      </Property>
+      <Property name="totalCount" type="Int">
+      </Property>
+  </Properties>
 
 ## <font color="#6ee7b7">EmailTemplate</font>
+**Fields**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="content" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="createdBy" type="String">
+      </Property>
+      <Property name="createdUser" type="User">
+      </Property>
+      <Property name="modifiedAt" type="Date">
+      </Property>
+      <Property name="name" type="String!">
+      </Property>
+       </Properties>
 
 ## <font color="#6ee7b7">EngageData</font>
+**Fields**
+    <Properties>
+      <Property name="brandId" type="String">
+      </Property>
+      <Property name="content" type="String">
+      </Property>
+      <Property name="fromUser" type="User">
+      </Property>
+      <Property name="fromUserId" type="String">
+      </Property>
+      <Property name="kind" type="String">
+      </Property>
+      <Property name="messageId" type="String">
+      </Property>
+      <Property name="sentAs" type="String">
+      </Property>
+       </Properties>
 
 ## <font color="#6ee7b7">EngageDeliveryReport</font>
 

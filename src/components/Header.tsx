@@ -25,7 +25,7 @@ function TopLevelNavItem({
     <li>
       <Link
         href={href}
-        className=" flex text-sm leading-5 text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+        className=" flex text-sm leading-5 text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-dark"
       >
         {children}
       </Link>
@@ -53,12 +53,12 @@ export const Header = forwardRef<
         !isInsideMobileNavigation &&
           'backdrop-blur-sm dark:backdrop-blur lg:left-72 xl:left-80',
         isInsideMobileNavigation
-          ? 'bg-white dark:bg-zinc-900'
-          : 'bg-white/[var(--bg-opacity-light)] dark:bg-zinc-900/[var(--bg-opacity-dark)]',
+          ? 'bg-dark dark:bg-zinc-900'
+          : 'bg-dark/[var(--bg-opacity-dark)] dark:bg-zinc-900/[var(--bg-opacity-dark)]',
       )}
       style={
         {
-          '--bg-opacity-light': bgOpacityLight,
+          '--bg-opacity-light': bgOpacityDark,
           '--bg-opacity-dark': bgOpacityDark,
         } as React.CSSProperties
       }
@@ -67,7 +67,7 @@ export const Header = forwardRef<
         className={clsx(
           'absolute inset-x-0 top-full h-px transition',
           (isInsideMobileNavigation || !mobileNavIsOpen) &&
-            'bg-zinc-900/7.5 dark:bg-white/7.5',
+            'bg-zinc-900/7.5 dark:bg-dark/7.5',
         )}
       />
       <Search />
@@ -83,7 +83,7 @@ export const Header = forwardRef<
             <TopLevelNavItem href="https://erxes.io/resource-center">Resource center</TopLevelNavItem>
 
             <TopLevelNavItem href="#">Documentation
-            <Dropdown  label="" dismissOnClick={false}>
+            <Dropdown label="" dismissOnClick={true} className="items-center bg-gray-800">
       <Dropdown.Item href="#">Developer Docs</Dropdown.Item>
       <Dropdown.Item href="/intro">Getting started</Dropdown.Item>
       <Dropdown.Item href="/quickstart">Setup & Deployment</Dropdown.Item>
@@ -100,7 +100,7 @@ export const Header = forwardRef<
   </TopLevelNavItem>
 
             <TopLevelNavItem href="#">Eco system
-            <Dropdown  label="" dismissOnClick={false}>
+            <Dropdown  label="" dismissOnClick={true} className="items-center bg-gray-800">
       <Dropdown.Item href="#">Erxes</Dropdown.Item>
       <Dropdown.Item href="https://erxes.io/">Website</Dropdown.Item>
       <Dropdown.Item href="https://erxes.io/blog">Blog</Dropdown.Item>
@@ -117,7 +117,7 @@ export const Header = forwardRef<
       <Dropdown.Item href="https://erxes.io/marketplace">Plugin tutorial</Dropdown.Item>
     </Dropdown>
 </TopLevelNavItem>
-
+            <TopLevelNavItem href="https://github.com/erxes/erxes">Star</TopLevelNavItem>
             <TopLevelNavItem href="https://github.com/erxes/erxes">GitHub</TopLevelNavItem>
           </ul>
         </nav>

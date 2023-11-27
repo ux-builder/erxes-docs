@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef } from 'react'
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -83,31 +85,30 @@ export const Header = forwardRef<
             <TopLevelNavItem href="https://erxes.io/resource-center">Resource center</TopLevelNavItem>
 
             <TopLevelNavItem href="#">Documentation
-            <Dropdown label="" dismissOnClick={true} className="items-center bg-gray-800">
-      <Dropdown.Item href="#">Developer Docs</Dropdown.Item>
-      <Dropdown.Item href="/intro">Getting started</Dropdown.Item>
+            <Dropdown label="" dismissOnClick={true} className="my-2 flex gap-2.5 rounded-2xl border border-emerald-500/500 bg-emerald-50/50 p-4 leading-6 text-emerald-900 dark:border-emerald-500/30 dark:bg-emerald-900 dark:text-emerald-200 dark:[--tw-prose-links-hover:theme(colors.emerald.300)] dark:[--tw-prose-links:theme(colors.white)] h-auto max-w-[300px]">
+      <Dropdown.Item style={{ fontWeight: 'bold' }} href="#">Developer Docs</Dropdown.Item>
+      <Dropdown.Item href="#/intro">Getting started</Dropdown.Item>
       <Dropdown.Item href="/quickstart">Setup & Deployment</Dropdown.Item>
       <Dropdown.Item href="#">Development</Dropdown.Item>
       <Dropdown.Item href="/authentication">Development resources</Dropdown.Item>
       <Dropdown.Item href="/pagination">Contributing to open source</Dropdown.Item>
-      <Dropdown.Item href="#">User guide</Dropdown.Item>
-      <Dropdown.Item href="https://discord.com/invite/K3hfx6ShmU">Getting started</Dropdown.Item>
-      <Dropdown.Item href="#">User guide</Dropdown.Item>
-      <Dropdown.Item href="https://erxes.io/showcase">Getting started</Dropdown.Item>
-      <Dropdown.Item href="https://erxes.io/partners">XOS</Dropdown.Item>
+      <Dropdown.Item style={{ fontWeight: 'bold' }} href="#">User guide</Dropdown.Item>
+      
+      <Dropdown.Item as="a" href="https://discord.com/invite/K3hfx6ShmU" target="_blank"> Getting started </Dropdown.Item>
+      <Dropdown.Item as="a" href="https://erxes.io/showcase" target="_blank">XOS</Dropdown.Item>
       <Dropdown.Item href="#">Use cases</Dropdown.Item>
       </Dropdown>
   </TopLevelNavItem>
 
             <TopLevelNavItem href="#">Eco system
-            <Dropdown  label="" dismissOnClick={true} className="items-center bg-gray-800">
-      <Dropdown.Item href="#">Erxes</Dropdown.Item>
-      <Dropdown.Item href="https://erxes.io/">Website</Dropdown.Item>
+            <Dropdown  label="" dismissOnClick={true} className="my-6 flex gap-2.5 rounded-2xl border border-emerald-500/500 bg-emerald-50/50 p-4 leading-6 text-emerald-900 dark:border-emerald-500/30 dark:bg-emerald-900 dark:text-emerald-200 dark:[--tw-prose-links-hover:theme(colors.emerald.300)] dark:[--tw-prose-links:theme(colors.white)] h-auto max-w-[200px]">
+      <Dropdown.Item style={{ fontWeight: 'bold' }} href="#">Erxes</Dropdown.Item>
+      <Dropdown.Item as="a" href="https://erxes.io/" target="_blank">Website</Dropdown.Item>
       <Dropdown.Item href="https://erxes.io/blog">Blog</Dropdown.Item>
       <Dropdown.Item href="https://github.com/orgs/erxes/projects/11/views/18">Roadmap</Dropdown.Item>
       <Dropdown.Item href="https://erxes.io/invest">Invest</Dropdown.Item>
       <Dropdown.Item href="https://erxes.io/marketplace">Market place</Dropdown.Item>
-      <Dropdown.Item href="#">Community</Dropdown.Item>
+      <Dropdown.Item style={{ fontWeight: 'bold' }} href="#">Community</Dropdown.Item>
       <Dropdown.Item href="https://discord.com/invite/K3hfx6ShmU">Discord</Dropdown.Item>
       <Dropdown.Item href="#">Forum - not ready</Dropdown.Item>
       <Dropdown.Item href="https://erxes.io/showcase">Show your use-case</Dropdown.Item>

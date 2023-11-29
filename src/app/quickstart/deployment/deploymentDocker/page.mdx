@@ -1,298 +1,227 @@
 
 # Deployment
 
-The following documentation will guide you through the installation of an erxes project using [Docker](https://www.docker.com/) on [Ubuntu](https://ubuntu.com/) in order to use erxes. This the guideline will be dedicated to developers who is about to use erxes for their businesses only. If you want to customize or develop additional plugins on erxes, please go to [the developer installation guideline.](/intro)
+The following documentation will guide you through the installation of an erxes project using [Docker](https://www.docker.com/) image via Dockerhub that can be used on [Ubuntu](https://ubuntu.com/) in order to use erxes. This the guideline will be dedicated to anyone who is about to use erxes for their businesses. If you want to customize or develop additional plugins on erxes, please go to [the developer installation guideline.](/intro)
 
-Docker is an open platform that allows to develop, ship and run applications by using containers (i.e. packages containing all the parts an application needs to function, such as libraries and dependencies).
+Docker is an open source platform that allows to develop, ship and run applications by using containers (i.e. packages containing all the parts an application needs to function, such as libraries and dependencies).
 
-# Installation video
-
- [](https://youtu.be/Vq2TbSqnWOY?si=zruf8u9b0mCuC-c7)
- 
  ---
-# First steps: Setting up a server with Ubuntu 22.10
-You must have an account with your hosting provider prior to doing these steps.
+# Prerequisites
+You will need following things before dive into erxes installation.
 
-- Choose a server size that corresponds with the **minimum** requirements for installing with **Quickstart:**
-- **Ubuntu 22.10 x64** installed and running
-- **4 CPU**
-- **minimum 8GB RAM**
-- ability to to SSH into the server
-- If you're using a **subdomain**, then the **subdomain** must be created with your hosting provider hosting your main domain's website or app. The DNS needs to be pointed to your server. (See below)
+- any type of server with **4 core cpu & atleast 8gb ram**
+- domain controller's **A record** must pointed to the instance you are going to install erxes on
+- ability to connect to your instance via **ssh** protocol
+- basic knowledges to **work** on ubuntu operating system such as execute commands in user directory
+
 
 ---
 
-# Configure your DNS Records to point at your server
-Your server will have an **IP address.** You will need to point your domain name to your new server.
+# Installation
 
-- If you are using a **subdomain**, you will need to follow the instructions of updating the `A Records' of the hosting company for your website.
-- If you are NOT using a **subdomain**, then you will need to follow the instructions of your domain name registrar.
+## **Create an erxes user on the instance**
 
-<Tip>
-EXAMPLE WITH A DOMAIN CALLED, EXAMPLE.COM
-If your domain name is **example.com**, and the **IP address** assigned to your server is **44.123.32.12**, then you will have two `A records` that look like this:
+Assuming you have connected to your instance and ready to execute following steps. First you need to `create erxes user` because all erxes related installation scripts are made for erxes user.
+Why?
+You don't want to use **root** user to administer your server. So everything will be done by a user called, `erxes`. To accomplish this, run the following command:
 
-| Type | Name | Value |
-| ---- | ---- | ----------- |
-| A | www.example.com | points to 44.123.32.12 |
-| A | example.com | points to 44.123.32.12 |
-</Tip>
-
-<Tip>
-EXAMPLE WITH A SUBDOMAIN CALLED, ERXES.EXAMPLE.COM
-You first need to create a subdomain. For example, "erxes.example.com". Then you need to edit the **DNS.**
-If your domain name is **erxes.example.com**, and the **IP address** assigned to your server is **44.123.32.12**, then you will have a two `A records` that look like this:
-
-| Type | Name | Value |
-| ---- | ---- | ----------- |
-| A | erxes.example.com | points to 44.123.32.12 |
-| A | www.erxes.example.com | points to 44.123.32.12 |
-
-Note: You do not need to create a subdomain called "erxes.example.com", you can use another name of your choice such as "admin.example.com".
-</Tip>
-
-## **Log into server as root and create erxes user**
-Open the terminal or command prompt on your computer. You will need your **IP address**. (In this example, **44.123.32.12**). Type `yes`, when asked if you want to continue connecting.
-
-```tsx
-# example ssh root@44.123.32.12
-ssh root@your-ip-address
-```
-
-(**Note**: Some people get an error, **WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!**, please see the solution [here](#).)
-
-You don't want to use the **root** user to administer your server. So everything will be done by a user called, **erxes**. To accomplish this, run the following commands:
-
-Add a user called "erxes". When prompted, enter in a **unique** password. You will need to keep this password available, as later operations will require using it.
-
-```tsx
+```bash
 adduser erxes
 ```
-(Finish adding the user simply by pressing the `enter` or `return` key through the questions.)
+When prompted, enter **unique & strong** password.
+(Finish adding the user simply by pressing the `enter` or `return` key through the questions)
 
-Grant the **erxes** user adminstrative rights.
+Grant adminstrative rights to `erxes` user by following command:
 
-```tsx
+```bash
 usermod -aG sudo erxes
 ```
-# Allow the "erxes" user to SSH into server
-open the `sshd_config` file to edit
-```tsx
-nano /etc/ssh/ssh_config
-```
-- Scroll down until you see `PasswordAuthentication`. Change it from `PasswordAuthentication no` to `PasswordAuthentication yes`. **NOTE:** Some servers have this line commented out with a `#`, like `#` `PasswordAuthentication no`. You will need to uncomment it by deleting the `#`.
+All prerequisites are completed now you can proceed to installation steps.
+## Installation steps
 
-- The line should look like this:
+**1.** Create `install.sh` file using text editors such as nano or vim. Then copy the following content into `install.sh`. Following script will install nginx, certbot, docker, docker-compose and nodejs into your server.
 
-```tsx
-PasswordAuthentication yes
-```
-- Save and exit with `ctrl + x` and then `y` to accept the changes.
-Reload the SSH config file
-```tsx 
-sudo service ssh restart
-```
-Exit from server, so that you can log back in as the **erxes** user
-```tsx
-exit
-```
-You have created a new user called, **erxes** and you set-up a basic firewall to protect your server against malicious attacks.
-
-Please continue with the following steps to log in to your server as the **erxes** user.
-
-# Log in to your server as the "erxes" user.
-Before you can log into your new server, we need to **add the SSH key** to your **local** computer.
-
-**NOTE:** You need to use the **IP address** of your server.
-
-- Run the following command and **create a new password.**
-
-```tsx
-#ssh-copy-id erxes@44.123.32.12 <--- This is an example. Use your ip address
-ssh-copy-id erxes@your-IP-address
-```
-Now you can log into your server as the **erxes** user.
-
-Log back into the server as the **erxes** user. You will need your IP address. (In this example, **44.123.32.12**). Enter your previously created password, if prompted.
-
-```tsx 
-# example ssh erxes@44.123.32.12 <--- This is an example. Use your ip address
-ssh erxes@your-ip-address
-```
-
----
-# Installing prerequisites
-
-1. Create `install.sh` file using text editors such as nano or vim. Then copy the following script into it. Following content will install nginx, certbot, docker, docker-compose and nodejs into your server.
-
-```tsx
+```bash
 #!/bin/bash
             now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 1 $now : updating \e[0m"
+            echo -e "\e[1mStep 1 $now : Updating \e[0m"
         sudo apt-get update -y
         # nginx install
             now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 2 $now : installing Nginx\e[0m"
+            echo -e "\e[1mStep 2 $now : Installing nginx\e[0m"
         sudo apt install nginx -y
         # docker install
         sudo apt update -y
             now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 3 $now : installing docker  \e[0m"
+            echo -e "\e[1mStep 3 $now : Installing docker\e[0m"
         sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
         sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
         apt-cache policy docker-ce
         sudo apt install docker-ce -y
             now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 4 $now : installing certbot installing\e[0m"
+            echo -e "\e[1mStep 4 $now : Installing certbot\e[0m"
         sudo apt install certbot python3-certbot-nginx -y
             now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 5 $now : installing docker compose  installing\e[0m"
+            echo -e "\e[1mStep 5 $now : Installing docker-compose\e[0m"
         sudo apt-get update -y
         sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         sudo chmod +x /usr/local/bin/docker-compose
             now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 6 $now : installing nodejs installing\e[0m"
-        curl -sL https://deb.nodesource.com/setup_14.x -o setup_14.sh
-        sudo chmod +x ./setup_14.sh
+            echo -e "\e[1mStep 6 $now : Installing nodejs\e[0m"
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+        #new directory
         sudo apt-get install nodejs -y
             now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 7 $now : installing awscli installing\e[0m"
+            echo -e "\e[1mStep 7 $now : Installing awscli\e[0m"
         sudo apt-get install awscli -y
             now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 8 $now : installing npm\e[0m"
+            echo -e "\e[1mStep 8 $now : Installing npm\e[0m"
         sudo apt install npm -y
             now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 9 $now : installing node v14.21.3"
+            echo -e "\e[1mStep 9 $now : Please enter erxes informations\e[0m"
         sudo npm install -g create-erxes-app -y
-        sudo groupadd docker
-
-        sudo usermod -aG docker erxes
-
-        sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-
-
-        sudo chmod +x /usr/local/bin/docker-compose
-        sudo ./setup_14.sh
+            create-erxes-app erxes
 ```
-2. Before execute script the use below command to make `install.sh` file executable.
-```tsx 
+**2.** Before execute script the use below command to make `install.sh` file executable.
+```bash
 sudo chmod +x install.sh
 ```
 
-3. Execute `install.sh` file.
-```tsx 
+**3.** Execute `install.sh` file.
+```bash
 ./install.sh
 ```
 
-4. After above steps logout and relogin to your server using `erxes` user. In order to logout from server give following command
-```tsx
+**4.** After above steps `logout and relogin` to your server using erxes user. In order to logout from server give following command:
+```bash
 exit
 ```
+<Note>
+you might want to enter command few times if you logged in as root user before.
+</Note>
 
-**Note** (you might want to enter command few times if you logged in as root user before.)
+We will use `ssh` protocol to access to server. Use below command:
 
-There are many ways to connect to your server but in this example we will use `ssh` to log back in use below command.
-
-```tsx
-ssh erxes@your-ipv4-address
+```bash
+ssh erxes@your-ip address-address
 ```
 ---
 
 # Starting erxes project
-1. Below command will trigger erxes installation process.
-```tsx 
+**1.** Below command will trigger erxes installation process.
+```bash
 create-erxes-app erxes
 ```
 After the execution it will ask your erxes domain name
 
-**Note** Please use full domain or subdomain names including socket like below
-
-```tsx
+```bash
 https://example.com
 ```
-2. After above command there will be `erxes` directory includes mentioned files in it `docker-compose.yml, configs.json, package.json, nginx config`. In order to change to `erxes` directory use below command.
 
-```tsx
+<Note>
+Please use full domain or subdomain names including http socket like below
+</Note>
+**2.** After the above command `erxes` directory will be created. That includes following files in it `docker-compose.yml, configs.json, package.json, nginx config`. In order to change to `erxes` directory use below command.
+
+```bash
 cd /home/erxes/erxes
 ```
-In there we need to change erxes package version in `/home/erxes/erxes/package.json` file to [latest](#) version.
+**3.** Change erxes package version of `/home/erxes/erxes/package.json` file to <a href="https://www.npmjs.com/package/erxes" target="_blank">latest</a> version.
 
-3. Now you need to initiate docker swarm mode in order to do that use following command.
-
-**Note** In erxes directory we have docker-compose.yml file even with that we do not use `docker-compose up, docker-compose down, docker-compose restart` commands further.
-```tsx
-docker swarm init
+```bash
+{
+  "name": "erxes",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "erxes": "erxes"
+  },
+  "dependencies": {
+    "amqplib": "^0.8.0",
+    "create-erxes-app": "0.0.28",
+    "dup": "^1.0.0",
+    #Change here
+    "erxes": "change me",
+    "ip": "^1.1.5",
+    "up": "^1.0.2"
+  }
+}
 ```
 
-```tsx
+
+**4.** Now you need to initiate docker swarm mode in order to do that use following command.
+
+```bash
+docker swarm init
 docker network create --driver=overlay --attachable erxes
 ```
+<Note>
+In erxes directory we have docker-compose.yml file even with that we do not use `docker-compose up, docker-compose down, docker-compose restart` commands further
+</Note>
 
-4. Before start application services we need to start `databases`. Following command will start database services.
+**5.** Before start application services we need to start `databases`. Following command will start database services.
 
-```tsx 
+```bash
 npm run erxes deploy-dbs
 ```
-5. To check database services up use following command it will shows you all running docker services id, name and state etc.
+**6.** To check database services up use following command it will shows you all running docker services id, name and state etc.
 
-```tsx
+```bash
 docker ps -a | grep mongo
 ```
 wait until all services state become up.
-6. Now we need to make our mongo have replica set. First we need to enter mongo container then enter mongo instance then execute command following 3 commands will do.
-```tsx
+**7.** Now we need to make our mongo have replica set. First we need to enter mongo container then enter mongo instance then execute command following 3 commands will do.
+```bash
 docker exec -it <mongo container name> bash
-```
-```tsx
 mongo -u erxes -p <auto generated password in configs.json>
-```
-```tsx
 rs.initiate();
 ```
-**Note** you may want to hit `return or enter` button few times if we done correctly mongo shell will changes into `"RS0: primary"`
+<Note>
+you may want to hit `return or enter` button few times if we done correctly mongo shell will changes into `"RS0: primary"`
+</Note>
 
 To quit mongo instance and container `run exit command` twice.
 
-7. Now we need to create `locales` directory in our working directory `/home/erxes/erxes` to do that use following command.
+**8.** Now we need to create `locales` directory in our working directory `/home/erxes/erxes` to do that use following command.
 
-```tsx
+```bash
 mkdir locales
 ```
 
-8. Start application services like erxes core uis and gateway services we run following command.
-```tsx
+**9.** Start application services like erxes core uis and gateway services we run following command.
+```bash
 npm run erxes up -- --uis
 ```
 
-**Note** After this step ui will be downloaded from AWS:s3 so make sure your server can communicate AWS instances without problem.
+After this step ui will be downloaded from AWS:s3 so make sure your server can communicate AWS instances without problem
 
-<Tip>
-NOTE
+
+<Note>
 Containers are generated one by one, so wait until they finish reading. Meanwhile check for the status using
-```tsx
+```bash
 docker ps -a
 ```
 To check docker services use
-```tsx
+```bash
 docker service ls
 ```
 all erxes services needs to be up state
 Wait until `gateway` container status becomes healthy also gateway container needs to be start at last.
-</Tip>
+</Note>
 
-9. Now we need to setup our web server first we need to configure our nginx.service for erxes to do that we need to move `nginx.conf` generated by `create-app-erxes erxes` locates in `/home/erxes/erxes` to `/etc/nginx/sites-enabled/`. To do that use following command.
+**10.** Now we need to setup our web server first we need to configure our nginx.service for erxes to do that we need to move `nginx.conf` generated by `create-app-erxes erxes` locates in `/home/erxes/erxes` to `/etc/nginx/sites-enabled/`. To do that use following command.
 
-```tsx
+```bash
 sudo mv nginx.conf /etc/nginx/sites-enabled/erxes.conf
 ```
-10. After that we need to test nginx config. To do that use following command.
-```tsx
+**11.** After that we need to test nginx config. To do that use following command.
+```bash
 sudo nginx -t
 ```
 If something goes wrong you can replace `/etc/nginx/sites-enabled/nginx.conf` to following content
 
-```tsx
+```bash
 server {
         server_name example.com;
         index index.html;
@@ -402,27 +331,28 @@ server {
         }
     }
     ```
-11. If nginx test shows successful message we need to restart Nginx. To do that use following command.
-    ```tsx
+**12.** If nginx test shows successful message we need to restart Nginx. To do that use following command.
+    ```bash
     sudo service nginx restart
     ```
-12. Erxes only works in secure connection to generate free ssl certificate we use `Certbot`. To configure that use following command.
+**13.** Erxes only works in secure connection to generate free ssl certificate we use `Certbot`. To configure that use following command.
 
-**Note** you have to point domain A record to your erxes installing machine in order to get certificate without that certbot will not generate certificate.
-```tsx
+```bash
 sudo certbot --nginx
 ```
-After this command it will ask your email and subscription accept that then will ask again about `redirect` option. We highly recommend always redirect option for security reasons.
+<Note>
+you have to point your domain's A record to your erxes host machine in order to get certificate without that certbot will not generate certificate order.
+</Note>
 
-After that open browser and enjoy our product.
+After entering this command, provide your email and subscription information, and accept the terms. Following that, you will be prompted about the 'redirect' option. We highly recommend enabling this option for security reasons. Once these steps are completed, open your browser and enjoy our product.
 
 # Adding new plugins to erxes
 Adding new plugins to erxes is easy task all you need to is add plugin name under `"plugins:"[{}]` in `/home/erxes/erxes/configs.json` file then run `npm run erxes up -- --uis` command. But for some plugins like dashboard does require some `extra` service we will discuss that in another section. Below we have `ideal` configs.json file content that includes every `nessacery configuration lines` for `all plugins`. Please read following contents carefully some lines need some `replacement`.
 
-```tsx
+```bash
 {
     "jwt_token_secret": "will be generated in configs.json",
-    "db_server_address": "ipv4 of your machine",
+    "db_server_address": "ip address of your machine",
     "image_tag": "dev",
     "domain": "https://example.com",
     "widgets": {
@@ -537,7 +467,7 @@ Adding new plugins to erxes is easy task all you need to is add plugin name unde
 # Adding dashboard plugin
 As we mentioned earlier dashboard plugin requires some extra step to install. First we need to generate `certificate for mongobi` to do that use following commands.
 
-```tsx
+```bash
 openssl rand -base64 756 > mongo-key
     sudo chmod 400 mongo-key && sudo chown 999:999 mongo-key
     openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out certificate.pem --batch
@@ -546,7 +476,7 @@ openssl rand -base64 756 > mongo-key
 
 It will generate mongobi certificate. After we need to add `mongobi` to configs.json file locates in `/home/erxes/erxes/configs.json` like below.
 
-```tsx
+```bash
  "mongo": {
         "username": "erxes",
         "password": "will be generated in configs.json",
@@ -555,62 +485,70 @@ It will generate mongobi certificate. After we need to add `mongobi` to configs.
 ```
 At last run `npm run erxes up -- --uis.`
 
-**Note** Everytime we change configs.json we do `npm run erxes up -- --uis` command to apply change.
+<Note>
+Everytime we change configs.json we do `npm run erxes up -- --uis` command to apply change.
+</Note>
 
 ---
 # Running elasticsearch
 If your server is bigger than our required size you can use erxes with elasticsearch. To do that following steps need to be taken.
 
-1. Go into /home/erxes/erxes
-```tsx
+**1.** Go into /home/erxes/erxes
+```bash
 cd /home/erxes/erxes
 ```
-2. Add following lines to configs.json positions does not matter.
-```tsx
+**2.** Add following lines to configs.json positions does not matter.
+```bash
 "essyncer": {},
 "elasticsearch" : {},
 ```
-3. Then run deploy dbs again with following command.
-```tsx
+**3.** Then run deploy dbs again with following command.
+```bash
 npm run erxes deploy-dbs
-```
-```tsx
 npm run erxes up -- --uis
 ```
 ---
 
 # Removing erxes
-1. First this is sad but every server need to be tidy following few commands will remove docker stack and dangling containers of swarm.
- ```tsx
+**1.** First this is sad but every server need to be tidy following few commands will remove docker stack and dangling containers of swarm.
+ ```bash
  docker stack ls
  ```
  will show you stack informations. To leave that use following command.
- ```tsx
+ ```bash
 docker stack rm erxes
  ```
 
- 2. To remove all dangling containers use following commands.
+**2.** To remove all dangling containers use following commands.
 
 List and remove all dangling images.
 
-```tsx
+```bash
 docker images -f dangling=true
 docker rmi $(docker images -q -f dangling=true)
 ```
 List and remove all dangling containers.
-```tsx
+```bash
 docker ps -a -f status=exited
 docker rm $(docker ps -a -q -f status=exited)
 ```
 List and remove all dangling volumes
 
-**Note** volumes might have data in it so do it with your responsibility
+<Note>
+volumes might have data in it so do it with your responsibility
+</Note>
 
-```tsx
+```bash
 docker volume ls -f dangling=true
 docker volume rm $(docker volume ls -q -f dangling=true)
 ```
 ---
+# Installation video
+
+ [](https://youtu.be/Vq2TbSqnWOY?si=zruf8u9b0mCuC-c7)
+
+---
+
 # Joining erxes community
 If you have any trouble with installation please create issues in our [github](https://github.com/erxes/erxes) or seek help from our community in [discord](https://discord.com/invite/rPf9FYaA3F)
 

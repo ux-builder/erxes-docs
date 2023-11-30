@@ -247,7 +247,7 @@ export const navigation: Array<NavGroup> = [
   {
     title: 'Experience Requirement Documents',
     links: [
-      { title: 'XM for Ecommerce', href: '' },
+      { title: 'XM for Ecommerce', href: '/ecommerce' },
       { title: 'XM for POS', href: '/pos' },
       { title: 'XM for Frontline', href: '' },
       { title: 'XM for SaaS', href: '' },

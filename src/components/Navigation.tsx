@@ -177,7 +177,7 @@ function NavigationGroup({
           layout
           className="absolute inset-y-0 left-2 w-px bg-zinc-900/10 dark:bg-white/5"
         />
-        <AnimatePresence initial={false}>
+        <AnimatePresence initial={true}>
           {isActiveGroup && (
             <ActivePageMarker group={group} pathname={pathname} />
           )}
@@ -226,7 +226,7 @@ function NavigationGroup({
 
 export const navigation: Array<NavGroup> = [
   {
-    title: '',
+    title: 'Developer Documentation',
     links: [
       { title: 'Getting started', href: '/intro' },
       { title: 'Setup & Deployment', href: '/quickstart' },
@@ -236,12 +236,29 @@ export const navigation: Array<NavGroup> = [
     ],
   },
   {
-    title: 'Erxes XOS user guide',
+    title: 'erxes XOS user guide',
     links: [
       { title: 'Get Started with User Guide!', href: '/contacts' },
       { title: 'XOS', href: '/conversations' },
       { title: 'Plugins', href: '/messages' },
       { title: 'Use-Cases', href: '/groups' },
+    ],
+  },
+  {
+    title: 'Experience Requirement Documents',
+    links: [
+      { title: 'XM for Ecommerce', href: '' },
+      { title: 'XM for POS', href: '/pos' },
+      { title: 'XM for Frontline', href: '' },
+      { title: 'XM for SaaS', href: '' },
+      { title: 'XM for Employee', href: '' },
+      { title: 'XM for B2B Sales', href: '' },
+      { title: 'XM for Leasing', href: '' },
+      { title: 'XM for Marketing', href: '' },
+      { title: 'XM for Leasing', href: '' },
+      { title: 'XM for Rental', href: '' },
+      { title: 'XM for Order', href: '' },
+      { title: 'XM for SME', href: '/sme' },
     ],
   },
 ]
@@ -264,3 +281,4 @@ export function Navigation(props: React.ComponentPropsWithoutRef<'nav'>) {
     </nav>
   )
 }
+

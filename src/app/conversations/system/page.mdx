@@ -1,0 +1,127 @@
+## System configuration
+
+System Configuration is the place where you set up your general configurations of your erxes XOS, such as email settings, language, files to be attached, etc.
+
+<Note>
+When you join erxes, all basic settings required by an average company have been pre-configured. Feel free to check if they meet your business requirements. However, If you need more than what's available, please contact our customer service team for additional support.
+</Note>
+
+The System Configuration has the following fields:
+
+- General settings
+- File upload
+- Google Cloud Storage
+- AWS S3
+- AWS SES
+- Google
+- Common mail config
+- Custom mail service
+- Data retention
+- Constants
+- Connectivity Services
+- MessagePro
+
+**1. Navigate your System Configuration within the Settings section at the bottom left side of your admin screen.**
+
+![A](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/607657bb-f209-4d23-f71d-4d10f61ba800/public)
+**2. General settings**
+- **Language** - Select the language used in the erxes XOS
+- **Currency** - Select the currency used for Product & Services and Sales Pipeline plugins.
+- **Unit of measurement** - Select unite of measure of your sale used for the Sales Pipeline.
+![A](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/5f9dd854-011d-4a59-29c0-42747b622c00/public)
+**3. Google**
+Google Cloud Platform (GCP), offered by Google, is a suite of cloud computing services that runs on the same infrastructure that Google uses internally for its end-user products, such as Firebase, Gmail and Pubsub. Alongside a set of management tools, it provides a series of modular cloud services including computing, data storage, data analytics and machine learning.
+Following steps explain the Google Cloud Project. Which allows us to use Google Cloud Platform's services to our Erxes app.
+
+- Create a Google Cloud Project [click here](https://console.cloud.google.com/getting-started?pli=1)
+- Click on the Select Project
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/96e9997c-0f37-41a2-5edf-0c4187382900/public)
+
+- Click on the New Project
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/bee87d38-9da3-450c-fb13-4dcb08378500/public)
+- Enter project name and click on the Create button
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/12337b54-9d67-4c9c-3ea9-e79c0e18c300/public)
+**Service account**
+- Navigate to sidebar IAM & Admin => Service Accounts
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/029a2b84-fba4-4204-075b-453904aa6900/public)
+
+- Now let's create service account for our app
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/132f6dc2-1681-4696-2b1b-42d7cd57c900/public)
+
+- Enter service account name and description then click on the Create button
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/48b7b991-3132-4c18-0ab6-5dc357ac4400/public)
+
+- Select Owner role and click on the Continue button
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/c9a646d9-82fd-49d6-18ae-51887b754000/public)
+
+- Create key for service account, you will download json file automatically and keep it
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/7507cc93-a6fa-4e04-4459-eeba3a1acc00/public)
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/6d9a2eeb-59a0-423c-3996-c432b0a99e00/public)
+
+- Successfully created service account
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/6d9a2eeb-59a0-423c-3996-c432b0a99e00/public)
+
+- Copy the service account file's content to google_cred.json in **erxes-integrations/google_cred.json.sample**, and rename it to **google_cred.json**
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/b6553aba-0b82-4020-6865-dcdcac744900/public)
+- export GOOGLE_APPLICATION_CREDENTIALS="/Path/to/your/[google_cred].json"
+
+- One last touch, we need to configure erxes, Go to Settings => System Config => General System config And configure **GOOGLE PROJECT ID, GOOGLE APPLICATION CREDENTIALS** fields as in the sceenshot
+  - **GOOGLE APPLICATION CREDENTIALS** is google_cred file's path by default it's ./google_cred.json no need to change
+  - **GOOGLE APPLICATION CREDENTIALS JSON** is google_cred (service account) file's content for **Firebase** configuration
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/40f819bb-b7fe-4666-9e21-c08b82d7ed00/public)
+
+That's it, now you are good use Google Cloud Platform Services which you can find them [here](https://console.cloud.google.com/apis/library)
+
+**4. File upload**
+- Upload file types
+- Upload file types of widget
+- Upload service type
+- Bucket file system type
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/b3a9e09d-2fd5-46a7-5461-7ccd07999100/public)
+
+**5. Google Cloud Storage**
+Cloud Storage provides worldwide, highly durable object storage that scales to exabytes of data. You can access data instantly from any storage class, integrate storage into your applications with a single unified API, and easily optimize price and performance.
+
+**Requirement:**
+- Google Cloud Platform project, follow [this](/conversation) guide to create one
+- Enable Google Cloud Storage API [here](https://console.cloud.google.com/apis/library)
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/cbb5fffc-18b3-47a6-a99f-d94a202a8900/public)
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/09055aeb-c404-4d35-efdc-479e4e8df400/public)
+
+- Navigate to [here](https://console.cloud.google.com/storage/browser) and Create bucket for file upload
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/2b51f44a-565b-4db9-2764-cac3009fa000/public)
+- Enter bucket name and fill out rest of the form
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/35f0b7ce-60e6-41b9-c64a-7eedc5899b00/public)
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/7d519414-9b6d-4a98-f6a1-0f2eda679100/public)
+
+- Copy your bucket name and configure it in the Erxes app as follows
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/145b1117-f2ef-4ab6-9bdd-b39befcd3a00/public)
+
+
+Now final step, set upload service type to Google in [here](/conversation)
+
+**6. Set up your AWS S3 settings here.**
+- AWS access key id
+- AWS secret access key
+- AWS bucket
+![An old rock in the desert](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/3dedf632-2258-48e8-fb36-9eab012ee100/public)
+**7. Set up your AWS SES settings here.**
+- AWS SES access key id
+- AWS SES secret access key
+- AWS region
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/0a58d879-f629-42c9-d9c1-4d78e1c2f700/public)
+
+**8. Common mail config**
+This is where you can configure your email addresses to represent your companies on automated & manual emails to be verified.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/b85d600e-3905-4cc7-7127-2eb9ce22fe00/public)
+**9. Custom mail service**
+This is where you can connect your own AWS account to erxes XOS.
+![]](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/d02057d2-d4a3-442d-ba56-33aa97ac4100/public)
+**10. Data retention**
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/4cab1880-325a-43d5-9b5d-a7ad81737900/public)
+**11. Constants**
+- Pronoun choices - Select the pronouns to be available at your Contact plugin.
+- Company industry types - Select the types of companies to be available to choose on your Contact plugin.
+- Social links - Select the social links to be available to select at your Contact plugin here.
+
+![An old rock in the desert](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/8e9edf58-61a0-4277-ddff-0d00c5605400/public)

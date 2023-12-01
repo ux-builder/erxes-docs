@@ -245,20 +245,23 @@ export const navigation: Array<NavGroup> = [
     ],
   },
   {
-    title: 'Experience Requirement Documents',
+    title: 'Business Requirement Documents',
     links: [
-      { title: 'XM for Ecommerce', href: '/ecommerce' },
-      { title: 'XM for POS', href: '/pos' },
-      { title: 'XM for Frontline', href: '' },
-      { title: 'XM for SaaS', href: '' },
-      { title: 'XM for Employee', href: '' },
-      { title: 'XM for B2B Sales', href: '' },
-      { title: 'XM for Leasing', href: '' },
-      { title: 'XM for Marketing', href: '' },
-      { title: 'XM for Leasing', href: '' },
-      { title: 'XM for Rental', href: '' },
-      { title: 'XM for Order', href: '' },
-      { title: 'XM for SME', href: '/sme' },
+      { title: 'Experience Requirement Documents', links: [
+        { title: 'XM for Ecommerce', href: '/ecommerce' },
+        { title: 'XM for POS', href: '/pos' },
+        { title: 'XM for Frontline', href: '' },
+        { title: 'XM for SaaS', href: '' },
+        { title: 'XM for Employee', href: '' },
+        { title: 'XM for B2B Sales', href: '' },
+        { title: 'XM for Leasing', href: '' },
+        { title: 'XM for Marketing', href: '' },
+        { title: 'XM for Leasing', href: '' },
+        { title: 'XM for Rental', href: '' },
+        { title: 'XM for Order', href: '' },
+        { title: 'XM for SME', href: '/sme' }
+      ] },
+      
     ],
   },
 ]

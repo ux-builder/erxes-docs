@@ -42,7 +42,7 @@ const resources: Array<Develo> = [
     },
   },
   {
-    href: '/authentication/graphql',
+    href: '/authentication/postman',
     name: 'Postman Collection',
     description:
       'Download',
@@ -53,7 +53,7 @@ const resources: Array<Develo> = [
     },
   },
   {
-    href: '/authentication/graphql',
+    href: '/authentication/reference',
     name: 'Code reference',
     description:
       '2 items',

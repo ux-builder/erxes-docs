@@ -247,8 +247,7 @@ export const navigation: Array<NavGroup> = [
   {
     title: 'Business Analyst Documentation',
     links: [
-      { title: 'Experience Requirement Documents', href: '/ecommerce' },
-
+      { title: 'Experience Requirement Documents', href: '/requirement' },
     ],
   },
 ]

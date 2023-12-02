@@ -65,7 +65,7 @@ export function Info({ children }: { children: React.ReactNode }) {
 
 export function Caution({ children }: { children: React.ReactNode }) {
   return (
-    <div className="text-base my-3 flex flex-col rounded-2xl border border-amber-500 bg-amber-20 p-4 leading-6 text-amber-950 dark:border-amber-500 dark:bg-amber-50 dark:text-amber-950 dark:[--tw-prose-links-hover:theme(colors.amber.300)] dark:[--tw-prose-links:theme(colors.amber)]">
+    <div className="text-base my-3 flex flex-col rounded-2xl border border-amber-500 bg-amber-200 p-4 leading-6 text-amber-950 dark:border-amber-500 dark:bg-amber-500 dark:text-amber-950 dark:[--tw-prose-links-hover:theme(colors.amber.300)] dark:[--tw-prose-links:theme(colors.amber)]">
       <p className='text-lg p-0 mt-0 mb-2 font-bold text-amber-950 dark:text-amber-200'>✋ Caution</p>
       <div className="[&>:first-child]:mt-0 [&>:last-child]:mb-0">
         {children}

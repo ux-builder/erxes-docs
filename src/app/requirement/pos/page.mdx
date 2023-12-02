@@ -16,6 +16,10 @@ export const sections = [
 
 <HeroPattern />
 
+---
+sidebar_position: 3
+---
+
 # **Introduction**
 
 The purpose of this document is to outline the requirements for the development of a comprehensive Restaurant Experience Management System, integrating POS, QR menu, and e-commerce website functionalities.
@@ -49,24 +53,24 @@ The expected result of a POS system is essentially the smooth functioning and ef
 
 <TabItem value="base" label="Functional Requirements">
 
-| Setting name      | Instructions                                                                                            |
-|-------------------|---------------------------------------------------------------------------------------------------------|
-| User Management|Secure login for staff with different roles (cashier, manager, admin), User permissions to restrict access based on roles|
-| Order Management|Create, modify, and delete orders, Support for bills for splitting by amount of price or customer, Integration with kitchen display system (KDS) for real-time order updates|
+| Setting name            | Instructions                                                                                                             |
+|-------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| User Management         |Secure login for staff with different roles (cashier, manager, admin), User permissions to restrict access based on roles |
+| Order Management        |Create, modify, and delete orders, Support for bills for splitting by amount of price or customer, Integration with kitchen display system (KDS) for real-time order updates|
 | Extended display option |Restaurant, coffee shop, supermarket theme options are able|
-| Menu Management|Easily update and manage menu items, including descriptions, prices, and availability, Support for customizable modifiers and add-ons|
-| Payment Processing|Multiple payment methods (cash, credit/debit cards, mobile payments), Be able to proceed with payment considering any discounts and incentives, Integration with payment gateways for secure transactions|
-| Reporting and Analytics|Sales reports, including daily, weekly, and monthly summaries, Inventory management with low stock alerts, Sync working with financial program Erkhet directly|
+| Menu Management         |Easily update and manage menu items, including descriptions, prices, and availability, Support for customizable modifiers and add-ons|
+| Payment Processing      |Multiple payment methods (cash, credit/debit cards, mobile payments), Be able to proceed with payment considering any discounts and incentives, Integration with payment gateways for secure transactions|
+| Reporting and Analytics |Sales reports, including daily, weekly, and monthly summaries, Inventory management with low stock alerts, Sync working with financial program Erkhet directly|
 
 </TabItem>
 
 <TabItem value="advanced" label="Non-functional Requirements">
 
-| Setting name      | Instructions                                                                                            |
-|-------------------|---------------------------------------------------------------------------------------------------------|
-| Performance|The system should handle a minimum of 100 transactions per hour without performance degradation, Response time for transactions should be within 3 seconds|
-| Reliability|The POS system should be available 99.9% of the time, Implement automated backup and recovery processes|
-| Security |Data encryption for sensitive information, Implement role-based access control, Regular security audits to identify and fix vulnerabilities|
+| Setting name      | Instructions                                                                                                                  |
+|-------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| Performance       |The system should handle a minimum of 100 transactions per hour without performance degradation, Response time for transactions should be within 3 seconds|
+| Reliability       |The POS system should be available 99.9% of the time, Implement automated backup and recovery processes                        |
+| Security          |Data encryption for sensitive information, Implement role-based access control, Regular security audits to identify and fix vulnerabilities|
 
 </TabItem>
 

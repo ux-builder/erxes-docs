@@ -1,0 +1,106 @@
+import { Guides } from '@/components/Guides'
+import { Resources } from '@/components/Resources'
+import { HeroPattern } from '@/components/HeroPattern'
+import React, { Component } from 'react'
+
+export const metadata = {
+  title: 'Introduction | erxes inc',
+  description:
+    'The open-source Hubspot alternative enables SaaS providers and digital marketing agencies/developers to create unique experiences for their entire business.',
+}
+
+export const sections = [
+  { title: 'Architecture', id: 'architecture' },
+  { title: 'Frequently Asked Questions', id: 'faq' },
+]
+
+<HeroPattern />
+
+# **✏️Introduction**
+
+The purpose of this document is to outline the requirements for the development of a comprehensive Restaurant Experience Management System, integrating POS, QR menu, and e-commerce website functionalities.
+
+<Note>
+  Can't wait to start using erxes? Get started with erxes with our [Installation guide](/quickstart/deployment/deploymentDocker) ! Try out a [live demo!](#)
+</Note>
+
+
+## **Goal**
+
+The goal of a point of sale (POS) system within a business context is to streamline and facilitate various aspects of the sales process while also enhancing overall operational efficiency. The specific goals or objectives of implementing a POS system typically include:
+
+- Efficient Transactions
+- Improved Inventory Management
+- Enhanced Customer Experience
+- Sales Insights and Reporting
+- Increased Operational Efficiency
+- Integration and Scalability
+
+
+## **Goal**
+
+The system will cover the end-to-end process of customer interaction, from ordering to payment, both in-store and online.
+
+
+## **📈 Expected Results**
+
+The expected result of a POS system is essentially the smooth functioning and effective management of transactions, inventory, and related business operations to enhance efficiency, accuracy, and customer satisfaction within a retail or service environment.
+
+
+# 🔧 Product Requirements
+
+## **Functional Requirements**
+
+**User Management**
+- Secure login for staff with different roles (cashier, manager, admin).
+- User permissions to restrict access based on roles.
+
+**Order Management**
+- Create, modify, and delete orders.
+- Support for bills for splitting by amount of price or customer
+- Integration with kitchen display system (KDS) for real-time order updates.
+
+**Extended display option**
+- Restaurant, coffee shop, supermarket theme options are able
+
+**Menu Management**
+- Easily update and manage menu items, including descriptions, prices, and availability.
+- Support for customizable modifiers and add-ons.
+
+**Payment Processing**
+- Multiple payment methods (cash, credit/debit cards, mobile payments).
+- Be able to proceed with payment considering any discounts and incentives
+- Integration with payment gateways for secure transactions.
+
+**Reporting and Analytics**
+- Sales reports, including daily, weekly, and monthly summaries.
+- Inventory management with low stock alerts.
+- Sync working with financial program Erkhet directly
+
+## **Non-functional Requirements**
+
+**Performance**
+- The system should handle a minimum of 100 transactions per hour without performance degradation.
+- Response time for transactions should be within 3 seconds.
+
+**Reliability**
+- The POS system should be available 99.9% of the time.
+- Implement automated backup and recovery processes.
+
+**Security**
+Data encryption for sensitive information.
+Implement role-based access control.
+Regular security audits to identify and fix vulnerabilities.
+
+
+<Note>
+  Want to join the community?
+
+You can join [GitHub](https://github.com/erxes/erxes), [Community forum](https://github.com/erxes/erxes/discussions), and [Discord](https://discord.com/invite/aaGzy3gQK5) to share your ideas and opinions with other community members and members of the erxes team. If you're looking for news and updates about erxes, [Twitter](https://twitter.com/erxesHQ) and the [blog](https://erxes.io/blog) are the places to start!
+</Note>
+
+# Support
+
+If you need any support during your development with erxes, you can join our [Discord](https://discord.com/invite/aaGzy3gQK5). You will get help directly from our core team and our community.
+
+By joining our Discord Server, you’ll also have the chance to participate in many events and showcase your work with erxes.

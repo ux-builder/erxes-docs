@@ -29,8 +29,8 @@ export const h2 = function H2(
 
 export function Tip({ children }: { children: React.ReactNode }) {
   return (
-    <div className="text-base my-3 flex flex-col rounded-2xl border border-indigo-500 bg-indigo-100 p-4 leading-6 text-indigo-950 dark:border-violet-500/30 dark:bg-violet-500/5 dark:text-violet-200 dark:[--tw-prose-links-hover:theme(colors.violet.300)] dark:[--tw-prose-links:theme(colors.white)]">
-      <p className='text-lg p-0 mt-0 mb-2 font-bold text-indigo-950 dark:text-violet-200'>💡 Tip</p>
+    <div className="text-base my-3 flex flex-col border-l-4 border-indigo-500 bg-indigo-100 p-4 leading-6 text-indigo-950 dark:border-violet-500/30 dark:bg-violet-500/5 dark:text-violet-200 dark:[--tw-prose-links-hover:theme(colors.violet.300)] dark:[--tw-prose-links:theme(colors.white)]">
+      <p className='text-lg p-0 mt-0 mb-2 font-bold text-indigo-500 dark:text-violet-200'>💡 Tip</p>
       <div className="[&>:first-child]:mt-0 [&>:last-child]:mb-0">
         {children}
       </div>
@@ -41,8 +41,8 @@ export function Tip({ children }: { children: React.ReactNode }) {
 
 export function Note({ children }: { children: React.ReactNode }) {
   return (
-    <div className="text-base my-3 flex flex-col rounded-2xl border border-emerald-500 bg-emerald-100 p-4 leading-6 text-emerald-950 dark:border-emerald-500/30 dark:bg-emerald-500/5 dark:text-emerald-200 dark:[--tw-prose-links-hover:theme(colors.emerald.300)] dark:[--tw-prose-links:theme(colors.white)]">
-     <p className='text-lg p-0 mt-0 mb-2 font-bold text-emerald-950 dark:text-emerald-200'>✏️ Note</p>
+    <div className="text-base my-3 flex flex-col border-l-4 border-emerald-500 bg-emerald-100 p-4 leading-6 text-emerald-950 dark:border-emerald-500/30 dark:bg-emerald-500/5 dark:text-emerald-200 dark:[--tw-prose-links-hover:theme(colors.emerald.300)] dark:[--tw-prose-links:theme(colors.white)]">
+     <p className='text-lg p-0 mt-0 mb-2 font-bold text-emerald-500 dark:text-emerald-200'>✏️ Note</p>
       <div className="[&>:first-child]:mt-0 [&>:last-child]:mb-0">
         {children}
       </div>
@@ -53,8 +53,8 @@ export function Note({ children }: { children: React.ReactNode }) {
 
 export function Info({ children }: { children: React.ReactNode }) {
   return (
-    <div className="text-base my-3 flex flex-col rounded-2xl border border-sky-500 bg-sky-100 p-4 leading-6 text-blue-950 dark:border-blue-500/30 dark:bg-blue-500/5 dark:text-blue-200 dark:[--tw-prose-links-hover:theme(colors.blue.300)] dark:[--tw-prose-links:theme(colors.blue)]">
-     <p className='text-lg p-0 mt-0 mb-2 font-bold text-sky-950 dark:text-sky-200'>📚 Info</p>
+    <div className="text-base my-3 flex flex-col border-l-4 border-sky-500 bg-sky-100 p-4 leading-6 text-blue-950 dark:border-blue-500/30 dark:bg-blue-500/5 dark:text-blue-200 dark:[--tw-prose-links-hover:theme(colors.blue.300)] dark:[--tw-prose-links:theme(colors.blue)]">
+     <p className='text-lg p-0 mt-0 mb-2 font-bold text-sky-500 dark:text-sky-200'>📚 Info</p>
       <div className="[&>:first-child]:mt-0 [&>:last-child]:mb-0">
         {children}
       </div>
@@ -65,8 +65,8 @@ export function Info({ children }: { children: React.ReactNode }) {
 
 export function Caution({ children }: { children: React.ReactNode }) {
   return (
-    <div className="text-base my-3 flex flex-col rounded-2xl border border-amber-500 bg-amber-200 p-4 leading-6 text-amber-950 dark:border-amber-500 dark:bg-amber-500 dark:text-amber-950 dark:[--tw-prose-links-hover:theme(colors.amber.300)] dark:[--tw-prose-links:theme(colors.amber)]">
-      <p className='text-lg p-0 mt-0 mb-2 font-bold text-amber-950 dark:text-amber-200'>✋ Caution</p>
+    <div className="text-base my-3 flex flex-col border-l-4 border-amber-500 bg-amber-100 p-4 leading-6 text-amber-950 dark:border-amber-500 dark:bg-amber-200 dark:text-amber-950 dark:[--tw-prose-links-hover:theme(colors.amber.300)] dark:[--tw-prose-links:theme(colors.amber)]">
+      <p className='text-lg p-0 mt-0 mb-2 font-bold text-amber-500 dark:text-amber-500'>✋ Caution</p>
       <div className="[&>:first-child]:mt-0 [&>:last-child]:mb-0">
         {children}
       </div>
@@ -77,8 +77,8 @@ export function Caution({ children }: { children: React.ReactNode }) {
 
 export function Danger({ children }: { children: React.ReactNode }) {
   return (
-    <div className="text-base my-3 flex flex-col rounded-2xl border border-red-600 bg-red-100 p-4 leading-6 text-zinc-950 dark:border-red-500/30 dark:bg-red-500/5 dark:text-red-200 dark:[--tw-prose-links-hover:theme(colors.red.300)] dark:[--tw-prose-links:theme(colors.red)]">
-      <p className='text-lg p-0 mt-0 mb-2 font-bold text-red-950 dark:text-red-200'>❌ Danger</p>
+    <div className="text-base my-3 flex flex-col border-l-4 border-red-600 bg-red-100 p-4 leading-6 text-zinc-950 dark:border-red-500/30 dark:bg-red-500/5 dark:text-red-200 dark:[--tw-prose-links-hover:theme(colors.red.300)] dark:[--tw-prose-links:theme(colors.red)]">
+      <p className='text-lg p-0 mt-0 mb-2 font-bold text-red-600 dark:text-red-200'>❌ Danger</p>
       <div className="[&>:first-child]:mt-0 [&>:last-child]:mb-0">
         {children}
       </div>

@@ -1,162 +1,124 @@
-# **Employee Experience Management (EXM)**
+import { Guides } from '@/components/Guides'
+import { Resources } from '@/components/Resources'
+import { HeroPattern } from '@/components/HeroPattern'
+import React, { Component } from 'react'
 
-**1. Introduction**
+export const metadata = {
+  title: 'Introduction | erxes inc',
+  description:
+    'The open-source Hubspot alternative enables SaaS providers and digital marketing agencies/developers to create unique experiences for their entire business.',
+}
 
-1.1. Purpose of the document:
-- This document aims to present a detailed and comprehensive overview of the functional and non-functional requirements for the Employee Experience Management (EXM) system. It serves as a crucial reference for all stakeholders involved in the development, implementation, and maintenance of the EXM system.
-1.2. Scope of the EXM:
+export const sections = [
+  { title: 'Architecture', id: 'architecture' },
+  { title: 'Frequently Asked Questions', id: 'faq' },
+]
+
+<HeroPattern />
+
+# **Introduction**
+
+
+Employee Experience Management (EXM) refers to the strategic approach and initiatives implemented by organizations to enhance and optimize the overall experience of their employees throughout the entire employee lifecycle. It focuses on creating a positive, engaging, and supportive work environment that enables employees to thrive, remain motivated, and contribute effectively to the organization's success.
+
+![](https://office.erxes.io/gateway/read-file?key=office-erxes-io/0.5657986068760426tetertrdtygersrdtg.png)
+
+# **Objectives**
+
+This document aims to present a detailed and comprehensive overview of the functional and non-functional requirements for the Employee Experience Management (EXM) system. It serves as a crucial reference for all stakeholders involved in the development, implementation, and maintenance of the EXM system.
 - Employee Engagement
 - Continuous Learning and Development
 - Feedback and Recognition
 - Diversity, Equity, and Inclusion
 - Alignment with Organizational Values
 
-**2. System Overview**
+# **System Overview**
 
-2.1. Brief Description of EXM:
+Employee Experience Management (EXM) is an internal system focused on creating a positive and meaningful work environment for employees throughout their entire journey within an organization. It involves designing and implementing strategies to enhance the overall employee experience, from the onboarding stages to ongoing professional development and retention efforts.
 
-- Employee Experience Management (EXM) is an internal system focused on creating a positive and meaningful work environment for employees throughout their entire journey within an organization. It involves designing and implementing strategies to enhance the overall employee experience, from the onboarding stages to ongoing professional development and retention efforts.
+# **🏷️Functional requirements**
 
-2.2. High-Level Architecture:
-- Outline the architectural components and their interactions.
+Functional of Employee Experience Management System:
 
-2.3. Key Features and Functionality:
-- Employee database (profile, documents, assets)
-- Employee onboarding (knowledge base)
-- Employee engagement (feed, chat)
-- Company structure (department, branch, unit, team member)
-- Attendance management (clock-in/clock-out, leave request, schedules)
-- Learning and development (LMS)
-- Compliance and requests
-- Analytics and reports
 
-**3. Functional Requirements**
 
-3.1 User Management
-- User Authentication:
-    - Secure login mechanisms.
-    - Password policies and encryption.
-    - Multi-factor authentication.
-- User Roles and Permissions:
-    - Define user roles (admin, manager, employee, etc.).
-    - Specify access levels for each role.
-    - Role assignment and management.
+- <div className="not-prose center mb-2 mt-5 flex gap-1">
+  <Button href="/requirement/employee/user" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '38px 3px 0 3px'}}>
+    <>User Management</>
+  </Button>
+  </div>
 
-3.2 Employee database:
-- Team member profile:
-    - Employee information and contact details.
-    - Customization options for profiles.
-    - Add custom fields or properties.
-- Personal Documents:
-    - Convenient access to personal documents
-    - Download and print options.
-- Payslips:
-    - Display of salary structure.
-    - History of payslips.
-- Assets:
-    - Lists of assigned assets.
-    - Receive and accept assets.
+- <div className="not-prose center mb-2 mt-5 flex gap-1">
+  <Button href="/requirement/employee/database" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '0' }}>
+    <>Employee database</>
+  </Button>
+  </div>
 
-3.3 Employee engagement:
-- Internal Chat:
-    - Real-time messaging platform.
-    - Group and individual messaging.
-    - File sharing and attachment capabilities.
-- Feed and Calendar:
-    - Company-wide announcements (feeds/posts).
-    - Reactions and comments on announcements.
-    - Customizable notification preferences.
-    - Event reminders and alerts.
-    - Calendar view of the events.
-- Bravo and Thank You:
-    - Sending and receiving Bravo.
-    - Sending and receiving Thank you letters.
-- Document Sharing and Collaboration:
-    - Centralized document repository.
-- Requests:
-    - Form filling and sending.
-    - Compliance system.
-    - Survey system.
-3.4 Employee Directory and Company Structure
-- Employee directory:
-    - Information and contact details of all team members.
-- Search and Filter:
-    - Advanced search functionality.
-    - Filter options based on roles, skills, etc.
-    - Quick access to employee profiles.
-- Company structure:
-    - Organizational chart.
-    - Details of departments, branches, and units.
-    - Customization options for structure.
-3.5 Leave and Attendance Management
-- Timeclock:
-    - Leave request and approval system.
-    - Attendance tracking tools.
-    - Work schedule management tool.
-3.6 Knowledge Base
-- Centralized Information Repository:
-    - Documented policies and procedures.
-    - FAQs and guides.
-    - Searchable knowledge base.
-- Content Management:
-    - Document categorization and tagging.
-    - User-generated content features.
+- <div className="not-prose center mb-90 mt-5 flex gap-7">
+  <Button href="/requirement/employee/onboarding" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px' }}>
+    <>Employee onboarding</>
+  </Button>
+    </div>
 
-3.7 Learning and development (LMS):
-- Course management:
-    - Program, Course, Class structure.
-    - Pre-requisite and dependencies.
-- Enrollment and progress tracking:
-    - Enrollment through LMS.
-    - Easy to access courses (search, filter).
-    - Progress tracking.
-- Development plan:
-    - Skill-Based Learning Paths.
-    - Recommended courses based on profile.
-- Assessment and Certification:
-    - Assessment library.
-    - Certification library.
-    - Assessment and certification integration.
-- Resource Library:
-    - Creation and categorization.
-    - Content management (text, audio, video).
-- Integration with Employee Profiles:
-    - Display completed courses and certifications on profile.
+- <div className="not-prose center mb-90 mt-5 flex gap-7">
+  <Button href="/requirement/employee/engagement" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px' }}>
+    <>Employee engagement</>
+  </Button>
+    </div>
 
-3.8 Reporting and Analytics
-- Custom Reports:
-    - Ad-hoc reporting capabilities.
-    - Customizable report templates.
-- Data Visualization:
-    - Graphs, charts, and dashboards.
-    - Real-time analytics features.
+- <div className="not-prose center mb-90 mt-5 flex gap-7">
+  <Button href="/requirement/employee/structure" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px' }}>
+    <>Company structure</>
+  </Button>
+    </div>
 
-**4. Non-Functional Requirements**
-- Scalability:
-    - Ability to accommodate company growth.
-    - Scalable architecture and infrastructure.
-- Security:
-    - Data encryption and secure transmission.
-    - Access control and authentication measures.
-    - Regular security audits.
-- Usability:
-    - Intuitive user interface.
-    - Accessibility features.
-    - User training and onboarding resources.
-- Performance:
-    - Response time expectations.
-    - System reliability and availability.
+- <div className="not-prose center mb-90 mt-5 flex gap-1">
+  <Button href="/requirement/employee/attendance" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px' }}>
+    <>Attendance management</>
+  </Button>
+    </div>
 
-**5. Assumptions**
+- <div className="not-prose center mb-90 mt-5 flex gap-1">
+  <Button href="/requirement/employee/learning" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px 3px 0 3px' }}>
+        <>Learning and development</>
+  </Button>
+  </div>
+
+- <div className="not-prose center mb-90 mt-5 flex gap-1">
+  <Button href="/requirement/employee/request" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px 3px 0 3px' }}>
+        <>Compliance and requests</>
+  </Button>
+  </div>
+
+- <div className="not-prose center mb-90 mt-5 flex gap-1">
+  <Button href="/requirement/employee/reports" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px 3px 0 3px' }}>
+        <>Analytics and reports</>
+  </Button>
+  </div>
+
+# **🏷️Non-Functional requirements**
+
+** Scalability **
+- Ability to accommodate company growth.
+- Scalable architecture and infrastructure.
+** Security **
+- Data encryption and secure transmission.
+- Access control and authentication measures.
+- Regular security audits.
+** Usability **
+- Intuitive user interface.
+- Accessibility features.
+- User training and onboarding resources.
+** Performance **
+- Response time expectations.
+- System reliability and availability.
+
+
+<Note>
+** Assumptions **
+Here are some assumptions that could be relevant to EXM initiatives
 - Users will have access to a reliable internet connection for system usage.
 - The system's performance may be affected in areas with unreliable or limited internet access.
+</Note>
 
-**6. Risks**
-
-6.1 Risk: Potential resistance to the adoption of the EXM system by employees.
-Mitigation: 
-    - Implement a robust change management and communication strategy to address concerns and educate employees about the benefits of the system.
-6.2 Risk: Security vulnerabilities leading to data breaches.
-Mitigation: 
-    - Regularly update and patch the system to address security vulnerabilities.
-    - Implement strong access controls and encryption protocols.
+[🖋️Improve this page](https://github.com/erxes/erxes-docs/edit/main/src/app/requirement/employee/page.mdx)

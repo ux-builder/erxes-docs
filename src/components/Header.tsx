@@ -85,7 +85,7 @@ export const Header = forwardRef<
             <TopLevelNavItem href="https://erxes.io/resource-center">Resource center</TopLevelNavItem>
 
             <TopLevelNavItem href="#">Documentation
-            <Dropdown label="" dismissOnClick={true} className="my-2 flex gap-2.5 rounded-2xl border border-violet-500/500 bg-violet-50/50 p-4 leading-6 text-violet-900 dark:border-violet-500/30 dark:bg-violet-900 dark:text-violet-200 dark:[--tw-prose-links-hover:theme(colors.violet.300)] dark:[--tw-prose-links:theme(colors.white)] h-auto max-w-[300px]">
+            <Dropdown label="" dismissOnClick={true} className="my-2 flex z-50 gap-2.5 rounded-2xl border border-violet-500 bg-violet-400 p-4 leading-6 text-violet-950 dark:border-violet-500/30 dark:bg-violet-950 dark:text-violet-200 dark:[--tw-prose-links-hover:theme(colors.violet.300)] dark:[--tw-prose-links:theme(colors.white)] h-auto max-w-[300px]">
       <Dropdown.Item style={{ fontWeight: 'bold' }} href="#">Developer Docs</Dropdown.Item>
       <Dropdown.Item><Link href="intro">Getting started</Link></Dropdown.Item>
       <Dropdown.Item><Link href="quickstart">Setup & Deployment</Link></Dropdown.Item>
@@ -100,7 +100,7 @@ export const Header = forwardRef<
   </TopLevelNavItem>
 
             <TopLevelNavItem href="#">Eco system
-            <Dropdown  label="" dismissOnClick={true} className="my-6 flex gap-2.5 rounded-2xl border border-violet-500/500 bg-violet-50/50 p-4 leading-6 text-violet-900 dark:border-violet-500/30 dark:bg-violet-900 dark:text-violet-200 dark:[--tw-prose-links-hover:theme(colors.violet.300)] dark:[--tw-prose-links:theme(colors.white)] h-auto max-w-[200px]">
+            <Dropdown  label="" dismissOnClick={true} className="my-6 flex gap-2.5 rounded-2xl border border-violet-500 bg-violet-400 p-4 leading-6 text-violet-950 dark:border-violet-500/30 dark:bg-violet-950 dark:text-violet-200 dark:[--tw-prose-links-hover:theme(colors.violet.300)] dark:[--tw-prose-links:theme(colors.white)] h-auto max-w-[200px]">
       <Dropdown.Item style={{ fontWeight: 'bold' }} href="#">Erxes</Dropdown.Item>
       <Dropdown.Item><Link href="https://erxes.io/"> Website </Link></Dropdown.Item>
       <Dropdown.Item><Link href=" https://erxes.io/blog"> Blog </Link></Dropdown.Item>

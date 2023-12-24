@@ -5,6 +5,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Dropdown } from 'flowbite-react';
+import { HiCog, HiFolderOpen, HiBriefcase, HiViewGrid, HiHome, HiBookOpen, HiColorSwatch, HiGlobeAlt, HiCash, HiMap, HiLocationMarker, HiChartBar, HiChatAlt2, HiCube, HiUserGroup, HiCollection } from 'react-icons/hi';
 
 import { Button } from '@/components/Button'
 import { Logo } from '@/components/Logo'
@@ -53,7 +54,7 @@ export const Header = forwardRef<
         className,
         'fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between gap-12 px-4 transition sm:px-6 lg:left-72 lg:z-30 lg:px-8 xl:left-80',
         !isInsideMobileNavigation &&
-          'backdrop-blur-sm dark:backdrop-blur lg:left-72 xl:left-80',
+          'bg-violet-50 dark:backdrop-blur lg:left-72 xl:left-80',
         isInsideMobileNavigation
           ? 'bg-dark dark:bg-zinc-900'
           : 'bg-dark/[var(--bg-opacity-dark)] dark:bg-zinc-900/[var(--bg-opacity-dark)]',
@@ -73,51 +74,51 @@ export const Header = forwardRef<
         )}
       />
       <Search />
-      <div className="flex items-center gap-5 lg:hidden">
+      <div className="flex items-center gap-2 lg:hidden">
         <MobileNavigation />
         <Link href="/" aria-label="Home">
           <Logo className="h-6" />
         </Link>
       </div>
-      <div className="flex items-center gap-5 -dark">
+      <div className="flex items-center gap-4 -dark">
         <nav className="hidden md:block">
-          <ul role="list" className="flex items-center gap-8 -dark">
+          <ul role="list" className="flex items-center gap-10 -dark">
             <TopLevelNavItem href="https://erxes.io/resource-center">Resource center</TopLevelNavItem>
 
-            <TopLevelNavItem href="#">Documentation
-            <Dropdown label="" dismissOnClick={true} className="my-2 flex z-50 gap-2.5 rounded-2xl border border-violet-500 bg-violet-400 p-4 leading-6 text-violet-950 dark:border-violet-500/30 dark:bg-violet-950 dark:text-violet-200 dark:[--tw-prose-links-hover:theme(colors.violet.300)] dark:[--tw-prose-links:theme(colors.white)] h-auto max-w-[300px]">
-      <Dropdown.Item style={{ fontWeight: 'bold' }} href="#">Developer Docs</Dropdown.Item>
-      <Dropdown.Item><Link href="intro">Getting started</Link></Dropdown.Item>
-      <Dropdown.Item><Link href="quickstart">Setup & Deployment</Link></Dropdown.Item>
-      <Dropdown.Item><Link href="quickstart">Development</Link></Dropdown.Item>
-      <Dropdown.Item><Link href="authentication">Development resources</Link></Dropdown.Item>
-      <Dropdown.Item><Link href="pagination">Contributing to open source</Link></Dropdown.Item>
-      <Dropdown.Item style={{ fontWeight: 'bold' }} href="#">User guide</Dropdown.Item>
-      <Dropdown.Item><Link href="contacts"> Getting started </Link></Dropdown.Item>
-      <Dropdown.Item><Link href="conversations"> XOS </Link></Dropdown.Item>
-      <Dropdown.Item><Link href="groups"> Use cases </Link></Dropdown.Item>
+            <TopLevelNavItem href="">Documentation
+            <Dropdown label="" color="black" dismissOnClick={true} className="my-6 flex gap-2.5 rounded-2xl border-violet-100 bg-violet-100 p-4 leading-6  dark:border-violet-950 dark:bg-violet-950 dark:text-violet-200 dark:[--tw-prose-links-hover:theme(colors.violet.300)] dark:[--tw-prose-links:theme(colors.white)] h-auto w-70">
+      <Dropdown.Item style={{ fontWeight: 'bold' }} className="text-base" href="#">Developer Docs</Dropdown.Item>
+      <Dropdown.Item icon={HiHome}><Link href="intro"> Getting started</Link></Dropdown.Item>
+      <Dropdown.Item icon={HiCog}><Link href="quickstart"> Setup & Deployment</Link></Dropdown.Item>
+      <Dropdown.Item icon={HiViewGrid}><Link href="quickstart">Development</Link></Dropdown.Item>
+      <Dropdown.Item icon={HiBriefcase}><Link href="authentication">Development resources</Link></Dropdown.Item>
+      <Dropdown.Item icon={HiFolderOpen}><Link href="pagination">Contributing to open source</Link></Dropdown.Item>
+      <Dropdown.Item style={{ fontWeight: 'bold' }} className="text-base" href="#">User guide</Dropdown.Item>
+      <Dropdown.Item icon={HiHome}><Link href="contacts"> Getting started </Link></Dropdown.Item>
+      <Dropdown.Item icon={HiBookOpen}><Link href="conversations"> XOS </Link></Dropdown.Item>
+      <Dropdown.Item icon={HiColorSwatch}><Link href="groups"> Use cases </Link></Dropdown.Item>
       </Dropdown>
   </TopLevelNavItem>
 
-            <TopLevelNavItem href="#">Eco system
-            <Dropdown  label="" dismissOnClick={true} className="my-6 flex gap-2.5 rounded-2xl border border-violet-500 bg-violet-400 p-4 leading-6 text-violet-950 dark:border-violet-500/30 dark:bg-violet-950 dark:text-violet-200 dark:[--tw-prose-links-hover:theme(colors.violet.300)] dark:[--tw-prose-links:theme(colors.white)] h-auto max-w-[200px]">
-      <Dropdown.Item style={{ fontWeight: 'bold' }} href="#">Erxes</Dropdown.Item>
-      <Dropdown.Item><Link href="https://erxes.io/"> Website </Link></Dropdown.Item>
-      <Dropdown.Item><Link href=" https://erxes.io/blog"> Blog </Link></Dropdown.Item>
-      <Dropdown.Item><Link href="https://github.com/orgs/erxes/projects/11/views/18"> Roadmap </Link></Dropdown.Item>
-      <Dropdown.Item><Link href="https://erxes.io/invest">Invest</Link></Dropdown.Item>
-      <Dropdown.Item><Link href="https://erxes.io/marketplace">Market place</Link></Dropdown.Item>
-      <Dropdown.Item style={{ fontWeight: 'bold' }} href="#">Community</Dropdown.Item>
-      <Dropdown.Item><Link href="https://discord.com/invite/K3hfx6ShmU">Discord</Link></Dropdown.Item>
-      <Dropdown.Item href="#">Forum - not ready</Dropdown.Item>
-      <Dropdown.Item><Link href="https://erxes.io/showcase">Show your use-case</Link></Dropdown.Item>
-      <Dropdown.Item><Link href="https://erxes.io/partners">Become a partner</Link></Dropdown.Item>
-      <Dropdown.Item style={{ fontWeight: 'bold' }} href="#">Resources</Dropdown.Item>
-      <Dropdown.Item><Link href="groups">Use-cases</Link></Dropdown.Item>
-      <Dropdown.Item><Link href="https://erxes.io/marketplace">Plugin tutorial</Link></Dropdown.Item>
+            <TopLevelNavItem href="">Eco system
+            <Dropdown  label="" color="black" dismissOnClick={true} className="my-6 flex gap-2.5 rounded-2xl border-violet-100 bg-violet-100 p-4 leading-6  dark:border-violet-950 dark:bg-violet-950 dark:text-violet-200 dark:[--tw-prose-links-hover:theme(colors.violet.300)] dark:[--tw-prose-links:theme(colors.white)] h-auto w-70">
+      <Dropdown.Item style={{ fontWeight: 'bold' }} className="text-base" href="#">Erxes</Dropdown.Item>
+      <Dropdown.Item icon={HiGlobeAlt}><Link href="https://erxes.io/"> Website </Link></Dropdown.Item>
+      <Dropdown.Item icon={HiCash}><Link href=" https://erxes.io/blog"> Blog </Link></Dropdown.Item>
+      <Dropdown.Item icon={HiLocationMarker}><Link href="https://github.com/orgs/erxes/projects/11/views/18"> Roadmap </Link></Dropdown.Item>
+      <Dropdown.Item icon={HiMap}><Link href="https://erxes.io/invest">Invest</Link></Dropdown.Item>
+      <Dropdown.Item icon={HiChartBar}><Link href="https://erxes.io/marketplace">Market place</Link></Dropdown.Item>
+      <Dropdown.Item style={{ fontWeight: 'bold' }} className="text-base" href="#">Community</Dropdown.Item>
+      <Dropdown.Item icon={HiChatAlt2}><Link href="https://discord.com/invite/K3hfx6ShmU">Discord</Link></Dropdown.Item>
+      <Dropdown.Item icon={HiCube} href="#">Forum - not ready</Dropdown.Item>
+      <Dropdown.Item icon={HiColorSwatch}><Link href="https://erxes.io/showcase">Show your use-case</Link></Dropdown.Item>
+      <Dropdown.Item icon={HiUserGroup}><Link href="https://erxes.io/partners">Become a partner</Link></Dropdown.Item>
+      <Dropdown.Item style={{ fontWeight: 'bold'  }} className="text-base" href="#">Resources</Dropdown.Item>
+      <Dropdown.Item icon={HiColorSwatch}><Link href="groups">Use-cases</Link></Dropdown.Item>
+      <Dropdown.Item icon={HiCollection}><Link href="https://erxes.io/marketplace">Plugin tutorial</Link></Dropdown.Item>
     </Dropdown>
 </TopLevelNavItem>
-            <TopLevelNavItem href="https://github.com/erxes/erxes">Star</TopLevelNavItem>
+
             <TopLevelNavItem href="https://github.com/erxes/erxes">GitHub</TopLevelNavItem>
           </ul>
         </nav>

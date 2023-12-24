@@ -127,7 +127,7 @@ function SmallPrint() {
         <SocialLink href="https://github.com/erxes/erxes" icon={GitHubIcon}>
           Follow us on GitHub
         </SocialLink>
-        <SocialLink href="https://discord.gg/jrhEC3Cq" icon={DiscordIcon}>
+        <SocialLink href="https://discord.com/invite/aaGzy3gQK5" icon={DiscordIcon}>
           Join our Discord server
         </SocialLink>
       </div>

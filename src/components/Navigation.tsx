@@ -1,6 +1,7 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
@@ -9,6 +10,7 @@ import { useIsInsideMobileNavigation } from '@/components/MobileNavigation'
 import { useSectionStore } from '@/components/SectionProvider'
 import { Tag } from '@/components/Tag'
 import { remToPx } from '@/lib/remToPx'
+
 
 interface NavGroup {
   title: string
@@ -76,6 +78,7 @@ function NavLink({
     </Link>
   )
 }
+
 
 function VisibleSectionHighlight({
   group,
@@ -182,7 +185,7 @@ function NavigationGroup({
             <ActivePageMarker group={group} pathname={pathname} />
           )}
         </AnimatePresence>
-        <ul role="list" className="border-l border-transparent">
+        <ul role="list" className="border-l border-transparent ">
           {group.links.map((link) => (
             <motion.li key={link.href} layout="position" className="relative">
               <NavLink href={link.href} active={link.href === pathname}>

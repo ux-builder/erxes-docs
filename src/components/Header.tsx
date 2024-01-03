@@ -29,7 +29,7 @@ function TopLevelNavItem({
     <li>
       <Link
         href={href}
-        className=" flex text-sm leading-5 text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-dark"
+        className=" flex text-sm leading-5 text-zinc-600 transition hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-dark"
       >
         {children}
       </Link>
@@ -55,7 +55,7 @@ export const Header = forwardRef<
         className,
         'fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between gap-12 px-4 transition sm:px-6 lg:left-72 lg:z-30 lg:px-8 xl:left-80',
         !isInsideMobileNavigation &&
-          'bg-violet-50 dark:backdrop-blur lg:left-72 xl:left-80',
+          'bg-violet-50 dark:bg-zinc-950 lg:left-72 xl:left-80',
         isInsideMobileNavigation
           ? 'bg-dark dark:bg-zinc-900'
           : 'bg-dark/[var(--bg-opacity-dark)] dark:bg-zinc-900/[var(--bg-opacity-dark)]',
@@ -84,10 +84,10 @@ export const Header = forwardRef<
       <div className="flex items-center gap-4 -dark">
         <nav className="hidden md:block">
           <ul role="list" className="flex items-center gap-10 -dark">
-            <TopLevelNavItem href="https://erxes.io/resource-center">Resource center</TopLevelNavItem>
+            <TopLevelNavItem href="https://erxes.io/resource-center" >Resource center</TopLevelNavItem>
 
             <TopLevelNavItem href="">Documentation
-            <Dropdown label="" color="black" dismissOnClick={true} className="my-6 flex gap-2.5 rounded-2xl border-violet-100 bg-violet-100 p-4 leading-6  dark:border-violet-950 dark:bg-violet-950 dark:text-violet-200 dark:[--tw-prose-links-hover:theme(colors.violet.300)] dark:[--tw-prose-links:theme(colors.white)] h-auto w-70">
+            <Dropdown label="" color="black" dismissOnClick={true} className="my-6 flex gap-2.5 rounded-2xl border-violet-100 bg-violet-100 p-4 leading-6  dark:border-violet-300 dark:bg-violet-300 dark:text-zinc-950 h-auto w-70">
       <Dropdown.Item style={{ fontWeight: 'bold' }} className="text-base" href="#">Developer Docs</Dropdown.Item>
       <Dropdown.Item icon={HiHome}><Link href="intro"> Getting started</Link></Dropdown.Item>
       <Dropdown.Item icon={HiCog}><Link href="quickstart"> Setup & Deployment</Link></Dropdown.Item>
@@ -102,7 +102,7 @@ export const Header = forwardRef<
   </TopLevelNavItem>
 
             <TopLevelNavItem href="">Eco system
-            <Dropdown  label="" color="black" dismissOnClick={true} className="my-6 flex gap-2.5 rounded-2xl border-violet-100 bg-violet-100 p-4 leading-6  dark:border-violet-950 dark:bg-violet-950 dark:text-violet-200 dark:[--tw-prose-links-hover:theme(colors.violet.300)] dark:[--tw-prose-links:theme(colors.white)] h-auto w-70">
+            <Dropdown  label="" color="black" dismissOnClick={true} className="my-6 flex gap-2.5 rounded-2xl border-violet-100 bg-violet-100 p-4 leading-6  dark:border-violet-300 dark:bg-violet-300 dark:text-zinc-950 dark:[--tw-prose-links-hover:theme(colors.violet.300)] dark:[--tw-prose-links:theme(colors.white)] h-auto w-70">
       <Dropdown.Item style={{ fontWeight: 'bold' }} className="text-base" href="#">Erxes</Dropdown.Item>
       <Dropdown.Item icon={HiGlobeAlt}><Link href="https://erxes.io/" > Website </Link></Dropdown.Item>
       <Dropdown.Item icon={HiCash}><Link href=" https://erxes.io/blog"> Blog </Link></Dropdown.Item>

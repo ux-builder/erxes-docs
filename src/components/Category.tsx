@@ -29,7 +29,7 @@ interface Category {
 
 const resources: Array<Category> = [
   {
-    href: '/quickstart/deployment/deploymentDocker',
+    href: '/quickstart#DeploymentDocker',
     name: 'By docker',
     description:
       'The following documentation will guide you through the installation of an erxes project using Docker on Ubuntu in order to use erxes.',

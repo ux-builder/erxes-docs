@@ -28,7 +28,7 @@ interface Tsogtoo {
 
 const resources: Array<Tsogtoo> = [
   {
-    href: '/quickstart/groups/ubuntu',
+    href: '/quickstart#ubuntu',
     name: 'Ubuntu',
     description:
       'The following documentation will guide you through the installation of an erxes project using Docker on Ubuntu.',
@@ -42,7 +42,7 @@ const resources: Array<Tsogtoo> = [
     },
   },
   {
-    href: '/quickstart/groups/mac',
+    href: '/quickstart#mac',
     name: 'Mac',
     description:
       'The following documentation will guide you through the installation of an erxes project using Docker on MacOs.',
@@ -146,7 +146,7 @@ export function Tsogtoo() {
   return (
     <div className="my-16 xl:max-w-none">
       <Heading level={2} id="resources">
-        Resources
+      Local installation
       </Heading>
       <div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
         {resources.map((resource) => (

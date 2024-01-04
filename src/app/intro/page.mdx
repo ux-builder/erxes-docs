@@ -1,6 +1,7 @@
 import { Guides } from '@/components/Guides'
 import { Resources } from '@/components/Resources'
 import { HeroPattern } from '@/components/HeroPattern'
+import { Db } from '@/components/Db'
 import React, { Component } from 'react'
 
 export const metadata = {
@@ -9,10 +10,6 @@ export const metadata = {
     'The open-source Hubspot alternative enables SaaS providers and digital marketing agencies/developers to create unique experiences for their entire business.',
 }
 
-export const sections = [
-  { title: 'Architecture', id: 'architecture' },
-  { title: 'Frequently Asked Questions', id: 'faq' },
-]
 
 <HeroPattern />
 
@@ -20,8 +17,7 @@ export const sections = [
 
 # **Introduction**
 
-
-## What is erxes?
+What is erxes?
 
 Hello 👋
 
@@ -34,7 +30,7 @@ erxes is an open-source experience operating system (XOS) that enables SaaS prov
 </Note>
 
 
-## With erxes, you can... 
+With erxes, you can... 
 
 Achieving growth and unity within your company is possible. Find more about what you can do with erxes as follows:
 
@@ -45,7 +41,7 @@ Achieving growth and unity within your company is possible. Find more about what
 We love open-source and the idea everybody can freely use and extend what we wrote. Digital marketing technology agencies are welcome to add value to their product and services by selling erxes to their clients to use erxes privately.
 erxes Marketplace is a great place to add the source of revenue for independent developers and digital marketing technology agencies to earn and distribute your plugins they created on erxes XOS. is a great place to add the source of revenue for independent developers and digital marketing technology agencies to earn and distribute your plugins they created on erxes XOS.
 
-# Open-source & Contribution
+Open-source & Contribution
 
 Our community is at the heart of everything we do. We understand that people who contribute to a project are the main drivers who push a project forward. erxes core project, the documentation, and any related tool can be found in the erxes on GitHub.
 
@@ -55,7 +51,7 @@ Our community is at the heart of everything we do. We understand that people who
 - [erxes Demo](#) - erxes official demo
 - [contributing guide](/pagination) - to contribute
 
-# Community
+Community
 
 
 [erxes documentation](/intro) contains instructions for everything you need to know about erxes. For additional information, you can use any of these channels to get the answer you want:
@@ -66,10 +62,58 @@ Our community is at the heart of everything we do. We understand that people who
 You can join [GitHub](https://github.com/erxes/erxes) <script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>, [Community forum](https://github.com/erxes/erxes/discussions)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>, and [Discord](https://discord.com/invite/aaGzy3gQK5)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> to share your ideas and opinions with other community members and members of the erxes team. If you're looking for news and updates about erxes, [Twitter](https://twitter.com/erxesHQ)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> and the [blog](https://erxes.io/blog)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> are the places to start!
 </Note>
 
-# Support
+Support
 
 
 If you need any support during your development with erxes, you can join our [Discord](https://discord.com/invite/aaGzy3gQK5)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>. You will get help directly from our core team and our community.
 
 By joining our Discord Server, you’ll also have the chance to participate in many events and showcase your work with erxes.
+
+
+
+## Architecture
+
+erxes’s coding architecture comprises Backend, UI, and Widgets.
+
+**Backend** part is responsible for ensuring all APIs of different plugins work together smoothly.
+
+**UI** part used React, Apollo, and GraphQL and is also responsible for ensuring all API’s UI work together. XOS comes with utility features to help you manage your account:
+
+- System config
+- Permission
+- Team members
+- Brands
+- Import & export
+- Application
+- Marketplace
+
+**erxes Widgets** are built with Web Widgets, iOS SDK, Android SDK, React Native SDK - React, React Native, Apollo, GraphQl. It contains the codes that work on the user’s website and mobile application.
+ 
+
+
+<Db />
+
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/5f9e74fe-e5d1-4cec-35a8-30db23622700/public)
+
+
+
+## Frequently Asked Questions
+
+ **What does erxes mean? How do you pronounce it?**
+
+erxes (pronounced 'erk-sis') means "heavenly bodies" in Mongolian. It is branded as “erxes” with all lowercase letters. {{ className: 'lead' }}
+
+**What kind of licence erxes has?**
+
+Please see the [LICENSE](https://github.com/erxes/erxes/blob/master/LICENSE.md)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> file for licensing information.
+
+**Are these all free? Can we just use it for free?**
+
+Yes, we’re open-source software, our license is [AGPLv3](https://github.com/erxes/erxes/blob/master/LICENSE.md)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> with [Enterprise Edition](https://github.com/erxes/erxes/tree/master/ee)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>, which means some of our plugins and code for SaaS are require prior agmeenent and kept private under Enterpise Edition. But the rest are all free for you to install and use for you. Please read more about our license [here](https://erxes.io/blog/posts/changing-the-license-to-agplv3-with-the-enterprise-edition)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>.
+
+However, we provides 3 different packages for our clients, which include:
+
+- A self-hosted version that is suitable for SaaS providers or enterprises operating in highly regulated industries, like insurance, mobile network providers, banking and etc. As it is self-hosted, you must ensure you and your organization have a skilled DevOps person/team to look after the server to maintain the smooth operation of your erxes operating system daily. As an erxes user, you can choose between using the Community Edition, which is entirely free, or paid plan of the Enterprise Edition.
+- SaaS version that is suitable for small to medium enterprises who want to leave all your tech-related work to us and only focus on your main operation that is non-technical. Pricing is super simple in that you can get access to erxes for free and use it as long as you want as an individual. Then as your business grows, you can only pay for what you need, rather than having a bunch of junk that comes within the package.
+- An infrastructure version is for is the best choice for starting a platform business. You can white-label the design or change every line of code to make it work for you, and this is where you can leverage erxes core plugins, components, and enterprise features to power your entire platform business that includes some of the very specific, high-level paid plugins
 

@@ -28,7 +28,7 @@ interface Developer {
 
 const resources: Array<Developer > = [
   {
-    href: '/sdks/creategen',
+    href: '/sdks#create-general-plugin',
     name: 'Create General Plugin',
     description:
       'With erxes, you can create your own plugins or extend the existing ones, which would help you to enhance your experience...',
@@ -42,7 +42,7 @@ const resources: Array<Developer > = [
     },
   },
   {
-    href: '/sdks/createinte',
+    href: '/sdks#create-integration-plugin',
     name: 'Create Integration plugin',
     description:
       'Integration is the extent of the Inbox plugin, which allows third party softwares to be integrated to your shared Inbox.',
@@ -146,7 +146,7 @@ export function Developer () {
   return (
     <div className="my-16 xl:max-w-none">
       <Heading level={2} id="resources">
-        Resources
+      Development
       </Heading>
       <div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
         {resources.map((resource) => (

@@ -208,7 +208,7 @@ function NavigationGroup({
                     {sections.map((section) => (
                       <li key={section.id}>
                         <NavLink
-                          href={`${link.href}/${section.id}`}
+                          href={`${link.href}#${section.id}`}
                           tag={section.tag}
                           isAnchorLink
                         >

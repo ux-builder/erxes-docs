@@ -148,6 +148,9 @@ export function Tsogtoo() {
       <Heading level={2} id="resources">
       Local installation
       </Heading>
+      <h4>
+      The group model contains all the information about your groups, including what contacts are in the group and the group's name, description, and avatar. 
+      </h4>
       <div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:grid-cols-4">
         {resources.map((resource) => (
           <Resource key={resource.href} resource={resource} />

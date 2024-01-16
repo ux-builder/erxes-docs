@@ -248,9 +248,23 @@ export const navigation: Array<NavGroup> = [
     ],
   },
   {
-    title: 'Business Analyst Documentation',
+    title: 'Customer Experience',
     links: [
-      { title: 'Experience Requirement Documents', href: '/requirement' },
+      { title: 'Sales', href: '/customer' },
+      { title: 'Finance', href: '/finance' },
+      { title: 'Marketing', href: '/marketing' },
+      { title: 'Frontline', href: '/frontline' },
+    ],
+  },
+  {
+    title: 'Employee Experience',
+    links: [
+      { title: 'XM for Employee', href: '/employee' },
+    ],
+  },
+  {
+    title: 'Community Experience (Coming soon)',
+    links: [
     ],
   },
 ]

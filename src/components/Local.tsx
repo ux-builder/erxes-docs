@@ -15,7 +15,7 @@ import { EnvelopeIcon } from '@/components/icons/EnvelopeIcon'
 import { UserIcon } from '@/components/icons/UserIcon'
 import { UsersIcon } from '@/components/icons/UsersIcon'
 
-interface Tsogtoo {
+interface Local {
   href: string
   name: string
   description: string
@@ -26,7 +26,7 @@ interface Tsogtoo {
   >
 }
 
-const resources: Array<Tsogtoo> = [
+const resources: Array<Local> = [
   {
     href: '/quickstart#ubuntu',
     name: 'Ubuntu',
@@ -54,7 +54,7 @@ const resources: Array<Tsogtoo> = [
   },
 ]
 
-function ResourceIcon({ icon: Icon }: { icon: Tsogtoo['icon'] }) {
+function ResourceIcon({ icon: Icon }: { icon: Local['icon'] }) {
   return (
     <div className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900/5 ring-1 ring-zinc-900/25 backdrop-blur-[2px] transition duration-300 group-hover:bg-white/50 group-hover:ring-zinc-900/25 dark:bg-white/7.5 dark:ring-white/15 dark:group-hover:bg-violet-300/10 dark:group-hover:ring-violet-400">
       <Icon className="h-5 w-5 fill-zinc-700/10 stroke-zinc-700 transition-colors duration-300 group-hover:stroke-zinc-900 dark:fill-white/10 dark:stroke-zinc-400 dark:group-hover:fill-violet-300/10 dark:group-hover:stroke-violet-400" />
@@ -66,7 +66,7 @@ function ResourcePattern({
   mouseX,
   mouseY,
   ...gridProps
-}: Tsogtoo['pattern'] & {
+}: Local['pattern'] & {
   mouseX: MotionValue<number>
   mouseY: MotionValue<number>
 }) {
@@ -104,7 +104,7 @@ function ResourcePattern({
   )
 }
 
-function Resource({ resource }: { resource: Tsogtoo }) {
+function Resource({ resource }: { resource: Local }) {
   let mouseX = useMotionValue(0)
   let mouseY = useMotionValue(0)
 
@@ -142,7 +142,7 @@ function Resource({ resource }: { resource: Tsogtoo }) {
   )
 }
 
-export function Tsogtoo() {
+export function Local() {
   return (
     <div className="my-16 xl:max-w-none">
       <Heading level={2} id="resources">

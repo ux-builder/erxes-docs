@@ -1,366 +1,72 @@
+import { Guides } from '@/components/Guides'
+import { Resources } from '@/components/Resources'
 import { HeroPattern } from '@/components/HeroPattern'
+import React, { Component } from 'react'
 
-<HeroPattern />
 export const metadata = {
-  title: 'Attachments',
+  title: 'Introduction | erxes inc',
   description:
-    'On this page, we’ll dive into the different attachment endpoints you can use to manage attachments programmatically.',
+    'The open-source Hubspot alternative enables SaaS providers and digital marketing agencies/developers to create unique experiences for their entire business.',
 }
 
-# Attachments
-
-Attachments are how you share things in Protocol — they allow you to send all sorts of files to your contacts and groups. On this page, we'll dive into the different attachment endpoints you can use to manage attachments programmatically. We'll look at how to query, upload, update, and delete attachments. {{ className: 'lead' }}
-
-## The attachment model
-
-The attachment model contains all the information about the files you send to your contacts and groups, including the name, type, and size.
-
-### Properties
-
-<Properties>
-  <Property name="id" type="string">
-    Unique identifier for the attachment.
-  </Property>
-  <Property name="message_id" type="string">
-    Unique identifier for the message associated with the attachment.
-  </Property>
-  <Property name="filename" type="string">
-    The filename for the attachment.
-  </Property>
-  <Property name="file_url" type="string">
-    The URL for the attached file.
-  </Property>
-  <Property name="file_type" type="string">
-    The MIME type of the attached file.
-  </Property>
-  <Property name="file_size" type="integer">
-    The file size of the attachment in bytes.
-  </Property>
-  <Property name="created_at" type="timestamp">
-    Timestamp of when the attachment was created.
-  </Property>
-</Properties>
-
----
-
-## List all attachments {{ tag: 'GET', label: '/v1/attachments' }}
-
-<Row>
-  <Col>
-
-    This endpoint allows you to retrieve a paginated list of all your attachments (in a conversation if a conversation id is provided). By default, a maximum of ten attachments are shown per page.
-
-    ### Optional attributes
-
-    <Properties>
-      <Property name="conversation_id" type="string">
-        Limit to attachments from a given conversation.
-      </Property>
-      <Property name="limit" type="integer">
-        Limit the number of attachments returned.
-      </Property>
-    </Properties>
+export const sections = [
+  { title: 'Architecture', id: 'architecture' },
+  { title: 'Frequently Asked Questions', id: 'faq' },
+]
 
-  </Col>
-  <Col sticky>
+<HeroPattern />
 
-    <CodeGroup title="Request" tag="GET" label="/v1/attachments">
+# **Introduction**
 
-    ```bash {{ title: 'cURL' }}
-    curl -G https://api.protocol.chat/v1/attachments \
-      -H "Authorization: Bearer {token}" \
-      -d conversation_id="xgQQXg3hrtjh7AvZ" \
-      -d limit=10
-    ```
 
-    ```js
-    import ApiClient from '@example/protocol-api'
+## What is erxes?
 
-    const client = new ApiClient(token)
+Hello 👋
 
-    await client.attachments.list()
-    ```
+Welcome to the erxes developer documentation, the open source of the Hubspot/Qualtrics alternative with many more!
 
-    ```python
-    from protocol_api import ApiClient
+erxes is an open-source experience operating system (XOS) that enables SaaS providers and digital marketing agencies/developers to create unique experiences that work for all types of business.
 
-    client = ApiClient(token)
-
-    client.attachments.list()
-    ```
-
-    ```php
-    $client = new \Protocol\ApiClient($token);
+<Note>
+  Can't wait to start using erxes? Get started with erxes with our [Installation guide](/quickstart/deployment/deploymentDocker) ! Try out a [live demo!](#)
+</Note>
 
-    $client->attachments->list();
-    ```
 
-    </CodeGroup>
+## With erxes, you can... 
 
-    ```json {{ title: 'Response' }}
-    {
-      "has_more": false,
-      "data": [
-        {
-          "id": "Nc6yKKMpcxiiFxp6",
-          "message_id": "LoPsJaMcPBuFNjg1",
-          "filename": "Invoice_room_service__Plaza_Hotel.pdf",
-          "file_url": "https://assets.protocol.chat/attachments/Invoice_room_service__Plaza_Hotel.pdf",
-          "file_type": "application/pdf",
-          "file_size": 21352,
-          "created_at": 692233200
-        },
-        {
-          "id": "hSIhXBhNe8X1d8Et"
-          // ...
-        }
-      ]
-    }
-    ```
+Achieving growth and unity within your company is possible. Find more about what you can do with erxes as follows:
 
-  </Col>
-</Row>
+- erxes is an open-source project (see [LICENSE](https://github.com/erxes/erxes/blob/master/LICENSE.md ) 
+ for more information); everyone (individuals and companies, especially SaaS providers) can use it for free privately to create better experiences for everything they do, such as customer, employee, production, service, and many more experiences.
+- We love open-source and the idea everybody can freely use and extend what we wrote. Digital marketing technology agencies are welcome to add value to their product and services by selling erxes to their clients to use erxes privately.
+- [erxes Marketplace](https://erxes.io/marketplace) <script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> erxes is an open-source project (see LICENSE for more information); everyone (individuals and companies, especially SaaS providers) can use it for free privately to create better experiences for everything they do, such as customer, employee, production, service, and many more experiences.
+We love open-source and the idea everybody can freely use and extend what we wrote. Digital marketing technology agencies are welcome to add value to their product and services by selling erxes to their clients to use erxes privately.
+erxes Marketplace is a great place to add the source of revenue for independent developers and digital marketing technology agencies to earn and distribute your plugins they created on erxes XOS. is a great place to add the source of revenue for independent developers and digital marketing technology agencies to earn and distribute your plugins they created on erxes XOS.
 
----
+# Open-source & Contribution
 
-## Create an attachment {{ tag: 'POST', label: '/v1/attachments' }}
+Our community is at the heart of everything we do. We understand that people who contribute to a project are the main drivers who push a project forward. erxes core project, the documentation, and any related tool can be found in the erxes on GitHub.
 
-<Row>
-  <Col>
+- [erxes](https://github.com/erxes/erxes) - erxes codebase
+<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>
+- [erxes Docker](/quickstart/groups/ubuntu) - erxes containerized
+- [erxes Demo](#) - erxes official demo
+- [contributing guide](/pagination) - to contribute
 
-    This endpoint allows you to upload a new attachment to a conversation. See the code examples for how to send the file to the Protocol API.
+# Community
 
-    ### Required attributes
 
-    <Properties>
-      <Property name="file" type="string">
-        The file you want to add as an attachment.
-      </Property>
-    </Properties>
+[erxes documentation](/intro) contains instructions for everything you need to know about erxes. For additional information, you can use any of these channels to get the answer you want:
 
-  </Col>
-  <Col sticky>
+<Note>
+  Want to join the community?
 
-    <CodeGroup title="Request" tag="POST" label="/v1/attachments">
+You can join [GitHub](https://github.com/erxes/erxes) <script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>, [Community forum](https://github.com/erxes/erxes/discussions)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>, and [Discord](https://discord.com/invite/aaGzy3gQK5)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> to share your ideas and opinions with other community members and members of the erxes team. If you're looking for news and updates about erxes, [Twitter](https://twitter.com/erxesHQ)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> and the [blog](https://erxes.io/blog)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> are the places to start!
+</Note>
 
-    ```bash {{ title: 'cURL' }}
-    curl https://api.protocol.chat/v1/attachments \
-      -H "Authorization: Bearer {token}" \
-      -F file="../Invoice_room_service__Plaza_Hotel.pdf"
-    ```
+# Support
 
-    ```js
-    import ApiClient from '@example/protocol-api'
 
-    const client = new ApiClient(token)
+If you need any support during your development with erxes, you can join our [Discord](https://discord.com/invite/aaGzy3gQK5)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>. You will get help directly from our core team and our community.
 
-    await client.attachments.create({ file })
-    ```
-
-    ```python
-    from protocol_api import ApiClient
-
-    client = ApiClient(token)
-
-    client.attachments.create(file=file)
-    ```
-
-    ```php
-    $client = new \Protocol\ApiClient($token);
-
-    $client->attachments->create([
-      'file' => $file,
-    ]);
-    ```
-
-    </CodeGroup>
-
-    ```json {{ title: 'Response' }}
-    {
-      "id": "Nc6yKKMpcxiiFxp6",
-      "message_id": "LoPsJaMcPBuFNjg1",
-      "filename": "Invoice_room_service__Plaza_Hotel.pdf",
-      "file_url": "https://assets.protocol.chat/attachments/Invoice_room_service__Plaza_Hotel.pdf",
-      "file_type": "application/pdf",
-      "file_size": 21352,
-      "created_at": 692233200
-    }
-    ```
-
-  </Col>
-</Row>
-
----
-
-## Retrieve an attachment {{ tag: 'GET', label: '/v1/attachments/:id' }}
-
-<Row>
-  <Col>
-
-    This endpoint allows you to retrieve an attachment by providing the attachment id. Refer to [the list](#the-attachment-model) at the top of this page to see which properties are included with attachment objects.
-
-  </Col>
-  <Col sticky>
-
-    <CodeGroup title="Request" tag="GET" label="/v1/attachments/Nc6yKKMpcxiiFxp6">
-
-    ```bash {{ title: 'cURL' }}
-    curl https://api.protocol.chat/v1/attachments/Nc6yKKMpcxiiFxp6 \
-      -H "Authorization: Bearer {token}"
-    ```
-
-    ```js
-    import ApiClient from '@example/protocol-api'
-
-    const client = new ApiClient(token)
-
-    await client.attachments.get('Nc6yKKMpcxiiFxp6')
-    ```
-
-    ```python
-    from protocol_api import ApiClient
-
-    client = ApiClient(token)
-
-    client.attachments.get("Nc6yKKMpcxiiFxp6")
-    ```
-
-    ```php
-    $client = new \Protocol\ApiClient($token);
-
-    $client->attachments->get('Nc6yKKMpcxiiFxp6');
-    ```
-
-    </CodeGroup>
-
-    ```json {{ title: 'Response' }}
-    {
-      "id": "Nc6yKKMpcxiiFxp6",
-      "message_id": "LoPsJaMcPBuFNjg1",
-      "filename": "Invoice_room_service__Plaza_Hotel.pdf",
-      "file_url": "https://assets.protocol.chat/attachments/Invoice_room_service__Plaza_Hotel.pdf",
-      "file_type": "application/pdf",
-      "file_size": 21352,
-      "created_at": 692233200
-    }
-    ```
-
-  </Col>
-</Row>
-
----
-
-## Update an attachment {{ tag: 'PUT', label: '/v1/attachments/:id' }}
-
-<Row>
-  <Col>
-
-    This endpoint allows you to perform an update on an attachment. Currently, the only supported type of update is changing the filename.
-
-    ### Optional attributes
-
-    <Properties>
-      <Property name="filename" type="string">
-        The new filename for the attachment.
-      </Property>
-    </Properties>
-
-  </Col>
-  <Col sticky>
-
-    <CodeGroup title="Request" tag="PUT" label="/v1/attachments/Nc6yKKMpcxiiFxp6">
-
-    ```bash {{ title: 'cURL' }}
-    curl -X PUT https://api.protocol.chat/v1/attachments/Nc6yKKMpcxiiFxp6 \
-      -H "Authorization: Bearer {token}" \
-      -d filename="Invoice_room_service__Plaza_Hotel_updated.pdf"
-    ```
-
-    ```js
-    import ApiClient from '@example/protocol-api'
-
-    const client = new ApiClient(token)
-
-    await client.attachments.update('Nc6yKKMpcxiiFxp6', {
-      filename: 'Invoice_room_service__Plaza_Hotel_updated.pdf',
-    })
-    ```
-
-    ```python
-    from protocol_api import ApiClient
-
-    client = ApiClient(token)
-
-    client.attachments.update("Nc6yKKMpcxiiFxp6", filename="Invoice_room_service__Plaza_Hotel_updated.pdf")
-    ```
-
-    ```php
-    $client = new \Protocol\ApiClient($token);
-
-    $client->attachments->update('Nc6yKKMpcxiiFxp6', [
-      'filename' => 'Invoice_room_service__Plaza_Hotel_updated.pdf',
-    ]);
-    ```
-
-    </CodeGroup>
-
-    ```json {{ title: 'Response' }}
-    {
-      "id": "Nc6yKKMpcxiiFxp6",
-      "message_id": "LoPsJaMcPBuFNjg1",
-      "filename": "Invoice_room_service__Plaza_Hotel.pdf",
-      "file_url": "https://assets.protocol.chat/attachments/Invoice_room_service__Plaza_Hotel_updated.pdf",
-      "file_type": "application/pdf",
-      "file_size": 21352,
-      "created_at": 692233200
-    }
-    ```
-
-  </Col>
-</Row>
-
----
-
-## Delete an attachment {{ tag: 'DELETE', label: '/v1/attachments/:id' }}
-
-<Row>
-  <Col>
-
-    This endpoint allows you to delete attachments. Note: This will permanently delete the file.
-
-  </Col>
-  <Col sticky>
-
-    <CodeGroup title="Request" tag="DELETE" label="/v1/attachments/Nc6yKKMpcxiiFxp6">
-
-    ```bash {{ title: 'cURL' }}
-    curl -X DELETE https://api.protocol.chat/v1/attachments/Nc6yKKMpcxiiFxp6 \
-      -H "Authorization: Bearer {token}"
-    ```
-
-    ```js
-    import ApiClient from '@example/protocol-api'
-
-    const client = new ApiClient(token)
-
-    await client.attachments.delete('Nc6yKKMpcxiiFxp6')
-    ```
-
-    ```python
-    from protocol_api import ApiClient
-
-    client = ApiClient(token)
-
-    client.attachments.delete("Nc6yKKMpcxiiFxp6")
-    ```
-
-    ```php
-    $client = new \Protocol\ApiClient($token);
-
-    $client->attachments->delete('Nc6yKKMpcxiiFxp6');
-    ```
-
-    </CodeGroup>
-
-  </Col>
-</Row>
+By joining our Discord Server, you’ll also have the chance to participate in many events and showcase your work with erxes.

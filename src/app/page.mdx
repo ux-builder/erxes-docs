@@ -1,47 +1,366 @@
-import { Guides } from '@/components/Guides'
-import { Resources } from '@/components/Resources'
 import { HeroPattern } from '@/components/HeroPattern'
-import React, { Component } from 'react'
 
 <HeroPattern />
+export const metadata = {
+  title: 'Attachments',
+  description:
+    'On this page, we’ll dive into the different attachment endpoints you can use to manage attachments programmatically.',
+}
 
-# Introduction
+# Attachments
 
-## What is erxes?
+Attachments are how you share things in Protocol — they allow you to send all sorts of files to your contacts and groups. On this page, we'll dive into the different attachment endpoints you can use to manage attachments programmatically. We'll look at how to query, upload, update, and delete attachments. {{ className: 'lead' }}
 
-Welcome to the erxes developer documentation, the open-source alternative to HubSpot and Qualtrics, offering a myriad of features!
+## The attachment model
 
-erxes is an open-source Experience Operating System (XOS) designed to empower SaaS providers and digital marketing agencies/developers to craft unique experiences across various business domains.
+The attachment model contains all the information about the files you send to your contacts and groups, including the name, type, and size.
 
-<Note>
-  Eager to get started with erxes? Dive into our [Installation guide](/quickstart/deployment/deploymentDocker) or explore our [live demo](#)!
-</Note>
+### Properties
 
-## With erxes, you can...
+<Properties>
+  <Property name="id" type="string">
+    Unique identifier for the attachment.
+  </Property>
+  <Property name="message_id" type="string">
+    Unique identifier for the message associated with the attachment.
+  </Property>
+  <Property name="filename" type="string">
+    The filename for the attachment.
+  </Property>
+  <Property name="file_url" type="string">
+    The URL for the attached file.
+  </Property>
+  <Property name="file_type" type="string">
+    The MIME type of the attached file.
+  </Property>
+  <Property name="file_size" type="integer">
+    The file size of the attachment in bytes.
+  </Property>
+  <Property name="created_at" type="timestamp">
+    Timestamp of when the attachment was created.
+  </Property>
+</Properties>
 
-Unleash the potential of erxes with these capabilities:
+---
 
-- **Open-Source Flexibility**: Utilize erxes as an open-source project, enabling individuals and companies, especially SaaS providers, to enhance various experiences such as customer service, employee management, production, and more.
-- **Extend Functionality**: As digital marketing technology agencies, add value to your products and services by offering erxes privately to clients.
-- **Explore the Marketplace**: Discover and distribute plugins created on erxes XOS via the [erxes Marketplace](https://erxes.io/marketplace).
+## List all attachments {{ tag: 'GET', label: '/v1/attachments' }}
 
-# Open-Source & Contribution
+<Row>
+  <Col>
 
-Our community is the lifeblood of erxes. Contributions are essential for the project's advancement. You can find erxes core project, documentation, and related tools on GitHub:
+    This endpoint allows you to retrieve a paginated list of all your attachments (in a conversation if a conversation id is provided). By default, a maximum of ten attachments are shown per page.
 
-- [erxes](https://github.com/erxes/erxes) - erxes codebase
-- [erxes Docker](/quickstart/groups/ubuntu) - erxes containerized
-- [erxes Demo](#) - erxes official demo
-- [Contributing Guide](/pagination)
+    ### Optional attributes
 
-# Community
+    <Properties>
+      <Property name="conversation_id" type="string">
+        Limit to attachments from a given conversation.
+      </Property>
+      <Property name="limit" type="integer">
+        Limit the number of attachments returned.
+      </Property>
+    </Properties>
 
-The erxes documentation provides comprehensive instructions. For further assistance, connect with us through these channels:
+  </Col>
+  <Col sticky>
 
-<Note>
-  Interested in joining the community? Connect with us on [GitHub](https://github.com/erxes/erxes), our [Community forum](https://github.com/erxes/erxes/discussions), and [Discord](https://discord.com/invite/aaGzy3gQK5). Stay updated with erxes news and updates via [Twitter](https://twitter.com/erxesHQ) and our [blog](https://erxes.io/blog).
-</Note>
+    <CodeGroup title="Request" tag="GET" label="/v1/attachments">
 
-# Support
+    ```bash {{ title: 'cURL' }}
+    curl -G https://api.protocol.chat/v1/attachments \
+      -H "Authorization: Bearer {token}" \
+      -d conversation_id="xgQQXg3hrtjh7AvZ" \
+      -d limit=10
+    ```
 
-Need assistance with erxes development? Join our [Discord](https://discord.com/invite/aaGzy3gQK5) community to receive direct support from our core team and community members. Additionally, participating in our Discord Server grants opportunities to engage in events and showcase your work with erxes.
+    ```js
+    import ApiClient from '@example/protocol-api'
+
+    const client = new ApiClient(token)
+
+    await client.attachments.list()
+    ```
+
+    ```python
+    from protocol_api import ApiClient
+
+    client = ApiClient(token)
+
+    client.attachments.list()
+    ```
+
+    ```php
+    $client = new \Protocol\ApiClient($token);
+
+    $client->attachments->list();
+    ```
+
+    </CodeGroup>
+
+    ```json {{ title: 'Response' }}
+    {
+      "has_more": false,
+      "data": [
+        {
+          "id": "Nc6yKKMpcxiiFxp6",
+          "message_id": "LoPsJaMcPBuFNjg1",
+          "filename": "Invoice_room_service__Plaza_Hotel.pdf",
+          "file_url": "https://assets.protocol.chat/attachments/Invoice_room_service__Plaza_Hotel.pdf",
+          "file_type": "application/pdf",
+          "file_size": 21352,
+          "created_at": 692233200
+        },
+        {
+          "id": "hSIhXBhNe8X1d8Et"
+          // ...
+        }
+      ]
+    }
+    ```
+
+  </Col>
+</Row>
+
+---
+
+## Create an attachment {{ tag: 'POST', label: '/v1/attachments' }}
+
+<Row>
+  <Col>
+
+    This endpoint allows you to upload a new attachment to a conversation. See the code examples for how to send the file to the Protocol API.
+
+    ### Required attributes
+
+    <Properties>
+      <Property name="file" type="string">
+        The file you want to add as an attachment.
+      </Property>
+    </Properties>
+
+  </Col>
+  <Col sticky>
+
+    <CodeGroup title="Request" tag="POST" label="/v1/attachments">
+
+    ```bash {{ title: 'cURL' }}
+    curl https://api.protocol.chat/v1/attachments \
+      -H "Authorization: Bearer {token}" \
+      -F file="../Invoice_room_service__Plaza_Hotel.pdf"
+    ```
+
+    ```js
+    import ApiClient from '@example/protocol-api'
+
+    const client = new ApiClient(token)
+
+    await client.attachments.create({ file })
+    ```
+
+    ```python
+    from protocol_api import ApiClient
+
+    client = ApiClient(token)
+
+    client.attachments.create(file=file)
+    ```
+
+    ```php
+    $client = new \Protocol\ApiClient($token);
+
+    $client->attachments->create([
+      'file' => $file,
+    ]);
+    ```
+
+    </CodeGroup>
+
+    ```json {{ title: 'Response' }}
+    {
+      "id": "Nc6yKKMpcxiiFxp6",
+      "message_id": "LoPsJaMcPBuFNjg1",
+      "filename": "Invoice_room_service__Plaza_Hotel.pdf",
+      "file_url": "https://assets.protocol.chat/attachments/Invoice_room_service__Plaza_Hotel.pdf",
+      "file_type": "application/pdf",
+      "file_size": 21352,
+      "created_at": 692233200
+    }
+    ```
+
+  </Col>
+</Row>
+
+---
+
+## Retrieve an attachment {{ tag: 'GET', label: '/v1/attachments/:id' }}
+
+<Row>
+  <Col>
+
+    This endpoint allows you to retrieve an attachment by providing the attachment id. Refer to [the list](#the-attachment-model) at the top of this page to see which properties are included with attachment objects.
+
+  </Col>
+  <Col sticky>
+
+    <CodeGroup title="Request" tag="GET" label="/v1/attachments/Nc6yKKMpcxiiFxp6">
+
+    ```bash {{ title: 'cURL' }}
+    curl https://api.protocol.chat/v1/attachments/Nc6yKKMpcxiiFxp6 \
+      -H "Authorization: Bearer {token}"
+    ```
+
+    ```js
+    import ApiClient from '@example/protocol-api'
+
+    const client = new ApiClient(token)
+
+    await client.attachments.get('Nc6yKKMpcxiiFxp6')
+    ```
+
+    ```python
+    from protocol_api import ApiClient
+
+    client = ApiClient(token)
+
+    client.attachments.get("Nc6yKKMpcxiiFxp6")
+    ```
+
+    ```php
+    $client = new \Protocol\ApiClient($token);
+
+    $client->attachments->get('Nc6yKKMpcxiiFxp6');
+    ```
+
+    </CodeGroup>
+
+    ```json {{ title: 'Response' }}
+    {
+      "id": "Nc6yKKMpcxiiFxp6",
+      "message_id": "LoPsJaMcPBuFNjg1",
+      "filename": "Invoice_room_service__Plaza_Hotel.pdf",
+      "file_url": "https://assets.protocol.chat/attachments/Invoice_room_service__Plaza_Hotel.pdf",
+      "file_type": "application/pdf",
+      "file_size": 21352,
+      "created_at": 692233200
+    }
+    ```
+
+  </Col>
+</Row>
+
+---
+
+## Update an attachment {{ tag: 'PUT', label: '/v1/attachments/:id' }}
+
+<Row>
+  <Col>
+
+    This endpoint allows you to perform an update on an attachment. Currently, the only supported type of update is changing the filename.
+
+    ### Optional attributes
+
+    <Properties>
+      <Property name="filename" type="string">
+        The new filename for the attachment.
+      </Property>
+    </Properties>
+
+  </Col>
+  <Col sticky>
+
+    <CodeGroup title="Request" tag="PUT" label="/v1/attachments/Nc6yKKMpcxiiFxp6">
+
+    ```bash {{ title: 'cURL' }}
+    curl -X PUT https://api.protocol.chat/v1/attachments/Nc6yKKMpcxiiFxp6 \
+      -H "Authorization: Bearer {token}" \
+      -d filename="Invoice_room_service__Plaza_Hotel_updated.pdf"
+    ```
+
+    ```js
+    import ApiClient from '@example/protocol-api'
+
+    const client = new ApiClient(token)
+
+    await client.attachments.update('Nc6yKKMpcxiiFxp6', {
+      filename: 'Invoice_room_service__Plaza_Hotel_updated.pdf',
+    })
+    ```
+
+    ```python
+    from protocol_api import ApiClient
+
+    client = ApiClient(token)
+
+    client.attachments.update("Nc6yKKMpcxiiFxp6", filename="Invoice_room_service__Plaza_Hotel_updated.pdf")
+    ```
+
+    ```php
+    $client = new \Protocol\ApiClient($token);
+
+    $client->attachments->update('Nc6yKKMpcxiiFxp6', [
+      'filename' => 'Invoice_room_service__Plaza_Hotel_updated.pdf',
+    ]);
+    ```
+
+    </CodeGroup>
+
+    ```json {{ title: 'Response' }}
+    {
+      "id": "Nc6yKKMpcxiiFxp6",
+      "message_id": "LoPsJaMcPBuFNjg1",
+      "filename": "Invoice_room_service__Plaza_Hotel.pdf",
+      "file_url": "https://assets.protocol.chat/attachments/Invoice_room_service__Plaza_Hotel_updated.pdf",
+      "file_type": "application/pdf",
+      "file_size": 21352,
+      "created_at": 692233200
+    }
+    ```
+
+  </Col>
+</Row>
+
+---
+
+## Delete an attachment {{ tag: 'DELETE', label: '/v1/attachments/:id' }}
+
+<Row>
+  <Col>
+
+    This endpoint allows you to delete attachments. Note: This will permanently delete the file.
+
+  </Col>
+  <Col sticky>
+
+    <CodeGroup title="Request" tag="DELETE" label="/v1/attachments/Nc6yKKMpcxiiFxp6">
+
+    ```bash {{ title: 'cURL' }}
+    curl -X DELETE https://api.protocol.chat/v1/attachments/Nc6yKKMpcxiiFxp6 \
+      -H "Authorization: Bearer {token}"
+    ```
+
+    ```js
+    import ApiClient from '@example/protocol-api'
+
+    const client = new ApiClient(token)
+
+    await client.attachments.delete('Nc6yKKMpcxiiFxp6')
+    ```
+
+    ```python
+    from protocol_api import ApiClient
+
+    client = ApiClient(token)
+
+    client.attachments.delete("Nc6yKKMpcxiiFxp6")
+    ```
+
+    ```php
+    $client = new \Protocol\ApiClient($token);
+
+    $client->attachments->delete('Nc6yKKMpcxiiFxp6');
+    ```
+
+    </CodeGroup>
+
+  </Col>
+</Row>

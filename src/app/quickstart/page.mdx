@@ -15,15 +15,15 @@ export const metadata = {
 # Setup & Deployment 
 ---
 
-## Local installation on Ubuntu
+## Local installation
 
-The following documentation will guide you through the installation of an erxes project using [Docker](https://www.docker.com/) on [Ubuntu.](https://ubuntu.com/)
+The following documentation will guide you through the installation of an erxes project using [Docker](https://www.docker.com/).
 
 Docker is an open platform that allows to develop, ship and run applications by using containers (i.e. packages containing all the parts an application needs to function, such as libraries and dependencies).
 
 # Preparing the installation
 
-erxes installation requires at least four software prerequisites to be already installed on your computer:
+erxes installation requires at least four software prerequisites to be already installed on your machine:
 
 <Caution>
     Erxes code takes approximately 12GB storage space, make sure you have enough space in your device before going forward.
@@ -31,10 +31,22 @@ erxes installation requires at least four software prerequisites to be already i
 
 **Prerequisites**
 
+<Tabs>
+  <Tab label="Ubuntu">
 - [Git](https://github.com/git-guides/install-git)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>
 - [Node.js:](https://nodejs.org/en)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> only LTS versions are supported v18.17.1 or higher. Other versions of Node.js may not be compatible with the latest release of erxes. The 18.17.x version is most recommended by erxes. The easier way to install [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) is here.
 - [npm](https://docs.npmjs.com/cli/v6/commands/npm-install/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> and [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> (latest version) to run the erxes. 
 - [Docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> Latest version.
+</Tab>
+  <Tab label="MacOS">
+- [Git](https://github.com/git-guides/install-git)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>
+- [Node.js:](https://nodejs.org/en)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> only LTS versions are supported v18.17.1 or higher. Other versions of Node.js may not be compatible with the latest release of erxes. The 18.17.x version is most recommended by erxes. The easier way to install [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) is here.
+- [npm](https://docs.npmjs.com/cli/v6/commands/npm-install/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> and [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> (latest version) to run the erxes. 
+- [Docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> Latest version.
+- [Homebrew](https://brew.sh/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> latest version
+- [Xcode](https://www.freecodecamp.org/news/install-xcode-command-line-tools/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> latest version
+</Tab>
+</Tabs>
 
 **Installing erxes**
 
@@ -65,6 +77,8 @@ Run sudo nano or sudo vim command to create .yml file.
 </Note>
 
 6. Create a `docker-compose.yml` file, then copy the following script in the newly created file.
+<Tabs>
+  <Tab label="Ubuntu">
 ```tsx
 version: '3.6'
 services:
@@ -109,11 +123,136 @@ services:
     # RabbitMQ data will be saved into ./rabbitmq-data folder.
     volumes:
       - ./rabbitmq-data:/var/lib/rabbitmq
+  
+  elasticsearch:
+    image: 'docker.elastic.co/elasticsearch/elasticsearch:7.13.0'
+    container_name: 'elasticsearch'
+    environment:
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 32768
+        hard: 65536
+    ports:
+      - '127.0.0.1:9200:9200'
+    networks:
+      - erxes-net
+    volumes:
+      - ./elasticsearchData:/usr/share/elasticsearch/data
+
+  essyncer:
+    container_name: essyncer
+    image: 'erxes/essyncer:dev'
+    environment:
+      DB_NAME: 'erxes'
+      ELASTICSEARCH_URL: 'http://elasticsearch:9200'
+      MONGO_URL: 'mongodb://mongo:27017/erxes?replicaSet=rs0'
+    depends_on:
+      - 'mongo'
+      - 'elasticsearch'
+    volumes:
+      - './essyncerData:/data/essyncerData'
+      - './mongoConnectorLog:/var/log/mongo-connector'
+    tty: true
+    networks:
+      - 'erxes-net'
 
 networks:
   erxes-net:
     driver: bridge
 ```
+</Tab>
+<Tab label="MacOS">
+```tsx
+version: '3.6'
+services:
+  mongo:
+    hostname: mongo
+    image: mongo:4.0.10
+    # container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - erxes-net
+    healthcheck:
+      test: test $$(echo "rs.initiate().ok || rs.status().ok" | mongo --quiet) -eq 1
+      interval: 2s
+      timeout: 2s
+      retries: 200
+    command: ["--replSet", "rs0", "--bind_ip_all"]
+    extra_hosts:
+      - "mongo:127.0.0.1"
+    volumes:
+      - ./data/db:/data/db
+
+  redis:
+    image: 'redis'
+    # container_name: redis
+    # command: redis-server --requirepass pass
+    ports:
+      - "6379:6379"
+    networks:
+      - erxes-net
+
+  rabbitmq:
+    image: rabbitmq:3.7.17-management
+    # container_name: rabbitmq
+    restart: unless-stopped
+    hostname: rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - erxes-net
+    # RabbitMQ data will be saved into ./rabbitmq-data folder.
+    volumes:
+      - ./rabbitmq-data:/var/lib/rabbitmq
+  
+  elasticsearch:
+    image: 'docker.elastic.co/elasticsearch/elasticsearch:7.13.0-arm64'
+    container_name: 'elasticsearch'
+    environment:
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 32768
+        hard: 65536
+    ports:
+      - '127.0.0.1:9200:9200'
+    networks:
+      - erxes-net
+    volumes:
+      - ./elasticsearchData:/usr/share/elasticsearch/data
+
+  essyncer:
+    container_name: essyncer
+    image: 'erxes/essyncer:dev'
+    environment:
+      DB_NAME: 'erxes'
+      ELASTICSEARCH_URL: 'http://elasticsearch:9200'
+      MONGO_URL: 'mongodb://mongo:27017/erxes?replicaSet=rs0'
+    depends_on:
+      - 'mongo'
+      - 'elasticsearch'
+    volumes:
+      - './essyncerData:/data/essyncerData'
+      - './mongoConnectorLog:/var/log/mongo-connector'
+    tty: true
+    networks:
+      - 'erxes-net'
+
+networks:
+  erxes-net:
+    driver: bridge
+```
+</Tab>
+</Tabs>
 <Tip>
 Please find the useful [commands](https://docs.docker.com/engine/reference/commandline/compose_images/#related-commands)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> when you're working on Docker
 </Tip>
@@ -157,7 +296,17 @@ yarn install
 ```tsx
 cp configs.json.sample configs.json
 ```
-4. Run following command to start your erxes project.
+4. Add `"ui": "local"` under every plugin names like shown in below, in `configs.json.`
+<Caution>
+You do not have to add it under `logs` plugin since it has no ui.
+</Caution>
+```tsx
+ {
+    "name": "inbox",
+    "ui": "local"
+ },
+```
+5. Run following command to start your erxes project.
 ```tsx
 ./bin/erxes.js dev
 ```
@@ -173,180 +322,6 @@ cp configs.json.sample configs.json
  </Tip>
 
  **If you see this screen, you have successfully install erxes XOS. Congratulations 🎉🎉🎉**
- ![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/1bee4344-9c4b-4a37-e3f4-6e4b02211000/public)
-
----
-
-## Local installation on MacOS
-
-The following documentation will guide you through the installation of an erxes project using [Docker](https://www.docker.com/) on [MacOs.](https://www.apple.com/macos/sonoma/)
-
-Docker is an open platform that allows to develop, ship and run applications by using containers (i.e. packages containing all the parts an application needs to function, such as libraries and dependencies).
-
-# Preparing the installation
-
-erxes installation requires at least four software prerequisites to be already installed on your computer:
-
-<Caution>
-    Erxes code takes approximately 12GB storage space, make sure you have enough space in your device before going forward.
-</Caution>
-
-**Prerequisites**
-
-- [Git](https://github.com/git-guides/install-git)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>
-- [Node.js](https://nodejs.org/en)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>: only LTS versions are supported v18.17.1 or higher. Other versions of Node.js may not be compatible with the latest release of erxes. The 18.17.x version is most recommended by erxes. The easier way to install [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> is here.
-- [npm](https://docs.npmjs.com/cli/v6/commands/npm-install)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> and [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> (latest version) to run the erxes.
-- [Docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> Latest version.
-- [Homebrew](https://brew.sh/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> latest version
-- [Xcode](https://www.freecodecamp.org/news/install-xcode-command-line-tools/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> latest version
-
-**Installing erxes**
-
-1. Create an empty folder.
-```tsx
-mkdir example
-```
-2. In your empty folder, where the new erxes project will be created, and it defines the database and erxes plugins to use.
-```tsx
-cd example
-```
-3. Run following command in the folder.
-```tsx
-git clone https://github.com/erxes/erxes.git
-```
-# **Installing dependencies using docker**
-4. In the folder, create dock directory using following command.
-```tsx
-mkdir dock
-```
-5. Go to the dock folder using following command.
-```tsx
-cd dock
-```
-
-<Note>
-    Run sudo nano or sudo vim command to create .yml file.
-</Note>
-6. Create a `docker-compose.yml` file, then copy the following script in the newly created file.
-```tsx
-version: '3.6'
-services:
-  mongo:
-    hostname: mongo
-    image: mongo:4.0.10
-    # container_name: mongo
-    ports:
-      - "27017:27017"
-    networks:
-      - erxes-net
-    healthcheck:
-      test: test $$(echo "rs.initiate().ok || rs.status().ok" | mongo --quiet) -eq 1
-      interval: 2s
-      timeout: 2s
-      retries: 200
-    command: ["--replSet", "rs0", "--bind_ip_all"]
-    extra_hosts:
-      - "mongo:127.0.0.1"
-    volumes:
-      - ./data/db:/data/db
-
-  redis:
-    image: 'redis'
-    # container_name: redis
-    # command: redis-server --requirepass pass
-    ports:
-      - "6379:6379"
-    networks:
-      - erxes-net
-
-  rabbitmq:
-    image: rabbitmq:3.7.17-management
-    # container_name: rabbitmq
-    restart: unless-stopped
-    hostname: rabbitmq
-    ports:
-      - "15672:15672"
-      - "5672:5672"
-    networks:
-      - erxes-net
-    # RabbitMQ data will be saved into ./rabbitmq-data folder.
-    volumes:
-      - ./rabbitmq-data:/var/lib/rabbitmq
-
-networks:
-  erxes-net:
-    driver: bridge
-
-```
-
-<Tip>
-    Please find the useful commands when you're working on Docker
-</Tip>
-
-7. Run the following command in the folder where above file exists.
-
-**Running erxes**
-
-<Caution>
-    Please make sure you have to change your directory to erxes/cli.
-</Caution>
-
-8. Go back to erxes folder using following command
-```tsx
-cd ../erxes
-```
-9. Switch a dev branch by using following command.
-```tsx
-git checkout dev
-```
-10. In erxes folder, Install node modules by using following command.
-```tsx
-yarn install
-```
-11. Install `pm2` by using following command.
-```tsx
-sudo npm install -g pm2
-```
-12. Run following command to change the folder.
-```tsx
-cd cli
-```
-13. Install `node` modules in the `erxes/cli` directory.
-```tsx
-yarn install
-```
-14. Copy `configs.json.sample`, then convert it to `configs.json` by below command.
-```tsx
-cp configs.json.sample configs.json
-```
-15. Add `"ui": "local"` under every plugin names like shown in below, in `configs.json.`
-<Caution>
-You do not have to add it under `logs` plugin since it has no ui.
-</Caution>
-```tsx
- {
-    "name": "inbox",
-    "ui": "local"
-},
-```
-
-16. Run following command to start your erxes project.
-```tsx
-./bin/erxes.js dev --deps
-```
-
-**If your browser don't automatically jump to localhost:3000, you should check logs by using these commands.**
-
-<Tip>
-Frequently used pm2 commands on erxes:
-
-- pm2 list - Display all processes status
-- pm2 kill - Will remove all processes from pm2 list
-- pm2 logs -f - Display all processes logs in streaming (gateway, plugin-name etc.)
-- pm2 restart all - Restart all processes
-</Tip>
-
-**If you see this screen, you have successfully install erxes XOS. Congratulations 🎉🎉🎉**
  ![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/1bee4344-9c4b-4a37-e3f4-6e4b02211000/public)
 
 ---
@@ -369,80 +344,59 @@ You will need following things before dive into erxes installation.
 
 ---
 
-# Installation
-
-**Create an erxes user on the instance**
-
-Assuming you have connected to your instance and ready to execute following steps. First you need to `create erxes user` because all erxes related installation scripts are made for erxes user.
-Why?
-You don't want to use **root** user to administer your server. So everything will be done by a user called, `erxes`. To accomplish this, run the following command:
-
-```bash
-adduser erxes
-```
-When prompted, enter **unique & strong** password.
-(Finish adding the user simply by pressing the `enter` or `return` key through the questions)
-
-Grant adminstrative rights to `erxes` user by following command:
-
-```bash
-usermod -aG sudo erxes
-```
-All prerequisites are completed now you can proceed to installation steps.
-
 # Installation steps
 
 **1.** Create `install.sh` file using text editors such as nano or vim. Then copy the following content into `install.sh`. Following script will install nginx, certbot, docker, docker-compose and nodejs into your server.
-
 <Tabs>
   <Tab label="Ubuntu">
 ```bash
 #!/bin/bash
-            now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 1 $now : Updating \e[0m"
-        sudo apt-get update -y
-        # nginx install
-            now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 2 $now : Installing nginx\e[0m"
-        sudo apt install nginx -y
-        # docker install
-        sudo apt update -y
-            now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 3 $now : Installing docker\e[0m"
-        sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-        apt-cache policy docker-ce
-        sudo apt install docker-ce -y
-            now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 4 $now : Installing certbot\e[0m"
-        sudo apt install certbot python3-certbot-nginx -y
-            now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 5 $now : Installing docker-compose\e[0m"
-        sudo apt-get update -y
-        sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-        sudo chmod +x /usr/local/bin/docker-compose
-            now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 6 $now : Installing nodejs\e[0m"
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-        #new directory
-        sudo apt-get install nodejs -y
-            now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 7 $now : Installing awscli\e[0m"
-        sudo apt-get install awscli -y
-            now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 8 $now : Installing npm\e[0m"
-        sudo apt install npm -y
-            now=$(date +'%H:%M:%S')
-            echo -e "\e[1mStep 9 $now : Please enter erxes informations\e[0m"
-        sudo npm install -g create-erxes-app -y
-            create-erxes-app erxes
+now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 1 $now : Updating \e[0m" sudo apt - get update - y now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 2 $now : Installing nginx\e[0m" sudo apt install nginx - y sudo apt update - y now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 3 $now : Installing docker\e[0m" sudo apt install apt - transport - https ca - certificates curl software - properties - common - y curl - fsSL https:
+																																																																																																										//download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add - apt - repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" apt - cache policy docker - ce sudo apt install docker - ce - y now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 5 $now : Installing docker compose\e[0m" sudo apt - get update - y sudo curl - L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" - o / usr / local / bin / docker - compose sudo chmod + x / usr / local / bin / docker - compose now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 6 $now : Installing ndoejs\e[0m" curl - o - https:	//raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+curl - s https:				//deb.nodesource.com/setup_18.x | sudo bash
+sudo apt - get install nodejs - y
+  now = $ (date + '%H:%M:%S')
+  echo - e "\e[1mStep 7 $now : Installing awscli \e[0m"
+  sudo apt - get install awscli - y
+  now = $ (date + '%H:%M:%S')
+  echo - e "\e[1mStep 8 $now : Installing npm\e[0m"
+  sudo apt install npm - y
+  now = $ (date + '%H:%M:%S')
+  echo -
+  e "\e[1mStep 9 $now : Enter your domain address to configure erxes\e[0m"
+  sudo npm install - g create - erxes - app - y create - erxes - app erxes
+```
+ </Tab>
+   <Tab label="CentOS">
+```bash
+#!/bin/bash
+now = $ (date + '%H:%M:%S')
+  echo - e "\e[1mStep 1 $now : Updating \e[0m"
+  sudo yum update - y sudo yum install epel - release - y
+#nginx install
+now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 2 $now : Installing nginx\e[0m" sudo yum install nginx - y sudo systemctl start nginx sudo yum check - update now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 3 $now : Installing docker\e[0m" curl - fsSL https:	//get.docker.com/ | sh
+sudo systemctl start docker sudo yum install - y yum - utils device - mapper - persistent - data lvm2 now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 5 $now : Installing docker-compose\e[0m" sudo yum install docker - ce - y sudo yum install http:	//dl.fedoraproject.org/pub/epel/7/x86_64/Packages/p/pigz-2.3.4-1.el7.x86_64.rpm -y
+sudo yum install http:			//mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.21-1.el7.noarch.rpm -y
+sudo yum list docker - ce-- showduplicates | sort - r docker - ce.x86_64 17.09.ce - 1.el7.centos docker - ce - stable sudo curl - L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" - o / usr / local / bin / docker - compose sudo chmod + x / usr / local / bin / docker - compose docker - compose-- version now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 6 $now : installing nodejs\e[0m" curl - sL https:	//rpm.nodesource.com/setup_20.x | sudo bash -
+sudo yum install nodejs - y node-- version now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 8 $now : Installing npm\e[0m" curl - o - https:	//raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+sudo nvm-- version
+  sudo nvm install node
+  sudo nvm install-- lts
+  sudo nvm install 9.6 .7
+  now = $ (date + '%H:%M:%S')
+  echo - e "\e[1mStep 7 $now : installing awscli\e[0m"
+  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -
+  o "awscliv2.zip" unzip awscliv2.zip sudo. / aws /
+  install aws-- version now =
+$ (date + '%H:%M:%S') echo -
+e "\e[1mStep 9 $now : Enter your domain address to configure erxes\e[0m" sudo npm install - g create -
+erxes - app - y create - erxes - app erxes
+
 ```
   </Tab>
-   <Tab label="CentOS">
-    this is centos tab
-  </Tab>
 </Tabs>
+
 **2.** Before execute script the use below command to make `install.sh` file executable.
 ```bash
 sudo chmod +x install.sh
@@ -453,7 +407,7 @@ sudo chmod +x install.sh
 ./install.sh
 ```
 
-**4.** After above steps `logout and relogin` to your server using erxes user. In order to logout from server give following command:
+{/* **4.** After above steps `logout and relogin` to your server using erxes user. In order to logout from server give following command:
 ```bash
 exit
 ```
@@ -465,8 +419,32 @@ We will use `ssh` protocol to access to server. Use below command:
 
 ```bash
 ssh erxes@your-ip address-address
-```
+``` */}
 ---
+**Create an erxes user on the instance**
+
+ Assuming you have connected to your instance and ready to execute following steps. First you need to `create erxes user` because all erxes related installation scripts are made for erxes user.
+Why?
+You don't want to use **root** user to administer your server. So everything will be done by a user called, `erxes`. To accomplish this, run the following command:
+
+```bash
+adduser erxes
+```
+When prompted, enter **unique & strong** password.
+(Finish adding the user simply by pressing the `enter` or `return` key through the questions)
+
+Grant sudo and docker rights to `erxes` user by following command::
+
+```bash
+usermod -aG sudo erxes
+```
+```bash
+usermod -aG docker erxes
+```
+```bash
+su - erxes
+```
+All prerequisites are completed now you can proceed to installation steps. 
 
 # Starting erxes project
 **1.** Below command will trigger erxes installation process.
@@ -482,7 +460,7 @@ https://example.com
 <Note>
 Please use full domain or subdomain names including http socket like below
 </Note>
-**2.** After the above command `erxes` directory will be created. That includes following files in it `docker-compose.yml, configs.json, package.json, nginx config`. In order to change to `erxes` directory use below command.
+**2.** After the above command `erxes` directory will be created. That includes following files in it `docker-compose.yml, configs.json, package.json, package-lock.json`. In order to change to `erxes` directory use below command.
 
 ```bash
 cd /home/erxes/erxes
@@ -508,19 +486,35 @@ cd /home/erxes/erxes
   }
 }
 ```
+If the erxes version has been changed in the package.json file, run the command below to install the necessary modules for erxes.
 
+```bash
+npm install
+```
 
 **4.** Now you need to initiate docker swarm mode in order to do that use following command.
 
 ```bash
 docker swarm init
+```
+<Note> 
+If you get a permission denied warning when you run this command, you haven't run the `usermod -aG docker erxes` command.
+</Note>
+
+```bash
 docker network create --driver=overlay --attachable erxes
 ```
 <Note>
 In erxes directory we have docker-compose.yml file even with that we do not use `docker-compose up, docker-compose down, docker-compose restart` commands further
 </Note>
 
-**5.** Before start application services we need to start `databases`. Following command will start database services.
+**5.** Before start application services we need to start databases. Following command will start database services.
+```bash
+openssl rand -base64 756 > mongo-key
+sudo chmod 400 mongo-key && sudo chown 999:999 mongo-key
+openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out certificate.pem --batch
+cat key.pem certificate.pem > mongo.pem
+```
 
 ```bash
 npm run erxes deploy-dbs
@@ -531,10 +525,11 @@ npm run erxes deploy-dbs
 docker ps -a | grep mongo
 ```
 wait until all services state become up.
+
 **7.** Now we need to make our mongo have replica set. First we need to enter mongo container then enter mongo instance then execute command following 3 commands will do.
 ```bash
 docker exec -it <mongo container name> bash
-mongo -u erxes -p <auto generated password in configs.json>
+mongo -u erxes -p <auto generated in configs.json>
 rs.initiate();
 ```
 <Note>
@@ -549,7 +544,9 @@ To quit mongo instance and container `run exit command` twice.
 mkdir locales
 ```
 
-**9.** Start application services like erxes core uis and gateway services we run following command.
+**9.** Change erxes version of `/home/erxes/erxes/configs.json` file to <a href="https://hub.docker.com/u/erxes" target="_blank">latest</a> version. It is the latest version that has undergone further development.
+
+Start application services like erxes core uis and gateway services we run following command.
 ```bash
 npm run erxes up -- --uis
 ```
@@ -570,16 +567,11 @@ all erxes services needs to be up state
 Wait until `gateway` container status becomes healthy also gateway container needs to be start at last.
 </Note>
 
-**10.** Now we need to setup our web server first we need to configure our nginx.service for erxes to do that we need to move `nginx.conf` generated by `create-app-erxes erxes` locates in `/home/erxes/erxes` to `/etc/nginx/sites-enabled/`. To do that use following command.
-
+**10.** Now we need to configure our web server, we need to configure our nginx first. To do this, we create an nginx config file named `erxes.conf` in `/etc/nginx/sites-enabled`. To do this, use the following command.
 ```bash
-sudo mv nginx.conf /etc/nginx/sites-enabled/erxes.conf
+sudo nano /etc/nginx/sites-enabled/erxes.conf
 ```
-**11.** After that we need to test nginx config. To do that use following command.
-```bash
-sudo nginx -t
-```
-If something goes wrong you can replace `/etc/nginx/sites-enabled/nginx.conf` to following content
+Copy the nginx configuration below
 
 ```bash
 server {
@@ -691,6 +683,11 @@ server {
         }
     }
     ```
+**11.** After that we need to test nginx config. To do that use following command.
+```bash
+sudo nginx -t
+```
+
 **12.** If nginx test shows successful message we need to restart Nginx. To do that use following command.
     ```bash
     sudo service nginx restart
@@ -713,6 +710,7 @@ Adding new plugins to erxes is easy task all you need to is add plugin name unde
 {
     "jwt_token_secret": "will be generated in configs.json",
     "db_server_address": "ip address of your machine",
+    "secondary_server_address": "",
     "image_tag": "dev",
     "domain": "https://example.com",
     "widgets": {
@@ -824,7 +822,7 @@ Adding new plugins to erxes is easy task all you need to is add plugin name unde
 ```
 ---
 
-# Adding dashboard plugin
+{/*# Adding dashboard plugin
 As we mentioned earlier dashboard plugin requires some extra step to install. First we need to generate `certificate for mongobi` to do that use following commands.
 
 ```bash
@@ -849,7 +847,7 @@ At last run `npm run erxes up -- --uis.`
 Everytime we change configs.json we do `npm run erxes up -- --uis` command to apply change.
 </Note>
 
----
+---*/}
 # Running elasticsearch
 If your server is bigger than our required size you can use erxes with elasticsearch. To do that following steps need to be taken.
 
@@ -877,6 +875,7 @@ npm run erxes up -- --uis
  will show you stack informations. To leave that use following command.
  ```bash
 docker stack rm erxes
+docker stack rm erxes-dbs
  ```
 
 **2.** To remove all dangling containers use following commands.
@@ -904,11 +903,9 @@ docker volume rm $(docker volume ls -q -f dangling=true)
 ```
 ---
 # Installation video
-
- [](https://youtu.be/Vq2TbSqnWOY?si=zruf8u9b0mCuC-c7)
+<iframe width="560" height="315" src="https://youtu.be/Vq2TbSqnWOY?si=zruf8u9b0mCuC-c7" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 
 # Joining erxes community
-If you have any trouble with installation please create issues in our [github](https://github.com/erxes/erxes) or seek help from our community in [discord](https://discord.com/invite/rPf9FYaA3F)
-
+Join the erxes community today! If you encounter any difficulties during the installation process, don't hesitate to reach out for assistance. You can create issues on our [Github](https://github.com/erxes/erxes) repository or seek help from our friendly community on [Discord](https://discord.com/invite/rPf9FYaA3F). We're here to support you every step of the way!

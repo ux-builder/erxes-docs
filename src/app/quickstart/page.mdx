@@ -394,6 +394,8 @@ All prerequisites are completed now you can proceed to installation steps.
 
 **1.** Create `install.sh` file using text editors such as nano or vim. Then copy the following content into `install.sh`. Following script will install nginx, certbot, docker, docker-compose and nodejs into your server.
 
+<Tabs>
+  <Tab label="Ubuntu">
 ```bash
 #!/bin/bash
             now=$(date +'%H:%M:%S')
@@ -436,6 +438,11 @@ All prerequisites are completed now you can proceed to installation steps.
         sudo npm install -g create-erxes-app -y
             create-erxes-app erxes
 ```
+  </Tab>
+   <Tab label="CentOS">
+    this is centos tab
+  </Tab>
+</Tabs>
 **2.** Before execute script the use below command to make `install.sh` file executable.
 ```bash
 sudo chmod +x install.sh

@@ -557,7 +557,15 @@ sudo chmod 400 mongo-key && sudo chown 999:999 mongo-key
 openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out certificate.pem --batch
 cat key.pem certificate.pem > mongo.pem
 ```
+# Running elasticsearch
+If your server is bigger than our required size you can use erxes with elasticsearch. To do that following steps need to be taken.
 
+Add following lines to configs.json positions does not matter.
+```bash
+"essyncer": {},
+"elasticsearch" : {},
+```
+Then run deploy dbs with following command.
 ```bash
 npm run erxes deploy-dbs
 ```
@@ -890,23 +898,6 @@ Everytime we change configs.json we do `npm run erxes up -- --uis` command to ap
 </Note>
 
 ---*/}
-# Running elasticsearch
-If your server is bigger than our required size you can use erxes with elasticsearch. To do that following steps need to be taken.
-
-**1.** Go into /home/erxes/erxes
-```bash
-cd /home/erxes/erxes
-```
-**2.** Add following lines to configs.json positions does not matter.
-```bash
-"essyncer": {},
-"elasticsearch" : {},
-```
-**3.** Then run deploy dbs again with following command.
-```bash
-npm run erxes deploy-dbs
-npm run erxes up -- --uis
-```
 ---
 
 # Removing erxes

@@ -350,49 +350,91 @@ You will need following things before dive into erxes installation.
 <Tabs>
   <Tab label="Ubuntu">
 ```bash
-#!/bin/bash
-now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 1 $now : Updating \e[0m" sudo apt - get update - y now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 2 $now : Installing nginx\e[0m" sudo apt install nginx - y sudo apt update - y now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 3 $now : Installing docker\e[0m" sudo apt install apt - transport - https ca - certificates curl software - properties - common - y curl - fsSL https:
-																																																																																																										//download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add - apt - repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" apt - cache policy docker - ce sudo apt install docker - ce - y now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 5 $now : Installing docker compose\e[0m" sudo apt - get update - y sudo curl - L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" - o / usr / local / bin / docker - compose sudo chmod + x / usr / local / bin / docker - compose now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 6 $now : Installing ndoejs\e[0m" curl - o - https:	//raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-curl - s https:				//deb.nodesource.com/setup_18.x | sudo bash
-sudo apt - get install nodejs - y
-  now = $ (date + '%H:%M:%S')
-  echo - e "\e[1mStep 7 $now : Installing awscli \e[0m"
-  sudo apt - get install awscli - y
-  now = $ (date + '%H:%M:%S')
-  echo - e "\e[1mStep 8 $now : Installing npm\e[0m"
-  sudo apt install npm - y
-  now = $ (date + '%H:%M:%S')
-  echo -
-  e "\e[1mStep 9 $now : Enter your domain address to configure erxes\e[0m"
-  sudo npm install - g create - erxes - app - y create - erxes - app erxes
+ #!/bin/bash
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 1 $now : Updating \e[0m"
+sudo apt-get update -y
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 2 $now : Installing nginx\e[0m"
+sudo apt install nginx -y
+sudo apt update -y
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 3 $now : Installing docker\e[0m"
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+apt-cache policy docker-ce
+sudo apt install docker-ce -y
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 5 $now : Installing docker compose\e[0m"
+sudo apt-get update -y
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 6 $now : Installing ndoejs\e[0m"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+curl -s https://deb.nodesource.com/setup_18.x | sudo bash
+sudo apt-get install nodejs -y
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 7 $now : Installing awscli \e[0m"
+sudo apt-get install awscli -y
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 8 $now : Installing npm\e[0m"
+sudo apt install npm -y
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 9 $now : Enter your domain address to configure erxes\e[0m"
+sudo npm install -g create-erxes-app -y
 ```
  </Tab>
    <Tab label="CentOS">
 ```bash
 #!/bin/bash
-now = $ (date + '%H:%M:%S')
-  echo - e "\e[1mStep 1 $now : Updating \e[0m"
-  sudo yum update - y sudo yum install epel - release - y
-#nginx install
-now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 2 $now : Installing nginx\e[0m" sudo yum install nginx - y sudo systemctl start nginx sudo yum check - update now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 3 $now : Installing docker\e[0m" curl - fsSL https:	//get.docker.com/ | sh
-sudo systemctl start docker sudo yum install - y yum - utils device - mapper - persistent - data lvm2 now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 5 $now : Installing docker-compose\e[0m" sudo yum install docker - ce - y sudo yum install http:	//dl.fedoraproject.org/pub/epel/7/x86_64/Packages/p/pigz-2.3.4-1.el7.x86_64.rpm -y
-sudo yum install http:			//mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.21-1.el7.noarch.rpm -y
-sudo yum list docker - ce-- showduplicates | sort - r docker - ce.x86_64 17.09.ce - 1.el7.centos docker - ce - stable sudo curl - L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" - o / usr / local / bin / docker - compose sudo chmod + x / usr / local / bin / docker - compose docker - compose-- version now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 6 $now : installing nodejs\e[0m" curl - sL https:	//rpm.nodesource.com/setup_20.x | sudo bash -
-sudo yum install nodejs - y node-- version now = $ (date + '%H:%M:%S') echo - e "\e[1mStep 8 $now : Installing npm\e[0m" curl - o - https:	//raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-sudo nvm-- version
-  sudo nvm install node
-  sudo nvm install-- lts
-  sudo nvm install 9.6 .7
-  now = $ (date + '%H:%M:%S')
-  echo - e "\e[1mStep 7 $now : installing awscli\e[0m"
-  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -
-  o "awscliv2.zip" unzip awscliv2.zip sudo. / aws /
-  install aws-- version now =
-$ (date + '%H:%M:%S') echo -
-e "\e[1mStep 9 $now : Enter your domain address to configure erxes\e[0m" sudo npm install - g create -
-erxes - app - y create - erxes - app erxes
-
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 1 $now : Updating \e[0m"
+sudo yum update -y   
+sudo yum install epel-release -y
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 2 $now : Installing nginx\e[0m"
+sudo yum install nginx -y
+sudo systemctl start nginx
+sudo yum check-update
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 3 $now : Installing docker\e[0m"
+curl -fsSL https://get.docker.com/ | sh
+sudo systemctl start docker
+sudo yum install -y yum-utils \
+device-mapper-persistent-data \
+lvm2
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 5 $now : Installing docker-compose\e[0m"
+sudo yum install docker-ce -y
+sudo yum install http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/p/pigz-2.3.4-1.el7.x86_64.rpm -y
+sudo yum install http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.21-1.el7.noarch.rpm -y
+sudo yum list docker-ce --showduplicates | sort -r docker-ce.x86_64  17.09.ce-1.el7.centos  docker-ce-stable
+sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 6 $now : installing nodejs\e[0m"
+curl -sL https://rpm.nodesource.com/setup_20.x | sudo bash -
+sudo yum install nodejs -y
+node --version
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 8 $now : Installing npm\e[0m"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+sudo nvm --version
+sudo nvm install node
+sudo nvm install --lts
+sudo nvm install 9.6.7
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 7 $now : installing awscli\e[0m"
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 9 $now : Enter your domain address to configure erxes\e[0m"
+sudo npm install -g create-erxes-app -y
 ```
   </Tab>
 </Tabs>
@@ -515,7 +557,15 @@ sudo chmod 400 mongo-key && sudo chown 999:999 mongo-key
 openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out certificate.pem --batch
 cat key.pem certificate.pem > mongo.pem
 ```
+# Running elasticsearch
+If your server is bigger than our required size you can use erxes with elasticsearch. To do that following steps need to be taken.
 
+Add following lines to configs.json positions does not matter.
+```bash
+"essyncer": {},
+"elasticsearch" : {},
+```
+Then run deploy dbs with following command.
 ```bash
 npm run erxes deploy-dbs
 ```
@@ -848,23 +898,6 @@ Everytime we change configs.json we do `npm run erxes up -- --uis` command to ap
 </Note>
 
 ---*/}
-# Running elasticsearch
-If your server is bigger than our required size you can use erxes with elasticsearch. To do that following steps need to be taken.
-
-**1.** Go into /home/erxes/erxes
-```bash
-cd /home/erxes/erxes
-```
-**2.** Add following lines to configs.json positions does not matter.
-```bash
-"essyncer": {},
-"elasticsearch" : {},
-```
-**3.** Then run deploy dbs again with following command.
-```bash
-npm run erxes deploy-dbs
-npm run erxes up -- --uis
-```
 ---
 
 # Removing erxes

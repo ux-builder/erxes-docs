@@ -76,7 +76,7 @@ cd dock
 Run sudo nano or sudo vim command to create the .yml file.
 </Note>
 
-6. Create a `docker-compose.yml` file, then copy the following script in the newly created file.
+6. Create a `docker-compose.yml` file, then copy the following script into the newly created file.
 <Tabs>
   <Tab label="Ubuntu">
 ```tsx
@@ -257,15 +257,15 @@ networks:
 Please find the useful [commands](https://docs.docker.com/engine/reference/commandline/compose_images/#related-commands)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> when you're working on Docker
 </Tip>
 
-7. In the directory where the above file is located, run the following command:
+7. In the folder where the above file is located, run the following command:
 ```tsx
 sudo docker-compose up -d
 ```
-8. Go back to the erxes folder using following command.
+8. Go back to the erxes folder using the following command.
 ```tsx
 cd ../erxes
 ```
-9. Switch to the dev branch by using following command.
+9. Switch to the dev branch by using the following command.
 ```tsx
 git checkout dev
 ```
@@ -273,7 +273,7 @@ git checkout dev
 ```tsx
 yarn install
 ```
-11. Install `pm2` by using following command.
+11. Install `pm2` by using the following command.
 ```tsx
 sudo npm install -g pm2
 ```
@@ -284,7 +284,7 @@ sudo npm install -g pm2
 Run erxes in erxes/cli directory
 </Caution>
 
-1. Run following command to change the folder.
+1. Run the following command to change the folder.
 ```tsx
 cd cli
 ```
@@ -306,22 +306,22 @@ You do not have to add it under `logs` plugin since it has no ui.
     "ui": "local"
  },
 ```
-5. Run following command to start your erxes project.
+5. Run the following command to start your erxes project.
 ```tsx
 ./bin/erxes.js dev
 ```
 
- **If your browser don't automatically jump to localhost:3000, you should check logs by using these commands.**
+ **If your browser doesn't automatically jump to localhost:3000, you should check logs by using these commands.**
 
  <Tip>
     Frequently used `pm2` commands on erxes:
-- pm2 list - Display all processes status
+- pm2 list - Displays all processes status
 - pm2 kill - Will remove all processes from pm2 list
-- pm2 logs -f - Display all processes logs in streaming (gateway, plugin-name etc.)
-- pm2 restart all - Restart all processes
+- pm2 logs -f - Displays all processes logs in streaming (gateway, plugin-name etc.)
+- pm2 restart all - Restarts all processes
  </Tip>
 
- **If you see this screen, you have successfully install erxes XOS. Congratulations 🎉🎉🎉**
+ **If you see this screen, you have successfully installed erxes XOS. Congratulations 🎉🎉🎉**
  ![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/1bee4344-9c4b-4a37-e3f4-6e4b02211000/public)
 
 ---

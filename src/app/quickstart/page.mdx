@@ -439,7 +439,7 @@ sudo npm install -g create-erxes-app -y
   </Tab>
 </Tabs>
 
-**2.** Before execute script the use below command to make `install.sh` file executable.
+**2.** Before executing the script use the below command to make the `install.sh` file executable.
 ```bash
 sudo chmod +x install.sh
 ```
@@ -449,15 +449,15 @@ sudo chmod +x install.sh
 ./install.sh
 ```
 
-{/* **4.** After above steps `logout and relogin` to your server using erxes user. In order to logout from server give following command:
+{/* **4.** After the following the steps above `logout and relogin` to your server using erxes user. To log out from the server, use the following command:
 ```bash
 exit
 ```
 <Note>
-you might want to enter command few times if you logged in as root user before.
+You may want to enter the command a few times if you logged in as root user before.
 </Note>
 
-We will use `ssh` protocol to access to server. Use below command:
+We will use the `ssh` protocol to access to server. Use the below command:
 
 ```bash
 ssh erxes@your-ip address-address
@@ -465,7 +465,7 @@ ssh erxes@your-ip address-address
 ---
 **Create an erxes user on the instance**
 
- Assuming you have connected to your instance and ready to execute following steps. First you need to `create erxes user` because all erxes related installation scripts are made for erxes user.
+ Assuming you have connected to your instance and ready to execute following steps. First you need to `create erxes user` because all erxes related installation scripts are made for an erxes user.
 Why?
 You don't want to use **root** user to administer your server. So everything will be done by a user called, `erxes`. To accomplish this, run the following command:
 
@@ -486,21 +486,21 @@ usermod -aG docker erxes
 ```bash
 su - erxes
 ```
-All prerequisites are completed now you can proceed to installation steps. 
+All prerequisites are completed and now you can proceed to the installation steps. 
 
 # Starting erxes project
-**1.** Below command will trigger erxes installation process.
+**1.** Below command will trigger the erxes installation process.
 ```bash
 create-erxes-app erxes
 ```
-After the execution it will ask your erxes domain name
+After the execution it will ask for your erxes domain name
 
 ```bash
 https://example.com
 ```
 
 <Note>
-Please use full domain or subdomain names including http socket like below
+Please use a full domain or subdomain names including http socket like below
 </Note>
 **2.** After the above command `erxes` directory will be created. That includes following files in it `docker-compose.yml, configs.json, package.json, package-lock.json`. In order to change to `erxes` directory use below command.
 
@@ -550,7 +550,7 @@ docker network create --driver=overlay --attachable erxes
 In erxes directory we have docker-compose.yml file even with that we do not use `docker-compose up, docker-compose down, docker-compose restart` commands further
 </Note>
 
-**5.** Before start application services we need to start databases. Following command will start database services.
+**5.** Before starting the application services we need to start the databases. The following command will start database services.
 ```bash
 openssl rand -base64 756 > mongo-key
 sudo chmod 400 mongo-key && sudo chown 999:999 mongo-key
@@ -558,37 +558,37 @@ openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out certifi
 cat key.pem certificate.pem > mongo.pem
 ```
 # Running elasticsearch
-If your server is bigger than our required size you can use erxes with elasticsearch. To do that following steps need to be taken.
+If your server is bigger than our required size you can use erxes with elasticsearch. To do that the following steps need to be taken.
 
-Add following lines to configs.json positions does not matter.
+Add the following lines to configs.json, positions do not matter.
 ```bash
 "essyncer": {},
 "elasticsearch" : {},
 ```
-Then run deploy dbs with following command.
+Then run and deploy dbs with following command.
 ```bash
 npm run erxes deploy-dbs
 ```
-**6.** To check database services up use following command it will shows you all running docker services id, name and state etc.
+**6.** To check database services up use following command it will shows you all the running docker services id, name and state etc.
 
 ```bash
 docker ps -a | grep mongo
 ```
-wait until all services state become up.
+wait until all services' state become up.
 
-**7.** Now we need to make our mongo have replica set. First we need to enter mongo container then enter mongo instance then execute command following 3 commands will do.
+**7.** Now we need to make our mongo have a replica set. First we need to enter the mongo container then enter the mongo instance then execute the 3 following commands.
 ```bash
 docker exec -it <mongo container name> bash
 mongo -u erxes -p <auto generated in configs.json>
 rs.initiate();
 ```
 <Note>
-you may want to hit `return or enter` button few times if we done correctly mongo shell will changes into `"RS0: primary"`
+You may want to hit `return or enter` button a few times, if we have done it correctly mongo shell will changes into `"RS0: primary"`
 </Note>
 
 To quit mongo instance and container `run exit command` twice.
 
-**8.** Now we need to create `locales` directory in our working directory `/home/erxes/erxes` to do that use following command.
+**8.** Now we need to create `locales` directory in our working directory `/home/erxes/erxes` to do that use the following command.
 
 ```bash
 mkdir locales
@@ -596,12 +596,12 @@ mkdir locales
 
 **9.** Change erxes version of `/home/erxes/erxes/configs.json` file to <a href="https://hub.docker.com/u/erxes" target="_blank">latest</a> version. It is the latest version that has undergone further development.
 
-Start application services like erxes core uis and gateway services we run following command.
+To start the application services like erxes core uis and gateway services we need to run the following command.
 ```bash
 npm run erxes up -- --uis
 ```
 
-After this step ui will be downloaded from AWS:s3 so make sure your server can communicate AWS instances without problem
+After this step the ui will be downloaded from AWS:s3 so make sure your server can communicate AWS instances without a problem.
 
 
 <Note>
@@ -614,7 +614,7 @@ To check docker services use
 docker service ls
 ```
 all erxes services needs to be up state
-Wait until `gateway` container status becomes healthy also gateway container needs to be start at last.
+Wait until the gateway container status becomes healthy. Additionally, ensure that the gateway container is the last one to start.
 </Note>
 
 **10.** Now we need to configure our web server, we need to configure our nginx first. To do this, we create an nginx config file named `erxes.conf` in `/etc/nginx/sites-enabled`. To do this, use the following command.
@@ -733,16 +733,16 @@ server {
         }
     }
     ```
-**11.** After that we need to test nginx config. To do that use following command.
+**11.** After that we need to test the nginx config. To do that use following command.
 ```bash
 sudo nginx -t
 ```
 
-**12.** If nginx test shows successful message we need to restart Nginx. To do that use following command.
+**12.** If nginx test shows successful message we need to restart Nginx. To do that use the following command.
     ```bash
     sudo service nginx restart
     ```
-**13.** Erxes only works in secure connection to generate free ssl certificate we use `Certbot`. To configure that use following command.
+**13.** Erxes only works in secure connection to generate free ssl certificate we use `Certbot`. To configure that use the following command.
 
 ```bash
 sudo certbot --nginx
@@ -754,7 +754,7 @@ you have to point your domain's A record to your erxes host machine in order to 
 After entering this command, provide your email and subscription information, and accept the terms. Following that, you will be prompted about the 'redirect' option. We highly recommend enabling this option for security reasons. Once these steps are completed, open your browser and enjoy our product.
 
 # Adding new plugins to erxes
-Adding new plugins to erxes is easy task all you need to is add plugin name under `"plugins:"[{}]` in `/home/erxes/erxes/configs.json` file then run `npm run erxes up -- --uis` command. But for some plugins like dashboard does require some `extra` service we will discuss that in another section. Below we have `ideal` configs.json file content that includes every `nessacery configuration lines` for `all plugins`. Please read following contents carefully some lines need some `replacement`.
+Adding new plugins to erxes is an easy task, all you need to do is add a plugin name under `"plugins:"[{}]` in `/home/erxes/erxes/configs.json` file then run `npm run erxes up -- --uis` command. But for some plugins like dashboard, it require some `extra` service we will discuss that in another section. Below we have the `ideal` configs.json file content that includes every `nessacery configuration lines` for `all plugins`. Please read the following contents carefully some lines may need a `replacement`.
 
 ```bash
 {
@@ -873,7 +873,7 @@ Adding new plugins to erxes is easy task all you need to is add plugin name unde
 ---
 
 {/*# Adding dashboard plugin
-As we mentioned earlier dashboard plugin requires some extra step to install. First we need to generate `certificate for mongobi` to do that use following commands.
+As we mentioned earlier dashboard plugin requires some extra step to install. First we need to generate `certificate for mongobi` to do that use the following commands.
 
 ```bash
 openssl rand -base64 756 > mongo-key
@@ -882,7 +882,7 @@ openssl rand -base64 756 > mongo-key
     cat key.pem certificate.pem > mongo.pem
     ```
 
-It will generate mongobi certificate. After we need to add `mongobi` to configs.json file locates in `/home/erxes/erxes/configs.json` like below.
+It will generate mongobi certificate. After this we need to add `mongobi` to configs.json file locates in `/home/erxes/erxes/configs.json` like below.
 
 ```bash
  "mongo": {
@@ -891,27 +891,27 @@ It will generate mongobi certificate. After we need to add `mongobi` to configs.
     },
     "mongobi:{},
 ```
-At last run `npm run erxes up -- --uis.`
+Finally run `npm run erxes up -- --uis.`
 
 <Note>
-Everytime we change configs.json we do `npm run erxes up -- --uis` command to apply change.
+Everytime we change configs.json we do `npm run erxes up -- --uis` command to apply the changes.
 </Note>
 
 ---*/}
 ---
 
 # Removing erxes
-**1.** First this is sad but every server need to be tidy following few commands will remove docker stack and dangling containers of swarm.
+**1.** First, it is unfortunate, but every server needs to be kept tidy. The following commands will help remove the Docker stack and any dangling containers in the swarm.
  ```bash
  docker stack ls
  ```
- will show you stack informations. To leave that use following command.
+ will show you stack informations. To leave that use the following command.
  ```bash
 docker stack rm erxes
 docker stack rm erxes-dbs
  ```
 
-**2.** To remove all dangling containers use following commands.
+**2.** To remove all dangling containers use the following commands.
 
 List and remove all dangling images.
 

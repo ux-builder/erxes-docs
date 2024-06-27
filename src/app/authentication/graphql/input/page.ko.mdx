@@ -1,0 +1,1052 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 입력 객체(Input objects)
+---
+<Row>
+  <Col>
+  ## <font color="#6ee7b7">액션 입력(ActionInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="config" type="JSON">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="icon" type="String">
+      </Property>
+      <Property name="id" type="String">
+      </Property>
+      <Property name="label" type="String">
+      </Property>
+      <Property name="nextActionId" type="String">
+      </Property>
+      <Property name="style" type="JSON">
+      </Property>
+      <Property name="type" type="String">
+      </Property>
+    </Properties>
+
+  </Col>
+  <Col>
+  ## <font color="#6ee7b7">첨부 파일 입력(AttachmentInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="duration" type="Float">
+      </Property>
+      <Property name="name" type="String!">
+      </Property>
+      <Property name="size" type="Float">
+      </Property>
+      <Property name="type" type="String">
+      </Property>
+      <Property name="url" type="String!">
+      </Property>
+    </Properties>
+  </Col>
+</Row>
+
+---
+
+<Row>
+  <Col>
+  ## <font color="#6ee7b7">예약 스타일 입력(BookingStyleInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="baseFont" type="String">
+      </Property>
+      <Property name="columns" type="Int">
+      </Property>
+      <Property name="itemShape" type="String">
+      </Property>
+      <Property name="line" type="String">
+      </Property>
+      <Property name="margin" type="Int">
+      </Property>
+      <Property name="productAvailable" type="String">
+      </Property>
+      <Property name="rows" type="Int">
+      </Property>
+      <Property name="widgetColor" type="String">
+      </Property>
+    </Properties>
+  </Col>
+
+  <Col>
+  ## <font color="#6ee7b7">클라이언트 포털 사용자 업데이트(ClientPortalUserUpdate)</font>
+  **Arguments**
+    <Properties>
+      <Property name="avatar" type="String">
+      </Property>
+      <Property name="code" type="String">
+      </Property>
+      <Property name="companyName" type="String">
+      </Property>
+      <Property name="companyRegistrationNumber" type="String">
+      </Property>
+      <Property name="customFieldsData" type="JSON">
+      </Property>
+      <Property name="email" type="String">
+      </Property>
+      <Property name="firstName" type="String">
+      </Property>
+      <Property name="isEmailVerified" type="Boolean">
+      </Property>
+      <Property name="isOnline" type="Boolean">
+      </Property>
+      <Property name="isPhoneVerified" type="Boolean">
+      </Property>
+      <Property name="lastName" type="String">
+      </Property>
+      <Property name="links" type="JSON">
+      </Property>
+      <Property name="phone" type="String">
+      </Property>
+      <Property name="username" type="String">
+      </Property>
+    </Properties>
+  </Col>
+</Row>
+
+---
+
+<Row>
+  <Col>
+  ## <font color="#6ee7b7">대화 메시지 매개변수(ConversationMessageParams)</font>
+  **Arguments**
+    <Properties>
+      <Property name="content" type="String">
+      </Property>
+      <Property name="conversationId" type="String">
+      </Property>
+      <Property name="createdAt" type="Date">
+      </Property>
+      <Property name="line" type="String">
+      </Property>
+      <Property name="customerId" type="String">
+      </Property>
+      <Property name="internal" type="Boolean">
+      </Property>
+      <Property name="isCustomerRead" type="Boolean">
+      </Property>
+      <Property name="mentionedUserIds" type="[String]">
+      </Property>
+    <Property name="userId" type="String">
+      </Property>
+    </Properties>
+  </Col>
+
+  <Col>
+  ## <font color="#6ee7b7">좌표 입력(CoordinateInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="latitude" type="String">
+      </Property>
+      <Property name="longitude" type="String">
+      </Property>
+    </Properties>
+</Col>
+</Row>
+---
+<Row>
+<Col>
+## <font color="#6ee7b7">이메일 서명(EmailSignature)</font>
+<Properties>
+      <Property name="brandId" type="String">
+      </Property>
+      <Property name="signature" type="String">
+      </Property>
+</Properties>
+</Col>
+
+ <Col>
+   ## <font color="#6ee7b7">참여 메시지 SMS 입력(EngageMessageSmsInput)</font>
+    <Properties>
+      <Property name="content" type="String!">
+      </Property>
+      <Property name="from" type="String">
+      </Property>
+      <Property name="fromIntegrationId" type="String">
+      </Property>
+    </Properties>
+  </Col>
+
+<Col>
+## <font color="#6ee7b7">참여 메시지 이메일(EngageMessageEmail)</font>
+<Properties>
+      <Property name="attachments" type="[JSON]">
+      </Property>
+      <Property name="content" type="String">
+      </Property>
+      <Property name="replyTo" type="String">
+      </Property>
+      <Property name="sender" type="String">
+      </Property>
+      <Property name="subject" type="String!">
+      </Property>
+      <Property name="templateId" type="String">
+      </Property>
+    </Properties>
+  </Col>
+
+ <Col>
+ ## <font color="#6ee7b7">참여 메시지 메신저(EngageMessageMessenger)</font>
+<Properties>
+      <Property name="brandId" type="String!">
+      </Property>
+      <Property name="content" type="String">
+      </Property>
+      <Property name="kind" type="String">
+      </Property>
+      <Property name="rules" type="[InputRule]">
+      </Property>
+      <Property name="sentAs" type="String!">
+      </Property>
+    </Properties>
+  </Col>
+
+
+   <Col>
+   ## <font color="#6ee7b7">날짜 입력(EngageScheduleDateInput)</font>
+    <Properties>
+      <Property name="dateTime" type="date">
+      </Property>
+      <Property name="day" type="String">
+      </Property>
+      <Property name="month" type="String">
+      </Property>
+      <Property name="type" type="String">
+      </Property>
+    </Properties>
+  </Col>
+
+ <Col>
+    ## <font color="#6ee7b7">이벤트 속성 필터(EventAttributeFilter)</font>
+    <Properties>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="operator" type="String">
+      </Property>
+      <Property name="value" type="String">
+      </Property>
+    </Properties>
+  </Col>
+
+  <Col>
+    ## <font color="#6ee7b7">외형 입력(ExmAppearanceInput)</font>
+    <Properties>
+      <Property name="primaryColor" type="String">
+      </Property>
+      <Property name="secondaryColor" type="String">
+      </Property>
+    </Properties>
+  </Col>
+  <Col>
+    ## <font color="#6ee7b7">이벤트 데이터 입력(ExmEventDataInput)</font>
+    <Properties>
+      <Property name="endDate" type="Date">
+      </Property>
+      <Property name="startDate" type="Date">
+      </Property>
+      <Property name="visibility" type="String">
+      </Property>
+      <Property name="where" type="String">
+      </Property>
+    </Properties>
+  </Col>
+  <Col>
+    ## <font color="#6ee7b7">기능 입력(ExmFeatureInput)</font>
+    <Properties>
+      <Property name="_id" type="String">
+      </Property>
+      <Property name="contentId" type="String">
+      </Property>
+      <Property name="contentType" type="String">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="icon" type="String">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="subContentId" type="String">
+      </Property>
+    </Properties>
+  </Col>
+  <Col>
+    ## <font color="#6ee7b7">환영 컨텐츠 입력(ExmWelcomeContentInput)</font>
+    <Properties>
+      <Property name="_id" type="String">
+      </Property>
+      <Property name="content" type="String">
+      </Property>
+      <Property name="image" type="AttachmentInput">
+      </Property>
+       <Property name="title" type="String">
+      </Property>
+    </Properties>
+  </Col>
+  </Row>
+
+---
+
+<Row>
+  <Col>
+  ## <font color="#6ee7b7">필드 항목(FieldItem)</font>
+  **Arguments**
+    <Properties>
+      <Property name="_id" type="JSON">
+      </Property>
+      <Property name="associatedFieldId" type="String">
+      </Property>
+      <Property name="code" type="String">
+      </Property>
+      <Property name="column" type="Int">
+      </Property>
+      <Property name="content" type="String">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="field" type="JSON">
+      </Property>
+      <Property name="groupName" type="String">
+      </Property>
+      <Property name="isDefinedByErxes" type="Boolean">
+      </Property>
+      <Property name="isRequired" type="Boolean">
+      </Property>
+      <Property name="isVisibleToCreate" type="Boolean">
+      </Property>
+      <Property name="locationOptions" type="[LocationOptionInput]">
+      </Property>
+      <Property name="logicAction" type="String">
+      </Property>
+      <Property name="logics" type="[LogicInput]">
+      </Property>
+      <Property name="objectListConfigs" type="[objectListConfigInput]">
+      </Property>
+      <Property name="options" type="[String]">
+      </Property>
+      <Property name="optionsValues" type="String">
+      </Property>
+      <Property name="order" type="Int">
+      </Property>
+      <Property name="pageNumber" type="Int">
+      </Property>
+      <Property name="productCategoryId" type="String">
+      </Property>
+      <Property name="searchable" type="Boolean">
+      </Property>
+      <Property name="showInCard" type="Boolean">
+      </Property>
+      <Property name="tempFieldId" type="String">
+      </Property>
+      <Property name="text" type="String">
+      </Property>
+      <Property name="type" type="String">
+      </Property>
+      <Property name="validation" type="String">
+      </Property>
+    </Properties>
+
+  </Col>
+  <Col>
+  ## <font color="#6ee7b7">필드 값 입력(FieldValueInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="associatedFieldId" type="String">
+      </Property>
+      <Property name="column" type="Int">
+      </Property>
+      <Property name="groupId" type="String">
+      </Property>
+      <Property name="productId" type="String!">
+      </Property>
+      <Property name="stageId" type="String">
+      </Property>
+      <Property name="text" type="String">
+      </Property>
+      <Property name="type" type="String">
+      </Property>
+      <Property name="validation" type="String">
+      </Property>
+      <Property name="value" type="JSON">
+      </Property>
+    </Properties>
+
+  ## <font color="#6ee7b7">양식 코드 입력(FormCodeInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="brandId" type="String">
+      </Property>
+      <Property name="formId" type="String">
+      </Property>
+    </Properties>
+
+  ## <font color="#6ee7b7">양식 제출 입력(FormSubmissionInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="value" type="JSON">
+      </Property>
+    </Properties>
+  </Col>
+</Row>
+
+---
+
+<Row>
+<Col>
+
+  ## <font color="#6ee7b7">이동 항목(IMovementItem)</font>
+  **Arguments**
+    <Properties>
+      <Property name="assetId" type="String">
+      </Property>
+      <Property name="assetName" type="String">
+      </Property>
+      <Property name="branchId" type="String">
+      </Property>
+      <Property name="companyId" type="String">
+      </Property>
+      <Property name="customerId" type="String">
+      </Property>
+      <Property name="departmentId" type="String">
+      </Property>
+      <Property name="teamMemberId" type="String">
+      </Property>
+    </Properties>
+</Col>
+<Col>
+  ## <font color="#6ee7b7">입력 규칙(InputRule)</font>
+  **Arguments**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="condition" type="String!">
+      </Property>
+      <Property name="kind" type="String!">
+      </Property>
+      <Property name="text" type="String!">
+      </Property>
+      <Property name="value" type="String">
+      </Property>
+    </Properties>
+  </Col>
+
+<Col>
+  ## <font color="#6ee7b7">통합 예약 데이터(IntegrationBookingData)</font>
+  **Arguments**
+    <Properties>
+      <Property name="bookingFormText" type="String">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="image" type="AttachmentInput">
+      </Property>
+      <Property name="name" type="String">
+      </Property>
+      <Property name="navigationText" type="String">
+      </Property>
+      <Property name="productCategoryId" type="String">
+      </Property>
+      <Property name="productFieldIds" type="[String]">
+      </Property>
+      <Property name="style" type="BookingStyleInput">
+      </Property>
+    </Properties>
+  </Col>
+  <Col>
+## <font color="#6ee7b7">통합 링크(IntegrationLinks)</font>
+  **Arguments**
+    <Properties>
+      <Property name="facebook" type="String">
+      </Property>
+      <Property name="twitter" type="String">
+      </Property>
+      <Property name="youtube" type="String">
+      </Property>
+    </Properties>
+    </Col>
+
+  <Col>
+  ## <font color="#6ee7b7">통합 리드 데이터(IntegrationLeadData)</font>
+  **Arguments**
+    <Properties>
+      <Property name="adminEmailContent" type="String">
+      </Property>
+      <Property name="adminEmailTitle" type="String">
+      </Property>
+      <Property name="adminEmails" type="[String]">
+      </Property>
+      <Property name="attachments" type="[AttachmentInput]">
+      </Property>
+      <Property name="callout" type="JSON">
+      </Property>
+      <Property name="css" type="String">
+      </Property>
+      <Property name="fromEmail" type="String">
+      </Property>
+      <Property name="isRequireOnce" type="Boolean">
+      </Property>
+      <Property name="loadType" type="String">
+      </Property>
+      <Property name="redirectUrl" type="String">
+      </Property>
+       <Property name="rules" type="[InputRule]">
+      </Property>
+       <Property name="saveAsCustomer" type="Boolean">
+      </Property>
+       <Property name="successAction" type="String">
+      </Property>
+       <Property name="successImage" type="String">
+      </Property>
+       <Property name="successImageSize" type="String">
+      </Property>
+       <Property name="templateId" type="String">
+      </Property>
+       <Property name="thankContent" type="String">
+      </Property>
+       <Property name="thankTitle" type="String">
+      </Property>
+       <Property name="themeColor" type="String">
+      </Property>
+       <Property name="userEmailContent" type="String">
+      </Property>
+       <Property name="userEmailTitle" type="String">
+      </Property>
+    </Properties>
+  </Col>
+
+<Col>
+    ## <font color="#6ee7b7">통합 메신저 데이터(IntegrationMessengerData)</font>
+  **Arguments**
+    <Properties>
+      <Property name="_id" type="String">
+      </Property>
+      <Property name="availabilityMethod" type="String">
+      </Property>
+      <Property name="botEndpointUrl" type="String">
+      </Property>
+      <Property name="botShowInitialMessage" type="Boolean">
+      </Property>
+      <Property name="forceLogoutWhenResolve" type="Boolean">
+      </Property>
+      <Property name="isOnline" type="Boolean">
+      </Property>
+      <Property name="knowledgeBaseTopicId" type="String">
+      </Property>
+      <Property name="links" type="IntegrationLinks">
+      </Property>
+      <Property name="messages" type="JSON">
+      </Property>
+      <Property name="notifyCustomer" type="Boolean">
+      </Property>
+      <Property name="onlineHours" type="[MessengerOnlineHoursSchema]">
+      </Property>
+      <Property name="requireAuth" type="Boolean">
+      </Property>
+      <Property name="responseRate" type="String">
+      </Property>
+      <Property name="showChat" type="Boolean">
+      </Property>
+      <Property name="showLauncher" type="Boolean">
+      </Property>
+      <Property name="showTimezone" type="Boolean">
+      </Property>
+      <Property name="showVideoCallRequest" type="Boolean">
+      </Property>
+      <Property name="skillData" type="JSON">
+      </Property>
+      <Property name="supporterIds" type="[String]">
+      </Property>
+      <Property name="timezone" type="String">
+      </Property>
+    </Properties>
+</Col>
+
+<Col>
+  ## <font color="#6ee7b7">간격(Interval)</font>
+  **Arguments**
+    <Properties>
+      <Property name="endTime" type="Date">
+      </Property>
+      <Property name="startTime" type="Date">
+      </Property>
+    </Properties>
+
+## <font color="#6ee7b7">항목 날짜(ItemDate)</font>
+  **Arguments**
+    <Properties>
+      <Property name="month" type="Int">
+      </Property>
+      <Property name="year" type="Int">
+      </Property>
+    </Properties>
+  </Col>
+
+  <Col>
+  ## <font color="#6ee7b7">초대 항목(InvitationEntry)</font>
+  **Arguments**
+    <Properties>
+      <Property name="branchId" type="String">
+      </Property>
+      <Property name="channelIds" type="[String]">
+      </Property>
+      <Property name="departmentId" type="String">
+      </Property>
+      <Property name="email" type="String">
+      </Property>
+      <Property name="groupId" type="String">
+      </Property>
+       <Property name="password" type="String">
+      </Property>
+       <Property name="unitId" type="String">
+      </Property>
+    </Properties>
+  </Col>
+
+<Col>
+  ## <font color="#6ee7b7">지식 기반 문서(KnowledgeBaseArticleDoc)</font>
+  **Arguments**
+    <Properties>
+      <Property name="attachments" type="[AttachmentInput]">
+      </Property>
+      <Property name="categoryId" type="String">
+      </Property>
+      <Property name="categoryIds" type="[String]">
+      </Property>
+      <Property name="content" type="String!">
+      </Property>
+      <Property name="forms" type="[FormCodeInput]">
+      </Property>
+       <Property name="image" type="AttachmentInput">
+      </Property>
+       <Property name="reactionChoices" type="[String]">
+      </Property>
+      <Property name="status" type="String!">
+      </Property>
+      <Property name="summary" type="String">
+      </Property>
+      <Property name="title" type="String!">
+      </Property>
+      <Property name="topicId" type="String">
+      </Property>
+    </Properties>
+  </Col>
+
+  <Col>
+  ## <font color="#6ee7b7">지식 기반 카테고리 문서(KnowledgeBaseCategoryDoc)</font>
+  **Arguments**
+    <Properties>
+      <Property name="articleIds" type="[String]">
+      </Property>
+      <Property name="description" type="[String]">
+      </Property>
+      <Property name="icon" type="String!">
+      </Property>
+      <Property name="parentCategoryId" type="String">
+      </Property>
+      <Property name="title" type="String!">
+      </Property>
+       <Property name="topicId" type="String">
+      </Property>
+       <Property name="topicIds" type="[String]">
+      </Property>
+    </Properties>
+
+    ## <font color="#6ee7b7">지식 기반 메신저 앱 입력(KnowledgeBaseMessengerAppInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="topicId" type="String">
+      </Property>
+    </Properties>
+  </Col>
+
+
+<Col>
+  ## <font color="#6ee7b7">지식 기반 주제 문서(KnowledgeBaseTopicDoc)</font>
+  **Arguments**
+    <Properties>
+      <Property name="backgroundImage" type="String">
+      </Property>
+      <Property name="brandId" type="String!">
+      </Property>
+      <Property name="categoryIds" type="[String]">
+      </Property>
+      <Property name="color" type="String">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+       <Property name="languageCode" type="String">
+      </Property>
+       <Property name="notificationSegmentId" type="String">
+      </Property>
+      <Property name="title" type="String!">
+      </Property>
+    </Properties>
+</Col>
+</Row>
+
+<Row>
+<Col>
+ ## <font color="#6ee7b7">리드 메신저 앱 입력(LeadMessengerAppInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="formCode" type="String">
+      </Property>
+    </Properties>
+
+     ## <font color="#6ee7b7">위치 옵션 입력(LocationOptionInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="lat" type="Float">
+      </Property>
+      <Property name="lng" type="Float">
+      </Property>
+    </Properties>
+</Col>
+
+<Col>
+    ## <font color="#6ee7b7">논리 입력(LogicInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="fieldId" type="String">
+      </Property>
+      <Property name="logicOperator" type="String">
+      </Property>
+      <Property name="logicValue" type="JSON">
+      </Property>
+      <Property name="tempFieldId" type="String">
+      </Property>
+    </Properties>
+  </Col>
+
+  </Row>
+
+  <Row>
+<Col>
+    ## <font color="#6ee7b7">메일 구성 입력(MailConfigInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="invitationContent" type="String">
+      </Property>
+      <Property name="registrationContent" type="String">
+      </Property>
+      <Property name="subject" type="String">
+      </Property>
+    </Properties>
+
+    ## <font color="#6ee7b7">메신저 앱 입력(MessengerAppsInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="knowledgebases" type="[KnowledgeBaseMessengerAppInput]">
+      </Property>
+      <Property name="leads" type="[LeadMessengerAppInput]">
+      </Property>
+      <Property name="websites" type="[WebSiteMessengerAppInput]">
+      </Property>
+    </Properties>
+</Col>
+
+<Col>
+    ## <font color="#6ee7b7">메신저 온라인 시간 스키마(MessengerOnlineHoursSchema)</font>
+  **Arguments**
+    <Properties>
+      <Property name="_id" type="String">
+      </Property>
+      <Property name="day" type="String">
+      </Property>
+      <Property name="from" type="String">
+      </Property>
+       <Property name="to" type="String">
+      </Property>
+    </Properties>
+
+    ## <font color="#6ee7b7">메신저 UI 옵션(MessengerUiOptions)</font>
+  **Arguments**
+    <Properties>
+      <Property name="color" type="String">
+      </Property>
+      <Property name="logo" type="String">
+      </Property>
+      <Property name="textColor" type="String">
+      </Property>
+      <Property name="wallpaper" type="String">
+      </Property>
+    </Properties>
+    </Col>
+  </Row>
+
+---
+
+<Row>
+<Col>
+    ## <font color="#6ee7b7">알림 구성 입력(NotificationConfigInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="isAllowed" type="Boolean">
+      </Property>
+      <Property name="label" type="String">
+      </Property>
+      <Property name="notifType" type="String">
+      </Property>
+    </Properties>
+    </Col>
+    </Row>
+
+<Row>
+<Col>
+    ## <font color="#6ee7b7">객체 목록 구성 입력(objectListConfigInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="key" type="String">
+      </Property>
+      <Property name="label" type="String">
+      </Property>
+      <Property name="type" type="String">
+      </Property>
+    </Properties>
+
+    ## <font color="#6ee7b7">주문 항목(OrderItem)</font>
+  **Arguments**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="order" type="Int!">
+      </Property>
+    </Properties>
+</Col>
+<Col>
+    ## <font color="#6ee7b7">OTP 구성 입력(OTPConfigInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="codeLength" type="Int">
+      </Property>
+      <Property name="content" type="String">
+      </Property>
+      <Property name="expireAfter" type="Int">
+      </Property>
+      <Property name="loginWithOTP" type="Boolean">
+      </Property>
+       <Property name="smsTransporterType" type="String">
+      </Property>
+    </Properties>
+    </Col>
+  </Row>
+
+
+  <Row>
+<Col>
+    ## <font color="#6ee7b7">파이프라인 템플릿 단계 입력(PipelineTemplateStageInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="_id" type="String!">
+      </Property>
+      <Property name="formId" type="String">
+      </Property>
+      <Property name="name" type="String!">
+      </Property>
+    </Properties>
+</Col>
+<Col>
+    ## <font color="#6ee7b7">제품 필드(ProductField)</font>
+  **Arguments**
+    <Properties>
+      <Property name="productId" type="String">
+      </Property>
+      <Property name="quantity" type="Int">
+      </Property>
+    </Properties>
+</Col>
+</Row>
+
+
+<Row>
+<Col>
+  ## <font color="#6ee7b7">세그먼트 조건(SegmentCondition)</font>
+  **Arguments**
+    <Properties>
+      <Property name="config" type="JSON">
+      </Property>
+      <Property name="eventAttributeFilters" type="[EventAttributeFilter]">
+      </Property>
+      <Property name="eventName" type="String">
+      </Property>
+      <Property name="eventOccurence" type="Float">
+      </Property>
+      <Property name="propertyName" type="String">
+      </Property>
+       <Property name="propertyOperator" type="String">
+      </Property>
+       <Property name="propertyType" type="String">
+      </Property>
+      <Property name="propertyValue" type="String">
+      </Property>
+       <Property name="subSegmentId" type="String">
+      </Property>
+       <Property name="type" type="String">
+      </Property>
+    </Properties>
+
+     ## <font color="#6ee7b7">스타일 매개변수(StylesParams)</font>
+  **Arguments**
+    <Properties>
+      <Property name="activeTabColor" type="JSON">
+      </Property>
+      <Property name="backgroundColor" type="[EventAttributeFilter]">
+      </Property>
+      <Property name="baseColor" type="String">
+      </Property>
+      <Property name="baseFont" type="Float">
+      </Property>
+      <Property name="bodyColor" type="String">
+      </Property>
+       <Property name="dividerColor" type="String">
+      </Property>
+       <Property name="footerColor" type="String">
+      </Property>
+      <Property name="headerColor" type="String">
+      </Property>
+       <Property name="headingColor" type="String">
+      </Property>
+       <Property name="headingFont" type="String">
+      </Property>
+       <Property name="helpColor" type="String">
+      </Property>
+       <Property name="linkColor" type="String">
+      </Property>
+      <Property name="linkHoverColor" type="String">
+      </Property>
+       <Property name="primaryBtnColor" type="String">
+      </Property>
+       <Property name="secondaryBtnColor" type="String">
+      </Property>
+    </Properties>
+</Col>
+<Col>
+    ## <font color="#6ee7b7">교대 요청 입력(ShiftsRequestInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="_id" type="String">
+      </Property>
+      <Property name="configName" type="String">
+      </Property>
+      <Property name="overnightShift" type="Boolean">
+      </Property>
+      <Property name="shiftEnd" type="Date">
+      </Property>
+       <Property name="shiftStart" type="Date">
+      </Property>
+    </Properties>
+
+ ## <font color="#6ee7b7">제출 필터(SubmissionFilter)</font>
+  **Arguments**
+    <Properties>
+      <Property name="formFieldId" type="String">
+      </Property>
+      <Property name="operator" type="String">
+      </Property>
+      <Property name="value" type="JSON">
+      </Property>
+    </Properties>
+
+ ## <font color="#6ee7b7">하위 세그먼트(SubSegment)</font>
+  **Arguments**
+    <Properties>
+      <Property name="_id" type="String">
+      </Property>
+      <Property name="conditions" type="JSON">
+      </Property>
+      <Property name="conditionsConjunction" type="String">
+      </Property>
+      <Property name="config" type="JSON">
+      </Property>
+      <Property name="contentType" type="String">
+      </Property>
+    </Properties>
+</Col>
+</Row>
+---
+
+<Row>
+<Col>
+    ## <font color="#6ee7b7">트리거 입력(TriggerInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="actionId" type="String">
+      </Property>
+      <Property name="config" type="JSON">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="icon" type="String">
+      </Property>
+       <Property name="id" type="String">
+      </Property>
+      <Property name="label" type="String">
+      </Property>
+      <Property name="style" type="JSON">
+      </Property>
+       <Property name="type" type="String">
+      </Property>
+    </Properties>
+    </Col>
+    </Row>
+
+---
+
+<Row>
+<Col>
+    ## <font color="#6ee7b7">사용자 세부 정보(UserDetails)</font>
+  **Arguments**
+    <Properties>
+      <Property name="avatar" type="String">
+      </Property>
+      <Property name="birthDate" type="Date">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="employeeId" type="String">
+      </Property>
+       <Property name="firstName" type="String">
+      </Property>
+      <Property name="fullName" type="String">
+      </Property>
+      <Property name="lastName" type="String">
+      </Property>
+      <Property name="location" type="String">
+      </Property>
+      <Property name="middleName" type="String">
+      </Property>
+      <Property name="operatorPhone" type="String">
+      </Property>
+      <Property name="position" type="String">
+      </Property>
+      <Property name="shortName" type="String">
+      </Property>
+      <Property name="workStartedDate" type="Date">
+      </Property>
+    </Properties>
+    </Col>
+    </Row>
+    ---
+    <Row>
+<Col>
+    ## <font color="#6ee7b7">웹사이트 메신저 앱 입력(WebSiteMessengerAppInput)</font>
+  **Arguments**
+    <Properties>
+      <Property name="buttonText" type="String">
+      </Property>
+      <Property name="description" type="String">
+      </Property>
+      <Property name="url" type="String">
+      </Property>
+    </Properties>
+    </Col>
+    </Row>

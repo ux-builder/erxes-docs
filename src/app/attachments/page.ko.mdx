@@ -1,0 +1,365 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+export const metadata = {
+  title: '첨부 파일 관리',
+  description: '이 페이지에서는 첨부 파일을 프로그램적으로 관리할 수 있는 다양한 엔드포인트를 다룹니다.',
+}
+
+# 첨부 파일
+
+첨부 파일은 Protocol에서 파일을 공유하는 방법입니다. 이를 통해 다양한 파일을 연락처 및 그룹에 보낼 수 있습니다. 이 페이지에서는 첨부 파일을 관리할 수 있는 다양한 엔드포인트에 대해 알아보고, 첨부 파일을 조회, 업로드, 업데이트 및 삭제하는 방법을 설명합니다. {{ className: 'lead' }}
+
+## 첨부 파일 모델
+
+첨부 파일 모델에는 연락처 및 그룹에 보낸 파일에 대한 모든 정보가 포함되어 있으며, 파일 이름, 유형, 크기 등을 포함합니다.
+
+### 속성
+
+<Properties>
+  <Property name="id" type="string">
+    첨부 파일의 고유 식별자입니다.
+  </Property>
+  <Property name="message_id" type="string">
+    첨부 파일이 속한 메시지의 고유 식별자입니다.
+  </Property>
+  <Property name="filename" type="string">
+    첨부 파일의 이름입니다.
+  </Property>
+  <Property name="file_url" type="string">
+    첨부 파일의 URL입니다.
+  </Property>
+  <Property name="file_type" type="string">
+    첨부 파일의 MIME 유형입니다.
+  </Property>
+  <Property name="file_size" type="integer">
+    첨부 파일의 크기(바이트)입니다.
+  </Property>
+  <Property name="created_at" type="timestamp">
+    첨부 파일이 생성된 시간입니다.
+  </Property>
+</Properties>
+
+---
+
+## 모든 첨부 파일 목록 조회 {{ tag: 'GET', label: '/v1/attachments' }}
+
+<Row>
+  <Col>
+
+    이 엔드포인트를 사용하면 모든 첨부 파일의 페이지별 목록을 조회할 수 있습니다(대화 ID가 제공된 경우 해당 대화의 첨부 파일만 조회). 기본적으로 한 페이지에 최대 10개의 첨부 파일이 표시됩니다.
+
+    ### 선택적 속성
+
+    <Properties>
+      <Property name="conversation_id" type="string">
+        특정 대화의 첨부 파일로 제한합니다.
+      </Property>
+      <Property name="limit" type="integer">
+        반환되는 첨부 파일의 수를 제한합니다.
+      </Property>
+    </Properties>
+
+  </Col>
+  <Col sticky>
+
+    <CodeGroup title="요청" tag="GET" label="/v1/attachments">
+
+    ```bash {{ title: 'cURL' }}
+    curl -G https://api.protocol.chat/v1/attachments \
+      -H "Authorization: Bearer {token}" \
+      -d conversation_id="xgQQXg3hrtjh7AvZ" \
+      -d limit=10
+    ```
+
+    ```js
+    import ApiClient from '@example/protocol-api'
+
+    const client = new ApiClient(token)
+
+    await client.attachments.list()
+    ```
+
+    ```python
+    from protocol_api import ApiClient
+
+    client = ApiClient(token)
+
+    client.attachments.list()
+    ```
+
+    ```php
+    $client = new \Protocol\ApiClient($token);
+
+    $client->attachments->list();
+    ```
+
+    </CodeGroup>
+
+    ```json {{ title: '응답' }}
+    {
+      "has_more": false,
+      "data": [
+        {
+          "id": "Nc6yKKMpcxiiFxp6",
+          "message_id": "LoPsJaMcPBuFNjg1",
+          "filename": "Invoice_room_service__Plaza_Hotel.pdf",
+          "file_url": "https://assets.protocol.chat/attachments/Invoice_room_service__Plaza_Hotel.pdf",
+          "file_type": "application/pdf",
+          "file_size": 21352,
+          "created_at": 692233200
+        },
+        {
+          "id": "hSIhXBhNe8X1d8Et"
+          // ...
+        }
+      ]
+    }
+    ```
+
+  </Col>
+</Row>
+
+---
+
+## 첨부 파일 생성 {{ tag: 'POST', label: '/v1/attachments' }}
+
+<Row>
+  <Col>
+
+    이 엔드포인트를 사용하면 새로운 첨부 파일을 대화에 업로드할 수 있습니다. 파일을 Protocol API에 보내는 방법에 대한 코드 예제를 참조하세요.
+
+    ### 필수 속성
+
+    <Properties>
+      <Property name="file" type="string">
+        첨부 파일로 추가하려는 파일입니다.
+      </Property>
+    </Properties>
+
+  </Col>
+  <Col sticky>
+
+    <CodeGroup title="요청" tag="POST" label="/v1/attachments">
+
+    ```bash {{ title: 'cURL' }}
+    curl https://api.protocol.chat/v1/attachments \
+      -H "Authorization: Bearer {token}" \
+      -F file="../Invoice_room_service__Plaza_Hotel.pdf"
+    ```
+
+    ```js
+    import ApiClient from '@example/protocol-api'
+
+    const client = new ApiClient(token)
+
+    await client.attachments.create({ file })
+    ```
+
+    ```python
+    from protocol_api import ApiClient
+
+    client = ApiClient(token)
+
+    client.attachments.create(file=file)
+    ```
+
+    ```php
+    $client = new \Protocol\ApiClient($token);
+
+    $client->attachments->create([
+      'file' => $file,
+    ]);
+    ```
+
+    </CodeGroup>
+
+    ```json {{ title: '응답' }}
+    {
+      "id": "Nc6yKKMpcxiiFxp6",
+      "message_id": "LoPsJaMcPBuFNjg1",
+      "filename": "Invoice_room_service__Plaza_Hotel.pdf",
+      "file_url": "https://assets.protocol.chat/attachments/Invoice_room_service__Plaza_Hotel.pdf",
+      "file_type": "application/pdf",
+      "file_size": 21352,
+      "created_at": 692233200
+    }
+    ```
+
+  </Col>
+</Row>
+
+---
+
+## 첨부 파일 조회 {{ tag: 'GET', label: '/v1/attachments/:id' }}
+
+<Row>
+  <Col>
+
+    이 엔드포인트를 사용하면 첨부 파일 ID를 제공하여 첨부 파일을 조회할 수 있습니다. 첨부 파일 객체에 포함된 속성 목록은 [첨부 파일 모델](#the-attachment-model)을 참조하세요.
+
+  </Col>
+  <Col sticky>
+
+    <CodeGroup title="요청" tag="GET" label="/v1/attachments/Nc6yKKMpcxiiFxp6">
+
+    ```bash {{ title: 'cURL' }}
+    curl https://api.protocol.chat/v1/attachments/Nc6yKKMpcxiiFxp6 \
+      -H "Authorization: Bearer {token}"
+    ```
+
+    ```js
+    import ApiClient from '@example/protocol-api'
+
+    const client = new ApiClient(token)
+
+    await client.attachments.get('Nc6yKKMpcxiiFxp6')
+    ```
+
+    ```python
+    from protocol_api import ApiClient
+
+    client = ApiClient(token)
+
+    client.attachments.get("Nc6yKKMpcxiiFxp6")
+    ```
+
+    ```php
+    $client = new \Protocol\ApiClient($token);
+
+    $client->attachments->get('Nc6yKKMpcxiiFxp6');
+    ```
+
+    </CodeGroup>
+
+    ```json {{ title: '응답' }}
+    {
+      "id": "Nc6yKKMpcxiiFxp6",
+      "message_id": "LoPsJaMcPBuFNjg1",
+      "filename": "Invoice_room_service__Plaza_Hotel.pdf",
+      "file_url": "https://assets.protocol.chat/attachments/Invoice_room_service__Plaza_Hotel.pdf",
+      "file_type": "application/pdf",
+      "file_size": 21352,
+      "created_at": 692233200
+    }
+    ```
+
+  </Col>
+</Row>
+
+---
+
+## 첨부 파일 업데이트 {{ tag: 'PUT', label: '/v1/attachments/:id' }}
+
+<Row>
+  <Col>
+
+    이 엔드포인트를 사용하면 첨부 파일을 업데이트할 수 있습니다. 현재 지원되는 유일한 업데이트 유형은 파일 이름 변경입니다.
+
+    ### 선택적 속성
+
+    <Properties>
+      <Property name="filename" type="string">
+        첨부 파일의 새 파일 이름입니다.
+      </Property>
+    </Properties>
+
+  </Col>
+  <Col sticky>
+
+    <CodeGroup title="요청" tag="PUT" label="/v1/attachments/Nc6yKKMpcxiiFxp6">
+
+    ```bash {{ title: 'cURL' }}
+    curl -X PUT https://api.protocol.chat/v1/attachments/Nc6yKKMpcxiiFxp6 \
+      -H "Authorization: Bearer {token}" \
+      -d filename="Invoice_room_service__Plaza_Hotel_updated.pdf"
+    ```
+
+    ```js
+    import ApiClient from '@example/protocol-api'
+
+    const client = new ApiClient(token)
+
+    await client.attachments.update('Nc6yKKMpcxiiFxp6', {
+      filename: 'Invoice_room_service__Plaza_Hotel_updated.pdf',
+    })
+    ```
+
+    ```python
+    from protocol_api import ApiClient
+
+    client = ApiClient(token)
+
+    client.attachments.update("Nc6yKKMpcxiiFxp6", filename="Invoice_room_service__Plaza_Hotel_updated.pdf")
+    ```
+
+    ```php
+    $client = new \Protocol\ApiClient($token);
+
+    $client->attachments->update('Nc6yKKMpcxiiFxp6', [
+      'filename' => 'Invoice_room_service__Plaza_Hotel_updated.pdf',
+    ]);
+    ```
+
+    </CodeGroup>
+
+    ```json {{ title: '응답' }}
+    {
+      "id": "Nc6yKKMpcxiiFxp6",
+      "message_id": "LoPsJaMcPBuFNjg1",
+      "filename": "Invoice_room_service__Plaza_Hotel.pdf",
+      "file_url": "https://assets.protocol.chat/attachments/Invoice_room_service__Plaza_Hotel_updated.pdf",
+      "file_type": "application/pdf",
+      "file_size": 21352,
+      "created_at": 692233200
+    }
+    ```
+
+  </Col>
+</Row>
+
+---
+
+## 첨부 파일 삭제 {{ tag: 'DELETE', label: '/v1/attachments/:id' }}
+
+<Row>
+  <Col>
+
+    이 엔드포인트를 사용하면 첨부 파일을 삭제할 수 있습니다. 참고: 파일이 영구적으로 삭제됩니다.
+
+  </Col>
+  <Col sticky>
+
+    <CodeGroup title="요청" tag="DELETE" label="/v1/attachments/Nc6yKKMpcxiiFxp6">
+
+    ```bash {{ title: 'cURL' }}
+    curl -X DELETE https://api.protocol.chat/v1/attachments/Nc6yKKMpcxiiFxp6 \
+      -H "Authorization: Bearer {token}"
+    ```
+
+    ```js
+    import ApiClient from '@example/protocol-api'
+
+    const client = new ApiClient(token)
+
+    await client.attachments.delete('Nc6yKKMpcxiiFxp6')
+    ```
+
+    ```python
+    from protocol_api import ApiClient
+
+    client = ApiClient(token)
+
+    client.attachments.delete("Nc6yKKMpcxiiFxp6")
+    ```
+
+    ```php
+    $client = new \Protocol\ApiClient($token);
+
+    $client->attachments->delete('Nc6yKKMpcxiiFxp6');
+    ```
+
+    </CodeGroup>
+
+  </Col>
+</Row>

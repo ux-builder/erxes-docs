@@ -1,0 +1,59 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# Tip
+## **Tip 텍스트**
+`text` 속성을 사용하여 팁 텍스트를 정의합니다.
+
+```tsx
+<>
+	<Tip text="Tip text">
+		<Button>Hover on me!</Button>
+	</Tip>
+</>
+```
+
+## **위치**
+`placement` 속성을 사용하여 팁의 위치를 변경합니다. 아래의 텍스트 단락 위로 마우스를 가져가 팁을 확인하세요.
+
+콘텐츠의 위치에 따라 팁을 자동으로 배치합니다.
+```tsx
+<>
+	<Tip placement="auto" text="Tip">
+		<Button>Hover on me!</Button>
+	</Tip>
+</>
+```
+
+위치 설정: 위(top), 오른쪽(right), 아래(bottom), 왼쪽(left). 'start'와 'end'를 추가하여 더욱 세분화된 위치를 설정할 수 있습니다. 예: 'top-start', 'top-end', 'right-start' 등.
+
+```tsx
+<>
+	<Tip placement="top" text="Tip">
+		<Button>Hover on me!</Button>
+	</Tip>
+        <Tip placement="right" text="Tip">
+		<Button>Hover on me!</Button>
+	</Tip>
+        <Tip placement="bottom" text="Tip">
+		<Button>Hover on me!</Button>
+	</Tip>
+        <Tip placement="left" text="Tip">
+		<Button>Hover on me!</Button>
+	</Tip>
+</>
+```
+
+## **API**
+
+```tsx
+import Tip from "erxes-ui/lib/components/Tip";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| text	 | string, React.ReactNode	 |  | id를 정의합니다 |
+| children* | React.ReactNode |  | 이름을 정의합니다 |
+| placement	 | auto, auto-start, auto-end, top, top-start, top-end, right, right-start, right-end, bottom, bottom-start, bottom-end, left, left-start, left-end	| auto | 팁의 위치를 설정합니다 |

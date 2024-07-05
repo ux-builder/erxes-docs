@@ -1,0 +1,44 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 정렬 핸들러
+단순 정렬 핸들러.
+
+```tsx
+<>
+	<SortHandler  />
+</>
+```
+## **라벨**
+`label` 속성을 정의하여 라벨을 추가합니다..
+
+```tsx
+<>
+	<SortHandler label="Label" />
+</>
+```
+
+## **필드**
+같은 `sortField`는 동시에 처리됩니다.
+
+```tsx
+<>
+	<SortHandler sortField="field1" label="Label1" />
+	<SortHandler sortField="field1" label="Label2" />
+	<SortHandler sortField="field2" label="Label3" />
+</>
+```
+
+## **API**
+
+```tsx
+import SortHandler from "erxes-ui/lib/components/SortHandler";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| sortField	 | string |  | 정렬 필드를 설정합니다 |
+| label	 | string |  | 핸들러 이름을 정의합니다 |
+

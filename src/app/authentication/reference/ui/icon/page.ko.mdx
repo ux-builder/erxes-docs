@@ -1,0 +1,56 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 아이콘
+원하는 아이콘을 표시하려면 `icon` 속성에 이름을 입력하세요.
+
+```tsx
+<>
+	<Icon icon="envelope-alt" />
+</>
+```
+
+## **색상**
+`color` 속성으로 아이콘 색상을 지정합니다.
+
+```tsx
+<>
+	<Icon icon="envelope-alt" color="red" />
+</>
+```
+
+## **크기**
+`size` 속성으로 아이콘 크기를 변경합니다.
+
+```tsx
+<>
+	<Icon icon="envelope-alt" size={30} />
+</>
+```
+
+## **활성화**
+`isActive` 속성이 있을 때는 아이콘이 검정색으로 표시됩니다.
+
+```tsx
+<>
+	<Icon icon="envelope-alt" color="red" isActive />
+</>
+```
+
+
+## **API**
+
+```tsx
+import FilterByParams from "erxes-ui/lib/components/FilterByParams";
+```
+* required prop
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| icon*	 | string |  | 아이콘을 정의합니다 |
+| size	 | number |  | 아이콘 크기를 변경합니다 |
+| style | any| | 아이콘에 사용자 스타일을 적용합니다 |
+| color | string | black | 아이콘 색상을 변경합니다 |
+| isActive	 | boolean | false | 아이콘 색상을 검정색으로 만듭니다 |
+| onClick | function |  | 클릭 핸들러 함수를 정의합니다 |

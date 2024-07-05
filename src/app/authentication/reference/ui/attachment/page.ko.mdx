@@ -1,0 +1,162 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 첨부 파일
+미리보기를 포함한 모든 종류의 첨부 파일을 추가하세요. 로고나 사진을 클릭하여 미리보기를 볼 수 있습니다.
+
+## **예시**
+미리보기를 포함한 첨부 파일을 추가합니다.
+
+![text.docx](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/fa45aec0-338b-49b2-b4b0-66ef422c5600/public)
+```tsx
+<>
+	<Attachment attachment={{
+		name:"text.docx", 
+		type:"text", 
+		url:"/Documents/test.docx"}}
+	 />
+</>
+ 
+
+## **크기**
+첨부 파일 정보 배열에 `size` 속성을 추가하여 파일 크기를 추가합니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/fa45aec0-338b-49b2-b4b0-66ef422c5600/public)
+```tsx
+<>
+	<Attachment attachment={{
+		name:"text.docx", 
+		type:"text", 
+		url:"/Documents/test.docx", 
+		size:4179}}
+	 />
+</>
+```
+
+## **추가 항목**
+`additionalItem` 속성을 사용하여 제목 아래에 추가 콘텐츠를 추가합니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/fa45aec0-338b-49b2-b4b0-66ef422c5600/public)
+```tsx
+<>
+	<Attachment attachment={{
+		name:"text.docx", 
+		type:"text", 
+		url:"/Documents/test.docx"}}
+	 additionalItem="Additional text" />
+</>
+```
+
+## **이미지**
+사진을 클릭하여 미리보기를 봅니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/0ed1fbdc-a75b-4b04-1f91-55a1fed20800/public)
+```tsx
+<>
+	<Attachment attachment={{
+		name:"logo_dark.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/logo_dark.svg"}}
+	 />
+</>
+```
+
+이미지 미리보기만 표시하려면 `simple` 속성을 사용합니다.
+
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/5a3537eb-fd9e-4892-e051-0b5bba0da500/public)
+```tsx
+<>
+	<Attachment attachment={{
+		name:"logo_dark.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/logo_dark.svg"}}
+	 simple={true} />
+</>
+```
+
+## **비디오**
+비디오를 클릭하여 미리보기를 봅니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/7ae0fdb3-4233-4e0a-d1df-1f6fdade9300/public)
+```tsx
+<>
+	<Attachment attachment={{
+		name:"video.mp4", 
+		type:"video", 
+		url:"/Documents/video.mp4"}}
+	 />
+</>
+```
+
+## **오디오**
+오디오를 클릭하여 미리보기를 봅니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/c86801c4-de54-499e-473b-e5439966fb00/public)
+```tsx
+<>
+	<Attachment attachment={{
+		name:"audio.mp3", 
+		type:"mp3", 
+		url:"/Documents/audio.mp3"}}
+	 />
+</>
+```
+
+## **다중 첨부 파일**
+attachments 속성을 사용하여 여러 개의 첨부 파일을 추가합니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/0ed1fbdc-a75b-4b04-1f91-55a1fed20800/public)
+```tsx
+<>
+	<Attachment attachment={{
+		name:"logo_dark.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/logo_dark.svg"}}
+	 attachments={[{
+		name:"glyph_dark.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/glyph_dark.svg"},
+		{
+		name:"flag_right.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/flag_right.svg"}]} />
+</>
+```
+
+## **인덱스**
+첨부 파일 시작 위치를 `index`로 설정합니다. (인덱스 번호는 0부터 시작)
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/0ed1fbdc-a75b-4b04-1f91-55a1fed20800/public)
+```tsx
+<>
+	<Attachment attachment={{
+		name:"logo_dark.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/logo_dark.svg"}}
+	 attachments={[{
+		name:"glyph_dark.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/glyph_dark.svg"},
+		{
+		name:"flag_right.svg", 
+		type:"image", 
+		url:"https://erxes.io/static/images/logo/flag_right.svg"}}
+	 index={1} />
+</>
+```
+
+## **API**
+
+```tsx
+import Attachment from "erxes-ui/lib/components/Attachment";
+```
+* 필수 속성
+
+| 이름 | 타입 | 속성 |
+| ---| --- | ---|
+|  | name* | string | 	파일 이름 정의 |
+| attachment | type* | string | 파일 타입 정의 |
+|  | url*  | string | 파일 경로 선언 |
+|  | size | number | 파일 크기 표시 |
+| scrollBottom  | function | 이미지 로딩 완료 후 실행되는 함수 정의 |
+| additionalItem | React.ReactNode | 추가 항목 추가 |
+| simple | boolean | 이미지 미리보기만 표시 |
+| index | number | 첨부 파일 미리보기 시 시작할 파일 정의 |
+| | name* | string | 파일 이름 정의|
+| attachments (array) | type* | string | 파일 타입 정의 |
+| | url*	| string | 파일 경로 선언 |
+| | size | number | 파일 크기 표시 |

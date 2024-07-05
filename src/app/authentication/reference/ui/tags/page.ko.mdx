@@ -1,0 +1,50 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 태그
+다른 함수와 연결하기 위해 `_id`와 `name` 속성을 사용합니다.
+
+## **색상**
+`colorCode` 속성을 사용하여 태그에 색상을 지정합니다.
+
+```tsx
+<>
+	<Tags tags={[
+		{_id:0, type:"", name:"red", colorCode:"red"},
+		{_id:1, type:"", name:"yellow", colorCode:"yellow"},
+		{_id:2, type:"", name:"blue", colorCode:"blue"},
+		{_id:3, type:"", name:"purple", colorCode:"purple"},
+		{_id:4, type:"", name:"green", colorCode:"green"}
+	]} />
+</>
+```
+
+## **제한**
+`limit` 속성을 사용하여 표시할 태그 수를 제한합니다.
+```tsx
+<>
+	<Tags tags={[
+		{_id:0, type:"", name:"red", colorCode:"red"},
+		{_id:1, type:"", name:"yellow", colorCode:"yellow"},
+		{_id:2, type:"", name:"blue", colorCode:"blue"},
+		{_id:3, type:"", name:"purple", colorCode:"purple"},
+		{_id:4, type:"", name:"green", colorCode:"green"}
+	]} limit={3} />
+</>
+```
+
+## **API**
+
+```tsx
+import Tags from "erxes-ui/lib/components/Tags";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| _id*	 | string |  | 태그 ID를 정의합니다 |
+| type*	 | string |  | 태그 유형을 정의합니다 |
+| name*	 | string| | 태그 이름을 정의합니다 |
+| colorCode* | string |  | 태그 색상을 설정합니다 |
+| limit | number |  | 표시할 태그 수를 제한합니다 |

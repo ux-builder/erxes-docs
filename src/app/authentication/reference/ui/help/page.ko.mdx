@@ -1,0 +1,25 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 도움말 팝오버
+마우스를 올리거나 클릭하거나 포커스를 맞춰 팝오버를 확인하세요.
+ ```tsx
+<>
+	<HelpPopover title="Help title" trigger="hover">Help information</HelpPopover> 
+	<HelpPopover title="Help title" trigger="click">Help information</HelpPopover> 
+	<HelpPopover title="Help title" trigger="focus">Help information</HelpPopover>
+</>
+ ```
+
+## **API**
+
+```tsx
+import HelpPopover from "erxes-ui/lib/components/HelpPopover";
+```
+* required prop
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| title	 | string |  | 도움말 제목을 정의합니다 |
+| trigger | hover, click, focus | click | 도움말 정보를 트리거합니다 |

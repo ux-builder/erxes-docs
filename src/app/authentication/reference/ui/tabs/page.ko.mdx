@@ -1,0 +1,88 @@
+
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# Tabs
+## **동적 탭 인터페이스**
+
+`handleSelect`는 탭이 클릭될 때 호출됩니다.
+
+```tsx
+import React, {useState} from "react";
+```
+
+```tsx
+const [content, setContent] = useState();
+const handleSelect = (index) => {
+      setContent("Content of tab" + (index + 1));
+    };
+```
+
+## **예제**
+간단한 탭 예제입니다.
+
+```tsx
+<>
+	<Tabs >
+          <TabTitle onClick={() => handleSelect(0)}>Tab 1</TabTitle>
+	 <TabTitle onClick={() => handleSelect(1)}>Tab 2</TabTitle>
+	 <TabTitle onClick={() => handleSelect(2)}>Tab 3</TabTitle>
+	</Tabs>
+	<div>{content}</div>
+</>
+```
+
+## **전체 너비**
+탭 제목을 전체 너비로 표시합니다.
+
+```tsx
+<>
+	<Tabs full>
+          <TabTitle onClick={() => handleSelect(0)}>Tab 1</TabTitle>
+	 <TabTitle onClick={() => handleSelect(1)}>Tab 2</TabTitle>
+	 <TabTitle onClick={() => handleSelect(2)}>Tab 3</TabTitle>
+	</Tabs>
+	<div>{content}</div>
+</>
+```
+
+## **테두리**
+테두리를 더 어둡게 만듭니다.
+```tsx
+<>
+	<Tabs grayBorder>
+          <TabTitle onClick={() => handleSelect(0)}>Tab 1</TabTitle>
+	 <TabTitle onClick={() => handleSelect(1)}>Tab 2</TabTitle>
+	 <TabTitle onClick={() => handleSelect(2)}>Tab 3</TabTitle>
+	</Tabs>
+	<div>{content}</div>
+</>
+```
+
+## **API**
+
+```tsx
+import Tabs from "erxes-ui/lib/components/tabs/index";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| children*	 | React.ReactNode	 |  | TabTitle 컴포넌트를 포함합니다 |
+| grayborder	 | boolean |  | 테두리를 더 어둡게 만듭니다 |
+| full | boolean| | 탭 제목을 전체 너비로 표시합니다 |
+
+
+## **TabTitle**
+
+```tsx
+import TabTitle from "erxes-ui/lib/components/tabs/index";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| children*	 | React.ReactNode	 |  | 탭 내용을 표시합니다 |
+| onClick | function	 |  | 클릭 핸들러 함수를 정의합니다 |
+| className	 | string| | 클래스 이름을 정의합니다 |

@@ -1,0 +1,37 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 칩
+## **예제**
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/edd05264-cb2e-4a49-7f8e-419bca5eb200/public)
+```tsx
+<Chip>칩</Chip> 
+```
+
+## **대문자**
+칩 텍스트의 첫 글자를 대문자로 만들려면 `capitalize` 속성을 추가하세요.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/e0b7e578-a3c8-4d52-0a8a-460b686bc600/public)
+```tsx
+<Chip capitalize >칩</Chip> 
+```
+
+## **앞쪽 내용**
+`frontContent` 속성을 사용하여 칩 앞에 추가 내용을 추가하세요.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/f7e7eb1b-9beb-4490-e18f-b9771a7d5400/public)
+```tsx
+<Chip frontContent={<Icon icon='envelope-alt' />} >칩</Chip> 
+```
+
+## **API**
+```tsx
+import Chip from "erxes-ui/lib/components/Chip";
+```
+* required prop
+
+| 이름 | 타입 | 기본 | 설명 |
+| ---| --- | ---| --- |
+| capitalize | boolean | false | 칩 텍스트의 첫 글자를 대문자로 만듭니다 |
+| onClick* | function |  | 취소 아이콘에 대한 클릭 핸들러를 정의합니다 |
+| children*	 | React.ReactNode	| | 칩 텍스트를 표시합니다 |
+| frontContent | string	 |  | 칩 앞에 추가 내용을 추가합니다 |

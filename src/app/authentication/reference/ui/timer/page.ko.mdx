@@ -1,0 +1,61 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 타이머
+버튼을 클릭하여 작업을 확인하세요.
+
+## **완료된 시간 추적**
+완료된 타이머는 아래와 같이 표시됩니다.
+
+```tsx
+<>
+	<TaskTimer taskId="timerTask" status="completed" timeSpent={180}  />
+</>
+
+```
+## **시작된 시간 추적**
+시작된 타이머는 아래와 같이 표시됩니다.
+
+```tsx
+<>
+	<TaskTimer taskId="timerTask" status="started" timeSpent={0} startDate="2023-11-19T10:36:55.986Z" />
+</>
+```
+
+## **일시 중지된 시간 추적**
+일시 중지된 타이머는 아래와 같이 표시됩니다.
+
+```tsx
+<>
+	<TaskTimer taskId="timerTask" status="paused" timeSpent={180}  />
+</>
+```
+
+## **중지된 시간 추적**
+중지된 타이머는 아래와 같이 표시됩니다.
+
+```tsx
+<>
+	<TaskTimer taskId="timerTask" status="stopped" timeSpent={180}  />
+</>
+```
+
+## **API**
+
+```tsx
+import TaskTimer from "erxes-ui/lib/components/Timer";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| taskId* | string |  | 작업 ID를 정의합니다 |
+| status* | started, paused, stopped, completed |  | 작업 상태를 정의합니다 |
+| timeSpent* | number| | 작업에 소요된 시간을 정의합니다 |
+| startDate	 | string |  | 작업 시작 날짜를 정의합니다 |
+| _id* | string |  | 업데이트된 ID를 정의합니다 |
+| status* | tarted, paused, stopped, completed |  | 업데이트된 상태를 정의합니다 |
+| timeSpent* | number |  | 업데이트된 소요 시간을 정의합니다 |
+| startDate | string	 |  | 업데이트된 시작 날짜를 정의합니다 |
+| callback	 | function |  | 작업 상태를 변경합니다 |

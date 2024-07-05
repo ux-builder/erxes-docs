@@ -1,0 +1,80 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 데이터 로더
+## **로딩**
+로딩 중일 때는 `loading` 속성을 "true"로 설정하여 스피너나 로딩 콘텐츠를 표시하고, "false"로 설정하면 데이터를 표시합니다.
+
+```tsx
+<>
+	<DataWithLoader data="This is data" loading objective />
+</>
+```
+로딩 중...
+
+```tsx
+<>
+	<DataWithLoader data="This is data" loading loadingContent="Loading..." />
+</>
+```
+데이터가 표시됩니다.
+
+```tsx
+<>
+	<DataWithLoader data="This is data" loading={false} />
+</>
+```
+
+## **카운트**
+카운트가 "0"일 때는 빈 콘텐츠나 빈 상태를 표시합니다.
+
+## **빈 콘텐츠**
+빈 콘텐츠를 표시합니다.
+
+```tsx
+<>
+	<DataWithLoader data="This is data" loading={false} emptyContent="This is empty content"  count={0} />
+</>
+```
+
+## **빈 상태**
+**아이콘**
+텍스트(emptyText)와 아이콘(emptyIcon)을 제공하여 빈 상태를 커스터마이즈할 수 있습니다. 또한 size 속성으로 아이콘의 크기를 변경할 수 있습니다.
+
+```tsx
+<>
+	<DataWithLoader data="This is data" loading={false} emptyText="Empty state" emptyIcon="info-circle" count={0} size="small" />
+</>
+```
+
+## **이미지**
+텍스트(emptyText)와 이미지(emptyImage)를 제공하여 빈 상태를 커스터마이즈할 수 있습니다.
+
+
+```tsx
+<>
+	<DataWithLoader data="This is data" loading={false} emptyText="Empty state" emptyImage="https://erxes.io/static/images/logo/logo_dark.svg" count={0} />
+</>
+
+```
+
+## **API**
+
+```tsx
+import DataWithLoader from "erxes-ui/lib/components/DataWithLoader";
+```
+* required prop
+
+| 이름 | 타입 | 기본 | 설명 |
+| ---| --- | ---| --- |
+| data*	 | any |  | 데이터를 정의합니다. |
+| count	 | any |  | 카운트를 정의합니다. |
+| loading*	 | boolean| | 로딩 상태를 정의합니다. |
+| emptyText | string | There is no data	 | 빈 상태의 텍스트를 정의합니다. |
+| emptyIcon	 | string |  | 빈 상태의 아이콘을 정의합니다. |
+| emptyImage | string |  | 빈 상태의 이미지를 정의합니다. |
+| size | string | full | 빈 상태의 아이콘 크기를 정의합니다. |
+| objective | boolean | false | 스피너를 오브젝트로 만듭니다. |
+| emptyContent | boolean |  | 	카운트가 "0"일 때의 콘텐츠를 정의합니다. |
+| loadingContent | boolean |  | 로딩 중일 때의 콘텐츠를 정의합니다. |

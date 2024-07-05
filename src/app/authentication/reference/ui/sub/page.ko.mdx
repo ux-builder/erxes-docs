@@ -1,0 +1,35 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 서브메뉴 
+## **예제**
+`items` 속성에 배열을 추가하여 여러 개의 서브 메뉴를 추가합니다.
+
+```tsx
+<>
+	<Submenu items={[{title:"Submenu 1", link:""},{title:"Submenu 2", link:""},{title:"Submenu 3", link:""}]} />
+</>
+```
+
+## **추가 항목**
+`additionalMenuItem` 속성을 사용하여 추가 항목을 추가합니다.
+
+```tsx
+<>
+	<Submenu items={[{title:"Submenu 1", link:""},{title:"Submenu 2", link:""},{title:"Submenu 3", link:""}]} additionalMenuItem="Additional item" />
+</>
+```
+
+## **API**
+
+```tsx
+import Submenu from "erxes-ui/lib/components/subMenu/Submenu";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| title*	 | string |  | 서브메뉴 제목을 정의합니다 |
+| link	 | string |  | 	클릭 시 이동할 경로를 정의합니다 |
+| additionalMenuItem |  React.ReactNode	| | 서브메뉴 오른쪽에 표시될 추가 서브메뉴 항목을 정의합니다 |

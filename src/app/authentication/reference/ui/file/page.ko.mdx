@@ -1,0 +1,69 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 파일 미리보기
+다양한 유형의 파일을 미리 봅니다.
+
+## **기본 파일 미리보기**
+확장자가 없거나 지원되지 않는 확장자 파일일 경우 기본 미리보기가 표시됩니다.
+```tsx
+<>
+	<FilePreview fileUrl="/fileUrl" />
+</>
+```
+
+## **파일 미리보기**
+`fileUrl` 속성으로 파일 URL을 선언합니다.
+
+```tsx
+<>
+	<FilePreview fileUrl="docxFile.docx" />
+</>
+```
+
+`fileName` 속성으로 파일 URL 대신 이름을 추가합니다.
+
+```tsx
+<>
+	<FilePreview fileUrl="xlsxFile.xlsx" fileName="xlsxFile" />
+</>
+```
+
+파일 확장자 이름이 빈 페이지 아이콘 앞에 표시됩니다.
+
+```tsx
+<>
+	<FilePreview fileUrl="zipFile.zip" />
+</>
+```
+
+## **사진 및 비디오 미리보기**
+jpeg, jpg, gif, png 확장자 사진과 mp4 비디오 미리보기.
+
+![](https://erxes.io/static/images/logo/logo_dark_3x.png)
+```tsx
+<>
+	<FilePreview fileUrl="https://erxes.io/static/images/logo/logo_dark_3x.png" />
+</>
+```
+
+```tsx
+<>
+	<FilePreview fileUrl="video.mp4" />
+</>
+```
+
+## **API**
+
+```tsx
+import FilePreview from "erxes-ui/lib/components/FilePreview";
+```
+* required prop
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| fileUrl*	 | string |  | 	파일 URL을 정의합니다. 지원되는 유형: docx, pptx, xlsx, mp4, jpeg, jpg, gif, png, zip, csv, doc, ppt, psd, avi, txt, rar, mp3, pdf, xls |
+| fileName | string |  | URL 대신 파일 이름을 표시합니다 |
+
+

@@ -1,0 +1,57 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 스피너
+스피너는 프로젝트에서 로딩 상태를 표시하는 데 사용됩니다.
+
+## **예제**
+### **크기 조정**
+`size` 속성을 사용하여 크기를 변경합니다.
+
+
+```tsx
+<>
+	<Spinner size={40} objective /> 
+	<Spinner size={15} objective />
+</>
+```
+
+## **위치**
+`left`, `right`, `top`, `bottom` 속성을 사용하여 목적에 따라 위치를 변경합니다.
+
+```tsx
+<>
+	<Spinner left="10%" right="auto" objective /> 
+	<Spinner left="50%" right="auto" objective /> 
+	<Spinner left="auto" right="10%" objective />
+</>
+```
+
+## **Objective**
+`objective` 속성을 사용하여 스피너를 특정 위치에 고정합니다.
+
+```tsx
+<>
+	<Spinner left="10%" objective />
+</>
+
+```
+
+## **API**
+
+```tsx
+import Spinner from "erxes-ui/lib/components/Spinner";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| objective	 | boolean	 | false | 스피너를 특정 위치에 고정합니다 |
+| size	 | number | 26 | 	스피너 크기를 변경합니다 |
+| left | string | 50% | 왼쪽에서의 간격을 결정합니다 |
+| right | string | auto | 오른쪽에서의 간격을 결정합니다 |
+| top | string | 50%	 | 위쪽에서의 간격을 결정합니다 |
+| bottom | string | auto | 아래쪽에서의 간격을 결정합니다 |
+
+

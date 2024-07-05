@@ -1,0 +1,63 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 빈 상태
+`icon`과 `text` 속성을 사용하여 빈 상태를 표시합니다.
+
+```tsx
+<>
+	<EmptyState icon="info-circle" text="Text" />
+</>
+```
+
+## **라이트**
+`light` 속성을 사용하여 텍스트를 눈에 띄지 않게 만듭니다.
+```tsx
+<>
+	<EmptyState icon="info-circle" light text="Text" />
+</>
+```
+
+## **아이콘 크기**
+`size` 속성으로 아이콘의 크기를 변경할 수 있습니다.
+
+```tsx
+<>
+	<EmptyState icon="info-circle" size="30" text="Text" />
+</>
+```
+
+## **이미지**
+`image` 속성을 사용하여 아이콘을 이미지로 대체합니다.
+
+```tsx
+<>
+	<EmptyState image="https://erxes.io/static/images/logo/logo_dark.svg" text="Text" />
+</>
+```
+
+## **추가 요소**
+`extra` 속성을 사용하여 빈 상태에 추가 요소(텍스트, 숫자, 태그 등)를 추가할 수 있습니다.
+
+```tsx
+<>
+	<EmptyState icon="info-circle" size="30" text="Text" extra={<Button>추가 버튼</Button>} />
+</>
+```
+
+## **API**
+
+```tsx
+import EmptyState from "erxes-ui/lib/components/EmptyState";
+```
+* 필수 속성
+
+| 이름 | 유형 | 설명 |
+| ---| --- | ---|
+| text*	 | string | 텍스트를 표시합니다. 텍스트만 표시하려면 light 속성과 함께 사용하세요. |
+| icon	 | string | 아이콘을 표시합니다. |
+| image | string| 이미지를 표시합니다. |
+| size | string | 아이콘의 크기를 변경합니다. |
+| extra	 | React.ReactNode | 다른 구성 요소나 텍스트를 추가합니다. |
+| light | boolean | 첫 번째 행만 표시합니다. |

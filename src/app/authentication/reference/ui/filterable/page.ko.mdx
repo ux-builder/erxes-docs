@@ -1,0 +1,143 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 필터 가능한 리스트
+## **예시**
+간단한 필터 가능한 리스트입니다. 체크할 수 있습니다.
+
+```tsx
+<>
+	<FilterableList items={[
+		{_id:"0", title:"First test"},
+		{_id:"1", title:"Second test"},
+		{_id:"2", title:"Third test"}]}
+	 />
+</>
+```
+
+## **빈 필터 가능한 리스트**
+항목에 리스트가 없을 때는 emptyState가 표시됩니다.
+
+```tsx
+<>
+	<FilterableList items={""} />
+</>
+```
+
+## **로딩**
+`loading` 속성으로 리스트 대신 로딩 스피너를 표시합니다.
+
+```tsx
+<>
+	<FilterableList items={[
+		{_id:"0", title:"First test"},
+		{_id:"1", title:"Second test"},
+		{_id:"2", title:"Third test"}]}
+	 loading={true} />
+</>
+```
+## **커스텀 스타일**
+`style` 속성으로 리스트 항목에 커스텀 스타일을 추가합니다.
+
+```tsx
+<>
+	<FilterableList items={[
+		{_id:0, title:"First test", style:{color:"purple"}},
+		{_id:1, title:"Second test", style:{color:"red"}},
+		{_id:2, title:"Third test", style:{color:"green"}}]}
+	 />
+</>
+```
+
+## **아바타**
+항목 배열에 `avatar` 속성으로 아바타를 추가합니다.
+```tsx
+<>
+	<FilterableList items={[
+		{_id:"0", title:"First test", avatar:"https://erxes.io/static/images/logo/logo_dark.svg"},
+		{_id:"1", title:"Second test", avatar:"https://erxes.io/static/images/logo/logo_dark.svg"},
+		{_id:"2", title:"Third test", avatar:"https://erxes.io/static/images/logo/logo_dark.svg"}]}
+	 />
+</>
+```
+
+## **추가 아이콘**
+`additionalIconClass` 속성으로 리스트 항목에 추가 아이콘을 추가합니다.
+
+```tsx
+<>
+	<FilterableList items={[
+		{_id:"0", title:"First test", avatar:"https://erxes.io/static/images/logo/logo_dark.svg", additionalIconClass:"info-circle"},
+		{_id:"1", title:"Second test", avatar:"https://erxes.io/static/images/logo/logo_dark.svg", additionalIconClass:"info-circle"},
+		{_id:"2", title:"Third test", avatar:"https://erxes.io/static/images/logo/logo_dark.svg", additionalIconClass:"info-circle"}]}
+	 />
+</>
+```
+
+## **링크**
+`links` 속성으로 리스트 아래에 링크를 추가합니다.
+
+```tsx
+<>
+	<FilterableList items={[
+		{_id:"0", title:"First test"},
+		{_id:"1", title:"Second test"},
+		{_id:"2", title:"Third test"}]}
+	 links={[{title:"Google", href:"https://www.google.com"}]}
+	 />
+</>
+```
+
+## **체크마크 표시**
+`showCheckmark` 속성으로 체크마크를 숨깁니다.
+
+```tsx
+<>
+	<FilterableList items={[
+		{_id:"0", title:"First test"},
+		{_id:"1", title:"Second test"},
+		{_id:"2", title:"Third test"}]}
+	 showCheckmark={false} />
+</>
+```
+
+## **트리 뷰**
+`treeView` 속성으로 트리 뷰 리스트를 표시합니다. 항목에는 _id 및 parentId가 있어야 합니다.
+```tsx
+<>
+	<FilterableList items={[
+		{_id:"0", title:"Parent 1", iconClass:"iconClass"},
+		{_id:"1", title:"Parent 2", iconClass:"iconClass"},
+		{_id:"2", parentId:"0", title:"Child of parent 1"},
+		{_id:"3", parentId:"1", title:"Child of parent 2"},
+		{_id:"4", parentId:"1", title:"Child of parent 2"}]}
+	 treeView={true} isIndented={true} />
+</>
+```
+
+## **API**
+
+```tsx
+import FilterableList from "erxes-ui/lib/components/filterableList/FilterableList";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| _id | string |  | 항목 배열의 ID를 정의합니다 |
+| title	 | string |  | 리스트 항목 이름을 정의합니다 |
+| avatar | string| | 항목 제목 앞에 이미지를 표시합니다 |
+| additionalIconClass | string |  | 항목 제목 오른쪽에 추가 아이콘을 표시합니다 |
+| style	 | string |  | 항목 제목에 스타일을 추가합니다 |
+| parentId | string |  | 상위 항목의 ID를 정의합니다 |
+| iconClass | string |  | 자식 항목을 숨기거나 표시하기 위해 항목 제목 앞에 아이콘을 표시합니다 |
+| links | any[]	 |  | 리스트 아래에 링크를 정의합니다 |
+| showCheckmark | boolean | true | 리스트 항목이 클릭될 때 체크마크를 표시합니다 |
+| selectable | boolean | 30px | 오른쪽에 여백을 차지합니다 |
+| loading | boolean |  | 로딩 스피너를 활성화합니다 |
+| className	 | string |  | className을 정의합니다 |
+| treeView | boolean |  | 리스트의 트리 뷰를 활성화합니다 |
+| isIndented | boolean |  | 화살표와 제목 사이에 여백을 줍니다 |
+| onClick | function |  | 리스트 항목이 클릭될 때 클릭 핸들러 함수를 정의합니다 |
+| onSearch | function |  | 검색 함수를 정의합니다 |

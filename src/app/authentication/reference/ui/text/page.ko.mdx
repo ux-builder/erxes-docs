@@ -1,0 +1,42 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 텍스트 정보
+## **유형**
+`textStyle` 속성으로 텍스트 스타일을 변경합니다.
+
+```tsx
+<>
+	<TextInfo>default</TextInfo>
+	<TextInfo textStyle="primary" >primary</TextInfo>
+	<TextInfo textStyle="success" >success</TextInfo>
+	<TextInfo textStyle="danger" >danger</TextInfo>
+	<TextInfo textStyle="warning" >warning</TextInfo>
+	<TextInfo textStyle="simple" >simple</TextInfo>
+</>
+```
+
+## **크기**
+추가 크기 옵션을 위해 hugeness 속성을 사용합니다.
+
+```tsx
+<>
+	<TextInfo hugeness="big" >big</TextInfo>
+	<TextInfo hugeness="small" >small</TextInfo>
+</>
+```
+
+## **API**
+
+```tsx
+import TextInfo from "erxes-ui/lib/components/TextInfo";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| children*	 | React.ReactNode, string	 |  | 표시할 텍스트를 정의합니다 |
+| ignoreTrans | boolean	 |  | 번역을 무시합니다 |
+| textStyle	 | primary, uccess, danger, warning, simple | default | 텍스트 스타일을 설정합니다 |
+| hugeness | string | small | 텍스트 크기를 설정합니다 |

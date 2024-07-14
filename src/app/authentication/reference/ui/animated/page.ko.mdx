@@ -1,0 +1,70 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 애니메이션 로더
+다양한 종류의 커스텀 스타일 로더입니다.
+
+## **높이와 너비**
+`height`와 `width` 속성을 통해 커스텀 크기를 설정할 수 있습니다. 로더를 표시하려면 `height`가 필요합니다.
+
+```tsx
+<>
+	<AnimatedLoader loaderStyle={{width: "100%", height: "20px"}} />
+</>
+```
+
+## **Color**
+color 속성을 통해 커스텀 색상을 설정할 수 있습니다.
+
+```tsx
+<>
+	<AnimatedLoader loaderStyle={{color:"#673FBD", height:"20px", width:"100%"}} />
+</>
+```
+
+## **둥근 모양**
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/2c550699-919c-435c-72ed-f77cb1870900/public)
+round 속성을 사용하여 "border-radius: 50%"로 설정할 수 있습니다.
+```tsx
+<>
+	<AnimatedLoader loaderStyle={{round:true, height:"100px", width:"100px"}} />
+</>
+```
+
+## **박스 모양**
+isBox 속성을 사용하여 로더를 박스 형태로 표시합니다.
+
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/8d9005fc-09e1-4507-7da0-51afe4879200/public)
+```tsx
+<>
+	<AnimatedLoader loaderStyle={{isBox:true, height:"20px", width:"100%"}} />
+</>
+```
+## **이미지와 함께**
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/ddb9fca4-ed80-4aeb-6b8a-ae50c92bae00/public)
+withImage 속성을 사용하여 이미지를 포함한 로더를 표시합니다.
+```tsx
+<>
+	<AnimatedLoader loaderStyle={{withImage:true, height:"20px", width:"100%"}} />
+</>
+```
+
+## **API**
+```tsx
+import AnimatedLoader from "erxes-ui/lib/components/AnimatedLoader";
+```
+
+* 필수 속성
+
+| 이름 |   | 타입 | 설명 |
+| ---| ----| --- | ---|
+|  | height | string | 커스텀 높이 설정 |
+|  | width | string | 커스텀 너비 설정 |
+|  | color | string | 커스텀 색상 설정 |
+| loaderStyle | round | boolean | border-radius: 50% 설정 |
+|  | margin | string | 여백 설정 (위와 왼쪽) |
+|  | marginRight | string | 오른쪽 여백 설정 |
+|  | isBox | boolean | 로더를 박스 형태로 표시 |
+|  | withImage | boolean | 이미지를 함께 표시 |
+

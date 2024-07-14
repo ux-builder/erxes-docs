@@ -1,0 +1,112 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# Collapse Content
+## **간단한 예제**
+가장 간단한 Collapse Content는 제목과 자식 요소를 가집니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/e3d8332f-dfb3-48dd-abcc-b7aa7c2e7600/public)
+```tsx
+<>
+	<CollapseContent title="This is title" >
+          <div>이것은 자식 요소입니다.</div>
+        </CollapseContent>
+</>
+```
+
+## **설명**
+`description` 속성을 사용하여 설명을 추가할 수 있습니다.
+
+```tsx
+<>
+	<CollapseContent title="This is title" description="Description" >
+          <div>이것은 자식 요소입니다.</div>
+        </CollapseContent>
+</>
+```
+
+## **이미지**
+`image` 속성을 사용하여 이미지를 추가할 수 있습니다.
+
+```tsx
+<>
+	<CollapseContent title="This is title" image="https://erxes.io/static/images/logo/logo_dark.svg" >
+          <div>이것은 자식 요소입니다.</div>
+        </CollapseContent>
+</>
+```
+
+## **이미지 배경 색상**
+`imageBackground` 속성을 사용하여 이미지 배경 색상을 추가할 수 있습니다.
+```tsx
+<>
+	<CollapseContent title="This is title" image="https://erxes.io/static/images/logo/logo_dark.svg" imageBackground="yellow" >
+          <div>이것은 자식 요소입니다.</div>
+        </CollapseContent>
+</>
+```
+
+## **제목 앞에 요소 추가**
+`beforeTitle` 속성을 사용하여 제목 앞에 요소를 추가할 수 있습니다.
+
+```tsx
+<>
+	<CollapseContent title="This is title" beforeTitle={<img src='https://erxes.io/static/images/logo/glyph_dark.png' height='40px' />} >
+          <div>이것은 자식 요소입니다.</div>
+        </CollapseContent>
+</>
+```
+
+## **ContentId**
+`contentId`를 사용하여 특정 콘텐츠로 이동할 수 있습니다.
+
+```tsx
+<>
+	<CollapseContent title="This is title" contendId="contendId" >
+          <div>이것은 자식 요소입니다.</div>
+        </CollapseContent>
+</>
+```
+
+## **Compact**
+`compact` 속성을 추가하여 제목 컨테이너의 패딩을 '10px 20px'으로 설정할 수 있습니다. 기본 패딩: 20px
+
+```tsx
+<>
+	<CollapseContent compact title="This is title" >
+          <div>이것은 자식 요소입니다.</div>
+        </CollapseContent>
+</>
+```
+
+## **Open**
+`open` 속성을 사용하여 컨테이너와 Collapse 태그의 열림 기능을 활성화할 수 있습니다.
+```tsx
+<>
+	<CollapseContent title="This is title" open >
+          <div>이것은 자식 요소입니다.</div>
+        </CollapseContent>
+</>
+```
+
+## ** API**
+```tsx
+import CollapseContent from "erxes-ui/lib/components/CollapseContent";
+```
+
+* required prop
+
+| 이름 | 타입 | 기본 | 설명 |
+| ---| --- | ---| --- |
+| contendId | string |  | 콘텐츠로 이동 |
+| title*		 | string |  | 제목 정의 |
+| children*	 | React.ReactNode	| | 콘텐츠 선언 |
+| description | React.ReactNode	 |  | 제목 아래에 표시될 설명 |
+| open	 | boolean |  | 	컨테이너와 Collapse 태그의 열림 기능 활성화 |
+| compact | boolean | 20px | 제목 컨테이너의 높이 정의 |
+| image | string |  | 화살표 대신 배치될 이미지 |
+| beforeTitle | React.ReactNode	 |  |제목의 왼쪽에 배치될 React 노드 |
+| onClick | function |  | 클릭 핸들러 함수 정의 |
+| imageBackground | string |  | 이미지의 배경 색상 |
+| id | string |  | Collapse 콘텐츠에 ID 부여 |
+

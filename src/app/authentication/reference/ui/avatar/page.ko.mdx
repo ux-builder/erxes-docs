@@ -1,0 +1,38 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 아바타 업로드
+아바타를 클릭하여 업로드하세요.
+
+## **기본 아바타**
+`defaultAvatar` 속성을 통해 기본 아바타를 설정합니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/0ed1fbdc-a75b-4b04-1f91-55a1fed20800/public)
+```tsx
+<>
+	<AvatarUpload defaultAvatar="https://erxes.io/static/images/logo/logo_dark_3x.png" />
+</>
+```
+
+## **아바타**
+아바타를 업로드하면 기본 아바타 대신 업로드한 아바타가 표시됩니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/22577bbc-a1d3-483c-bd70-d54f3c43c200/public)
+```tsx
+<>
+	<AvatarUpload defaultAvatar="https://erxes.io/static/images/logo/logo_dark_3x.png" avatar="https://erxes.io/static/images/logo/glyph_dark.png" />
+</>
+```
+
+## **API**
+
+```tsx
+import AvatarUpload from "erxes-ui/lib/components/AvatarUpload";
+```
+
+* 필수 속성
+
+| 이름 | 타입 | 기본 | 설명 |
+| ---| --- | ---| --- |
+| defaultAvatar  | string | button | 기본 아바타 설정 |
+| avatar | string | | 아바타 설정 |
+| onAvatarUpload | function |  | 이미지 업로드 시 아바타를 변경하는 함수 정의 |

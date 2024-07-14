@@ -1,0 +1,89 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 박스
+수직으로 확장되는 박스를 만드세요.
+
+## **제목**
+`title` 속성을 사용하여 제목을 작성합니다.
+
+```tsx
+<>
+	<Box title="Title" name="name" >
+		<p>Larry the Bird. Larry Joe Bird (born December 7, 1956) is an
+                American former professional basketball player, coach and
+                executive in the National Basketball Association (NBA).</p>
+	</Box>
+</>
+```
+## **상태**
+`isOpen` 속성을 추가하여 시작할 때 상자를 확장시킵니다.
+
+```tsx
+<>
+	<Box isOpen title="Title" name="name" >
+		<p>Larry the Bird. Larry Joe Bird (born December 7, 1956) is an
+                American former professional basketball player, coach and
+                executive in the National Basketball Association (NBA).</p>
+	</Box>
+</>
+```
+
+## **접을 수 있는**
+collapsible 속성을 추가하여 내용이 너무 길 때 상자를 접을 수 있게 합니다.
+
+```tsx
+<>
+	<Box collapsible title="Title" name="name" >
+		<p>Larry the Bird. Larry Joe Bird (born December 7, 1956) is an
+                American former professional basketball player, coach and
+                executive in the National Basketball Association (NBA).
+                Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird
+                is widely regarded as one of the greatest basketball players of
+                all time.Larry the Bird. Larry Joe Bird (born December 7, 1956)
+                is an American former professional basketball player, coach and
+                executive in the National Basketball Association (NBA).
+                Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird
+                is widely regarded as one of the greatest basketball players of
+                all time.Larry the Bird. Larry Joe Bird (born December 7, 1956)
+                is an American former professional basketball player, coach and
+                executive in the National Basketball Association (NBA).
+                Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird
+                is widely regarded as one of the greatest basketball players of
+                all time.</p>
+	</Box>
+</>
+```
+## **추가 버튼**
+상자가 확장될 때 표시되는 추가 버튼을 `extraButtons` 속성으로 추가합니다.
+
+```tsx
+<>
+	<Box extraButtons={<Button btnStyle='simple'>Extra button</Button>} title="Title" name="name" >
+		<p>Larry the Bird. Larry Joe Bird (born December 7, 1956) is an
+                American former professional basketball player, coach and
+                executive in the National Basketball Association (NBA).</p>
+	</Box>
+</>
+```
+
+## **API**
+
+```tsx
+import Box from "erxes-ui/lib/components/Box";
+```
+* required prop
+
+| 이름 | 타입 | 기본 | 설명 |
+| ---| --- | ---| --- |
+| title* | string | string | 상자의 제목을 표시합니다 |
+| name | string | string | 이름을 정의합니다 |
+| children* | React.ReactNode | | 	상자에 내용을 제공합니다 |
+| extraButtons | React.ReactNode |  | 	상자에 추가 버튼을 표시합니다 |
+| callback | function |  | 	제목을 클릭할 때 추가 기능을 정의합니다 |
+| collapsible | boolean | false | 상자를 접을 수 있게 합니다 |
+| isOpen | boolean | false | 시작할 때 상자를 확장합니다 |
+
+
+

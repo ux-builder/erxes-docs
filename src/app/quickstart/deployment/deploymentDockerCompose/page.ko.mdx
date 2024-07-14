@@ -1,0 +1,259 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# Docker-compose를 사용하여 Erxes 배포하기
+
+일부 경우, 예: 로컬 테스트 또는 다른 서비스를 이미 실행 중인 경우, Docker-swarm 대신 전통적인 docker-compose를 사용하여 Erxes를 배포할 수 있습니다.
+
+## 전제 조건
+
+셀프 호스팅 버전을 실행하려면 최소 사양이 다음과 같은 VPS/전용 서버가 필요합니다: 4 vCores, 6GB RAM
+
+Erxes 자체는 Docker 이미지로 패키징되어 있으므로 Docker와 호환되는 모든 운영 체제에서 실행할 수 있지만 Unix 계열이 더 적합합니다.
+
+- NodeJS: Erxes에는 인스턴스를 쉽게 생성할 수 있도록 도와주는 CLI 패키지가 있으며, 이 CLI는 NodeJS를 실행해야 하므로 NodeJS 16.x 이상을 권장합니다.
+- Docker & Docker-compose: Erxes 앱을 실행하기 위해 필요합니다.
+- Nginx: 80/443 포트를 통해 Erxes 앱을 공개적으로 서비스하기 위해 필요합니다.
+---
+
+## 진행 요약
+1. create-erxes-app 패키지 설치
+2. Erxes 앱 생성
+3. 데이터베이스 인스턴스 배포
+4. 애플리케이션(UI 및 API) 배포
+5. Nginx 역방향 프록시 설정
+
+---
+
+# 상세 가이드:
+먼저, 다음 명령어를 사용하여 Erxes CLI를 설치해야 합니다:
+
+```tsx
+npm i -g create-erxes-app
+```
+Erxes 앱을 생성하려면 다음 명령어를 사용하세요:
+```tsx
+create-erxes-app {erxes}
+{crm.erxes.app}
+```
+
+실행 후, Erxes CLI는 필요한 파일이 포함된 "erxes"라는 폴더를 생성합니다.
+```tsx
+cd erxes
+```
+
+이 폴더 내에서는 configs.json과 .env 파일에 주목해야 합니다.
+
+```tsx
+cat configs.json
+
+{
+  "jwt_token_secret": "2rZBQtWZ2W",
+  "image_tag": "1.0.0",
+  "db_server_address": "",
+  "domain": "https://crm.erxes.app",
+  "main_api_domain": "https://crm.erxes.app/gateway",
+  "redis": {
+    "password": "zX2ijZyHAO"
+  },
+  "mongo": {
+    "username": "erxes",
+    "password": "jQmeFBeWrB"
+  },
+  "rabbitmq": {
+    "cookie": "",
+    "user": "erxes",
+    "pass": "sb3Balv6Lt",
+    "vhost": ""
+  },
+  "widgets": {},
+  "plugins": [
+        {
+            "name": "products"
+        },
+        {
+            "name": "logs"
+        },
+        {
+            "name": "engages"
+        },
+        {
+            "name": "webbuilder"
+        },
+        {
+            "name": "segments"
+        },
+        {
+            "name": "tags"
+        },
+        {
+            "name": "emailtemplates"
+        },
+        {
+            "name": "internalnotes"
+        },
+        {
+            "name": "integrations",
+        "db_name": "erxes_integrations"
+        },
+        {
+            "name": "forms"
+        },
+        {
+            "name": "contacts"
+        },
+        {
+            "name": "inbox"
+        },
+        {
+            "name": "cards"
+        },
+    {
+            "name": "imap"
+        },
+        {
+            "name": "knowledgebase"
+        }
+  ]
+}
+```
+
+.env: docker-compose에 사용할 구성 정보를 포함합니다.
+
+```tsx
+cat .env
+
+DEPLOYMENT_METHOD=docker-compose //must have, do not delete
+
+GATEWAY_PORT=13301
+
+UI_PORT=13001
+
+MONGO_PORT=27018
+
+REDIS_PORT=6388
+
+RABBITMQ_PORT=15675
+```
+포트 번호는 원하는 대로 변경할 수 있습니다.
+
+nginx.conf: Nginx의 vhost 및 역방향 프록시 구성을 포함합니다.
+```tsx
+cat nginx.conf
+
+    server {
+            listen 80;
+            server_name crm.erxes.app;
+
+            index index.html;
+            error_log /var/log/nginx/erxes.error.log;
+            access_log /var/log/nginx/erxes.access.log;
+            location / {
+                    proxy_pass http://127.0.0.1:13001/;
+                    
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Server $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_http_version 1.1;
+  
+            }
+            location /widgets/ {
+                    proxy_pass http://127.0.0.1:3200/;
+                    
+    proxy_set_header Upgrade $http_upgrade;
+    
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Server $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_http_version 1.1;
+  
+  
+            }
+            location /gateway/ {
+                    proxy_pass http://127.0.0.1:13301/;
+                    
+    proxy_set_header Upgrade $http_upgrade;
+    
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Server $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_http_version 1.1;
+  
+  
+            }
+
+
+            location /dashboard/api {
+                proxy_pass http://127.0.0.1:4300/;
+                
+    proxy_set_header Upgrade $http_upgrade;
+    
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Server $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_http_version 1.1;
+  
+  
+            }
+    }
+```
+
+# 데이터베이스 인스턴스 배포
+Erxes는 MongoDB, Redis, Elasticsearch와 같은 데이터베이스가 필요하므로 다음 명령어를 사용하여 먼저 데이터베이스를 실행해야 합니다.
+
+```tsx
+npm run erxes deploy-dbs
+```
+MongoDB가 올바르게 실행될 때까지 기다렸다가 MongoDB 컨테이너에 로그인합니다.
+
+```tsx
+docker exec -it {mongodb-container-id} /bin/bash
+
+mongo -u erxes -p {password-from-configs.json file}
+rs.initiate();
+exit
+exit
+```
+
+# UIs 및 API 배포
+기본적으로 Erxes 앱은 UI와 API의 두 부분으로 구성됩니다. 데이터베이스가 정상적으로 실행 중이므로 이제 Erxes 앱을 배포합니다.
+
+```tsx
+npm run erxes up -- --uis
+```
+
+이 명령은 Erxes의 UI 구성 요소를 다운로드합니다.
+
+참고: configs.json 파일을 기준으로 Erxes CLI는 해당 모듈을 다운로드하며, 모듈 수에 따라 시간이 더 걸릴 수 있습니다.
+
+그런 다음 다음 명령어를 실행합니다.
+```tsx
+npm run erxes up
+```
+이 명령어는 Erxes API 컨테이너를 시작합니다. 다음 명령어를 사용하여 Erxes 컨테이너를 확인할 수 있습니다.
+```tsx
+docker ps -a
+```
+# Nginx 구성
+Erxes CLI는 vhost 구성에 사용할 수 있는 예제 nginx.conf 파일을 이미 생성해 놓았습니다.
+```tsx
+sudo mv nginx.conf /etc/nginx/sites-enabled/erxes.conf
+```
+이렇게 하면 docker-compose를 사용하여 Erxes를 배포하는 방법이 완료됩니다.

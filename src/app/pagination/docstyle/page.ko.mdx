@@ -1,0 +1,161 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+export const metadata = {
+  title: '문서 스타일 가이드',
+  description:
+    '이 가이드는 Protocol API를 사용 설정하고 첫 번째 API 요청을 만드는 방법을 다룹니다.',
+}
+
+# 문서 스타일 가이드
+
+[GitHub-flavored Markdown 문법](https://github.github.com/gfm/)을 사용하여 내용을 작성할 수 있습니다.
+
+## Markdown 문법
+Markdown 기반 Docusaurus 사이트 스타일링 예제 페이지로 사용됩니다.
+## 헤더
+H1 - 최고의 문서를 만드세요
+===============
+H2 - 최고의 문서를 만드세요
+---------------
+## H3 - 최고의 문서를 만드세요
+### H4 - 최고의 문서를 만드세요
+#### H5 - 최고의 문서를 만드세요
+##### H6 - 최고의 문서를 만드세요
+
+---
+# 강조
+
+강조, 즉 이탤릭체는 별표 또는 밑줄을 사용합니다.
+
+강한 강조, 즉 굵은 글씨는 **별표** 또는 **밑줄**을 사용합니다.
+
+**별표와 *밑줄*을 혼합하여** 강조할 수 있습니다.
+
+취소선은 물결표 두 개를 사용합니다. ~~이 내용을 삭제합니다.~~
+
+---
+# 목록
+1. 첫 번째 순서 목록 항목
+2. 다른 항목 ⋅⋅* 순서 없는 하위 목록.
+3. 실제 번호는 중요하지 않으며, 숫자임이 중요합니다 ⋅⋅1. 순서 있는 하위 목록
+4. 또 다른 항목.
+
+⋅⋅⋅목록 항목 내에 적절히 들여쓴 단락을 가질 수 있습니다. 위의 빈 줄과 최소한 하나 이상의 앞쪽 공백(여기서는 세 개를 사용하여 원시 Markdown을 정렬합니다)을 주의하세요.
+
+⋅⋅⋅단락 없이 줄 바꿈하려면 두 개의 후행 공백을 사용해야 합니다.⋅⋅ ⋅⋅⋅이 줄은 별개의 줄이지만 동일한 단락 내에 있습니다.⋅⋅ ⋅⋅⋅(이것은 후행 공백이 필요 없는 일반적인 GFM 줄 바꿈 동작과 반대입니다.)
+
+- 순서 없는 목록은 별표를 사용할 수 있습니다
+- 또는 마이너스
+- 또는 플러스
+---
+# Links
+[나는 인라인 스타일 링크입니다](https://www.google.com/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>
+
+[나는 제목이 있는 인라인 스타일 링크입니다](https://www.google.com/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>
+
+[나는 참조 스타일 링크입니다](https://www.mozilla.org/en-US/?v=2)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>
+
+[저는 리포지토리 파일에 대한 상대 참조 링크입니다]()
+
+[숫자를 사용할 수 있는 참조 스타일 링크 정의](https://slashdot.org/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>
+
+비워두고 [링크 텍스트 자체를 사용하세요.](https://www.reddit.com/?rdt=34686)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>
+
+URL 및 꺾쇠괄호 안의 URL은 자동으로 링크로 변환됩니다. [http://www.example.com](https://www.example.com/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> or [http://www.example.com](https://www.example.com/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> and sometimes example.com (but not on Github, for example).
+
+참조 링크가 나중에 올 수 있음을 보여주는 일부 텍스트.
+
+---
+# Images
+
+우리의 로고입니다 (제목 텍스트를 보려면 마우스를 올리세요):
+
+인라인 스타일: ![Alt text](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/d9138227-326e-4d9c-fc4c-01959cc06b00/public)
+
+참조 스타일: ![Alt text](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/d9138227-326e-4d9c-fc4c-01959cc06b00/public)
+---
+# 코드
+
+```tsx
+var s = 'JavaScript syntax highlighting';
+alert(s);)
+```
+```tsx
+s = "Python syntax highlighting"
+print(s)
+```
+```tsx
+No language indicated, so no syntax highlighting.
+But let's throw in a <b>tag</b>.
+```
+```tsx
+function highlightMe() {
+  console.log('This line can be highlighted!');
+}
+```
+---
+# 테이블
+
+콜론을 사용하여 열을 정렬할 수 있습니다.
+
+| 테이블 | 는 | 멋집니다 |
+| ---- | ---- | ----------- |
+| col 3은 | 오른쪽 정렬됨 | \$1600 |
+| col 2는 | 가운데 정렬됨 | $12 |
+| 얼룩무늬 | 멋짐 | $1 |
+
+각 헤더 셀을 구분하는 최소한 3개의 대시가 있어야 합니다. 외부 파이프(|)는 선택 사항이며, 원시 Markdown 줄을 예쁘게 정렬할 필요는 없습니다. 인라인 Markdown도 사용할 수 있습니다.
+
+| Markdown | 덜 | 예쁨 |
+| ---- | ---- | ----------- |
+| *여전히* | `렌더링` | 잘됨 |
+| 1 | 2 | 3 |
+
+---
+# 블록 인용
+블록 인용은 이메일에서 답장 텍스트를 에뮬레이트하는 데 매우 유용합니다. 이 줄은 동일한 인용의 일부입니다.
+
+## 인용 중단.
+
+이것은 매우 긴 줄로, 줄 바꿈 시에도 적절히 인용됩니다. 계속 길게 작성하여 모든 사람에게 줄 바꿈이 될 만큼 충분히 길게 만들어 봅시다. **Markdown**을 블록 인용에 넣을 수 있습니다.
+
+---
+# 인라인 HTML
+정의 목록
+        사람들이 가끔 사용하는 것.
+HTML 내의 Markdown
+        *잘* 작동하지 **않습니다**. HTML 태그를 사용하세요.
+
+---
+# 줄 바꿈
+여기에서 시작하는 줄입니다.
+
+이 줄은 위의 줄과 두 개의 줄 바꿈으로 구분되므로 별개의 단락이 됩니다.
+
+이 줄도 별개의 단락이지만... 이 줄은 단일 줄 바꿈으로만 구분되므로 동일한 단락의 별도 줄입니다.
+
+---
+# 주의사항
+
+<Tip> 
+이것은 노트입니다.
+</Tip>
+
+<Note>
+이것은 팁입니다.
+</Note>
+
+<Info>
+이것은 중요한 정보입니다.
+</Info>
+
+<Caution>
+이것은 주의사항입니다.
+</Caution>
+
+<Danger>
+이것은 경고입니다.
+</Danger>
+

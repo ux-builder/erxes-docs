@@ -1,0 +1,57 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# Progress Bar
+작업 진행 상황을 확인할 수 있는 진행 바를 제공합니다.
+
+## **Percentage**
+`percentage` 속성을 사용하여 백분율을 추가합니다. `children` 속성을 사용하여 텍스트를 추가합니다.
+
+```tsx
+<>
+	<ProgressBar percentage={35}>35%</ProgressBar>
+</>
+```
+
+## **Color**
+`color` 속성을 사용하여 사용자 정의 색상을 설정합니다.
+
+```tsx
+<>
+	<ProgressBar percentage={35} color="pink">35%</ProgressBar>
+</>
+```
+
+## **Height**
+`height` 속성을 사용하여 사용자 정의 높이를 설정합니다.
+
+```tsx
+<>
+	<ProgressBar percentage={35} height="20px">35%</ProgressBar>
+</>
+```
+
+## **Close
+`close` 속성을 사용하여 닫기 요소를 추가합니다.
+
+```tsx
+<>
+	<ProgressBar percentage={35} close={<Button>Close button</Button>} height="20px">35%</ProgressBar>
+</>
+```
+
+## **API**
+
+```tsx
+import ProgressBar from "erxes-ui/lib/components/ProgressBar";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| children | React.ReactNode |  | 진행 바에 표시할 내용을 설정합니다 |
+| close	 | React.ReactNode	 |  | 진행 바 하단에 표시할 닫기 요소를 설정합니다 |
+| percentage* | number| | 진행 바의 백분율을 설정합니다 |
+| color | string | #dddeff	 | 진행 바의 색상을 설정합니다 |
+| height | string | 36px | 진행 바의 높이를 설정합니다 |

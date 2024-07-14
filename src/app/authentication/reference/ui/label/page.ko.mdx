@@ -1,0 +1,43 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 라벨
+## **스타일**
+`lblStyle` 속성을 사용하여 다양한 스타일의 라벨을 빠르게 만들 수 있습니다.
+
+```tsx
+<>
+	<Label lblStyle="default">default</Label> 
+	<Label lblStyle="primary">primary</Label> 
+	<Label lblStyle="success">success</Label> 
+	<Label lblStyle="danger">danger</Label> 
+	<Label lblStyle="warning">warning</Label> 
+	<Label lblStyle="simple">simple</Label>
+</>
+```
+
+## **색상**
+원하는 색상이 있으신가요? `lblColor` 속성에 색상을 지정하세요.
+
+```tsx
+<>
+	<Label lblColor="red">red</Label>
+</>
+```
+
+## **API**
+
+```tsx
+import Label from "erxes-ui/lib/components/Label";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| lblStyle	 | default, primary, success, danger, warning ,simple	 |default | 라벨의 스타일을 설정합니다 |
+| lblColor	 | string |  | 사용자 지정 색상을 설정합니다 |
+| children*	 | React.ReactNode | string	| | 라벨 텍스트를 선언합니다 |
+| className | string |  | 클래스 이름을 정의합니다 |
+| shake | boolean |  | 흔들림 애니메이션을 활성화합니다 |
+| ignoreTrans | boolean |  | 번역을 무시합니다 |

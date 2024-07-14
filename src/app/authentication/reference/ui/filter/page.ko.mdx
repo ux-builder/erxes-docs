@@ -1,0 +1,149 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 매개변수로 필터링
+## **예시**
+간단한 리스트로 매개변수를 통해 검색할 수 있습니다.
+
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[]} fields={[
+		{_id:"0", name:"First test"},
+		{_id:"1", name:"Second test"},
+		{_id:"2", name:"Third test"}]} />
+</>
+```
+
+## **비어있는 경우**
+필드에 리스트가 없으면 emptyState가 표시됩니다.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[]} fields={[]} />
+</>
+```
+
+## **로딩**
+`loading` 속성으로 로딩 스피너를 표시합니다.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[]} loading fields={[
+		{_id:"0", name:"First test"},
+		{_id:"1", name:"Second test"},
+		{_id:"2", name:"Third test"}]} />
+</>
+```
+
+## **카운트**
+`counts` 속성으로 카운트 숫자를 표시합니다.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[1,2,3]} fields={[
+		{_id:"0", name:"First test"},
+		{_id:"1", name:"Second test"},
+		{_id:"2", name:"Third test"}]} />
+</>
+```
+
+## **다중 선택**
+`multiple` 속성으로 여러 항목을 선택할 수 있습니다.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[]} multiple fields={[
+		{_id:"0", name:"First test"},
+		{_id:"1", name:"Second test"},
+		{_id:"2", name:"Third test"}]} />
+</>
+```
+
+## **검색 가능**
+`searchable` 속성으로 목록 상단에 검색 창을 추가하고 검색 가능하게 합니다.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[]} searchable fields={[
+		{_id:"0", name:"First test"},
+		{_id:"1", name:"Second test"},
+		{_id:"2", name:"Third test"}]} />
+</>
+```
+
+## **아이콘**
+`icon` 속성으로 아바타를 추가합니다.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" icon="tag-alt" counts={[]} fields={[
+		{_id:"0", name:"First test"},
+		{_id:"1", name:"Second test"},
+		{_id:"2", name:"Third test"}]} />
+</>
+```
+
+## **색상**
+`colorCode` 속성으로 아이콘에 사용자 정의 색상을 추가합니다.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" icon="tag-alt" counts={[]} fields={[
+		{_id:"0", name:"First test", colorCode:"red"},
+		{_id:"1", name:"Second test", colorCode:"blue"},
+		{_id:"2", name:"Third test", colorCode:"green"}]} />
+</>
+```
+
+## **트리 뷰**
+`treeView` 속성으로 트리 뷰 목록을 표시합니다. 필드는 `_id` 및 `parentId`가 있어야 합니다.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[]} treeView fields={[
+		{_id:"0", name:"Parent 1"},
+		{_id:"1", name:"Parent 2"},
+		{_id:"2", parentId:"0", name:"Child of parent 1"},
+		{_id:"3", parentId:"1", name:"Child of parent 2"},
+		{_id:"4", parentId:"1", name:"Child of parent 2"}]} />
+</>
+```
+
+## **관련 항목**
+`relatedIds` 속성으로 ID와 관련된 모든 항목의 합계를 찾습니다. 항목에서 `relatedId` 속성을 정의합니다.
+
+```tsx
+<>
+	<FilterByParams paramKey="tag" counts={[1,2,3,4,5]} treeView fields={[
+		{_id:"0", name:"Parent 1", relatedIds:[2]},
+		{_id:"1", name:"Parent 2", relatedIds:[3,4]},
+		{_id:"2", parentId:"0", name:"Child of parent 1"},
+		{_id:"3", parentId:"1", name:"Child of parent 2"},
+		{_id:"4", parentId:"1", name:"Child of parent 2"}]} />
+</>
+```
+
+## **API**
+
+```tsx
+import FilterByParams from "erxes-ui/lib/components/FilterByParams";
+```
+* required prop
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| _id | string |  | ID를 정의합니다 |
+| name	 | string |  | 이름을 정의합니다 |
+| colorCode | number| | 사용자 정의 색상을 추가합니다 |
+| parentId | string |  | 상위 ID를 정의합니다 |
+| relatedIds | array |  | 관련 항목의 ID를 정의합니다 |
+| counts*	 | any |  | 목록 항목의 카운트 숫자를 정의합니다 |
+| paramKey*	 | string |  | onClick 함수가 실행될 때 사용할 키입니다 |
+| icon | string	 |  | 목록 항목에 아이콘을 추가합니다 |
+| loading*	 | boolean |  | 로딩 스피너를 활성화합니다 |
+| searchable | boolean |  | 검색 창을 추가하고 목록을 검색 가능하게 만듭니다 |
+| multiple | boolean | false | 여러 항목을 선택할 수 있도록 합니다 |
+| treeView	 | boolean |  | 목록의 트리 뷰를 활성화합니다 |
+| update	 | boolean |  | 항목을 필터링하는 함수를 정의합니다 |

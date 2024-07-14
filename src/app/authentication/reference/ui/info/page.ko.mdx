@@ -1,0 +1,50 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# Info
+사용자 작업에 대한 상황별 메시지를 정보 메시지로 제공합니다.
+
+## **예시**
+정보 메시지는 어떤 길이의 텍스트에도 사용할 수 있습니다. 다섯 가지 변형 중 하나를 선택하고 `type` 속성을 수정하세요. `title` 속성을 사용하여 사용자 정의 제목을 작성합니다.
+
+```tsx
+<>	
+	<Info type="primary" title="Primary" >Primary</Info> 
+	<Info type="info" title="Info" >Info</Info> 
+	<Info type="danger" title="Danger" >Danger</Info> 
+	<Info type="warning" title="Warning" >Warning</Info> 
+	<Info type="success" title="Success" >Success</Info>
+</>
+```
+
+## **아이콘**
+`iconShow` 속성을 사용하여 아이콘을 추가하세요.
+
+```tsx
+<>	
+	<Info iconShow type="primary" title="Primary" >Primary</Info> 
+	<Info iconShow type="info" title="Info" >Info</Info> 
+	<Info iconShow type="danger" title="Danger" >Danger</Info> 
+	<Info iconShow type="warning" title="Warning" >Warning</Info> 
+	<Info iconShow type="success" title="Success" >Success</Info>
+</>
+```
+
+## **API**
+
+```tsx
+import Info from "erxes-ui/lib/components/Info";
+```
+* 필수 요소
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| children*	 | React.ReactNode	 |  | 정보 내용을 표시합니다. |
+| type | primary, info, danger, warning, success | primary | 정보의 유형을 설정합니다. |
+| color | string | | 정보에 커스텀 색상을 지정합니다. |
+| title | string |  | 정보 상단에 제목을 표시합니다. |
+| iconShow | boolean |  | 정보 유형에 따라 아이콘을 표시합니다. |
+
+
+

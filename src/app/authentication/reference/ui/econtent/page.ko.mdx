@@ -1,0 +1,110 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 빈 콘텐츠
+빈 콘텐츠 컴포넌트를 사용하여 다양한 콘텐츠를 제공하세요.
+
+## **단계**
+**예시**
+제목과 설명이 포함된 간단한 빈 콘텐츠입니다. `content` 속성은 비워둘 수 없습니다.
+
+```tsx
+<>
+	<EmptyContent  content={{steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. "}]}} />
+</>
+```
+
+## **버튼**
+단계 배열에 `url` 속성을 추가하여 링크가 있는 버튼을 추가하세요. 버튼 텍스트에 마우스를 올리면 링크를 볼 수 있습니다.
+
+```tsx
+<>
+	<EmptyContent  content={{steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. ", url:"/"}]}} />
+</>
+```
+
+## **버튼 텍스트**
+단계 배열에 `urlText` 속성을 추가하여 버튼 텍스트를 설정하세요.
+
+```tsx
+<>
+	<EmptyContent  content={{steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. ", url:"/", urlText:"urlText"}]}} />
+</>
+```
+
+## **외부 링크**
+외부링크 버튼
+
+```tsx
+<>
+	<EmptyContent  content={{steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. ", url:"/", urlText:"urlText", isOutside:true}]}} />
+</>
+```
+
+## **아이콘**
+단계 배열에 `icon` 속성을 추가하여 콘텐츠 번호 대신 아이콘을 추가하세요.
+
+```tsx
+<>
+	<EmptyContent  content={{steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. ", icon:"lightbulb-alt"}]}} />
+</>
+```
+
+## **제목**
+콘텐츠 배열에 `title` 속성으로 제목을, `description` 속성으로 설명을 추가하세요.
+
+```tsx
+<>
+	<EmptyContent  content={{title:"Title", description:"Description", steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. "}]}} />
+</>
+```
+
+## **Url**
+콘텐츠 배열에 `url` 및 `urlText` 속성으로 URL을 추가하세요.
+
+```tsx
+<>
+	<EmptyContent  content={{title:"Title", description:"Description", steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. "}], url:"url", urlText:"url Text"}} />
+</>
+```
+
+## **세로 정렬**
+`vertical` 속성을 사용하여 콘텐츠 상자를 세로로 표시합니다. 이 상태에서는 maxItemWidth가 "420px"로 설정됩니다.
+
+```tsx
+<>
+	<EmptyContent  content={{title:"Title", description:"Description", steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. "},{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. "}], url:"", urlText:""}} vertical={true} />
+</>
+```
+
+## **최대 너비**
+`maxItemWidth` 속성으로 콘텐츠 상자의 최대 너비를 선언하세요.
+
+```tsx
+<>
+	<EmptyContent  content={{title:"Title", description:"Description", steps:[{title:"Larry the Bird.", description:"Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed 'the Hick from French Lick' and 'Larry Legend,' Bird is widely regarded as one of the greatest basketball players of all time. "}], url:"", urlText:""}} maxItemWidth="300px" />
+</>
+```
+
+## **API**
+
+```tsx
+import Namecard from "erxes-ui/lib/components/namecard/Namecard";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| title | string |  단계의 제목을 정의합니다 |
+| description | string |  단계의 설명을 정의합니다 |
+| url | string | 버튼의 URL을 정의합니다 |
+| urlText | string | 버튼의 URL 텍스트를 정의합니다 |
+| icon | string | 단계 번호 대신 아이콘을 사용합니다 |
+| isOutside | boolean | 버튼 링크를 숨깁니다 |
+| title | string | 콘텐츠의 제목을 정의합니다 |
+| description | string | 콘텐츠의 설명을 정의합니다 |
+| url | string | 콘텐츠의 URL 링크를 정의합니다 |
+| urlText | string | 콘텐츠의 URL 텍스트를 정의합니다 |
+| vertical | boolean | 콘텐츠 상자를 세로로 표시합니다 |
+| maxItemWidth | string | 콘텐츠 상자의 최대 너비를 선언합니다 |

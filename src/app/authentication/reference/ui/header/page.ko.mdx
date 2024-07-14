@@ -1,0 +1,28 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 헤더 설명
+확장 가능한 설명으로, 확장되었을 때는 이미지와 설명을 표시하고 그렇지 않을 때는 제목만 표시합니다.
+
+## **예시**
+
+```tsx
+<>
+	<HeaderDescription icon="https://erxes.io/static/images/logo/logo_dark.svg" title="Title" description="Description" />
+</>
+
+```
+
+## **API**
+
+```tsx
+import HeaderDescription from "erxes-ui/lib/components/HeaderDescription";
+```
+* required prop
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| 아이콘*	 | 문자열 |  | 제목 앞에 이미지를 표시합니다 |
+| 제목* | 문자열 |  | 설명의 제목을 정의합니다 |
+| 설명*	 | 문자열 | | 설명을 정의합니다 |

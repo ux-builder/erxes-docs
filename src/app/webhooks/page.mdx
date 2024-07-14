@@ -5,22 +5,22 @@ import { HeroPattern } from '@/components/HeroPattern'
 export const metadata = {
   title: 'Webhooks',
   description:
-    'In this guide, we will look at how to register and consume webhooks to integrate your app with Protocol.',
+    '이 가이드에서는 웹훅을 등록하고 사용하는 방법을 살펴보며, 이를 통해 Protocol과 앱을 통합하는 방법을 다룹니다.',
 }
 
 # Webhooks
 
-In this guide, we will look at how to register and consume webhooks to integrate your app with Protocol. With webhooks, your app can know when something happens in Protocol, such as someone sending a message or adding a contact. {{ className: 'lead' }}
+이 가이드에서는 웹훅을 등록하고 사용하는 방법을 살펴보며, 이를 통해 Protocol과 앱을 통합하는 방법을 다룹니다. 웹훅을 사용하면, 누군가가 메시지를 보내거나 연락처를 추가하는 등 Protocol에서 무언가 발생할 때 앱이 알 수 있습니다. {{ className: 'lead' }}
 
-## Registering webhooks
+## 웹훅 등록하기
 
-To register a new webhook, you need to have a URL in your app that Protocol can call. You can configure a new webhook from the Protocol dashboard under [API settings](#). Give your webhook a name, pick the [events](#event-types) you want to listen for, and add your URL.
+새로운 웹훅을 등록하려면 Protocol이 호출할 수 있는 URL이 필요합니다. Protocol 대시보드에서 [API 설정](#) 아래에 있는 새로운 웹훅을 구성할 수 있습니다. 웹훅에 이름을 지정하고, 듣고자 하는 [이벤트](#event-types)를 선택하고, URL을 추가하세요.
 
-Now, whenever something of interest happens in your app, a webhook is fired off by Protocol. In the next section, we'll look at how to consume webhooks.
+이제 앱에서 관심 있는 일이 발생할 때마다 Protocol이 웹훅을 트리거합니다. 다음 섹션에서는 웹훅을 소비하는 방법을 살펴보겠습니다.
 
-## Consuming webhooks
+## 웹훅 소비하기
 
-When your app receives a webhook request from Protocol, check the `type` attribute to see what event caused it. The first part of the event type will tell you the payload type, e.g., a conversation, message, etc.
+앱이 Protocol로부터 웹훅 요청을 받을 때, 어떤 이벤트가 발생했는지 확인하려면 `type` 속성을 확인하세요. 이벤트 유형의 첫 부분은 페이로드 유형을 알려줍니다. 예를 들어 대화, 메시지 등이 있습니다.
 
 ```json {{ title: 'Example webhook payload' }}
 {
@@ -33,7 +33,7 @@ When your app receives a webhook request from Protocol, check the `type` attribu
 }
 ```
 
-In the example above, a conversation was `updated`, and the payload type is a `conversation`.
+위의 예에서 대화가 `updated`되었고, 페이로드 유형은 `conversation`입니다.
 
 <div className="not-prose">
   <Button href="#event-types" variant="text" arrow="right">
@@ -43,56 +43,56 @@ In the example above, a conversation was `updated`, and the payload type is a `c
 
 ---
 
-## Event types
+## 이벤트 유형
 
 <Row>
   <Col>
 
     <Properties>
       <Property name="contact.created">
-        A new contact was created.
+        새로운 연락처가 생성되었습니다.
       </Property>
       <Property name="contact.updated">
-        An existing contact was updated.
+        기존 연락처가 업데이트되었습니다.
       </Property>
       <Property name="contact.deleted">
-        A contact was successfully deleted.
+        연락처가 성공적으로 삭제되었습니다.
       </Property>
       <Property name="conversation.created">
-        A new conversation was created.
+        새로운 대화가 생성되었습니다.
       </Property>
       <Property name="conversation.updated">
-        An existing conversation was updated.
+        기존 대화가 업데이트되었습니다.
       </Property>
       <Property name="conversation.deleted">
-        A conversation was successfully deleted.
+        대화가 성공적으로 삭제되었습니다.
       </Property>
       <Property name="message.created">
-        A new message was created.
+        새로운 메시지가 생성되었습니다.
       </Property>
       <Property name="message.updated">
-        An existing message was updated.
+        기존 메시지가 업데이트되었습니다.
       </Property>
       <Property name="message.deleted">
-        A message was successfully deleted.
+        메시지가 성공적으로 삭제되었습니다.
       </Property>
       <Property name="group.created">
-        A new group was created.
+        새로운 그룹이 생성되었습니다.
       </Property>
       <Property name="group.updated">
-        An existing group was updated.
+        기존 그룹이 업데이트되었습니다.
       </Property>
       <Property name="group.deleted">
-        A group was successfully deleted.
+        그룹이 성공적으로 삭제되었습니다.
       </Property>
       <Property name="attachment.created">
-        A new attachment was created.
+        새로운 첨부 파일이 생성되었습니다.
       </Property>
       <Property name="attachment.updated">
-        An existing attachment was updated.
+        기존 첨부 파일이 업데이트되었습니다.
       </Property>
       <Property name="attachment.deleted">
-        An attachment was successfully deleted.
+        첨부 파일이 성공적으로 삭제되었습니다.
       </Property>
     </Properties>
 
@@ -129,9 +129,9 @@ In the example above, a conversation was `updated`, and the payload type is a `c
 
 ---
 
-## Security
+## 보안
 
-To know for sure that a webhook was, in fact, sent by Protocol instead of a malicious actor, you can verify the request signature. Each webhook request contains a header named `x-protocol-signature`, and you can verify this signature by using your secret webhook key. The signature is an HMAC hash of the request payload hashed using your secret key. Here is an example of how to verify the signature in your app:
+웹훅이 악의적인 행위자가 아닌 Protocol에서 실제로 전송된 것인지 확인하려면 요청 서명을 검증할 수 있습니다. 각 웹훅 요청에는 x-protocol-signature라는 헤더가 포함되어 있으며, 이 서명을 비밀 웹훅 키를 사용하여 검증할 수 있습니다. 서명은 비밀 키를 사용하여 요청 페이로드를 해시한 HMAC 해시입니다. 앱에서 서명을 검증하는 예제는 다음과 같습니다:
 
 <CodeGroup title="Verifying a request">
 
@@ -140,9 +140,9 @@ const signature = req.headers['x-protocol-signature']
 const hash = crypto.createHmac('sha256', secret).update(payload).digest('hex')
 
 if (hash === signature) {
-  // Request is verified
+  // 요청이 검증되었습니다.
 } else {
-  // Request could not be verified
+  // 요청을 검증할 수 없습니다.
 }
 ```
 
@@ -155,9 +155,9 @@ signature = request.headers.get("x-protocol-signature")
 hash = hmac.new(bytes(secret, "ascii"), bytes(payload, "ascii"), hashlib.sha256)
 
 if hash.hexdigest() == signature:
-    # Request is verified
+    # 요청이 검증되었습니다.
 else:
-    # Request could not be verified
+    # 요청을 검증할 수 없습니다.
 ```
 
 ```php
@@ -165,12 +165,12 @@ $signature = $request['headers']['x-protocol-signature'];
 $hash = hash_hmac('sha256', $payload, $secret);
 
 if (hash_equals($hash, $signature)) {
-  // Request is verified
+  // 요청이 검증되었습니다.
 } else {
-  // Request could not be verified
+  // 요청을 검증할 수 없습니다.
 }
 ```
 
 </CodeGroup>
 
-If your generated signature matches the `x-protocol-signature` header, you can be sure that the request was truly coming from Protocol. It's essential to keep your secret webhook key safe — otherwise, you can no longer be sure that a given webhook was sent by Protocol. Don't commit your secret webhook key to GitHub!
+생성된 서명이 x-protocol-signature 헤더와 일치하면 해당 요청이 실제로 Protocol에서 전송된 것임을 확신할 수 있습니다. 비밀 웹훅 키를 안전하게 보관하는 것이 중요합니다. 그렇지 않으면 주어진 웹훅이 Protocol에서 전송된 것인지 확신할 수 없습니다. 비밀 웹훅 키를 GitHub에 커밋하지 마십시오!

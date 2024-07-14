@@ -1,0 +1,102 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 버튼
+양식, 대화 상자 등에서 작업을 위한 커스텀 버튼 스타일을 여러 크기, 상태 등과 함께 지원합니다.
+
+## **예제**
+### **유형**
+사용 가능한 버튼 스타일 유형을 사용하여 빠르게 스타일링된 버튼을 만듭니다. `btnStyle` 속성만 수정하면 됩니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/4558996c-ab58-44ac-a85f-e4d3d6e1c000/public)
+```tsx
+<>
+	<Button>기본</Button>
+	<Button btnStyle="primary" >기본</Button> 
+	<Button btnStyle="success" >성공</Button> 
+	<Button btnStyle="danger" >위험</Button> 
+	<Button btnStyle="warning" >경고</Button> 
+	<Button btnStyle="simple" >단순</Button> 
+	<Button btnStyle="link" >링크</Button>
+</>
+```
+
+### **크기**
+더 크거나 작은 버튼이 필요하신가요? `size` 속성을 추가하여 다양한 크기를 설정하세요.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/1ae1f29c-431d-4f56-da6e-38e8d3d3a800/public)
+```tsx
+<>
+	<Button size="large" >큰 버튼</Button> 
+	<Button size="medium" >중간 버튼</Button> 
+	<Button size="small" >작은 버튼</Button>
+</>
+```
+
+### **비활성화 상태**
+`disabled` 속성을 추가하여 버튼을 비활성화 상태로 만드세요.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/033cc301-6ce6-415c-68b2-af2c80617b00/public)
+```tsx
+<>
+	<Button>정상</Button>
+	<Button disabled >비활성화</Button>
+</>
+```
+### **대문자**
+`uppercase` 속성을 추가하여 버튼 텍스트를 대문자로 만드세요.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/60d9fa24-2016-4d44-d6bb-f056c8777d00/public)
+```tsx
+<>
+	<Button>정상</Button>
+	<Button uppercase >대문자</Button>
+</>
+```
+
+### 블록
+`block` 속성을 추가하여 버튼을 전체 너비로 만드세요.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/08eb331b-00e9-4e11-728d-3784ea8a6400/public)
+```tsx
+<>
+	<Button block >블록</Button>
+</>
+```
+
+### **아이콘**
+`icon` 속성을 사용하여 원하는 아이콘을 추가하세요.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/41c7309c-4a1d-418c-b8e7-8a434f94e900/public)
+```tsx
+<>
+	<Button btnStyle="primary" icon="envelope-alt" >기본</Button> 
+	<Button btnStyle="success" icon="check-circle" >성공</Button> 
+	<Button btnStyle="danger" icon="times-circle" >위험</Button> 
+	<Button btnStyle="warning" icon="exclamation-triangle" >경고</Button> 
+	<Button btnStyle="simple" icon="info-circle" >단순</Button> 
+	<Button btnStyle="link" icon="link" >링크</Button>
+</>
+```
+
+## **API**
+
+```tsx
+import Button from "erxes-ui/lib/components/Button";
+```
+* required prop
+
+| 이름 | 타입 | 기본 | 설명 |
+| ---| --- | ---| --- |
+| children | React.ReactNode |  | 버튼 텍스트를 표시합니다 |
+| className	 | string |  | className을 정의합니다 |
+| onClick | function| | 버튼 요소에 대한 클릭 핸들러를 정의합니다 |
+| onMouseDown | function |  | 마우스가 클릭될 때 트리거되는 함수 |
+| href	 | string |  | 하이퍼링크를 정의합니다 |
+| type | string | button | HTML 버튼 타입 속성을 정의합니다 |
+| btnStyle | primary , success , danger , warning , simple , link | default | 하나 이상의 버튼 스타일 조합 |
+| size | large, medium, small	 | medium | 큰 버튼 또는 작은 버튼을 지정합니다 |
+| disabled | boolean | false | 버튼을 비활성화합니다 |
+| ignoreTrans | boolean |  | 번역을 무시합니다 |
+| block | boolean | false | 버튼을 전체 너비로 만듭니다 |
+| icon	 | string |  | 아이콘을 표시합니다 |
+| style | any |  | 버튼에 커스텀 스타일을 추가합니다 |
+| id	 | string |  | 버튼에 ID를 부여합니다 |
+| uppercase | boolean | false | 버튼 텍스트를 대문자로 만듭니다 |
+| target | string |  | 타겟을 정의합니다 |
+

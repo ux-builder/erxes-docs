@@ -1,0 +1,25 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 텍스트 디바이더
+텍스트와 날짜를 사용하여 콘텐츠를 구분하는 텍스트 디바이더를 추가합니다.
+
+## **예시**
+시간 위로 마우스를 올리면 날짜를 볼 수 있습니다.
+
+```tsx
+<TextDivider text="Text divider" date="Sun Nov 19 2023 18:32:07 GMT+0800 (Ulaanbaatar Standard Time)" />
+```
+
+## **API**
+
+```tsx
+import TextDivider from "erxes-ui/lib/components/TextDivider";
+```
+* 필수 속성
+
+| 이름 | 타입 | 기본 | 설명 |
+| ---| --- | ---| --- |
+| text*	 | string |  | 텍스트 디바이더의 상단에 표시할 텍스트 |
+| date*	 | Date |  | 날짜를 표시합니다. |

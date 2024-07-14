@@ -1,0 +1,100 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 단계 (Steps)
+## **예제**
+이미지와 콘텐츠가 포함된 간단한 단계 구성 요소.
+
+```tsx
+<>
+	<Steps >
+		<Step img="https://erxes.io/static/images/logo/logo_dark.svg">children1</Step>
+		<Step img="https://erxes.io/static/images/logo/logo_dark.svg">children2</Step>
+		<Step img="https://erxes.io/static/images/logo/logo_dark.svg">children3</Step>
+	</Steps>
+</>
+```
+
+## **Active**
+시작할 때 확장할 단계를 `active` 속성을 사용하여 설정합니다.
+
+```tsx
+<>
+	<Steps active={2}>
+		<Step img="https://erxes.io/static/images/logo/logo_dark.svg">children1</Step>
+		<Step img="https://erxes.io/static/images/logo/logo_dark.svg">children2</Step>
+		<Step img="https://erxes.io/static/images/logo/logo_dark.svg">children3</Step>
+	</Steps>
+</>
+```
+
+## **단계**
+**이미지**
+`img` 속성을 사용하여 이미지를 추가합니다.
+
+```tsx
+<>
+	<Step img="https://erxes.io/static/images/logo/logo_dark.svg">children</Step>
+</>
+```
+
+## **제목**
+`title` 속성을 사용하여 제목을 추가합니다.
+
+```tsx
+
+<>
+	<Step title="Title" img="https://erxes.io/static/images/logo/logo_dark.svg">children</Step>
+</>
+
+```
+
+## **버튼 숨기기**
+`noButton` 속성을 사용하여 "다음" 버튼을 숨깁니다
+
+```tsx
+
+<>
+	<Steps>
+		<Step noButton img="https://erxes.io/static/images/logo/logo_dark.svg">children1</Step>
+		<Step noButton img="https://erxes.io/static/images/logo/logo_dark.svg">children2</Step>
+		<Step noButton img="https://erxes.io/static/images/logo/logo_dark.svg">children3</Step>
+	</Steps>
+</>
+
+```
+
+## **API**
+
+**Steps**
+```tsx
+import Steps from "erxes-ui/lib/components/Steps";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| children*	 | any |  | 단계 구성 요소를 포함합니다 |
+| active | number |  | 시작할 때 확장할 단계를 설정합니다 |
+| maxStep | number| 6 | 단계 수를 최대 6개로 제한합니다 |
+
+
+## **Step**
+
+```tsx
+import Step from "erxes-ui/lib/components/Step";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| stepNumber | number |  | 단계 번호를 정의합니다 |
+| active | number |  | 시작할 때 확장할 단계를 설정합니다 |
+| img | string | | 이미지를 표시합니다 |
+| title | string |  | 제목을 표시합니다 |
+| children | React.ReactNode |  | 단계의 내용을 표시합니다 |
+| next | function |  | 다음 버튼의 클릭 기능을 정의합니다 |
+| noButton | boolen |  | "다음" 버튼을 숨깁니다 |
+| noButton | function |  | 클릭 핸들러 기능을 정의합니다 |
+

@@ -1,0 +1,78 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# Toggle
+## **예제**
+
+```tsx
+<>
+	<Toggle />
+</>
+```
+
+## **아이콘**
+`icons` 속성을 사용하여 체크되었을 때와 체크되지 않았을 때의 아이콘을 정의합니다.
+```tsx
+<>
+	<Toggle icons={{checked:"Y", unchecked:"N"}}/>
+</>
+```
+
+## **체크**
+`defaultChecked` 속성을 추가하여 시작할 때 토글 스위치를 체크 상태로 만듭니다.
+
+```tsx
+<>
+	<Toggle defaultChecked/>
+</>
+```
+
+## **Always checked**
+`checked` 속성을 추가하여 토글 스위치를 체크된 상태로 고정시킵니다.
+
+```tsx
+<>
+	<Toggle checked/>
+</>
+```
+
+## **Disabled toggle switch**
+`disabled` 속성을 사용하여 토글을 비활성화합니다.
+
+```tsx
+<>
+	<Toggle disabled/>
+</>
+```
+
+체크된 상태에서 `disabled` 속성을 사용하여 토글을 비활성화합니다.
+
+```tsx
+<>
+	<Toggle disabled checked/>
+</>
+```
+
+## **API**
+
+```tsx
+import Toggle from "erxes-ui/lib/components/Toggle";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| value | string |  | 값을 정의합니다 |
+| name | string |  | 이름을 정의합니다 |
+| id | string| | 토글 id를 정의합니다 |
+| checked | boolean | false | 토글을 항상 체크 상태로 설정합니다 |
+| defaultChecked | boolean | false | 시작할 때 토글을 체크 상태로 설정합니다 |
+| 'aria-labelledby'	 | string |  | 래핑된 입력 요소의 aria-labelledby 속성 값 |
+| 'aria-label'	 | string |  | 	래핑된 입력 요소의 aria-label 속성 값 |
+| onFocus | function	 |  | 필드에 포커스가 있을 때 호출할 콜백 함수 |
+| onBlur | function |  | 필드가 포커스를 잃을 때 호출할 콜백 함수 |
+| disabled | boolean |  | 토글을 비활성화합니다 |
+| onChange | function |  | 사용자가 토글을 클릭할 때 호출할 콜백 함수 |
+| icons	 | boolean |  | 아이콘을 추가합니다 |
+

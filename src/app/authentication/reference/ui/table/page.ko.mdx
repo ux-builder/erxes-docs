@@ -1,0 +1,165 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# 테이블
+## **테두리**
+`bordered` 속성을 사용하여 테두리 색상을 추가합니다..
+
+```tsx
+<Table bordered>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    <tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td> 
+      <td>James</td> 
+      <td>Smith</td> 
+      <td>@james</td>
+    <tr> 
+    <tr>
+      <td>2</td> 
+      <td>Robert</td> 
+      <td>Rodriguez</td> 
+      <td>@robert</td>
+    <tr> 
+    <tr>
+      <td>3</td> 
+      <td>Larry</td> 
+      <td>Bird</td> 
+      <td>@twitter</td>
+    <tr>
+  </tbody>
+</Table>
+```
+
+## **스트라이프**
+`striped` 속성을 사용하여 스트라이프 색상을 추가합니다.
+
+```tsx
+<Table striped>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    <tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td> 
+      <td>James</td> 
+      <td>Smith</td> 
+      <td>@james</td>
+    <tr> 
+    <tr>
+      <td>2</td> 
+      <td>Robert</td> 
+      <td>Rodriguez</td> 
+      <td>@robert</td>
+    <tr> 
+    <tr>
+      <td>3</td> 
+      <td>Larry</td> 
+      <td>Bird</td> 
+      <td>@larry</td>
+    <tr>
+  </tbody>
+</Table>
+```
+
+## **테이블 호버**
+`hover` 속성을 사용하여 테이블 행에 호버를 활성화합니다.
+
+```tsx
+<Table hover>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    <tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td> 
+      <td>James</td> 
+      <td>Smith</td> 
+      <td>@james</td>
+    <tr> 
+    <tr>
+      <td>2</td> 
+      <td>Robert</td> 
+      <td>Rodriguez</td> 
+      <td>@robert</td>
+    <tr> 
+    <tr>
+      <td>3</td> 
+      <td>Larry</td> 
+      <td>Bird</td> 
+      <td>@larry</td>
+    <tr>
+  </tbody>
+</Table>
+```
+
+## **White-space**
+white-space 속성을 사용하여 셀의 공백 처리를 설정합니다.
+
+```tsx
+<Table whiteSpace="normal">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    <tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td> 
+      <td>James</td> 
+      <td>Smith</td> 
+      <td>@james</td>
+    <tr> 
+    <tr>
+      <td>2</td> 
+      <td>Robert</td> 
+      <td>Rodriguez</td> 
+      <td>@robert</td>
+    <tr> 
+    <tr>
+      <td>3</td> 
+      <td>Larry the Bird. Larry Joe Bird (born December 7, 1956) is an American former professional basketball player, coach and executive in the National Basketball Association (NBA). Nicknamed the Hick from French Lick and Larry Legend,Bird is widely regarded as one of the greatest basketball players of all time.</td> 
+      <td>Bird</td> 
+      <td>@larry</td>
+    <tr>
+  </tbody>
+</Table>
+```
+
+## **API**
+
+```tsx
+import Table from "erxes-ui/lib/components/table/index";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| children*	 | React.ReactNode	 |  | 테이블 내용을 표시합니다 |
+| striped | boolean | false | 테이블에 줄무늬 색상을 추가합니다 |
+| bordered | boolean| false| 테이블에 테두리 색상을 추가합니다 |
+| hover | boolean | false | 테이블 행에 호버 효과를 활성화합니다 |
+| responsive | boolean | false | 필요한 경우 가로 스크롤 바를 추가합니다 |
+| whiteSpace | any |  | 셀의 공백 처리를 설정합니다 |
+| alignTop | boolean | false | 내용을 세로로 위쪽에 작성합니다 |

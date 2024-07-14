@@ -1,0 +1,27 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# Breadcrumb
+CSS를 통해 자동으로 구분자를 추가하여 내비게이션 계층 내에서 현재 페이지의 위치를 나타냅니다. `link`가 설정되지 않은 경우, 빵크럼 항목은 활성화됩니다. 활성 항목은 href를 무시하며, 하이퍼링크 태그 대신 span 요소가 렌더링됩니다.
+
+## **예제**
+
+```tsx
+<BreadCrumb breadcrumbs={[
+	{title:"제목1", link:"../.."},
+	{title:"제목2", link:"../.."},
+	{title:"제목3"}
+]}/>
+```
+## **API**
+
+```tsx
+import BreadCrumb from "erxes-ui/lib/components/breadcrumb/BreadCrumb";
+```
+* 필수 속성
+
+| 이름 | 타입 | 설명 |
+| ---| --- | ---|
+|  title* | string | breadcrumb 항목의 제목을 표시합니다 |
+| link | string | 하이퍼링크를 정의합니다 |

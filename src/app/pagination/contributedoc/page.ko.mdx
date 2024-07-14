@@ -1,0 +1,78 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+export const metadata = {
+  title: '문서에 기여하기',
+  description:
+    '이 가이드는 Protocol API를 사용 설정하고 첫 번째 API 요청을 만드는 방법을 다룹니다.',
+}
+
+# 문서에 기여하기
+
+문서 기여에 관심을 가져주셔서 감사합니다! 오픈 소스 커뮤니티와 erxes에 관심 있는 다른 개발자들에게 도움을 주게 될 것입니다.
+
+<Note>
+    이 가이드는 문서에 기여하는 방법에 대한 것입니다. 
+    erxes 코드베이스에 기여하는 것에 관심이 있다면 [코드베이스 기여 가이드](/pagination/codebase)를 확인하세요.
+</Note>
+
+# 사이트 설정
+
+문서 웹사이트는 문서 생성 최적화 프레임워크인 [Docusaurus](https://docusaurus.io/)로 구축되었습니다. Docusaurus에 익숙하지 않다면, Docusaurus가 어떻게 작동하고 구조와 세부 정보를 이해하기 위해 [설치 문서](https://docusaurus.io/docs/installation)를 확인하는 것이 좋습니다. 문서 코드베이스는 GitHub의 [erxes 저장소](https://github.com/erxes/erxes)에 호스팅되어 있습니다. Docusaurus 웹사이트를 실행하는 코드는 www/docs 디렉토리에서 찾을 수 있습니다.
+
+# 문서 내용
+
+문서 내용은 Markdown 형식으로 작성됩니다. Markdown에 익숙하지 않다면, 빠른 시작을 위한 [치트 시트](https://www.markdownguide.org/cheat-sheet/)를 확인하세요. 또한 MDX 파일도 있습니다. MDX 파일은 Markdown의 강력함과 React를 결합한 것입니다. 따라서 파일의 내용에는 JSX 컴포넌트와 import 문이 포함될 수 있습니다. [Docusaurus의 가이드](https://docusaurus.io/docs/markdown-features/react)에서 MDX에 대해 더 알아볼 수 있습니다.
+
+# 기여할 수 있는 내용
+
+- Docusaurus 코드베이스에 기여하여 새로운 플러그인을 추가하거나 문서 웹사이트의 버그를 수정할 수 있습니다.
+- 문서 내용에 기여하여 발견한 오류를 수정하거나 문서 페이지를 추가할 수 있습니다.
+
+# 스타일 가이드
+
+문서 내용에 기여할 때는 [문서 스타일 가이드](/pagination/docstyle)를 따르세요.
+
+# 기여 방법
+
+기존 문서 페이지의 오류를 수정하는 경우, 페이지 하단으로 스크롤하여 "이 페이지 편집" 링크를 클릭하세요. 그러면 해당 페이지의 GitHub 편집 폼으로 리디렉션되어 직접 수정하고 풀 리퀘스트(PR)를 제출할 수 있습니다. 새 페이지를 추가하거나 코드베이스에 기여하는 경우, 저장소를 포크하고 새 브랜치를 생성하여 필요한 모든 변경 작업을 수행합니다. 그런 다음, erxes 저장소에 PR을 생성하세요. 기여 방법에 대한 자세한 내용은 저장소의 기여 지침을 확인하세요.
+
+- 브랜치 이름 기존 문서 페이지를 수정하거나 문서 변경을 위해 저장소를 포크할 때는 새 브랜치를 생성해야 합니다. 브랜치 이름은 docs/로 시작해야 합니다. 예를 들어, docs/fix-services와 같이 작성합니다.
+
+- 풀 리퀘스트 규칙 풀 리퀘스트를 생성할 때 제목에 "docs:"를 접두사로 붙이세요. "docs"는 소문자로 유지하세요. PR 본문에는 PR이 하는 일을 명확하게 설명하세요. PR이 이슈를 해결하는 경우, 이슈 번호와 함께 닫기 키워드를 사용하세요. 예를 들어, "Closes #1333"와 같이 작성합니다.
+
+# 사이드바
+
+문서에 새 페이지를 추가할 때는 www/docs/sidebars.js의 tutorialSidebar에 새 페이지를 추가해야 합니다. 사용된 구문에 대해 더 알아보려면 [여기](https://docusaurus.io/docs/sidebar/items)를 참조하세요.
+
+- 용어 문서 페이지가 개념적이거나 개요 문서인 경우, 사이드바의 레이블은 명사로 시작해야 합니다. 문서 페이지가 튜토리얼 문서인 경우, 사이드바의 레이블은 동사로 시작해야 합니다. 이 규칙의 예외는 통합 문서와 업그레이드 가이드입니다.
+
+# 노트 및 추가 정보
+
+문서 페이지에서 노트 및 추가 정보를 표시할 때는 Admonitions를 사용하세요. 사용된 Admonition 유형이 현재 문서의 중요도와 일치하는지 확인하세요.
+
+<Caution>
+노트가 개발자가 주의해야 할 사항인 경우, 주의 또는 위험 Admonition을 사용하세요.
+</Caution>
+
+<Info>
+노트가 개발자가 익숙하지 않을 수 있는 것을 정의하는 경우, 정보 Admonition을 사용하세요.
+</Info>
+
+<Note>
+노트가 유용한 정보와 팁을 제공하는 경우, 팁 Admonition을 사용하세요.
+</Note>
+
+<Danger>
+노트가 개발자에게 진행하기 전에 경고하는 경우, 경고 Admonition을 사용하세요.
+</Danger>
+
+<Tip>
+Admonition이 언급된 기준과 일치하지 않는 경우, 항상 기본적으로 노트 Admonition을 사용하세요.
+</Tip>
+
+# 추가 도움이 필요할 때
+
+기여하는 동안 추가 도움이 필요한 경우, [Discord](https://discord.com/invite/aaGzy3gQK5)에 가입하여 erxes 핵심 팀 및 커뮤니티에 질문할 수 있습니다.
+

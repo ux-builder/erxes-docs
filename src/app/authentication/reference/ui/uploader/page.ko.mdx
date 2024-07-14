@@ -1,0 +1,71 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+# Uploader
+## **다중 파일 선택**
+여러 파일을 선택할 수 있습니다.
+
+```tsx
+<>
+	<Uploader multiple />
+</>
+```
+
+단일 파일만 선택할 수 있습니다.
+
+```tsx
+<>
+	<Uploader multiple={false} />
+</>
+```
+
+## **제한**
+파일 업로드 수를 제한합니다.
+
+```tsx
+<>
+	<Uploader limit={2} />
+</>
+
+```
+
+## **Single**
+single 속성을 사용하여 파일 업로더를 비활성화합니다.
+
+```tsx
+<>
+	<Uploader single />
+</>
+```
+
+## **기본 파일**
+`defaultFileList` 속성에 파일 배열을 제공하여 기본 파일을 표시합니다.
+
+```tsx
+<>
+	<Uploader defaultFileList={[
+		{name:"testFile.docx", type:"text", url:"/home/ariuka/Documents/test.docx"},
+		{name:"testFile2.docx", type:"text", url:"/home/ariuka/Documents/test.docx"}
+	]} />
+</>
+```
+
+## **API**
+
+```tsx
+import Uploader from "erxes-ui/lib/components/Uploader";
+```
+* 필수 속성
+
+| 이름 | 유형 | 기본값 | 설명 |
+| ---| --- | ---| --- |
+| name*	 | string |  | 파일 이름을 정의합니다 |
+| type*	 | string |  | 파일 유형을 정의합니다 |
+| url*	 | string| | 파일 경로를 정의합니다 |
+| size | number |  | 파일 크기를 정의합니다 |
+| onChange | function |  | 첨부 파일을 추가합니다 |
+| single | boolean |  | 파일 업로더를 비활성화합니다 |
+| limit | number |  | 파일 업로드 수를 제한합니다 |
+| multiple | boolean |  | 여러 파일을 업로드할 수 있는지 여부를 정의합니다 |
+

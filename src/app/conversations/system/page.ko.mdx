@@ -1,0 +1,131 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+
+## 시스템 설정
+
+시스템 설정은 이메일 설정, 언어, 첨부 파일 등 erxes XOS의 일반 설정을 구성하는 곳입니다.
+
+<Note>
+erxes에 가입하면 평균적인 회사에서 필요한 기본 설정이 모두 미리 구성되어 있습니다. 비즈니스 요구 사항을 충족하는지 확인하세요. 추가 설정이 필요하면 고객 서비스 팀에 문의하세요.
+</Note>
+
+시스템 설정에는 다음 필드가 있습니다:
+
+- 일반 설정
+- 파일 업로드
+- 구글 클라우드 스토리지
+- AWS S3
+- AWS SES
+- 구글
+- 일반 메일 설정
+- 사용자 정의 메일 서비스
+- 데이터 보존
+- 상수
+- 연결 서비스
+- 메시지프로
+
+**1. 관리자 화면 왼쪽 하단의 설정 섹션에서 시스템 설정으로 이동하세요.**
+
+![A](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/607657bb-f209-4d23-f71d-4d10f61ba800/public)
+**2. 일반 설정**
+- **언어** - erxes XOS에서 사용할 언어를 선택하세요.
+- **통화** - 제품 및 서비스, 판매 파이프라인 플러그인에 사용할 통화를 선택하세요.
+- **측정 단위** - 판매 파이프라인에서 사용할 판매 측정 단위를 선택하세요.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/5f9dd854-011d-4a59-29c0-42747b622c00/public)
+**3. 구글**
+구글 클라우드 플랫폼(GCP)은 구글이 내부적으로 사용하는 인프라를 기반으로 하는 클라우드 컴퓨팅 서비스 모음입니다. Firebase, Gmail, Pubsub과 같은 최종 사용자 제품을 위해 내부적으로 사용하는 인프라에서 실행됩니다. 관리 도구 세트와 함께 컴퓨팅, 데이터 저장소, 데이터 분석, 머신 러닝 등을 포함하는 모듈형 클라우드 서비스를 제공합니다.
+다음 단계는 Erxes 앱에서 구글 클라우드 플랫폼 서비스를 사용하도록 구글 클라우드 프로젝트를 설정하는 방법을 설명합니다.
+
+- 구글 클라우드 프로젝트 생성 [여기 클릭](https://console.cloud.google.com/getting-started?pli=1)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>
+- 프로젝트 선택 클릭
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/96e9997c-0f37-41a2-5edf-0c4187382900/public)
+
+- 새 프로젝트 클릭
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/bee87d38-9da3-450c-fb13-4dcb08378500/public)
+- 프로젝트 이름 입력 후 생성 버튼 클릭
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/12337b54-9d67-4c9c-3ea9-e79c0e18c300/public)
+**서비스 계정**
+- 사이드바에서 IAM & 관리 => 서비스 계정으로 이동
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/029a2b84-fba4-4204-075b-453904aa6900/public)
+
+- 앱용 서비스 계정 생성
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/132f6dc2-1681-4696-2b1b-42d7cd57c900/public)
+
+- 서비스 계정 이름과 설명 입력 후 생성 버튼 클릭
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/48b7b991-3132-4c18-0ab6-5dc357ac4400/public)
+
+- 소유자 역할 선택 후 계속 버튼 클릭
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/c9a646d9-82fd-49d6-18ae-51887b754000/public)
+
+- 서비스 계정 키 생성, 자동으로 json 파일 다운로드 및 보관
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/7507cc93-a6fa-4e04-4459-eeba3a1acc00/public)
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/6d9a2eeb-59a0-423c-3996-c432b0a99e00/public)
+
+- 서비스 계정 성공적으로 생성됨
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/6d9a2eeb-59a0-423c-3996-c432b0a99e00/public)
+
+- 서비스 계정 파일 내용을 google_cred.json에 복사하여 **erxes-integrations/google_cred.json.sample**에 붙여넣고 **google_cred.json**으로 이름 변경
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/b6553aba-0b82-4020-6865-dcdcac744900/public)
+- export GOOGLE_APPLICATION_CREDENTIALS="/Path/to/your/[google_cred].json"
+
+- 마지막으로, erxes를 구성해야 합니다. 설정 => 시스템 설정 => 일반 시스템 설정으로 이동하여 **GOOGLE PROJECT ID, GOOGLE APPLICATION CREDENTIALS** 필드를 화면과 같이 구성합니다.
+  - **GOOGLE APPLICATION CREDENTIALS**는 기본적으로 google_cred 파일 경로입니다. 기본값은 ./google_cred.json이며 변경할 필요가 없습니다.
+  - **GOOGLE APPLICATION CREDENTIALS JSON**은 **Firebase** 구성을 위한 google_cred (서비스 계정) 파일 내용입니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/40f819bb-b7fe-4666-9e21-c08b82d7ed00/public)
+
+이제 사용할 수 있는 구글 클라우드 플랫폼 서비스를 사용할 준비가 되었습니다. [여기](https://console.cloud.google.com/apis/library)
+
+**4. 파일 업로드**
+- 업로드 파일 유형
+- 위젯의 업로드 파일 유형
+- 업로드 서비스 유형
+- 버킷 파일 시스템 유형
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/b3a9e09d-2fd5-46a7-5461-7ccd07999100/public)
+
+**5. 구글 클라우드 스토리지**
+클라우드 스토리지는 전 세계적으로 내구성이 높은 객체 스토리지를 제공하며 엑사바이트 데이터까지 확장 가능합니다. 모든 스토리지 클래스에서 데이터를 즉시 액세스할 수 있으며, 단일 통합 API로 애플리케이션에 스토리지를 통합하고 가격 및 성능을 쉽게 최적화할 수 있습니다.
+
+**요구 사항:**
+- 구글 클라우드 플랫폼 프로젝트, [여기](/conversation) 가이드를 따라 하나를 만드세요.
+- 구글 클라우드 스토리지 API를 활성화하세요. [여기](https://console.cloud.google.com/apis/library)
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/cbb5fffc-18b3-47a6-a99f-d94a202a8900/public)
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/09055aeb-c404-4d35-efdc-479e4e8df400/public)
+
+- [여기](https://console.cloud.google.com/storage/browser)로 이동하여 파일 업로드용 버킷을 만드세요.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/2b51f44a-565b-4db9-2764-cac3009fa000/public)
+- 버킷 이름을 입력하고 나머지 양식을 작성하세요.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/35f0b7ce-60e6-41b9-c64a-7eedc5899b00/public)
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/7d519414-9b6d-4a98-f6a1-0f2eda679100/public)
+
+- 버킷 이름을 복사하여 다음과 같이 Erxes 앱에 구성합니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/145b1117-f2ef-4ab6-9bdd-b39befcd3a00/public)
+
+
+이제 마지막 단계로, [여기](/conversation)에서 업로드 서비스 유형을 Google로 설정하세요.
+
+**6. AWS S3 설정**
+- AWS 액세스 키 ID
+- AWS 비밀 액세스 키
+- AWS 버킷
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/3dedf632-2258-48e8-fb36-9eab012ee100/public)
+**7. AWS SES 설정**
+- AWS SES 액세스 키 ID
+- AWS SES 비밀 액세스 키
+- AWS 지역
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/0a58d879-f629-42c9-d9c1-4d78e1c2f700/public)
+
+**8. 일반 메일 설정**
+자동 및 수동 이메일에서 회사를 대표할 이메일 주소를 구성할 수 있습니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/b85d600e-3905-4cc7-7127-2eb9ce22fe00/public)
+**9. 사용자 정의 메일 서비스**
+여기에서 자신의 AWS 계정을 erxes XOS에 연결할 수 있습니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/d02057d2-d4a3-442d-ba56-33aa97ac4100/public)
+**10. 데이터 보존**
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/4cab1880-325a-43d5-9b5d-a7ad81737900/public)
+**11. 상수**
+- 대명사 선택 - 연락처 플러그인에서 사용할 대명사를 선택하세요.
+- 회사 산업 유형 - 연락처 플러그인에서 선택할 회사 유형을 선택하세요.
+- 소셜 링크 - 여기에서 연락처 플러그인에서 선택할 소셜 링크를 선택하세요.
+
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/8e9edf58-61a0-4277-ddff-0d00c5605400/public)

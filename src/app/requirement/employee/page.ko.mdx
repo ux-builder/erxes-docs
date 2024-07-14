@@ -1,0 +1,113 @@
+import { Guides } from '@/components/Guides'
+import { Resources } from '@/components/Resources'
+import { HeroPattern } from '@/components/HeroPattern'
+import React, { Component } from 'react'
+
+export const metadata = {
+  title: '소개 | erxes inc',
+  description:
+    '오픈소스 Hubspot 대안으로, SaaS 제공업체 및 디지털 마케팅 에이전시/개발자가 비즈니스 전체에 걸쳐 고유한 경험을 창출할 수 있도록 합니다.',
+}
+
+
+<HeroPattern />
+
+# **소개**
+
+직원 경험 관리(EXM)는 조직이 직원의 전체 라이프사이클 동안 전반적인 경험을 향상하고 최적화하기 위해 구현하는 전략적 접근 방식과 이니셔티브를 의미합니다. 이는 직원들이 번창하고, 동기를 부여받으며, 조직의 성공에 효과적으로 기여할 수 있는 긍정적이고 참여적이며 지원적인 작업 환경을 만드는 데 중점을 둡니다.
+
+![](https://office.erxes.io/gateway/read-file?key=office-erxes-io/0.4455782400908077Feed.png)
+
+# **목표**
+
+이 문서의 목적은 직원 경험 관리(EXM) 시스템의 기능적 및 비기능적 요구사항에 대한 상세하고 포괄적인 개요를 제공하는 것입니다. 이는 EXM 시스템의 개발, 구현 및 유지보수에 관련된 모든 이해관계자에게 중요한 참고 자료로 사용됩니다.
+- 직원 참여
+- 지속적인 학습 및 개발
+- 피드백 및 인식
+- 조직 가치와의 정렬
+
+<Caution>
+## 가정
+다음은 EXM 이니셔티브와 관련될 수 있는 몇 가지 가정 사항입니다.
+- 사용자는 시스템 사용을 위해 신뢰할 수 있는 인터넷 연결에 접근할 수 있습니다.
+- 인터넷 접속이 불안정하거나 제한된 지역에서는 시스템 성능이 영향을 받을 수 있습니다.
+</Caution>
+
+# **시스템 개요**
+
+직원 경험 관리(EXM)는 조직 내에서 직원의 전체 여정을 통해 긍정적이고 의미 있는 작업 환경을 조성하는 데 중점을 둔 내부 시스템입니다. 이는 온보딩 단계에서 지속적인 전문 개발 및 유지 노력에 이르기까지 전반적인 직원 경험을 향상시키기 위한 전략을 설계하고 구현하는 것을 포함합니다.
+
+# **🏷️기능 요구사항**
+
+직원 경험 관리 시스템의 기능 요구사항:
+
+- <div className="not-prose center mb-2 mt-5 flex gap-1">
+  <Button href="/requirement/employee/user" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '38px 3px 0 3px'}}>
+    <>사용자 관리</>
+  </Button>
+  </div>
+
+- <div className="not-prose center mb-2 mt-5 flex gap-1">
+  <Button href="/requirement/employee/database" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '0' }}>
+    <>직원 데이터베이스</>
+  </Button>
+  </div>
+
+- <div className="not-prose center mb-90 mt-5 flex gap-7">
+  <Button href="/requirement/employee/engagement" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px' }}>
+    <>직원 참여</>
+  </Button>
+    </div>
+
+- <div className="not-prose center mb-90 mt-5 flex gap-7">
+  <Button href="/requirement/employee/structure" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px' }}>
+    <>회사 구조</>
+  </Button>
+    </div>
+
+- <div className="not-prose center mb-90 mt-5 flex gap-1">
+  <Button href="/requirement/employee/attendance" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px' }}>
+    <>출석 관리</>
+  </Button>
+    </div>
+
+- <div className="not-prose center mb-90 mt-5 flex gap-1">
+  <Button href="/requirement/employee/learning" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px 3px 0 3px' }}>
+        <>학습 및 개발</>
+  </Button>
+  </div>
+
+- <div className="not-prose center mb-90 mt-5 flex gap-1">
+  <Button href="/requirement/employee/reports" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px 3px 0 3px' }}>
+        <>분석 및 보고서</>
+  </Button>
+  </div>
+
+# **🏷️비기능적 요구사항**
+
+## 확장성
+직원 경험 관리에서의 확장성은 성능을 저하시키지 않고 사용자 수, 데이터 볼륨 또는 기능이 증가하는 경우 시스템이 적응하고 처리할 수 있는 능력을 의미합니다. 이는 새로운 직원의 추가, 기능 확장 또는 조직 성장에 효율적이고 효과적으로 대응하는 것을 포함합니다.
+
+## 보안
+직원 경험 관리에서의 보안은 민감한 직원 데이터를 보호하고 기밀성, 무결성 및 가용성을 보장하는 데 중점을 둡니다. 이는 암호화, 접근 제어, 데이터 암호화 및 관련 규정(GDPR 또는 기타 데이터 보호법 등) 준수와 같은 강력한 보안 조치를 구현하여 무단 접근, 침해 또는 데이터 유출로부터 직원 정보를 보호하는 것을 포함합니다.
+
+## 사용성
+사용성은 시스템의 사용자 친화성과 사용의 용이성을 의미합니다. 직원 경험 관리에서는 도구와 인터페이스의 직관적인 설계, 탐색 및 접근성을 의미합니다. 사용자 친화적인 시스템은 직원들이 불필요한 복잡성이나 어려움 없이 쉽게 탐색하고, 자원에 접근하고, 피드백을 제공하며, 플랫폼과 상호작용할 수 있도록 보장합니다.
+
+## 성능
+직원 경험 관리에서의 성능은 작업 처리 및 서비스 제공의 응답성, 속도 및 신뢰성을 반영합니다. 이는 시스템이 피크 사용 기간 동안에도 최소한의 지연 또는 가동 중단으로 효율적으로 작동하도록 보장하는 것을 포함합니다. 성능은 또한 쿼리에 대한 응답 시간, 시스템 가용성 및 다양한 시스템 기능의 전반적인 효율성을 다루어, 플랫폼과 상호작용하는 직원들에게 원활하고 매끄러운 경험을 보장합니다.
+
+<Danger>
+### 위험: 직원들이 EXM 시스템 채택에 저항할 가능성.
+
+대책:
+변화 관리 및 커뮤니케이션 전략을 마련하여 우려 사항을 해결하고 시스템의 이점에 대해 직원들을 교육합니다.
+
+### 위험: 보안 취약점으로 인한 데이터 유출 가능성.
+
+대책:
+정기적으로 시스템을 업데이트하고 보안 취약점을 해결합니다.
+강력한 접근 제어 및 암호화 프로토콜을 구현합니다.
+</Danger>
+
+[🖋️이 페이지 개선하기](https://github.com/erxes/erxes-docs/edit/main/src/app/requirement/employee/page.mdx)

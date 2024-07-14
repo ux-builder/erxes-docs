@@ -1,0 +1,1643 @@
+import { Libraries } from '@/components/Libraries'
+import { Developer } from '@/components/Developer'
+import { HeroPattern } from '@/components/HeroPattern'
+import { Lib } from '@/components/Lib'
+
+export const metadata = {
+  title: 'Development',
+  description:
+    'Protocol은 API를 사용할 때 여러분의 삶을 더 편리하게 만들고 최고의 경험을 제공하기 위해 잘 조정된 JavaScript, Ruby, PHP, Python 및 Go 라이브러리를 제공합니다.'
+}
+
+<HeroPattern />
+# 개발
+
+<Developer />
+
+# 일반 플러그인 생성
+
+erxes를 사용하면 자체 플러그인을 생성하거나 기존 플러그인을 확장할 수 있으며, 이를 통해 제품/서비스의 가치를 추가하여 경험을 향상시키고 수익을 증가시킬 수 있습니다. 또한 [우리의 마켓플레이스](https://erxes.io/marketplace)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>에서 판매할 수도 있습니다. 이 가이드는 자체 플러그인을 개발하는 데 도움을 줍니다.
+
+<Caution>
+- 자체 플러그인을 개발하기 전에 동일한 이름 또는 유사한 이름의 플러그인이 마켓플레이스에 존재하지 않는지 확인하세요. 이름은 `API`, `GraphQL`, `query`, `mutation` 등 여러 곳에서 사용되므로 혼동을 피하기 위해 중요합니다.
+- 이름은 소문자만 사용하며, 기호와 공백을 포함하지 않아야 합니다.
+- 모든 `GraphQL` 타입, `query`, `mutation`의 이름은 플러그인 이름으로 시작해야 합니다.
+- 데이터베이스 컬렉션의 이름도 플러그인 이름으로 시작해야 합니다.
+- **UIroutes** 또는 `url`의 이름도 플러그인 이름으로 시작해야 합니다.
+</Caution>
+
+# erxes 설치
+
+---
+
+erxes XOS를 설치하려면 [설치 가이드](/quickstart/groups)를 참조하세요. 그러나 동일한 방향으로 erxes를 실행할 필요는 없습니다.
+
+<Danger>
+erxes XOS가 이미 장치에 설치되어 있다고 가정합니다. 그렇지 않으면 아래 가이드라인이 제대로 작동하지 않을 수 있습니다. [설치 가이드](/quickstart/groups)를 사용하여 erxes XOS를 설치한 후 다시 오십시오.
+</Danger>
+
+<Libraries />
+
+<Lib />
+
+# 새로운 플러그인 생성
+
+각 플러그인은 `API`와 `UI` 두 부분으로 구성됩니다.
+
+- 다음 명령어를 사용하여 두 부분의 새 폴더를 생성하세요.
+
+```bash {{ title: '' }}
+    cd erxes
+    yarn create-plugin 
+```
+
+명령어를 실행하면 CLI가 시작되며, 새 플러그인을 생성하기 위해 몇 가지 질문이 표시됩니다. 아래 예제에서는 document라는 이름의 플러그인을 생성합니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/6e30c8b7-5396-48a2-3b4a-8b2223080400/public)
+
+아래 예제는 메인 내비게이션에 배치된 예제 템플릿에서 생성된 새 플러그인입니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/88dccd76-b921-441f-e903-7ff31b278900/public)
+
+빈 템플릿에서 생성하면 아래와 같이 표시됩니다. 이는 erxes에서 자유롭게 플러그인을 개발할 수 있도록 공간을 제공합니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/fe16b5f8-e361-4194-87ff-772616413300/public)
+
+# API 파일 구조
+
+플러그인을 생성한 후에는 새 플러그인 API에 다음과 같은 파일들이 자동으로 생성됩니다.
+```bash {{ title: '' }}
+📦plugin-document-api
+ ┣ 📂src
+ ┃ ┣ 📂graphql
+ ┃ ┃ ┣ 📂resolvers 
+ ┃ ┃ ┃ ┣ index.ts
+ ┃ ┃ ┃ ┣ mutations.ts
+ ┃ ┃ ┃ ┗ queries.ts
+ ┃ ┃ ┣ index.ts
+ ┃ ┃ ┗ typeDefs.ts
+ ┃ ┣ configs.ts
+ ┃ ┣ messageBroker.ts
+ ┃ ┗ models.ts
+ ┣ .env.sample
+ ┣ package.json
+ ┗ tsconfig.json
+```
+
+### 주요 파일
+plugin-[pluginName]-api/src에 다음 파일들이 자동으로 생성됩니다.
+
+### configs.ts
+이 파일은 플러그인의 주요 설정을 포함하고 있습니다.
+
+```bash {{ title: 'configs.ts file:' }}
+// path: ./packages/plugin-[pluginName]-api/src/configs.ts 
+import typeDefs from './graphql/typeDefs';
+import resolvers from './graphql/resolvers';
+import { initBroker } from './messageBroker';
+export let mainDb;
+export let debug;
+export let graphqlPubsub;
+export let serviceDiscovery;
+export default {
+  name: '[pluginName]',
+  graphql: async sd => {
+    serviceDiscovery = sd;
+    return {
+      typeDefs: await typeDefs(sd),
+      resolvers: await resolvers(sd)
+    };
+  },
+  apolloServerContext: async (context) => {
+    return context;
+  },
+  onServerInit: async options => {
+    mainDb = options.db;
+    initBroker(options.messageBrokerClient);
+    graphqlPubsub = options.pubsubClient;
+    debug = options.debug;
+  }
+}
+```
+### messageBroker.ts
+이 파일은 다른 플러그인과 연결하는 데 사용됩니다. 공통 기능에서 메시지 브로커 함수를 확인할 수 있습니다.
+
+```bash {{ title: ' messageBroker.ts file:' }}
+// path: ./packages/plugin-[pluginName]-api/src/messageBroker.ts 
+import { ISendMessageArgs, sendMessage } from "@erxes/api-utils/src/core";
+import { serviceDiscovery } from "./configs";
+import { Documents } from "./models";
+let client;
+export const initBroker = async cl => {
+  client = cl;
+  const { consumeQueue, consumeRPCQueue } = client;
+  consumeQueue('document:send', async ({ data }) => {
+    Documents.send(data);
+    return {
+      status: 'success',
+    };
+  });
+  consumeRPCQueue('document:find', async ({ data }) => {
+    return {
+      status: 'success',
+      data: await Documents.find({})
+    };
+  });
+};
+export const sendCommonMessage = async (
+  args: ISendMessageArgs & { serviceName: string }
+) => {
+  return sendMessage({
+    serviceDiscovery,
+    client,
+    ...args
+  });
+};
+export default function() {
+  return client;
+}
+```
+
+## GraphQL 개발
+`packages/plugin-<new_plugin>-api/src` 내부에는 `graphql` 폴더가 있습니다. 이 폴더에는 GraphQL과 관련
+```tsx
+ 📂src
+ ┣ 📂graphql
+ ┃ ┣ 📂resolvers 
+ ┃ ┃ ┣ index.ts
+ ┃ ┃ ┣ mutations.ts
+ ┃ ┃ ┗ queries.ts
+ ┃ ┣ index.ts
+ ┃ ┗ typeDefs.ts
+ ```
+### GraphQL 리졸버
+`/graphql/resolvers/mutations` 내부에는 GraphQL 변이 코드가 포함되어 있습니다.
+
+```bash {{ title: ' mutation examples:' }}
+import { Documents, Types } from '../../models';
+import { IContext } from "@erxes/api-utils/src/types"
+const documentMutations = {
+/**
+ * 새로운 문서를 생성합니다
+ */
+async documentsAdd(_root, doc, _context: IContext) {
+  return Documents.createDocument(doc);
+},
+/**
+ * 문서를 수정합니다
+ */
+async documentsEdit(
+  _root,
+  { _id, ...doc },
+  _context: IContext
+) {
+  return Documents.updateDocument(_id, doc);
+},
+/**
+ * 단일 문서를 제거합니다
+ */
+async documentsRemove(_root, { _id }, _context: IContext) {
+  return Documents.removeDocument(_id);
+},
+/**
+ * 문서를 위한 새로운 유형을 생성합니다
+ */
+async documentTypesAdd(_root, doc, _context: IContext) {
+  return Types.createType(doc);
+},
+async documentTypesRemove(_root, { _id }, _context: IContext) {
+  return Types.removeType(_id);
+},
+async documentTypesEdit(
+  _root,
+  { _id, ...doc },
+  _context: IContext
+) {
+return Types.updateType(_id, doc);
+}
+};
+export default documentMutations;
+```
+### `/graphql/resolvers/queries` 폴더 내부에는 GraphQL 쿼리 코드가 포함되어 있습니다.
+
+```bash {{ title: ' query examples:' }}
+import { Documents, Types } from "../../models";
+import { IContext } from "@erxes/api-utils/src/types"
+const documentQueries = {
+  documents(
+    _root,
+    {
+      typeId
+    },
+    _context: IContext
+  ) {
+    const selector: any = {};
+    if (typeId) {
+      selector.typeId = typeId;
+    }
+    return Documents.find(selector).sort({ order: 1, name: 1 });
+  },
+  documentTypes(_root, _args, _context: IContext) {
+    return Types.find({});
+  },
+  documentsTotalCount(_root, _args, _context: IContext) {
+    return Documents.find({}).countDocuments();
+  }
+};
+export default documentQueries;
+```
+### GraphQL typeDefs
+`/graphql/typeDefs.ts` 파일 내부에는 GraphQL typeDefs가 포함되어 있습니다.
+
+```bash {{ title: ' typeDefs:' }}
+import { gql } from 'apollo-server-express';
+const types = `
+  type Document {
+    _id: String!
+    name: String
+    createdAt:Date
+    expiryDate:Date
+    checked:Boolean
+    typeId: String
+  
+    currentType: DocumentType
+  }
+  type DocumentType {
+    _id: String!
+    name: String
+  }
+`;
+const queries = `
+  documents(typeId: String): [Document]
+  documentTypes: [DocumentType]
+  documentsTotalCount: Int
+`;
+const params = `
+  name: String,
+  expiryDate: Date,
+  checked: Boolean,
+  typeId:String
+`;
+const mutations = `
+  documentsAdd(${params}): Document
+  documentsRemove(_id: String!): JSON
+  documentsEdit(_id:String!, ${params}): Document
+  documentTypesAdd(name:String):DocumentType
+  documentTypesRemove(_id: String!):JSON
+  documentTypesEdit(_id: String!, name:String): DocumentType
+`;
+const typeDefs = async _serviceDiscovery => {
+  return gql`
+    scalar JSON
+    scalar Date
+    ${types}
+    
+    extend type Query {
+      ${queries}
+    }
+    
+    extend type Mutation {
+      ${mutations}
+    }
+  `;
+};
+export default typeDefs;
+
+```
+
+데이터베이스 개발
+`packages/plugin-<new_plugin>-api/src` 내부에는 `models` 파일이 있습니다. 이 파일에는 MongoDB와 mongoose와 관련된 코드가 포함되어 있습니다.
+
+```tsx
+📂src
+┗ models.ts
+```
+### Mongoose schema and model
+Inside `src/models.ts`, file contains Mongoose schema and models.
+```bash {{ title: ' Mongoose schema and model example:' }}
+import * as _ from 'underscore';
+import { model } from 'mongoose';
+import { Schema } from 'mongoose';
+export const typeSchema = new Schema({
+  name: String
+});
+export const documentSchema = new Schema({
+  name: String,
+  createdAt: Date,
+  expiryDate: Date,
+  checked: Boolean,
+  typeId: String
+});
+export const loadTypeClass = () => {
+  class Type {
+    public static async getType(_id: string) {
+      const type = await Types.findOne({ _id });
+      if (!type) {
+        throw new Error('Type not found');
+      }
+      return type;
+    }
+    // create type
+    public static async createType(doc) {
+      return Types.create({ ...doc });
+    }
+    // remove type
+    public static async removeType(_id: string) {
+      return Types.deleteOne({ _id });
+    }
+    public static async updateType(_id: string, doc) {
+      return Types.updateOne({ _id }, { $set: { ...doc } });
+    }
+  }
+  typeSchema.loadClass(Type);
+  return typeSchema;
+};
+export const loadDocumentClass = () => {
+  class Document {
+    public static async getDocument(_id: string) {
+      const document = await Documents.findOne({ _id });
+      if (!document) {
+        throw new Error('Document not found');
+      }
+      return document;
+    }
+    // create
+    public static async createDocument(doc) {
+      return Documents.create({
+        ...doc,
+        createdAt: new Date()
+      });
+    }
+    // update
+    public static async updateDocument (_id: string, doc) {
+      await Documents.updateOne(
+        { _id },
+        { $set: { ...doc } }
+      ).then(err => console.error(err));
+    }
+    // remove
+    public static async removeDocument(_id: string) {
+      return Documents.deleteOne({ _id });
+    }
+  }
+documentSchema.loadClass(Document);
+return documentSchema;
+};
+loadDocumentClass();
+loadTypeClass();
+// tslint:disable-next-line
+export const Types = model<any, any>(
+  'document_types',
+  typeSchema
+);
+// tslint:disable-next-line
+export const Documents = model<any, any>('documents', documentSchema);
+```
+
+## UI 파일 구조
+`yarn-create-plugin` 명령어를 사용하여 새 플러그인을 생성한 후, 새로운 플러그인 UI에는 다음과 같은 파일이 자동으로 생성됩니다.
+
+```tsx
+📦plugin-[pluginName]-ui
+ ┣ 📂src
+ ┃ ┣ 📂components
+ ┃ ┃ ┣ Form.tsx
+ ┃ ┃ ┣ List.tsx
+ ┃ ┃ ┣ Row.tsx
+ ┃ ┃ ┣ SideBar.tsx
+ ┃ ┃ ┗ TypeForm.tsx
+ ┃ ┣ 📂containers
+ ┃ ┃ ┣ List.tsx
+ ┃ ┃ ┗ SideBarList.tsx
+ ┃ ┣ 📂graphql
+ ┃ ┃ ┣ index.ts
+ ┃ ┃ ┣ mutations.ts
+ ┃ ┃ ┗ queries.ts
+ ┃ ┣ App.tsx
+ ┃ ┣ configs.js
+ ┃ ┣ generalRoutes.tsx
+ ┃ ┣ index.js
+ ┃ ┣ routes.tsx
+ ┃ ┗ types.ts
+ ```
+## 주요 파일
+다음 파일들은 `plugin-[pluginName]-ui/src`에 자동으로 생성됩니다.
+
+### configs.js
+이 파일에는 플러그인의 주요 설정이 포함되어 있습니다.
+
+```bash {{ title: 'configs.js file:' }}
+// path: ./packages/plugin-[pluginName]-ui/src/configs.js 
+  module.exports = {
+    name: '[pluginName]',
+    port: 3017,
+    scope: '[pluginName]',
+    exposes: {
+      './routes': './src/routes.tsx'
+    },
+    routes: {
+      url: 'http://localhost:3017/remoteEntry.js',
+      scope: '[pluginName]',
+      module: './routes'
+    },
+    menus:[
+        {
+          "text":"[pluginName]",
+          "url":"/[pluginUrl]",
+          "icon":"icon-star",
+          "location":"[mainNavigation or settings]"
+        }
+      ]
+  };
+  ```
+
+### routes.tsx
+이 파일에는 플러그인 UI의 라우트가 포함되어 있습니다.
+
+```bash {{ title: 'routes.tsx file:' }}
+// path: ./packages/plugin-[pluginName]-ui/src/routes.tsx 
+  import asyncComponent from '@erxes/ui/src/components/AsyncComponent';
+  import queryString from 'query-string';
+  import React from 'react';
+  import { Route } from 'react-router-dom';
+  const List = asyncComponent(() =>
+    import(/* webpackChunkName: "List - Documents" */ './containers/List')
+  );
+  const documents = ({ location, history }) => {
+    const queryParams = queryString.parse(location.search);
+    const { type } = queryParams;
+    return <List typeId={type} history={history} />;
+  };
+  const routes = () => {
+    return <Route path="/documents/" component={documents} />;
+  };
+```
+
+### App.tsx
+이 파일에는 애플리케이션의 주요 컴포넌트가 포함되어 있습니다.
+
+```bash {{ title: 'App.tsx file:' }}
+// path: ./packages/plugin-[pluginName]-ui/src/App.tsx 
+  import React from 'react';
+  import GeneralRoutes from './generalRoutes';
+  import { PluginLayout } from '@erxes/ui/src/styles/main';
+  const App = () => {
+    return (
+      <PluginLayout>
+        <GeneralRoutes />
+      </PluginLayout>
+    );
+  };
+  export default App;
+  ```
+
+# UI 개발
+### Components
+`src` 폴더 내에 `components` 폴더가 있습니다. 이 폴더에는 플러그인의 주요 컴포넌트가 포함되어 있습니다.
+
+```tsx
+ 📂src
+ ┣ 📂components
+ ┃ ┣ Form.tsx
+ ┃ ┣ List.tsx
+ ┃ ┣ Row.tsx
+ ┃ ┣ SideBar.tsx
+ ┃ ┗ TypeForm.tsx
+ ```
+```bash {{ title: 'components example:' }}
+ // path: ./packages/plugin-[pluginName]-ui/src/components/TypeForm.tsx 
+  import { __ } from '@erxes/ui/src/utils/core';
+  import React from 'react';
+  import { IType } from '../types';
+  import { IButtonMutateProps, IFormProps } from '@erxes/ui/src/types';
+  import Form from '@erxes/ui/src/components/form/Form';
+  import {
+    ControlLabel,
+    FormControl,
+    FormGroup
+  } from '@erxes/ui/src/components/form';
+  import Button from '@erxes/ui/src/components/Button';
+  import { ModalFooter } from '@erxes/ui/src/styles/main';
+  type Props = {
+    renderButton: (props: IButtonMutateProps) => JSX.Element;
+    closeModal?: () => void;
+    afterSave?: () => void;
+    remove?: (type: IType) => void;
+    types?: IType[];
+    type: IType;
+  };
+  const TypeForm = (props: Props) => {
+    const { type, closeModal, renderButton, afterSave } = props;
+    const generateDoc = (values: {
+      _id?: string;
+      name: string;
+      content: string;
+    }) => {
+      const finalValues = values;
+      const { type } = props;
+      if (type) {
+        finalValues._id = type._id;
+      }
+      return {
+        ...finalValues
+      };
+    };
+    const renderContent = (formProps: IFormProps) => {
+      const { values, isSubmitted } = formProps;
+      const object = type || ({} as any);
+      return (
+        <>
+          <FormGroup>
+            <ControlLabel required={true}>Todo Type</ControlLabel>
+            <FormControl
+              {...formProps}
+              name='name'
+              defaultValue={object.name}
+              type='text'
+              required={true}
+              autoFocus={true}
+            />
+          </FormGroup>
+          <ModalFooter id={'AddTypeButtons'}>
+            <Button btnStyle='simple' onClick={closeModal} icon='times-circle'>
+              Cancel
+            </Button>
+            {renderButton({
+              passedName: 'type',
+              values: generateDoc(values),
+              isSubmitted,
+              callback: closeModal || afterSave,
+              object: type
+            })}
+          </ModalFooter>
+        </>
+      );
+    };
+    return <Form renderContent={renderContent} />;
+  };
+  export default TypeForm;
+  ```
+
+### Containers
+`src` 폴더 내에 `containers` 폴더가 있습니다. 이 폴더에는 API와 관련된 코드가 포함된 컴포넌트가 포함되어 있습니다.
+
+```tsx
+ 📂src
+  ┣ 📂containers
+  ┃ ┣ List.tsx
+  ┃ ┗ SideBarList.tsx
+  ```
+```bash {{ title: 'containers example:' }}
+  // path: ./packages/plugin-[pluginName]-ui/src/containers/SideBarList.tsx 
+  import gql from 'graphql-tag';
+  import * as compose from 'lodash.flowright';
+  import { graphql } from 'react-apollo';
+  import { Alert, confirm, withProps } from '@erxes/ui/src/utils';
+  import SideBar from '../components/SideBar';
+  import {
+    EditTypeMutationResponse,
+    RemoveTypeMutationResponse,
+    TypeQueryResponse
+  } from '../types';
+  import { mutations, queries } from '../graphql';
+  import React from 'react';
+  import { IButtonMutateProps } from '@erxes/ui/src/types';
+  import ButtonMutate from '@erxes/ui/src/components/ButtonMutate';
+  import Spinner from '@erxes/ui/src/components/Spinner';
+  type Props = {
+    history: any;
+    currentTypeId?: string;
+  };
+  type FinalProps = {
+    listTemplateTypeQuery: TypeQueryResponse;
+  } & Props &
+    RemoveTypeMutationResponse &
+    EditTypeMutationResponse;
+  const TypesListContainer = (props: FinalProps) => {
+    const { listTemplateTypeQuery, typesEdit, typesRemove, history } = props;
+    if (listTemplateTypeQuery.loading) {
+      return <Spinner />;
+    }
+    // calls gql mutation for edit/add type
+    const renderButton = ({
+      passedName,
+      values,
+      isSubmitted,
+      callback,
+      object
+    }: IButtonMutateProps) => {
+      return (
+        <ButtonMutate
+          mutation={object ? mutations.editType : mutations.addType}
+          variables={values}
+          callback={callback}
+          isSubmitted={isSubmitted}
+          type="submit"
+          successMessage={`You successfully ${
+            object ? 'updated' : 'added'
+          } a ${passedName}`}
+          refetchQueries={['listTemplateTypeQuery']}
+        />
+      );
+    };
+    const remove = type => {
+      confirm('You are about to delete the item. Are you sure? ')
+        .then(() => {
+          typesRemove({ variables: { _id: type._id } })
+            .then(() => {
+              Alert.success('Successfully deleted an item');
+            })
+            .catch(e => Alert.error(e.message));
+        })
+        .catch(e => Alert.error(e.message));
+    };
+    const updatedProps = {
+      ...props,
+      types: listTemplateTypeQuery.templateTypes || [],
+      loading: listTemplateTypeQuery.loading,
+      remove,
+      renderButton
+    };
+    return <SideBar {...updatedProps} />;
+  };
+  export default withProps<Props>(
+    compose(
+      graphql(gql(queries.listTemplateTypes), {
+        name: 'listTemplateTypeQuery',
+        options: () => ({
+          fetchPolicy: 'network-only'
+        })
+      }),
+      graphql(gql(mutations.removeType), {
+        name: 'typesRemove',
+        options: () => ({
+          refetchQueries: ['listTemplateTypeQuery']
+        })
+      })
+    )(TypesListContainer)
+  );
+  ```
+### GraphQL
+`src` 폴더 내에 `graphql` 폴더가 있습니다. 이 폴더에는 GraphQL과 관련된 코드가 포함되어 있습니다.
+```tsx
+📂src
+ ┣ 📂graphql
+ ┃ ┣ index.ts
+ ┃ ┣ mutations.ts
+ ┃ ┗ queries.ts
+ ```
+ Inside `/graphql/mutations.ts` GraphQL mutation codes.
+
+```bash {{ title: 'GraphQL mutation examples:' }}
+const add = `
+  mutation documentsAdd($name: String!, $expiryDate: Date, $typeId:String) {
+    documentsAdd(name:$name, expiryDate: $expiryDate, typeId:$typeId) {
+      name
+      _id
+      expiryDate
+      typeId
+    }
+  }
+`;
+
+const remove = `
+  mutation documentsRemove($_id: String!){
+    documentsRemove(_id: $_id)
+  }
+  `;
+
+const edit = `
+  mutation documentsEdit($_id: String!, $name:String, $expiryDate:Date, $checked:Boolean, $typeId:String){
+    documentsEdit(_id: $_id, name: $name, expiryDate:$expiryDate, checked:$checked, typeId:$typeId){
+      _id
+    }
+  }
+  `;
+
+const addType = `
+  mutation typesAdd($name: String!){
+    documentTypesAdd(name:$name){
+      name
+      _id
+    }
+  }
+  `;
+
+const removeType = `
+  mutation typesRemove($_id:String!){
+    documentTypesRemove(_id:$_id)
+  }
+`;
+
+const editType = `
+  mutation typesEdit($_id: String!, $name:String){
+    documentTypesEdit(_id: $_id, name: $name){
+      _id
+    }
+  }
+`;
+
+export default {
+  add,
+  remove,
+  edit,
+  addType,
+  removeType,
+  editType
+};
+```
+
+### `/graphql/queries.ts` 파일에는 GraphQL query 코드가 포함되어 있습니다.
+
+```bash {{ title: 'GraphQL query examples:' }}
+const list = `
+  query listQuery($typeId: String) {
+    documents(typeId: $typeId) {
+      _id
+      name
+      expiryDate
+      createdAt
+      checked
+      typeId
+      currentType{
+        _id
+        name
+      }
+    }
+  }
+`;
+const listDocumentTypes = `
+  query listDocumentTypeQuery{
+    documentTypes{
+      _id
+      name
+    }
+  }
+`;
+const totalCount = `
+  query documentsTotalCount{
+    documentsTotalCount
+  }
+`;
+export default {
+  list,
+  totalCount,
+  listDocumentTypes
+};
+```
+
+# UI 설정
+# 플러그인 실행 포트
+`packages/plugin-<new_plugin>-ui/src/configs.js` 파일 내에 플러그인 UI의 실행 포트가 설정되어 있습니다. 기본 값은 3017입니다. 각 플러그인은 고유한 포트에서 UI가 실행되어야 합니다. 여러 플러그인을 개발하는 경우 `configs.js` 파일 내에서 포트를 수동으로 변경해야 할 수 있습니다.
+
+```tsx
+module.exports = {
+  name: 'new_plugin',
+  port: 3017,
+  scope: 'new_plugin',
+  exposes: {
+    './routes': './src/routes.tsx'
+  },
+  routes: {
+    url: 'http://localhost:3017/remoteEntry.js',
+    scope: 'new_plugin',
+    module: './routes'
+  },
+  menus: []
+};
+```
+# 플러그인 위치
+`packages/plugin-<new_plugin>-ui/src/configs.js` 파일 내에 설정 섹션이 있습니다. 아래 예시는 새 플러그인을 메인 내비게이션 메뉴에 배치하는 방법을 보여줍니다.
+
+```tsx
+menus: [
+  {
+    text: 'New plugin',
+    url: '/new_plugins',
+    icon: 'icon-star',
+    location: 'mainNavigation',
+  }
+]
+```
+설정 메뉴 내에만 배치하려는 경우, 아래 예시를 참조하십시오.
+
+```tsx
+menus: [
+  {
+    text: 'New plugin',
+    to: '/new_plugins',
+    image: '/images/icons/erxes-18.svg',
+    location: 'settings',
+    scope: 'new_plugin'
+  }
+]
+```
+
+# 플러그인 활성화
+`cli/configs.json` 파일 내의 "plugins" 섹션에는 erxes 시작 시 실행되는 플러그인 이름이 포함되어 있습니다. 다른 플러그인을 활성화하거나, 제거하거나, 재생성하기로 결정한 경우 이 섹션을 구성해야 합니다.
+
+```tsx
+{
+ "jwt_token_secret": "token",
+ "dashboard": {},
+ "client_portal_domains": "",
+ "elasticsearch": {},
+ "redis": {
+   "password": ""
+ },
+ "mongo": {
+   "username": "",
+   "password": ""
+ },
+ "rabbitmq": {
+   "cookie": "",
+   "user": "",
+   "pass": "",
+   "vhost": ""
+ },
+ "plugins": [
+   {
+     "name": "logs"
+   },
+   {
+     "name": "new_plugin",
+     "ui": "local"
+   }
+ ]
+}
+```
+# erxes 실행
+`create-plugin` 명령은 `cli/configs.json` 파일에 새 줄을 자동으로 추가하고 필요한 종속성을 설치합니다.
+
+```tsx
+{
+    "jwt_token_secret": "token",
+    "client_portal_domains": "",
+    "elasticsearch": {},
+    "redis": {
+        "password": "pass"
+    },
+    "mongo": {
+        "username": "",
+        "password": ""
+    },
+    "rabbitmq": {
+        "cookie": "",
+        "user": "",
+        "pass": "",
+        "vhost": ""
+    },
+    "plugins": [
+      {
+        "name": "new_plugin",
+        "ui": "local"
+      }
+    ]
+}
+```
+2. 다음 명령을 실행하세요.
+```tsx
+cd erxes/cli
+yarn install
+```
+
+3. 새로 설치한 플러그인과 함께 erxes를 시작하려면 다음 명령을 실행하세요.
+```tsx
+./bin/erxes.js dev
+```
+
+
+
+
+
+## Integration 플러그인 생성
+
+Integration은 Inbox 플러그인의 확장으로, 타사 소프트웨어를 공유 Inbox에 통합할 수 있게 해줍니다.
+
+<Caution>
+진행하기 전에, [가이드라인](/sdks/creategen)을 읽어보시고, [마켓플레이스](https://erxes.io/marketplace)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>에서 제공하는 기존의 통합 예제를 확인해보세요. 예제로 사용할 IMAP 통합은 [여기](https://github.com/erxes/erxes-community/tree/dev/packages)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>에서 찾을 수 있습니다.
+</Caution>
+
+이미 위 가이드를 사용하여 플러그인을 생성했다고 가정하고, 플러그인 이름은 IMAP입니다.
+
+configs.json에 다음 Inbox 관련 플러그인을 추가하고 서비스를 시작하세요.
+
+```tsx
+ "plugins": [
+        {
+            "name": "forms",
+            "ui": "remote"
+        },
+        {
+            "name": "contacts",
+            "ui": "local"
+        },
+        {
+            "name": "inbox",
+            "ui": "local"
+        },
+        {
+            "name": "imap",
+            "ui": "local"
+        }
+```
+
+# Inbox 통합의 핵심 개념
+1. **Brand** - 데이터 분리의 가장 큰 수준. 회사가 3개의 자회사를 포함하는 그룹 회사라고 가정해봅시다. 이 경우 각 브랜드는 각 자회사를 나타냅니다.
+2. **Channel** - 통합 및 팀 멤버 그룹으로, 누가 어떤 통합을 담당하는지 나타냅니다.
+3. **Integration** - IMAP의 경우, 이메일 주소, 비밀번호, smtp 호스트 등을 포함하는 설정 집합입니다.
+4. **Customer** - IMAP의 경우, 이메일을 보낸 사람입니다.
+5. **Conversation** - IMAP의 경우, 전체 이메일 스레드입니다.
+6. **Conversation Messages** - IMAP의 경우, 단일 이메일 스레드의 각 이메일 항목입니다.
+
+# 통합의 생명 주기
+1. 해당 설정을 사용하여 통합 인스턴스를 생성하고, 이를 inbox의 데이터베이스에 저장합니다. 이후 원하는 API와 작업할 때 이 설정을 사용합니다.
+2. plugin-"integration-name"-api에서 통합 설정을 사용하여 원하는 API로부터 데이터를 수신합니다.
+3. 수신된 데이터를 대화, 대화 메시지, 고객으로 저장합니다. 대화는 inbox의 데이터베이스에, 고객은 contacts의 데이터베이스에, 대화 메시지는 플러그인의 데이터베이스에 저장해야 합니다.
+4. 대화와 고객을 저장하면 inbox의 사이드바에 표시됩니다. 그러나 대화의 세부 사항은 플러그인의 UI에서 담당해야 합니다.
+5. 대화 세부 사항을 표시할 수 있는 만큼, 고객에게 응답을 보내는 등의 추가 작업도 담당해야 합니다.
+
+# IMAP을 예로 들어 위 단계를 시연해 보겠습니다
+## 통합 생성
+plugin-imap-ui의 configs.js를 살펴봅시다
+
+```tsx
+ inboxIntegration: {
+    name: 'IMAP',
+    description:
+      'Connect a company email address such as sales@mycompany.com or info@mycompany.com',
+    isAvailable: true,
+    kind: 'imap',
+    logo: '/images/integrations/email.png',
+    createModal: 'imap',
+    createUrl: '/settings/integrations/imap',
+    category:
+      'All integrations, For support teams, Marketing automation, Email marketing'
+  }
+  ```
+/settings/integrations 위치에 다음 블록을 생성합니다.
+
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/5e5d8967-e17a-45ac-5bac-f25fe6351300/public)
+
+
+  ```tsx
+  "./inboxIntegrationForm": "./src/components/IntegrationForm.tsx",
+  ```
+  and
+
+  ```tsx
+inboxIntegrationForm: './inboxIntegrationForm',
+  ```
+
+ 위 그림에서 add 링크를 클릭하면 `./src/components/IntegrationForm.tsx` 컴포넌트가 표시됩니다.
+
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/e4ed1a7b-874c-4b1a-201b-ce0c7a14e300/public)
+
+"Save" 버튼을 클릭하면 메시지가 `plugin-imap-api`로 전송됩니다. 다음과 같은 소비자를 작성해야 합니다.
+
+```tsx
+consumeRPCQueue(
+  'imap:createIntegration',
+  async ({ subdomain, data: { doc, integrationId } }) => {
+    const models = await generateModels(subdomain);
+
+    const integration = await models.Integrations.create({
+      inboxId: integrationId,
+      ...doc
+    });
+
+    await listenIntegration(subdomain, integration);
+
+    await models.Logs.createLog({
+      type: 'info',
+      message: `Started syncing ${integration.user}`
+    });
+
+    return {
+      status: 'success'
+    };
+  }
+);
+```
+[here is the example](https://github.com/erxes/erxes-community/blob/dev/packages/plugin-imap-api/src/messageBroker.ts)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>
+# 원하는 API에서 데이터 수신
+
+[here is the code example](https://github.com/erxes/erxes-community/blob/dev/packages/plugin-imap-api/src/utils.ts)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>
+
+# 데이터 저장
+1. 
+```tsx
+const apiCustomerResponse = await sendContactsMessage({
+  subdomain,
+  action: 'customers.createCustomer',
+  data: {
+    integrationId: integration.inboxId,
+    primaryEmail: from
+  },
+  isRPC: true
+});
+```
+createCustomer 메시지를 contacts 플러그인에 보내면 contacts 플러그인이 이를 데이터베이스에 저장합니다.
+
+2. 
+```tsx
+const { _id } = await sendInboxMessage({
+  subdomain,
+  action: 'integrations.receive',
+  data: {
+    action: 'create-or-update-conversation',
+    payload: JSON.stringify({
+      integrationId: integration.inboxId,
+      customerId,
+      createdAt: msg.date,
+      content: msg.subject
+    })
+  },
+  isRPC: true
+});
+```
+create 또는 update conversation 메시지를 inbox 플러그인에 보내면 inbox 플러그인이 이를 데이터베이스에 저장합니다.
+
+# 대화 세부 사항
+plugin-imap-ui의 configs.js에서
+
+```tsx
+"./inboxConversationDetail": "./src/components/ConversationDetail.tsx",
+```
+
+and
+
+```tsx
+inboxConversationDetail: './inboxConversationDetail',
+```
+
+대화 세부 사항 섹션에서 `./src/components/ConversationDetail.tsx` 컴포넌트를 렌더링합니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/3cd9edd4-bf11-412a-d4c4-c89127a33000/public)
+
+# 새로운 통합 플러그인 생성
+각 플러그인은 `API`와 `UI`의 두 부분으로 구성됩니다.
+
+1. 다음 명령어를 사용하여 두 부분에 대한 새 폴더를 생성합니다.
+
+```tsx
+cd erxes
+yarn create-plugin
+```
+
+위 명령어는 CLI를 시작하여 새 통합 플러그인을 생성하기 위한 몇 가지 질문을 묻습니다. 이 예제에서는 twitter 통합을 생성합니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/95a9c88c-1c84-4f08-ce28-75170897fc00/public)
+
+아래 예제는 예제 템플릿에서 생성된 새로운 통합 플러그인으로, 설정 통합에 배치됩니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/add9ac3a-0d02-44e6-a9c6-5a1a0ae3fb00/public)
+
+아래 예제는 예제 템플릿에서 생성된 새로운 통합 플러그인의 구성으로, 설정 통합 구성에 배치됩니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/08761770-ac2e-4ce2-cddf-dfdfef8daa00/public)
+
+아래 예제는 폼을 사용하여 새로운 예제 통합을 생성하는 것입니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/23337484-540c-4cdc-cbb5-ce25ce22f300/public)
+
+아래 예제는 세부 페이지와 함께 새로운 통합을 생성하는 것입니다. 통합 플러그인 UI 템플릿에서 **with detail** 옵션을 선택하면 추가 버튼을 클릭할 때 세부 페이지로 연결됩니다.
+![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/9c4e7e6a-cac5-49c4-d2c8-4c0aa1925500/public)
+
+## API 파일 구조
+통합 플러그인을 생성한 후, 통합 플러그인 API에 다음 파일이 자동으로 생성됩니다.
+
+```tsx
+📦plugin-twitter-api
+ ┣ 📂src
+ ┃ ┣ 📂graphql
+ ┃ ┃ ┣ 📂resolvers
+ ┃ ┃ ┃ ┣ index.ts
+ ┃ ┃ ┃ ┣ mutations.ts
+ ┃ ┃ ┃ ┗ queries.ts
+ ┃ ┃ ┣ index.ts
+ ┃ ┃ ┗ typeDefs.ts
+ ┃ ┣ configs.ts
+ ┃ ┣ controller.ts
+ ┃ ┣ messageBroker.ts
+ ┃ ┗ models.ts
+ ┣ .env.sample
+ ┣ package.json
+ ┗ tsconfig.json
+ ```
+
+# 주요 파일
+다음 파일들이 plugin-[pluginName]-api/src에 자동으로 생성됩니다.
+
+# configs.ts
+이 파일에는 통합 플러그인의 주요 설정이 포함되어 있습니다.
+
+```bash {{ title: 'configs.ts file:' }}
+// path: ./packages/plugin-[pluginName]-api/src/configs.ts 
+  import typeDefs from './graphql/typeDefs';
+  import resolvers from './graphql/resolvers';
+  import { initBroker } from './messageBroker';
+  import init from './controller';
+  export let mainDb;
+  export let graphqlPubsub;
+  export let serviceDiscovery;
+  export let debug;
+  export default {
+    name: 'twitter',
+    graphql: sd => {
+      serviceDiscovery = sd;
+      return {
+        typeDefs,
+        resolvers
+      };
+    },
+    meta: {
+      // this code will show the integration in UI settings -> integrations
+      inboxIntegration: {
+        kind: 'twitter',
+        label: 'Twitter'
+      }
+    },
+    apolloServerContext: async (context) => {
+      return context;
+    },
+    onServerInit: async options => {
+      const app = options.app;
+      mainDb = options.db;
+      debug = options.debug;
+      graphqlPubsub = options.pubsubClient;
+      initBroker(options.messageBrokerClient);
+      // integration controller
+      init(app);
+    }
+  };
+  ```
+# controller.ts
+이 파일에는 통합을 듣고, erxes와 연결하고 대화와 고객을 생성하는 통합 컨트롤러가 포함되어 있습니다. 이 예제에서는 메시지 저장을 보여줍니다.
+```bash {{ title: 'controller.ts file:' }}
+import { sendContactsMessage, sendInboxMessage } from './messageBroker';
+  import { Customers, Messages } from './models';
+  // util function
+  const searchMessages = (linkedin, criteria) => {
+    return new Promise((resolve, reject) => {
+      const messages: any = [];
+    });
+  };
+  // Example for save messages to inbox and create or update customer
+  const saveMessages = async (
+    linkedin,
+    integration,
+    criteria
+  ) => {
+    const msgs: any = await searchMessages(linkedin, criteria);
+    for (const msg of msgs) {
+      const message = await Messages.findOne({
+        messageId: msg.messageId
+      });
+      if (message) {
+        continue;
+      }
+      const from = msg.from.value[0].address;
+      const prev = await Customers.findOne({ email: from });
+      let customerId;
+      if (!prev) {
+        // search customer from contacts api
+        const customer = await sendContactsMessage({
+          subdomain: 'os',
+          action: 'customers.findOne',
+          data: {
+            primaryEmail: from
+          },
+          isRPC: true
+        });
+        if (customer) {
+          customerId = customer._id;
+        } else {
+          // creating new customer
+          const apiCustomerResponse = await sendContactsMessage({
+            subdomain: 'os',
+            action: 'customers.createCustomer',
+            data: {
+              integrationId: integration.inboxId,
+              primaryEmail: from
+            },
+            isRPC: true
+          });
+          customerId = apiCustomerResponse._id;
+        }
+        await Customers.create({
+          inboxIntegrationId: integration.inboxId,
+          contactsId: customerId,
+          email: from
+        });
+      } else {
+        customerId = prev.contactsId;
+      }
+      let conversationId;
+      const relatedMessage = await Messages.findOne({
+        $or: [
+          { messageId: msg.inReplyTo },
+          { messageId: { $in: msg.references || [] } },
+          { references: { $in: [msg.messageId] } },
+          { references: { $in: [msg.inReplyTo] } }
+        ]
+      });
+      if (relatedMessage) {
+        conversationId = relatedMessage.inboxConversationId;
+      } else {
+        const { _id } = await sendInboxMessage({
+          subdomain: 'os',
+          action: 'integrations.receive',
+          data: {
+            action: 'create-or-update-conversation',
+            payload: JSON.stringify({
+              integrationId: integration.inboxId,
+              customerId,
+              createdAt: msg.date,
+              content: msg.subject
+            })
+          },
+          isRPC: true
+        });
+        conversationId = _id;
+      }
+      await Messages.create({
+        inboxIntegrationId: integration.inboxId,
+        inboxConversationId: conversationId,
+        createdAt: msg.date,
+        messageId: msg.messageId,
+        inReplyTo: msg.inReplyTo,
+        references: msg.references,
+        subject: msg.subject,
+        body: msg.html,
+        to: msg.to && msg.to.value,
+        cc: msg.cc && msg.cc.value,
+        bcc: msg.bcc && msg.bcc.value,
+        from: msg.from && msg.from.value,
+      });
+    }
+  };
+  // controller for twitter
+  const init = async app => {
+    // write integration login method below
+    app.get('/login', async (req, res) => {
+      res.send("login")
+    });
+    
+    app.post('/receive', async (req, res, next) => {
+      try {
+        // write receive message from integration code here
+        res.send("Successfully receiving message");
+      } catch (e) {
+        return next(new Error(e));
+      }
+      res.sendStatus(200);
+    });
+  };
+  export default init;
+  ```
+
+# messageBroker.ts
+이 파일은 다른 플러그인과 연결하는 데 사용됩니다. [공통 기능](#)에서 메시지 브로커 기능을 볼 수 있습니다.
+
+```bash {{ title: 'messageBroker.ts file:' }}
+// path: ./packages/plugin-[pluginName]-api/src/messageBroker.ts 
+  import * as dotenv from 'dotenv';
+  import {
+    ISendMessageArgs,
+    sendMessage as sendCommonMessage
+  } from '@erxes/api-utils/src/core';
+  import { serviceDiscovery } from './configs';
+  import { Customers, Integrations, Messages } from './models';
+  dotenv.config();
+  let client;
+  export const initBroker = async cl => {
+    client = cl;
+    const { consumeRPCQueue } = client;
+    consumeRPCQueue(
+      'twitter:createIntegration',
+      async ({ data: { doc, integrationId } }) => {
+        await Integrations.create({
+          inboxId: integrationId,
+          ...(doc || {})
+        });
+        return {
+          status: 'success'
+        };
+      }
+    );
+    consumeRPCQueue(
+      'twitter:removeIntegration',
+      async ({ data: { integrationId } }) => {
+        await Messages.remove({ inboxIntegrationId: integrationId });
+        await Customers.remove({ inboxIntegrationId: integrationId });
+        await Integrations.remove({ inboxId: integrationId });
+        return {
+          status: 'success'
+        };
+      }
+    );
+  };
+  export default function() {
+    return client;
+  }
+  export const sendContactsMessage = (args: ISendMessageArgs) => {
+    return sendCommonMessage({
+      client,
+      serviceDiscovery,
+      serviceName: 'contacts',
+      ...args
+    });
+  };
+  export const sendInboxMessage = (args: ISendMessageArgs) => {
+    return sendCommonMessage({
+      client,
+      serviceDiscovery,
+      serviceName: 'inbox',
+      ...args
+    });
+  };
+  ```
+  
+# GraphQL 개발
+`packages/plugin-<new_plugin>-api/src` 내부에 `graphql` 폴더가 있습니다. 이 폴더에는 GraphQL과 관련된 코드가 포함되어 있습니다.
+
+```tsx
+ 📂src
+ ┣ 📂graphql
+ ┃ ┣ 📂resolvers 
+ ┃ ┃ ┣ index.ts
+ ┃ ┃ ┣ mutations.ts
+ ┃ ┃ ┗ queries.ts
+ ┃ ┣ index.ts
+ ┃ ┗ typeDefs.ts
+ ```
+
+
+
+ # GraphQL resolvers
+`/graphql/resolvers/mutations` 폴더 내에 GraphQL mutation 코드가 포함되어 있습니다.
+
+```bash {{ title: 'mutation examples:' }}
+  import { Accounts } from '../../models';
+  import { IContext } from "@erxes/api-utils/src/types"
+  const twitterMutations = {
+    async twitterAccountRemove(_root, {_id}: {_id: string}, _context: IContext) {
+      await Accounts.removeAccount(_id);
+      return 'deleted';
+    }
+  };
+  export default twitterMutations;
+  ```
+
+`/graphql/resolvers/queries` 폴더 내에 GraphQL query 코드가 포함되어 있습니다.
+
+```bash {{ title: 'query examples:' }}
+  import { IContext } from '@erxes/api-utils/src/types';
+  import { Accounts, Messages } from '../../models';
+  const queries = {
+    async twitterConversationDetail(
+      _root,
+      { conversationId },
+      _context: IContext
+    ) {
+      const messages = await Messages.find({
+        inboxConversationId: conversationId
+      });
+      const convertEmails = emails =>
+        (emails || []).map(item => ({ name: item.name, email: item.address }));
+      return messages.map(message => {
+        return {
+          _id: message._id,
+          mailData: {
+            messageId: message.messageId,
+            from: convertEmails(message.from),
+            to: convertEmails(message.to),
+            cc: convertEmails(message.cc),
+            bcc: convertEmails(message.bcc),
+            subject: message.subject,
+            body: message.body,
+          }
+        };
+      });
+    },
+    async twitterAccounts(_root, _args, _context: IContext) {
+      return Accounts.getAccounts();
+    }
+  };
+  export default queries;
+  ```
+
+  # GraphQL typeDefs
+`/graphql/typeDefs.ts` 파일 내에 GraphQL typeDefs가 포함되어 있습니다.
+
+```bash {{ title: 'typeDefs:' }}
+import { gql } from 'apollo-server-express';
+  const types = `
+    type Twitter {
+      _id: String!
+      title: String
+      mailData: JSON
+    }
+  `;
+  const queries = `
+    twitterConversationDetail(conversationId: String!): [Twitter]
+    twitterAccounts: JSON
+  `;
+  const mutations = `
+    twitterAccountRemove(_id: String!): String
+  `;
+  const typeDefs = gql`
+    scalar JSON
+    scalar Date
+    ${types}
+    extend type Query {
+      ${queries}
+    }
+    extend type Mutation {
+      ${mutations}
+    }
+  `;
+  export default typeDefs;
+  ```
+
+# Database 개발
+`packages/plugin-<new_plugin>-api/src` 내부에 `models` 파일이 있습니다. 이 파일에는 MongoDB와 mongoose 관련 코드가 포함되어 있습니다.
+
+```tsx
+📂src
+┗ models.ts
+```
+# Mongoose 스키마 및 모델
+`src/models.ts` 파일 내에 Mongoose 스키마 및 모델이 포함되어 있습니다.
+```bash {{ title: 'Mongoose schema and model example:' }}
+1
+```
+
+# UI 파일 구조
+자동으로 생성된 통합 플러그인 UI의 파일 구조는 일반 플러그인과 동일합니다. 유일한 차이점은 UI 구성입니다. 일반 플러그인 UI 파일 구조를 보려면 [여기](#)를 클릭하세요.
+
+# UI 구성
+
+# 플러그인 실행 포트
+`packages/plugin-<new_plugin>-ui/src/configs.js` 내부에 플러그인 UI의 실행 포트가 아래와 같이 설정되어 있습니다. 기본값은 3024입니다. 각 플러그인은 고유한 포트에서 UI를 실행해야 합니다. 여러 플러그인을 개발하는 경우 포트를 수동으로 변경해야 할 수도 있습니다(`configs.js` 내부).
+
+```tsx
+module.exports = {
+  name: 'twitter',
+  scope: 'twitter',
+  port: 3024,
+  exposes: {
+    './routes': './src/routes.tsx',
+
+    // 아래 컴포넌트는 동적으로 작동합니다. 이 경우, inbox-ui에서 이 컴포넌트를 호출합니다.
+    './inboxIntegrationSettings': './src/components/IntegrationSettings.tsx',
+    './inboxIntegrationForm': './src/components/IntegrationForm.tsx',
+    './inboxConversationDetail': './src/components/ConversationDetail.tsx'
+
+  },
+  routes: {
+    url: 'http://localhost:3024/remoteEntry.js',
+    scope: 'twitter',
+    module: './routes'
+  },
+
+  // calling exposed components
+  inboxIntegrationSettings: './inboxIntegrationSettings',
+  inboxIntegrationForm: './inboxIntegrationForm',
+  inboxConversationDetail: './inboxConversationDetail',
+
+  inboxIntegration: {
+    name: 'Twitter',
+
+   // 통합 설명이 통합 상자에 표시됩니다.
+    description:
+      'Please write integration description on plugin config file',
+    
+    // 이 변수는 통합이 프로덕션 모드에서 사용 가능함을 나타냅니다. 개발 모드에서는 항상 true 값으로 설정합니다.
+    isAvailable: true,
+
+    // 통합 유형은 동적으로 통합 양식을 호출하는 데 유용합니다. 
+    kind: 'twitter',
+
+    // 통합 로고
+    logo: '/images/integrations/twitter.png',
+    
+    // CLI를 사용하여 통합 플러그인을 생성할 때 상세 페이지를 선택한 경우, 통합 상자에서 추가 버튼을 클릭하면 통합이 이 URL로 연결됩니다.
+    createUrl: '/settings/integrations/twitter',
+  }
+};
+```
+# 동적 컴포넌트 플러그인 호출
+플러그인 inbox UI에서 동적으로 호출되는 컴포넌트가 있는 파일.
+
+**inboxIntegrationSettings.tsx 컴포넌트**
+`packages/plugin-inbox-ui/src/settings/integrationsConfig/components/IntegrationConfigs.tsx` 내부에 `loadDynamicComponent` 함수가 있습니다. 아래 코드는 plugin inbox UI에서 integrationConfigs 컴포넌트를 동적으로 호출하는 방법을 보여줍니다.
+
+```tsx
+{loadDynamicComponent(
+    'inboxIntegrationSettings',
+    {
+      renderItem: this.renderItem
+    },
+    true
+  )}
+```
+
+**inboxIntegrationForm.tsx 컴포넌트**
+`packages/plugin-inbox-ui/src/settings/integrations/containers/common/IntegrationForm.tsx` 내부에 `loadDynamicComponent` 함수가 있습니다. 아래 코드는 plugin inbox UI에서 integrationForm 컴포넌트를 동적으로 호출하는 방법을 보여줍니다.
+
+```tsx
+return loadDynamicComponent(
+  'inboxIntegrationForm',
+  updatedProps,
+  false,
+  type
+);
+```
+
+**inboxConversationDetail.tsx 컴포넌트**
+`packages/plugin-inbox-ui/src/inbox/components/conversationDetail/workarea/WorkArea.tsx` 내부에 `loadDynamicComponent` 함수가 있습니다. 아래 코드는 plugin inbox UI에서 inboxConversationDetail 컴포넌트를 동적으로 호출하는 방법을 보여줍니다.
+
+```tsx
+content = loadDynamicComponent('inboxConversationDetail', {
+  ...this.props
+});
+```
+
+## 플러그인 활성화
+`cli/configs.json`의 "plugins" 섹션에는 erxes가 시작될 때 실행되는 플러그인 이름이 포함되어 있습니다. 다른 플러그인을 활성화하거나 제거하거나 다시 생성하려는 경우 이 섹션을 구성해야 합니다.
+```tsx
+{
+ "jwt_token_secret": "token",
+ "dashboard": {},
+ "client_portal_domains": "",
+ "elasticsearch": {},
+ "redis": {
+   "password": ""
+ },
+ "mongo": {
+   "username": "",
+   "password": ""
+ },
+ "rabbitmq": {
+   "cookie": "",
+   "user": "",
+   "pass": "",
+   "vhost": ""
+ },
+ "plugins": [
+   {
+     "name": "logs"
+   },
+   {
+     "name": "new_plugin",
+     "ui": "local"
+   }
+ ]
+}
+```
+
+# erxes 실행
+`create-plugin` 명령은 `cli/configs.json`에 새로운 줄을 자동으로 추가하고 필요한 종속성을 설치합니다.
+
+```tsx
+{
+    "jwt_token_secret": "token",
+    "client_portal_domains": "",
+    "elasticsearch": {},
+    "redis": {
+        "password": "pass"
+    },
+    "mongo": {
+        "username": "",
+        "password": ""
+    },
+    "rabbitmq": {
+        "cookie": "",
+        "user": "",
+        "pass": "",
+        "vhost": ""
+    },
+    "plugins": [
+        {
+            "name": "forms",
+            "ui": "remote"
+        },
+        {
+            "name": "contacts",
+            "ui": "local"
+        },
+        {
+            "name": "inbox",
+            "ui": "local"
+        },
+        {
+            "name": "twitter",
+            "ui": "local"
+        },
+    ]
+}
+```
+2. 다음 명령을 실행합니다.
+```tsx
+cd erxes/cli
+yarn install
+```
+
+3. 다음 명령을 실행하여 새로 설치된 플러그인으로 erxes를 시작합니다.
+```tsx
+./bin/erxes.js dev
+```

@@ -1,0 +1,105 @@
+import { Guides } from '@/components/Guides'
+import { Resources } from '@/components/Resources'
+import { HeroPattern } from '@/components/HeroPattern'
+import React, { Component } from 'react'
+
+export const metadata = {
+  title: '소개 | erxes inc',
+  description:
+    '오픈소스 Hubspot 대안으로, SaaS 제공업체 및 디지털 마케팅 에이전시/개발자가 비즈니스 전체에 걸쳐 고유한 경험을 창출할 수 있도록 합니다.',
+}
+
+export const sections = [
+  { title: '아키텍처', id: 'architecture' },
+  { title: '자주 묻는 질문', id: 'faq' },
+]
+
+<HeroPattern />
+
+# **소개**
+
+판매 시점(Point of Sale, POS) 시스템은 거래를 간소화하고, 고객 경험을 향상시키며, Erkhet 재무 프로그램과 원활하게 통합하여 효율적인 운영과 정확한 재무 보고를 보장하는 데 중요한 구성 요소입니다. 이 시스템은 판매 거래, 재고 관리 및 재무 동기화를 위한 사용자 친화적인 인터페이스를 제공하는 것을 목표로 합니다.
+
+![](https://office.erxes.io/gateway/read-file?key=office-erxes-io/0.30699905118826143Poshome.png)
+
+<Note>
+  erxes 사용이 기다려지시나요? [설치 가이드](/quickstart/deployment/deploymentDocker)로 erxes를 시작해보세요! [라이브 데모](#)를 시도해보세요!
+</Note>
+
+# **목표**
+
+POS 시스템은 체인 제조업체를 위해 맞춤화된 종합 솔루션이 될 것입니다. 여기에는 주문 처리, 결제 처리, 재고 관리, 보고 및 Erkhet 재무 프로그램과의 실시간 동기화와 같은 기능이 포함될 것입니다. 모든 위치에 배포되어 일관성을 유지하고 중앙 집중식 제어를 용이하게 할 것입니다.
+이 시스템은 식품 제조업체에서 전체 판매 프로세스를 원활하게 진행할 수 있도록 설계된 종합 솔루션이 될 것입니다. 주요 기능은 다음과 같습니다:
+
+- 주문 처리: 신속하고 정확한 주문 배치, 수정 및 취소.
+- 재고 관리: 재고 수준, 재료 사용 및 자동 재입고 알림의 실시간 추적.
+- 결제 처리: 다양한 결제 방법을 지원하는 안전하고 효율적인 거래 처리.
+- 고객 관리: 고객 프로필, 로열티 프로그램 및 개인화된 서비스를 위한 주문 기록.
+- 보고 및 분석: 판매, 재고 및 고객 동향에 대한 종합 보고 도구.
+- Erkhet 재무 프로그램 통합: POS 시스템과 Erkhet 간의 실시간 재무 추적을 위한 원활한 데이터 동기화.
+
+# **🏷️기능적 요구사항**
+
+- <div className="not-prose center mb-2 mt-5 flex gap-1">
+  <Button href="/requirement/customer/sales/pos/processing" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '38px 3px 0 3px'}}>
+    <>주문 처리</>
+  </Button>
+  </div>
+
+- <div className="not-prose center mb-2 mt-5 flex gap-1">
+  <Button href="/requirement/customer/sales/pos/management" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '0' }}>
+    <>주문 관리</>
+  </Button>
+  </div>
+
+- <div className="not-prose center mb-90 mt-5 flex gap-7">
+  <Button href="/requirement/customer/sales/pos/payment" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px' }}>
+    <>결제</>
+  </Button>
+    </div>
+
+- <div className="not-prose center mb-90 mt-5 flex gap-7">
+  <Button href="/requirement/customer/sales/pos/menu" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px' }}>
+    <>메뉴 관리</>
+  </Button>
+    </div>
+
+- <div className="not-prose center mb-90 mt-5 flex gap-7">
+  <Button href="/requirement/customer/sales/pos/inventory" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px' }}>
+    <>재고 관리</>
+  </Button>
+    </div>
+
+- <div className="not-prose center mb-90 mt-5 flex gap-1">
+  <Button href="/requirement/customer/sales/pos/reporting" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px' }}>
+    <>보고</>
+  </Button>
+    </div>
+
+- <div className="not-prose center mb-90 mt-5 flex gap-1">
+  <Button href="/requirement/customer/sales/pos/erkhet" arrow="right" style={{ height: '40px', width: '320px', background: '#4c1d95', padding: '7px', margin: '3px 3px 0 3px' }}>
+    <>Erkhet 재무 프로그램 통합</>
+  </Button>
+  </div>
+
+# **🏷️비기능적 요구사항**
+
+## **성능**
+- 시스템은 피크 거래 부하를 효율적으로 처리해야 합니다.
+- 거래에 대한 응답 시간은 2초 이내여야 합니다.
+
+## **신뢰성**
+- 시스템 가용성을 최소 99.9% 보장해야 합니다.
+- 자동화된 백업 및 복구 프로세스를 구현해야 합니다.
+
+## **보안**
+- 역할 기반 접근 제어를 구현해야 합니다.
+- 결제 정보와 같은 민감한 데이터를 암호화해야 합니다.
+- 취약점을 방지하기 위해 정기적으로 보안 프로토콜을 업데이트해야 합니다.
+
+<Danger>
+  리스크
+시스템 업그레이드 또는 유지보수 중 잠재적인 다운타임. 데이터 유출로 이어지는 보안 취약점. 이전 POS 시스템에 익숙한 직원들의 변화 저항.
+</Danger>
+
+[🖋️이 페이지 개선하기](https://github.com/erxes/erxes-docs/edit/main/src/app/requirement/customer/sales/pos/page.mdx)

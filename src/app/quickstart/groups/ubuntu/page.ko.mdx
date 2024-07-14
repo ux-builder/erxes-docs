@@ -1,0 +1,166 @@
+import { HeroPattern } from '@/components/HeroPattern'
+
+<HeroPattern />
+# Ubuntu에서 로컬 설치
+
+다음 문서는 [Ubuntu](https://ubuntu.com/)에서 [Docker](https://www.docker.com/)를 사용하여 erxes 프로젝트를 설치하는 과정을 안내합니다.
+
+Docker는 라이브러리 및 종속성을 포함하여 애플리케이션이 작동하는 데 필요한 모든 부분을 포함하는 패키지(컨테이너)를 사용하여 애플리케이션을 개발, 배포 및 실행할 수 있는 오픈 플랫폼입니다.
+
+# 설치 준비
+---
+
+erxes 설치를 위해 컴퓨터에 최소 네 가지 소프트웨어가 사전에 설치되어 있어야 합니다.
+
+<Caution>
+    Erxes 코드는 약 12GB의 저장 공간을 차지하므로 진행하기 전에 기기에 충분한 공간이 있는지 확인하십시오.
+</Caution>
+
+# 필수 사항
+
+- [Git](https://github.com/git-guides/install-git)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>
+- [Node.js:](https://nodejs.org/en)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> only LTS versions are supported v18.17.1 or higher. Other versions of Node.js may not be compatible with the latest release of erxes. The 18.17.x version is most recommended by erxes. The easier way to install [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) is here.
+- [npm](https://docs.npmjs.com/cli/v6/commands/npm-install/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> and [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> (latest version) to run the erxes. 
+- [Docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> Latest version.
+
+---
+
+# erxes 설치
+---
+
+1. 빈 폴더를 만듭니다.
+```tsx
+mkdir example
+```
+2. 새로운 erxes 프로젝트가 생성될 빈 폴더에서 데이터베이스 및 사용할 erxes 플러그인을 정의합니다.
+```tsx
+cd example
+```
+3. 폴더에서 다음 명령어를 실행합니다.
+```tsx
+git clone https://github.com/erxes/erxes.git
+```
+## **Docker를 사용하여 종속성 설치하기**
+4. 폴더에서 다음 명령어를 사용하여 dock 디렉토리를 만듭니다.
+```tsx
+mkdir dock
+```
+5. 다음 명령어를 사용하여 dock 폴더로 이동합니다.
+```tsx
+cd dock
+```
+<Note>
+sudo nano 또는 sudo vim 명령어를 실행하여 .yml 파일을 생성하십시오.
+</Note>
+
+6. `docker-compose.yml` 파일을 생성한 다음, 새로 생성된 파일에 다음 스크립트를 복사합니다.
+```tsx
+version: '3.6'
+services:
+  mongo:
+    hostname: mongo
+    image: mongo:4.0.10
+    # container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - erxes-net
+    healthcheck:
+      test: test $$(echo "rs.initiate().ok || rs.status().ok" | mongo --quiet) -eq 1
+      interval: 2s
+      timeout: 2s
+      retries: 200
+    command: ["--replSet", "rs0", "--bind_ip_all"]
+    extra_hosts:
+      - "mongo:127.0.0.1"
+    volumes:
+      - ./data/db:/data/db
+
+  redis:
+    image: 'redis'
+    # container_name: redis
+    # command: redis-server --requirepass pass
+    ports:
+      - "6379:6379"
+    networks:
+      - erxes-net
+
+  rabbitmq:
+    image: rabbitmq:3.7.17-management
+    # container_name: rabbitmq
+    restart: unless-stopped
+    hostname: rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - erxes-net
+    # RabbitMQ data will be saved into ./rabbitmq-data folder.
+    volumes:
+      - ./rabbitmq-data:/var/lib/rabbitmq
+
+networks:
+  erxes-net:
+    driver: bridge
+```
+<Tip>
+Docker 작업 시 유용한 [명령어들](https://docs.docker.com/engine/reference/commandline/compose_images/#related-commands)을 찾아보세요.
+</Tip>
+
+7. 위 파일이 있는 폴더에서 다음 명령어를 실행합니다.
+```tsx
+sudo docker-compose up -d
+```
+8. 다음 명령어를 사용하여 erxes 폴더로 돌아갑니다.
+```tsx
+cd ../erxes
+```
+9. 다음 명령어를 사용하여 개발 브랜치로 전환합니다.
+```tsx
+git checkout dev
+```
+10. erxes 폴더에서 다음 명령어를 사용하여 노드 모듈을 설치합니다.
+```tsx
+yarn install
+```
+11. 다음 명령어를 사용하여 `pm2`를 설치합니다.
+```tsx
+sudo npm install -g pm2
+```
+
+# erxes 실행
+---
+
+<Caution>
+erxes/cli 디렉토리에서 erxes를 실행하십시오.
+</Caution>
+
+1. 폴더를 변경하려면 다음 명령어를 실행합니다.
+```tsx
+cd cli
+```
+2. erxes/cli 디렉토리에서 노드 모듈을 설치합니다.
+```tsx
+yarn install
+```
+3. `configs.json.sample`을 복사한 다음, 이를 `configs.json`으로 변환합니다.
+```tsx
+cp configs.json.sample configs.json
+```
+4. 다음 명령어를 실행하여 erxes 프로젝트를 시작합니다.
+```tsx
+./bin/erxes.js dev
+```
+
+## 브라우저가 자동으로 localhost:3000으로 이동하지 않으면 다음 명령어를 사용하여 로그를 확인해야 합니다.
+
+<Tip>
+erxes에서 자주 사용하는 `pm2` 명령어:
+- pm2 list - 모든 프로세스 상태 표시
+- pm2 kill - pm2 목록에서 모든 프로세스 제거
+- pm2 logs -f - 모든 프로세스 로그를 스트리밍으로 표시(gateway, plugin-name 등)
+- pm2 restart all - 모든 프로세스 재시작
+</Tip>
+
+## 이 화면이 표시되면 erxes XOS 설치에 성공한 것입니다. 축하합니다 🎉🎉🎉
+ ![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/1bee4344-9c4b-4a37-e3f4-6e4b02211000/public)

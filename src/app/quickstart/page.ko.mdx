@@ -1,0 +1,951 @@
+import { Guides } from '@/components/Guides'
+import { Resources } from '@/components/Resources'
+import { HeroPattern } from '@/components/HeroPattern'
+import { Category } from '@/components/Category'
+import {Tabs, Tab} from '@/components/Tabs'
+
+export const metadata = {
+  title: '빠른 시작',
+  description:
+    '이 가이드는 Protocol API를 사용할 준비를 모두 마치는 데 도움을 줄 것입니다. API 클라이언트를 시작하고 첫 번째 API 요청을 만드는 방법을 다룹니다.',
+}
+
+<HeroPattern />
+
+# 설정 및 배포 
+---
+
+## 로컬 설치
+
+다음 문서는 [Docker](https://www.docker.com/)를 사용하여 erxes 프로젝트를 설치하는 방법을 안내합니다.
+
+Docker는 애플리케이션을 개발, 배포 및 실행할 수 있게 해주는 오픈 플랫폼입니다. 컨테이너(즉, 애플리케이션이 기능하는 데 필요한 모든 부분, 라이브러리 및 종속성을 포함하는 패키지)를 사용합니다.
+
+# 설치 준비
+
+erxes 설치는 컴퓨터에 최소한 네 가지 소프트웨어 전제 조건이 미리 설치되어 있어야 합니다:
+
+<Caution>
+    Erxes 코드는 약 12GB의 저장 공간을 차지하므로 진행하기 전에 기기에 충분한 공간이 있는지 확인하세요.
+</Caution>
+
+**전제 조건**
+
+<Tabs>
+  <Tab label="Ubuntu">
+- [Git](https://github.com/git-guides/install-git)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>
+- [Node.js:](https://nodejs.org/en)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> only LTS versions are supported v18.17.1 or higher. Other versions of Node.js may not be compatible with the latest release of erxes. The 18.17.x version is most recommended by erxes. The easier way to install [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) is here.
+- [npm](https://docs.npmjs.com/cli/v6/commands/npm-install/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> and [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> (latest version) to run the erxes. 
+- [Docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> Latest version.
+</Tab>
+  <Tab label="MacOS">
+- [Git](https://github.com/git-guides/install-git)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script>
+- [Node.js:](https://nodejs.org/en)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> only LTS versions are supported v18.17.1 or higher. Other versions of Node.js may not be compatible with the latest release of erxes. The 18.17.x version is most recommended by erxes. The easier way to install [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) is here.
+- [npm](https://docs.npmjs.com/cli/v6/commands/npm-install/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> and [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> (latest version) to run the erxes. 
+- [Docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> Latest version.
+- [Homebrew](https://brew.sh/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> latest version
+- [Xcode](https://www.freecodecamp.org/news/install-xcode-command-line-tools/)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> latest version
+</Tab>
+</Tabs>
+
+# erxes 설치
+
+1. 빈 폴더를 만듭니다.
+```tsx
+mkdir example
+```
+2. 새로운 erxes 프로젝트가 생성될 빈 폴더에서 데이터베이스 및 사용할 erxes 플러그인을 정의합니다.
+```tsx
+cd example
+```
+3. 폴더에서 다음 명령어를 실행합니다.
+```tsx
+git clone https://github.com/erxes/erxes.git
+```
+# **Docker를 사용하여 종속성 설치하기**
+
+4. 폴더에서 다음 명령어를 사용하여 dock 디렉토리를 만듭니다.
+```tsx
+mkdir dock
+```
+5. 다음 명령어를 사용하여 dock 폴더로 이동합니다.
+```tsx
+cd dock
+```
+<Note>
+    .yml 파일을 생성하려면 sudo nano 또는 sudo vim 명령어를 실행하십시오.
+</Note>
+
+6. `docker-compose.yml` 파일을 생성한 다음, 새로 생성된 파일에 다음 스크립트를 복사합니다.
+<Tabs>
+  <Tab label="Ubuntu">
+```tsx
+version: '3.6'
+services:
+  mongo:
+    hostname: mongo
+    image: mongo:4.0.10
+    # container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - erxes-net
+    healthcheck:
+      test: test $$(echo "rs.initiate().ok || rs.status().ok" | mongo --quiet) -eq 1
+      interval: 2s
+      timeout: 2s
+      retries: 200
+    command: ["--replSet", "rs0", "--bind_ip_all"]
+    extra_hosts:
+      - "mongo:127.0.0.1"
+    volumes:
+      - ./data/db:/data/db
+
+  redis:
+    image: 'redis'
+    # container_name: redis
+    # command: redis-server --requirepass pass
+    ports:
+      - "6379:6379"
+    networks:
+      - erxes-net
+
+  rabbitmq:
+    image: rabbitmq:3.7.17-management
+    # container_name: rabbitmq
+    restart: unless-stopped
+    hostname: rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - erxes-net
+    # RabbitMQ data will be saved into ./rabbitmq-data folder.
+    volumes:
+      - ./rabbitmq-data:/var/lib/rabbitmq
+  
+  elasticsearch:
+    image: 'docker.elastic.co/elasticsearch/elasticsearch:7.13.0'
+    container_name: 'elasticsearch'
+    environment:
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 32768
+        hard: 65536
+    ports:
+      - '127.0.0.1:9200:9200'
+    networks:
+      - erxes-net
+    volumes:
+      - ./elasticsearchData:/usr/share/elasticsearch/data
+
+  essyncer:
+    container_name: essyncer
+    image: 'erxes/essyncer:dev'
+    environment:
+      DB_NAME: 'erxes'
+      ELASTICSEARCH_URL: 'http://elasticsearch:9200'
+      MONGO_URL: 'mongodb://mongo:27017/erxes?replicaSet=rs0'
+    depends_on:
+      - 'mongo'
+      - 'elasticsearch'
+    volumes:
+      - './essyncerData:/data/essyncerData'
+      - './mongoConnectorLog:/var/log/mongo-connector'
+    tty: true
+    networks:
+      - 'erxes-net'
+
+networks:
+  erxes-net:
+    driver: bridge
+```
+</Tab>
+<Tab label="MacOS">
+```tsx
+version: '3.6'
+services:
+  mongo:
+    hostname: mongo
+    image: mongo:4.0.10
+    # container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - erxes-net
+    healthcheck:
+      test: test $$(echo "rs.initiate().ok || rs.status().ok" | mongo --quiet) -eq 1
+      interval: 2s
+      timeout: 2s
+      retries: 200
+    command: ["--replSet", "rs0", "--bind_ip_all"]
+    extra_hosts:
+      - "mongo:127.0.0.1"
+    volumes:
+      - ./data/db:/data/db
+
+  redis:
+    image: 'redis'
+    # container_name: redis
+    # command: redis-server --requirepass pass
+    ports:
+      - "6379:6379"
+    networks:
+      - erxes-net
+
+  rabbitmq:
+    image: rabbitmq:3.7.17-management
+    # container_name: rabbitmq
+    restart: unless-stopped
+    hostname: rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - erxes-net
+    # RabbitMQ data will be saved into ./rabbitmq-data folder.
+    volumes:
+      - ./rabbitmq-data:/var/lib/rabbitmq
+  
+  elasticsearch:
+    image: 'docker.elastic.co/elasticsearch/elasticsearch:7.13.0-arm64'
+    container_name: 'elasticsearch'
+    environment:
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 32768
+        hard: 65536
+    ports:
+      - '127.0.0.1:9200:9200'
+    networks:
+      - erxes-net
+    volumes:
+      - ./elasticsearchData:/usr/share/elasticsearch/data
+
+  essyncer:
+    container_name: essyncer
+    image: 'erxes/essyncer:dev'
+    environment:
+      DB_NAME: 'erxes'
+      ELASTICSEARCH_URL: 'http://elasticsearch:9200'
+      MONGO_URL: 'mongodb://mongo:27017/erxes?replicaSet=rs0'
+    depends_on:
+      - 'mongo'
+      - 'elasticsearch'
+    volumes:
+      - './essyncerData:/data/essyncerData'
+      - './mongoConnectorLog:/var/log/mongo-connector'
+    tty: true
+    networks:
+      - 'erxes-net'
+
+networks:
+  erxes-net:
+    driver: bridge
+```
+</Tab>
+</Tabs>
+<Tip>
+Please find the useful [commands](https://docs.docker.com/engine/reference/commandline/compose_images/#related-commands)<script src='https://cdn.jsdelivr.net/gh/eddymens/markdown-external-link-script@v2.0.0/main.min.js'></script> when you're working on Docker
+</Tip>
+
+7. 위 파일이 있는 폴더에서 다음 명령어를 실행합니다.
+```tsx
+sudo docker-compose up -d
+```
+8. 다음 명령어를 사용하여 erxes 폴더로 돌아갑니다.
+```tsx
+cd ../erxes
+```
+9. 다음 명령어를 사용하여 개발 브랜치로 전환합니다.
+```tsx
+git checkout dev
+```
+10. erxes 폴더에서 다음 명령어를 사용하여 노드 모듈을 설치합니다.
+```tsx
+yarn install
+```
+11. 다음 명령어를 사용하여 `pm2`를 설치합니다.
+```tsx
+sudo npm install -g pm2
+```
+
+# erxes 실행
+
+<Caution>
+erxes/cli 디렉토리에서 erxes를 실행하십시오.
+</Caution>
+
+1. 폴더를 변경하려면 다음 명령어를 실행합니다.
+```tsx
+cd cli
+```
+2. erxes/cli 디렉토리에서 노드 모듈을 설치합니다.
+```tsx
+yarn install
+```
+3. `configs.json.sample`을 복사한 다음, 이를 `configs.json`으로 변환합니다.
+```tsx
+cp configs.json.sample configs.json
+```
+4. `configs.json` 파일에서 모든 플러그인 이름 아래에 `"ui": "local"`을 추가합니다. 다음과 같이 보입니다.
+<Caution>
+`logs` 플러그인 아래에는 ui가 없으므로 추가할 필요가 없습니다.
+</Caution>
+```tsx
+ {
+    "name": "inbox",
+    "ui": "local"
+ },
+```
+5. 다음 명령어를 실행하여 erxes 프로젝트를 시작합니다.
+```tsx
+./bin/erxes.js dev
+```
+
+## **브라우저가 자동으로 localhost:3000으로 이동하지 않으면 다음 명령어를 사용하여 로그를 확인해야 합니다.**
+
+<Tip>
+Erxes에서 자주 사용하는 pm2 명령어:
+
+- pm2 list - 모든 프로세스 상태 표시
+- pm2 kill - pm2 목록에서 모든 프로세스 제거
+- pm2 logs -f - 모든 프로세스 로그를 스트리밍으로 표시(gateway, plugin-name 등)
+- pm2 restart all - 모든 프로세스 재시작
+</Tip>
+
+## **이 화면이 표시되면 erxes XOS 설치에 성공한 것입니다. 축하합니다 🎉🎉🎉**
+ ![](https://imagedelivery.net/5m26Aj-CutMXPPNacMs_yQ/1bee4344-9c4b-4a37-e3f4-6e4b02211000/public)
+
+---
+
+## 서버 설치
+
+다음 문서는 [Docker](https://www.docker.com/) 허브를 통해 [Ubuntu](https://ubuntu.com/) 또는 [CentOS](https://www.centos.org/)에서 사용할 수 있는 Docker 이미지를 사용하여 erxes 프로젝트를 설치하는 방법을 안내합니다. 이 가이드는 erxes를 비즈니스에 사용할 분들을 위한 것입니다. erxes를 맞춤화하거나 추가 플러그인을 개발하려는 경우 [개발자 설치 가이드](/intro)를 참조하세요.
+
+Docker는 애플리케이션을 개발, 배포 및 실행할 수 있게 해주는 오픈 소스 플랫폼입니다. 이는 애플리케이션이 기능하는 데 필요한 모든 부분(라이브러리 및 종속성 등)을 포함하는 컨테이너를 사용합니다.
+
+# 전제 조건
+erxes 설치를 시작하기 전에 다음이 필요합니다.
+
+- **8코어 CPU 및 최소 16GB RAM**을 갖춘 서버
+- 사용자 디렉토리에서 명령을 실행하는 등 Ubuntu/CentOS 운영 체제에서 작업할 수 있는 기본 지식
+- 도메인 컨트롤러의 **A 레코드**가 erxes를 설치하려는 인스턴스로 지정되어 있어야 함
+- **SSH** 프로토콜을 통해 인스턴스에 연결할 수 있는 능력
+
+---
+
+# 설치 단계
+
+**1.** nano 또는 vim과 같은 텍스트 편집기를 사용하여 `install.sh` 파일을 만듭니다. 그런 다음 다음 내용을 `install.sh`에 복사합니다. 다음 스크립트는 서버에 nginx, certbot, docker, docker-compose 및 nodejs를 설치합니다.
+<Tabs>
+  <Tab label="Ubuntu">
+```bash
+ #!/bin/bash
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 1 $now : Updating \e[0m"
+sudo apt-get update -y
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 2 $now : Installing nginx\e[0m"
+sudo apt install nginx -y
+sudo apt update -y
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 3 $now : Installing docker\e[0m"
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+apt-cache policy docker-ce
+sudo apt install docker-ce -y
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 5 $now : Installing docker compose\e[0m"
+sudo apt-get update -y
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 6 $now : Installing ndoejs\e[0m"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+curl -s https://deb.nodesource.com/setup_18.x | sudo bash
+sudo apt-get install nodejs -y
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 7 $now : Installing awscli \e[0m"
+sudo apt-get install awscli -y
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 8 $now : Installing npm\e[0m"
+sudo apt install npm -y
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 9 $now : Enter your domain address to configure erxes\e[0m"
+sudo npm install -g create-erxes-app -y
+```
+ </Tab>
+   <Tab label="CentOS">
+```bash
+#!/bin/bash
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 1 $now : Updating \e[0m"
+sudo yum update -y   
+sudo yum install epel-release -y
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 2 $now : Installing nginx\e[0m"
+sudo yum install nginx -y
+sudo systemctl start nginx
+sudo yum check-update
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 3 $now : Installing docker\e[0m"
+curl -fsSL https://get.docker.com/ | sh
+sudo systemctl start docker
+sudo yum install -y yum-utils \
+device-mapper-persistent-data \
+lvm2
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 5 $now : Installing docker-compose\e[0m"
+sudo yum install docker-ce -y
+sudo yum install http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/p/pigz-2.3.4-1.el7.x86_64.rpm -y
+sudo yum install http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.21-1.el7.noarch.rpm -y
+sudo yum list docker-ce --showduplicates | sort -r docker-ce.x86_64  17.09.ce-1.el7.centos  docker-ce-stable
+sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 6 $now : installing nodejs\e[0m"
+curl -sL https://rpm.nodesource.com/setup_20.x | sudo bash -
+sudo yum install nodejs -y
+node --version
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 8 $now : Installing npm\e[0m"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+sudo nvm --version
+sudo nvm install node
+sudo nvm install --lts
+sudo nvm install 9.6.7
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 7 $now : installing awscli\e[0m"
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version
+  now=$(date +'%H:%M:%S')
+  echo -e "\e[1mStep 9 $now : Enter your domain address to configure erxes\e[0m"
+sudo npm install -g create-erxes-app -y
+```
+  </Tab>
+</Tabs>
+
+**2.** `install.sh` 파일을 실행하기 전에 아래 명령어를 사용하여 `install.sh` 파일을 실행 가능하도록 만드세요
+```bash
+sudo chmod +x install.sh
+```
+
+**3.** `install.sh` 파일을 실행하세요.
+```bash
+./install.sh
+```
+
+{/* **4.** 위의 단계가 완료되면 erxes 사용자로 서버에 다시 로그인하기 위해 로그아웃하고 다시 로그인하세요. 서버에서 로그아웃하려면 다음 명령어를 사용하세요:
+```bash
+exit
+```
+<Note>
+이전에 root 사용자로 로그인한 경우 몇 번의 명령어 입력이 필요할 수 있습니다.
+</Note>
+
+서버에 접속하려면 ssh 프로토콜을 사용할 것입니다. 아래 명령어를 사용하세요:
+
+```bash
+ssh erxes@your-ip address-address
+``` */}
+---
+**인스턴스에 erxes 사용자 생성하기**
+
+인스턴스에 연결되어 다음 단계를 실행할 준비가 되었다고 가정합니다. 먼저 `erxes 사용자`를 생성해야 합니다. 모든 erxes 관련 설치 스크립트는 erxes 사용자를 위해 작성되었기 때문입니다.
+왜 그럴까요?
+서버를 관리하기 위해 **root** 사용자를 사용하는 것은 바람직하지 않습니다. 따라서 모든 작업은 `erxes`라는 사용자로 수행됩니다. 이를 위해 다음 명령어를 실행하세요:
+
+```bash
+adduser erxes
+```
+프롬프트가 표시되면 **고유하고 강력한** 비밀번호를 입력하세요.
+(질문을 통해 사용자를 추가하는 과정을 완료하려면 `enter` 또는 `return` 키를 누르세요)
+
+다음 명령어를 사용하여 `erxes` 사용자에게 sudo 및 docker 권한을 부여하세요:
+
+```bash
+usermod -aG sudo erxes
+```
+```bash
+usermod -aG docker erxes
+```
+```bash
+su - erxes
+```
+모든 필수 준비 사항이 완료되었으므로 이제 설치 단계를 진행할 수 있습니다.
+
+# erxes 프로젝트 시작하기
+**1.** 아래 명령어는 erxes 설치 과정을 시작합니다.
+```bash
+create-erxes-app erxes
+```
+실행 후 erxes 도메인 이름을 입력하라는 메시지가 표시됩니다.
+
+```bash
+https://example.com
+```
+
+<Note>
+도메인 또는 서브도메인 이름을 http 소켓을 포함하여 아래와 같이 입력하세요:
+</Note>
+**2.** 위 명령어 실행 후 erxes 디렉토리가 생성됩니다. 그 디렉토리에는 docker-compose.yml, configs.json, package.json, nginx config 파일이 포함되어 있습니다. erxes 디렉토리로 이동하려면 아래 명령어를 사용하세요.
+
+```bash
+cd /home/erxes/erxes
+```
+**3.** /home/erxes/erxes/package.json 파일에서 erxes 패키지 버전을 <a href="https://www.npmjs.com/package/erxes" target="_blank">최신 버전</a>으로 변경하세요.
+
+```bash
+{
+  "name": "erxes",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "erxes": "erxes"
+  },
+  "dependencies": {
+    "amqplib": "^0.8.0",
+    "create-erxes-app": "0.0.28",
+    "dup": "^1.0.0",
+    #Change here
+    "erxes": "change me",
+    "ip": "^1.1.5",
+    "up": "^1.0.2"
+  }
+}
+```
+erxes 버전이 package.json 파일에서 변경된 경우, 아래 명령어를 실행하여 erxes에 필요한 모듈을 설치하세요.
+
+```bash
+npm install
+```
+
+**4.** 이제 Docker Swarm 모드를 초기화해야 합니다. 이를 위해 다음 명령어를 사용하세요.
+
+```bash
+docker swarm init
+```
+<Note> 
+이 명령어를 실행할 때 권한 거부 경고가 발생하면 `usermod -aG docker erxes` 명령어를 실행하지 않은 것입니다.
+</Note>
+
+```bash
+docker network create --driver=overlay --attachable erxes
+```
+<Note>
+erxes 디렉토리에는 docker-compose.yml 파일이 있지만, 더 이상 docker-compose up, docker-compose down, docker-compose restart 명령어를 사용하지 않습니다.
+</Note>
+
+**5.** 애플리케이션 서비스를 시작하기 전에 데이터베이스를 시작해야 합니다. 다음 명령어는 데이터베이스 서비스를 시작합니다.
+```bash
+openssl rand -base64 756 > mongo-key
+sudo chmod 400 mongo-key && sudo chown 999:999 mongo-key
+openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out certificate.pem --batch
+cat key.pem certificate.pem > mongo.pem
+```
+# Elasticsearch 실행
+서버가 요구 사항보다 더 크면 erxes를 elasticsearch와 함께 사용할 수 있습니다. 이를 위해 다음 단계를 수행해야 합니다.
+
+configs.json 파일에 다음 줄을 추가합니다. 위치는 상관없습니다.
+```bash
+"essyncer": {},
+"elasticsearch" : {},
+```
+그럼 다음 명령어를 실행하여 데이터베이스를 배포합니다.
+```bash
+npm run erxes deploy-dbs
+```
+**6.** 데이터베이스 서비스가 정상적으로 작동하는지 확인하려면 다음 명령어를 사용하십시오. 이는 모든 실행 중인 Docker 서비스의 ID, 이름 및 상태 등을 보여줍니다.
+
+```bash
+docker ps -a | grep mongo
+```
+모든 서비스 상태가 'Up'이 될 때까지 기다리십시오.
+
+**7.** 이제 MongoDB에 레플리카 세트를 설정해야 합니다. 먼저 MongoDB 컨테이너에 들어간 다음 MongoDB 인스턴스에 접속한 후 다음 3개의 명령어를 실행합니다.
+```bash
+docker exec -it <mongo container name> bash
+mongo -u erxes -p <auto generated in configs.json>
+rs.initiate();
+```
+<Note>
+명령어를 몇 번 입력해야 할 수도 있습니다. 제대로 수행된 경우 MongoDB 셸이 `"RS0: primary"`로 변경됩니다.
+</Note>
+
+MongoDB 인스턴스와 컨테이너를 종료하려면 `exit` 명령어를 두 번 실행하십시오.
+
+**8.** 작업 디렉토리 `/home/erxes/erxes`에 `locales` 디렉토리를 생성해야 합니다. 이를 위해 다음 명령어를 사용하십시오.
+
+```bash
+mkdir locales
+```
+
+**9.** `/home/erxes/erxes/configs.json` 파일의 erxes 버전을 <a href="https://hub.docker.com/u/erxes" target="_blank">최신 버전</a>으로 변경하십시오. 이는 추가 개발이 진행된 최신 버전입니다.
+
+erxes 핵심 UI 및 게이트웨이 서비스를 시작하려면 다음 명령어를 실행해야 합니다.
+```bash
+npm run erxes up -- --uis
+```
+
+이 단계 후 UI는 AWS:s3에서 다운로드됩니다. 서버가 AWS 인스턴스와 원활하게 통신할 수 있는지 확인하십시오.
+
+
+<Note>
+컨테이너는 하나씩 생성되므로 모든 컨테이너가 로드될 때까지 기다리십시오. 그동안 상태를 확인하십시오.
+```bash
+docker ps -a
+```
+Docker 서비스를 확인하려면 다음 명령어를 사용하십시오.
+```bash
+docker service ls
+```
+모든 erxes 서비스가 'Up' 상태여야 합니다.
+게이트웨이 컨테이너 상태가 'Healthy'가 될 때까지 기다리십시오. 또한 게이트웨이 컨테이너가 마지막에 시작되는지 확인하십시오.
+</Note>
+
+**10.** 이제 웹 서버를 설정해야 합니다. 먼저 nginx를 설정해야 합니다. 이를 위해 `/etc/nginx/sites-enabled`에 `erxes.conf`라는 nginx 구성 파일을 생성합니다. 이를 위해 다음 명령어를 사용하십시오.
+```bash
+sudo nano /etc/nginx/sites-enabled/erxes.conf
+```
+아래 nginx 구성을 복사하십시오.
+
+```bash
+server {
+        server_name example.com;
+        index index.html;
+        client_max_body_size 50M;
+        client_header_buffer_size 32k;
+
+        location / {
+                access_log /var/log/nginx/erxes-front.access.log;
+                error_log /var/log/nginx/erxes-front.error.log;
+                proxy_pass http://127.0.0.1:3000;
+                proxy_http_version 1.1;
+                proxy_redirect off;
+                proxy_set_header Host $http_host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-Host $host;
+                proxy_set_header X-Forwarded-Server $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        location /widgets/ {
+                access_log /var/log/nginx/erxes-widgets.access.log;
+                error_log /var/log/nginx/erxes-widgets.error.log;
+                proxy_pass http://127.0.0.1:3200/;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_set_header Host $http_host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_http_version 1.1;
+        }
+
+        location /gateway/ {
+                access_log /var/log/nginx/erxes-api.access.log;
+                error_log /var/log/nginx/erxes-api.error.log;
+                proxy_pass http://127.0.0.1:3300/;
+                proxy_http_version 1.1;
+                proxy_buffering off;
+                proxy_redirect off;
+                proxy_set_header Host $http_host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-Server $host;
+                proxy_set_header X-Forwarded-Host $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "Upgrade";
+        }
+
+        location /mobile-app/ {
+                access_log /var/log/nginx/erxes-mobile-app.access.log;
+                error_log /var/log/nginx/erxes-mobile-app.error.log;
+                proxy_pass http://127.0.0.1:4100/;
+                proxy_http_version 1.1;
+                proxy_buffering off;
+                proxy_redirect off;
+                proxy_set_header Host $http_host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-Server $host;
+                proxy_set_header X-Forwarded-Host $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "Upgrade";
+        }
+
+        location /integrations/ {
+                access_log /var/log/nginx/erxes-integrations.access.log;
+                error_log /var/log/nginx/erxes-integrations.error.log;
+                proxy_pass http://127.0.0.1:3400/;
+                proxy_http_version 1.1;
+                proxy_redirect off;
+                proxy_set_header Host $http_host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-Host $host;
+                proxy_set_header X-Forwarded-Server $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+        }
+        location /dashboard/front {
+                access_log /var/log/nginx/erxes-integrations.access.log;
+                error_log /var/log/nginx/erxes-integrations.error.log;
+                proxy_pass http://127.0.0.1:4200;
+                proxy_http_version 1.1;
+                proxy_redirect off;
+                proxy_set_header Host $http_host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-Host $host;
+                proxy_set_header X-Forwarded-Server $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        location /dashboard/api/ {
+                access_log /var/log/nginx/erxes-integrations.access.log;
+                error_log /var/log/nginx/erxes-integrations.error.log;
+                proxy_pass http://127.0.0.1:4300/;
+                proxy_http_version 1.1;
+                proxy_redirect off;
+                proxy_set_header Host $http_host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-Host $host;
+                proxy_set_header X-Forwarded-Server $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+    ```
+**11.** 그 후 nginx 구성을 테스트해야 합니다. 이를 위해 다음 명령어를 사용하십시오.
+```bash
+sudo nginx -t
+```
+
+**12.** nginx 테스트가 성공 메시지를 표시하면 nginx를 다시 시작해야 합니다. 이를 위해 다음 명령어를 사용하십시오.
+    ```bash
+    sudo service nginx restart
+    ```
+**13.** erxes는 보안 연결에서만 작동하므로 무료 SSL 인증서를 생성하기 위해 `Certbot`을 사용합니다. 이를 설정하려면 다음 명령어를 사용하십시오.
+
+```bash
+sudo certbot --nginx
+```
+<Note>
+도메인의 A 레코드를 erxes 호스트 머신으로 지정해야만 인증서를 받을 수 있습니다. 그렇지 않으면 certbot이 인증서를 생성하지 않습니다.
+</Note>
+
+이 명령어를 입력한 후 이메일과 구독 정보를 제공하고 약관에 동의하십시오. 그 후 '리디렉션' 옵션에 대해 묻는 메시지가 표시됩니다. 보안상의 이유로 이 옵션을 활성화할 것을 강력히 권장합니다. 이 모든 단계를 완료한 후 브라우저를 열어 제품을 즐기십시오.
+
+# erxes에 새 플러그인 추가
+erxes에 새 플러그인을 추가하는 것은 간단한 작업입니다. `/home/erxes/erxes/configs.json` 파일의 `"plugins:"[{}]` 아래에 플러그인 이름을 추가한 다음 `npm run erxes up -- --uis` 명령어를 실행하기만 하면 됩니다. 그러나 대시보드와 같은 일부 플러그인은 `추가` 서비스가 필요합니다. 이는 다른 섹션에서 설명하겠습니다. 아래는 모든 `필수 구성 라인`이 포함된 `이상적인` configs.json 파일 내용입니다. 아래 내용을 주의 깊게 읽으십시오. 일부 줄은 `교체`가 필요할 수 있습니다.
+
+```bash
+{
+    "jwt_token_secret": "will be generated in configs.json",
+    "db_server_address": "ip address of your machine",
+    "secondary_server_address": "",
+    "image_tag": "dev",
+    "domain": "https://example.com",
+    "widgets": {
+        "domain": "https://example.com/widgets"
+    },
+    "elasticsearch": {},
+    "essyncer": {},
+    "redis": {
+        "password": "will be generated in configs.json"
+    },
+
+    "mongo": {
+        "username": "erxes",
+        "password": "will be generated in configs.json",
+    },
+    "rabbitmq": {
+        "cookie": "",
+        "user": "erxes",
+        "pass": "will be generated in configs.json",
+        "vhost": ""
+    },
+
+    "plugins": [
+        {
+            "name": "inbox",
+            "extra_env": {
+                "INTEGRATIONS_MONGO_URL": "will be generated in docker-compose-dbs.yml",
+                "FB_MONGO_URL": "will be generated in docker-compose-dbs.yml"
+            }
+        },
+        {
+            "name": "cards"
+        },
+        {
+            "name": "contacts"
+        },
+        {
+            "name": "internalnotes"
+        },
+        {
+            "name": "notifications"
+        },
+        {
+            "name": "automations",
+            "db_name": "erxes_automations"
+        },
+        {
+            "name": "products"
+        },
+        {
+            "name": "forms"
+        },
+        {
+            "name": "inventories"
+        },
+        {
+            "name": "segments"
+        },
+        {
+            "name": "tags"
+        },
+        {
+            "name": "engages"
+        },
+        {
+            "name": "logs",
+            "db_name": "erxes_logger"
+        },
+        {
+            "name": "clientportal",
+            "extra_env": {
+                "JWT_TOKEN_SECRET": ""
+                    }
+        },
+        {
+            "name": "webbuilder"
+        },
+        {
+            "name": "knowledgebase"
+        },
+        {
+            "name": "emailtemplates"
+        },
+        {
+            "name": "integrations",
+            "db_name": "erxes_integrations",
+            "extra_env": {
+                "ENDPOINT_URL": "https://enterprise.erxes.io"
+            }
+        },
+        {
+            "name": "dashboard"
+        },
+        {
+            "name": "documents"
+        },
+        {
+            "name": "filemanager"
+        },
+        {
+            "name": "facebook",
+            "extra_env": {
+                "ENDPOINT_URL": "https://enterprise.erxes.io",
+                "MONGO_URL": "will be generated in docker-compose-dbs.yml"
+            }
+        }
+    ]
+}
+```
+---
+
+{/*# 대시보드 플러그인 추가
+앞서 언급했듯이 대시보드 플러그인은 설치를 위해 몇 가지 추가 단계를 필요로 합니다. 먼저 `mongobi 인증서`를 생성해야 합니다. 이를 위해 다음 명령어를 사용하십시오.
+
+```bash
+openssl rand -base64 756 > mongo-key
+    sudo chmod 400 mongo-key && sudo chown 999:999 mongo-key
+    openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out certificate.pem --batch
+    cat key.pem certificate.pem > mongo.pem
+    ```
+
+이 명령어는 mongobi 인증서를 생성합니다. 그 후 `/home/erxes/erxes/configs.json` 파일에 `mongobi`를 다음과 같이 추가해야 합니다.
+
+```bash
+ "mongo": {
+        "username": "erxes",
+        "password": "will be generated in configs.json",
+    },
+    "mongobi:{},
+```
+마지막으로 `npm run erxes up -- --uis` 명령어를 실행하십시오.
+
+<Note>
+configs.json을 변경할 때마다 `npm run erxes up -- --uis` 명령어를 실행하여 변경 사항을 적용합니다.
+</Note>
+
+---*/}
+---
+
+# erxes 제거
+**1.** 먼저, 이는 아쉽지만 모든 서버는 정리되어야 합니다. 다음 명령어는 Docker 스택과 스웜에 있는 모든 떠도는 컨테이너를 제거하는 데 도움이 됩니다.
+ ```bash
+ docker stack ls
+ ```
+스택 정보를 표시하려면 다음 명령어를 사용하십시오.
+ ```bash
+docker stack rm erxes
+docker stack rm erxes-dbs
+ ```
+
+**2.** 모든 떠도는 컨테이너를 제거하려면 다음 명령어를 사용하십시오.
+
+떠도는 이미지를 나열하고 제거합니다.
+
+```bash
+docker images -f dangling=true
+docker rmi $(docker images -q -f dangling=true)
+```
+떠도는 컨테이너를 나열하고 제거합니다.
+```bash
+docker ps -a -f status=exited
+docker rm $(docker ps -a -q -f status=exited)
+```
+떠도는 볼륨을 나열하고 제거합니다.
+
+<Note>
+볼륨에는 데이터가 있을 수 있으므로 주의해서 진행하십시오.
+</Note>
+
+```bash
+docker volume ls -f dangling=true
+docker volume rm $(docker volume ls -q -f dangling=true)
+```
+ ---
+# 설치 비디오
+
+<iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/PZ87Xmig7nE?si=KoDbjTolWAivYFyX"
+    title="installation video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  />
+---
+
+# erxes 커뮤니티 가입하기
+오늘 바로 erxes 커뮤니티에 가입하세요! 설치 과정에서 어려움을 겪으시면 주저하지 말고 도움을 요청하세요. [Github](https://github.com/erxes/erxes) 저장소에서 문제를 제기하거나 [Discord](https://discord.com/invite/rPf9FYaA3F)에서 친절한 커뮤니티의 도움을 받을 수 있습니다. 저희는 언제나 여러분을 지원할 준비가 되어 있습니다!
